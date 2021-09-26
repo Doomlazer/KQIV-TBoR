@@ -24,5 +24,3 @@ Multiple solutions and hidden skips - Complete original KQ4 puzzles exactly as i
 <a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki/Quality-of-Life-Changes">QoL Change list</a>
 
 <a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki">Wiki (walkthrough)</a>
-	
-https://github.com/Doomlazer/KQIV-TE-TBoR
