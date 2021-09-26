@@ -201,7 +201,7 @@
 						((Said 'open/cabinet,cabinet') (Print 67 21))
 						((Said 'close/door') (if mansionSecretDoorOpen (Print 67 31) else (Print 67 32)))
 						((Said 'flip,move,lift/latch')
-							(if hiddenMansionLatchKnown
+;;;							(if hiddenMansionLatchKnown ;fuck off
 								(cond 
 									(mansionSecretDoorOpen (Print 67 33))
 									((& (ego onControl:) $0020)
@@ -214,9 +214,9 @@
 									)
 									(else (Print 800 1))
 								)
-							else
-								(Print 67 14)
-							)
+;;;							else
+;;;								(Print 67 14)
+;;;							)
 						)
 					)
 				)
