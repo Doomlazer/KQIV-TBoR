@@ -23,7 +23,9 @@
 )
 
 (instance poofSound of Sound
-	(properties)
+	(properties
+		number 40
+	)
 )
 
 (instance Room579 of Room
@@ -38,6 +40,7 @@
 	(method (init)
 		(= isIndoors TRUE)
 		(super init:)
+		(poofSound play:)
 		(= car(Prop new:)) ;
 				(car
 					view: 563

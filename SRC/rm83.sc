@@ -26,6 +26,7 @@
 	kissed
 	tooth
 	randomPick
+	toofmsg
 )
 (instance Room83 of Room
 	(properties
@@ -132,7 +133,7 @@
 					(cond 
 						(
 							(or
-								(Said 'look[<around][/!*]')
+								(Said 'look[<around][/noword]')
 								(Said 'look/room,castle')
 							)
 							(Print 83 0)
@@ -146,8 +147,23 @@
 								((Said '/window') (Print 83 5))
 								((Said '/wall') (Print 83 6))
 								((or (Said '/dirt') (Said '<down')) (Print 83 7))
-								((Said '/roger') (if kissed (Print 83 38) else (Print 83 19)))
-								((Said '/hole') (if kissed (if ((Inventory at: iTooth) ownedBy: 83) (Print 83 35) else (Print 83 30)) else (Print 83 31)))
+								((Said '/roger') 
+									(if kissed 
+										(Print 83 38) 
+									else 
+										(Print 83 19)
+									)
+								)
+								((Said '/hole') 
+									(if kissed 
+										(if ((Inventory at: iTooth) ownedBy: 83) 
+											(Print 83 35) 
+										else 
+											(Print 83 30)) 
+									else 
+										(Print 83 31)
+									)
+								)
 							)
 						)
 						(
@@ -156,65 +172,68 @@
 						((Said 'get/chain') (Print 83 4))
 						((Said 'get/tooth,toof') 
 							(if ((Inventory at: iTooth) ownedBy: 83)
-									
-									(if (ego inRect: 60 115 85 135)
-									
+								(if (ego inRect: 60 115 85 135)
 									(ego get: iTooth)
 									(theGame changeScore: 665)
 									(Print 83 36)
-									
-									else 
-									
-										(Print {Fuck you, get closer first.})
-									)
-									
-									
-									else (Print "The tooth is not yours to take.")
+									(if (not toofmsg) (Print 83 46)(= toofmsg 1)) ;try to make tooth function more obvious
+								else 
+									(Print {Fuck you, get closer first.})
+								)	
+							else 
+								(Print "The tooth is not yours to take.")
 							)
 						)
 						((Said 'open/window') (Print 83 10))
 						((Said 'break/window') (Print 83 11))
-						((Said 'open/door') (if (< gamePhase killedLolotte) (Print 83 12) else (Print 83 13)))
-						((Said 'unlatch/door') (if (< gamePhase killedLolotte) (Print 83 14) else (Print 83 15)))
+						((Said 'open/door') 
+							(if (< gamePhase killedLolotte) 
+								(Print 83 12) 
+							else 
+								(Print 83 13)
+								)
+							)
+						((Said 'unlatch/door') 
+							(if (< gamePhase killedLolotte) 
+								(Print 83 14) 
+							else 
+								(Print 83 15)
+							)
+						)
 						((Said 'call,help') (Print 83 16))
 						((Said 'kiss/roger')
 							(if (ego inRect: 80 120 140 135)
-							(rogerActions changeState: 8)
+								(rogerActions changeState: 8)
 							else
-								(Print {Get closer first. Why do I have tell people this?})
+								(Print 83 49)
 							)
 						)
 						((Said 'show/breasts') (Print 83 28))
-						((Said 'fuck/roger') (Print {You better not. Beatrice might come through time and fuck you up if she ever found out.}))
+						((Said 'fuck/roger') (Print 83 50))
 						((Said 'fuck/skeleton') (Print 83 33))
 						((Said 'kill/roger') (rogerActions changeState: 20))
-						
-						((Said 'deliver/tooth[<roger,man]')
+						((Said 'deliver/tooth[/roger,man]') ;I suck at said spec :(
 							(if (ego has: iTooth) 
 								(Print 83 37)
 								((Inventory at: iTooth) moveTo:3)
 							else 
-								(Print "You don't have the tooth, dummy")
+								(Print 83 47)
 							)
 						)
-						((Said 'knock[<door]')
-							(Print {Rosella yells at the door, "Let me out! It smells worse than a Daventry outhouse in here!})
+						((Said 'knock[/door]')
+							(Print 83 48)
 							(takeBack changeState: 1)
 						)
 						
 						((Said 'talk/roger,man')  
-						(if (and (ego has: iTooth)(ego has: iDecoderRing))
+						(if (and (ego has: iTooth)(ego has: iDecoderRing)) 
 							;sloppy logic tree
 							(switch (= randomPick (Random 1 3))	
 								
 									(1
-										(if
-											(==
-												(Print 83 45 #time 10 #button {Lantern} 1 #button {Pandora's Box} 2)
-												1
-											)
+										(if (== (Print 83 45 #dispose #button {Lantern} 1 #button {Pandora's Box} 2) 1)
 											(ego get: iLantern)
-											(Print {"I think the lantern will let you skip cleaning if you also get the bridle. At least that's what the hintbook said."})
+											(Print 83 51)
 										else
 											(ego get: iPandorasBox)
 											(Print {"Good choice! Fuck those ghosts, right?"})
@@ -223,7 +242,7 @@
 									(2
 										(if
 											(==
-												(Print 83 45 #time 10 #button {Pan's Flute} 1 #button {Axe} 2)
+												(Print 83 45 #dispose #button {Pan's Flute} 1 #button {Axe} 2)
 												1
 											)
 											(ego get: iSilverFlute)
@@ -236,7 +255,7 @@
 									(3
 										(if
 											(==
-												(Print 83 45 #time 10 #button {Magic Fruit} 1 #button {Magic Hen} 2)
+												(Print 83 45 #dispose #button {Magic Fruit} 1 #button {Magic Hen} 2)
 												1
 											)
 											(ego get: iMagicFruit)
@@ -297,6 +316,7 @@
 				(User canControl: FALSE canInput: FALSE)
 				(ego setMotion: 0)
 				(Print 83 17)
+				(rogerego ignoreActors: 1) ;fix softlock?
 				(if (ego inRect: 123 142 193 180)
 					(ego setMotion: MoveTo 150 130 self)
 				else
@@ -304,6 +324,7 @@
 				)
 			)
 			(2
+				(Print 83 52 #at 0 50 #font smallFont #time 5 #title {Roger}) ;re-enforce the odd nature of the tooth
 				(ego loop: 2)
 				((= hench (Actor new:))
 					view: 141
@@ -317,7 +338,7 @@
 			)
 			(3
 				(= roomDialog
-					(Print 83 18 #at -1 10 #font smallFont #dispose)
+					(Print 83 18 #at -1 10 #font smallFont #dispose #title {Rosella})
 				)
 				(User canControl: FALSE canInput: FALSE)
 				(ego illegalBits: 0 setMotion: MoveTo 160 (ego y?) self)

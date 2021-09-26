@@ -741,11 +741,11 @@
 			
 			(666
 				(if (ego has: iTooth)
-					(Print {WARNING: eating the frog with the tooth makes it night prematurly. This is untested and you might want to restore a saved game. The frog can safely be eaten if Rosella does not have the tooth in inventory.})
-					(Print {"Daddy makes the prisoners in Daventry eat frogs, so they can't be that bad. It might have some sort of magical effect!"})
-					(= isNightTime TRUE) ;this probably causes a bunch of problems, but it's fun
+					(= sequenceBreakNight 1) ;EAT FROG w/ Tooth inforces nighttime - now with moon cutscene!
+					(Print 15 53)
+					 
 				else
-					(Print {You pop the little frog into your mouth and start chewing it while it's still alive.})
+					(Print 15 54)
 				)
 				(self cue:)
 			)
@@ -756,9 +756,9 @@
 			)
 			(668
 				(if (ego has: iTooth)
-					(Print {"The sun machine is coming down. It's too early to be night. Something isn't right."})
+					(Print 15 55)
 				else
-					(Print {Ouch! You bite into something sharp while chewing the frog. It's a tiny gold crown which you decide to keep.})
+					(Print 15 56)
 				)
 				((Inventory at: iSmallCrown) moveTo: ego)
 				(= gotItem TRUE)
@@ -770,7 +770,7 @@
 					put: iFrog 999
 				)
 				(theGame changeScore: 2)
-				(= frogPrinceState frogPrinceLeft) ;frog should not be there at end game frog easter egg			
+				(= frogPrinceState frogPrinceLeft) ;frog should not be at endgame sequence if eaten			
 			)
 		)
 	)

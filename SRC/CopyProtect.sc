@@ -534,6 +534,7 @@
 		(cond
 			;Bobalu was only in 1988 release -- enable if you want it. -- Kawa
 			((not (StrCmp @userInput {BOBALU})) (curRoom newRoom: 700))
+			((not (StrCmp @userInput {TONYASS})) (curRoom newRoom: 700)) ;200% less copy protection -- DL
 			((== inputSum requestSum)
 				(curRoom newRoom: 700)
 			)

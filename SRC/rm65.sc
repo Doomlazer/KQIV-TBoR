@@ -8,7 +8,7 @@
 (use Actor)
 (use Invent)
 (use System)
-
+(use Sound)
 
 (public
 	Room65 0
@@ -21,6 +21,12 @@
 (local
 	toothHolder
 	sparkle
+)
+
+(instance poofSound of Sound
+	(properties
+		number 40
+	)
 )
 
 (instance Room65 of Room
@@ -71,6 +77,7 @@
 
 		(if (or ((inventory at: iTooth) ownedBy: ego) ((inventory at: iTooth) ownedBy: 65))
 		;candle 2
+		(poofSound play:)
 		((View new:)
 			view: 536
 			loop: 5

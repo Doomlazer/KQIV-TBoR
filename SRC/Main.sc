@@ -450,6 +450,7 @@
 		sdead
 		arrowed
 		marieUntied
+		sequenceBreakNight
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))
@@ -697,8 +698,8 @@
 				Briefcase
 				Skull
 		)
-		(ego get: iAxe)
-		(ego get: iTooth)
+		;(ego get: iAxe)
+		;(ego get: iTooth)
 		;(ego get: iBriefcase)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
@@ -1017,6 +1018,7 @@ code_04eb:
 					(not (if (< 30 roomNum) (< roomNum 77)))
 					(< roomNum 300)
 					(or
+						(== sequenceBreakNight 1) ;;;mod sequence breaks need to make it night
 						(and (< 20 gameHours) (< gameHours 30))
 						(and
 							(>= gamePhase getPandoraBox)
@@ -1024,6 +1026,7 @@ code_04eb:
 							(ego has: iMagicFruit)
 							(< gameHours 30)
 						)
+						
 					)
 				)
 				(= isNightTime TRUE)

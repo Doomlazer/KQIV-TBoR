@@ -46,6 +46,14 @@
 					#at 20 10
 					#width 260
 				)
+				(Print
+					(Format @menuBuf MENU 10 version) ;text.997
+					#title {An SPR3 Production} ;yes, 'an' 
+					#font smallFont
+					#mode teJustCenter
+					#at 20 10
+					#width 260
+				)
 				(Sound pause: oldPause)
 			)
 			(helpI
