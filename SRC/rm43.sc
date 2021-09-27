@@ -749,7 +749,8 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(if local11 (= seconds 240) else (= seconds 120))
+				;(if local11 (= seconds 240) else (= seconds 120))
+				(if local11 (= seconds 240) else (= seconds 20)) ;might as well die
 			)
 			(1 (= local12 1))
 			(10

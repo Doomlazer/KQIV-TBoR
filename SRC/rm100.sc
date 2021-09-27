@@ -61,6 +61,7 @@
 				setCycle: Forward
 			;	ignoreControl:
 			ignoreActors:
+			ignoreHorizon: ;maybe?
 				init:
 				;stopUpd:
 			)
