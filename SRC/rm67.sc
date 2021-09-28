@@ -200,6 +200,18 @@
 						((Said 'open/door') (if mansionSecretDoorOpen (Print 67 29) else (Print 67 30)))
 						((Said 'open/cabinet,cabinet') (Print 67 21))
 						((Said 'close/door') (if mansionSecretDoorOpen (Print 67 31) else (Print 67 32)))
+						((Said 'open/sesame') ;Magic just for fun
+							(if mansionSecretDoorOpen
+								(Print {It's already open, dipshit.})
+							else
+										(Print {"OPEN SESAME."} #title {Rosella} )
+										(ego setMotion: 0)
+										(secretDoor setCycle: EndLoop)
+										(= mansionSecretDoorOpen TRUE)
+										(theGame changeScore: 4)
+										(ego illegalBits: cWHITE)	
+							)	
+						)
 						((Said 'flip,move,lift/latch')
 ;;;							(if hiddenMansionLatchKnown ;fuck off
 								(cond 
