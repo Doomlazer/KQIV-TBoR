@@ -518,23 +518,25 @@
 			#width 290
 			#edit @userInput 30
 		)
+
 		(if (and debugging (= i (ReadNumber @userInput)))
 			(TheMenuBar draw:)
 			(StatusLine enable:)
 			(self newRoom: i)
 			(return)
-		)
+		)	
+
 		(= userFont smallFont)
 		(for ((= i 0)) (< i (StrLen @userInput)) ((++ i))
-			(= ch (& (= ch (StrAt @userInput i)) $005f)) ;ch = userInput[i] & 0x5F -- get uppercased ch
-			(StrAt @userInput i ch) ;put that uppercase character back so we can detect BOBALU later on
+			(= ch (& (= ch (StrAt @userInput i)) $005f))
 			(+= inputSum ch)
 		)
-		;A whole cond block was missing here for some reason. I rewrote it. -- Kawa
 		(cond
-			;Bobalu was only in 1988 release -- enable if you want it. -- Kawa
-			((not (StrCmp @userInput {BOBALU})) (curRoom newRoom: 700))
-			((not (StrCmp @userInput {TONYASS})) (curRoom newRoom: 700)) ;200% less copy protection -- DL
+			
+			((== inputSum 750) (curRoom newRoom: 700)) ;wave anchor		
+			((== inputSum 437) (curRoom newRoom: 700)) ;bobalu
+			((== inputSum 435) (curRoom newRoom: 703)) ;marble
+			((== inputSum 453) (curRoom newRoom: 702)) ;pirate room is 702
 			((== inputSum requestSum)
 				(curRoom newRoom: 700)
 			)
