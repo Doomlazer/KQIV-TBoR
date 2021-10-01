@@ -92,7 +92,7 @@
 			startUpd:
 		)
 		(Print {Your privileges to the game have been suspended because
-			you are a pirate!\n\n___________"Yo ho ho!"} #time 12 #font 0 #at 60 30)
+			you are a pirate!\n\n________"Yo ho ho!"} #time 12 #font 605 #at 40 30 #width 220)
 	)
 	
 	(method (doit)
