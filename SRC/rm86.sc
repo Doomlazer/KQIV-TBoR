@@ -22,9 +22,7 @@
 	candle3
 	door
 )
-(instance theMusic of Sound
-	(properties)
-)
+(instance theMusic of Sound)
 
 (instance doorOpenMusic of Sound
 	(properties
@@ -115,12 +113,24 @@
 			(User canControl: FALSE canInput: FALSE)
 			(self setScript: intoDungeon)
 		)
+		(if (== prevRoomNum 703)
+			(if (< gamePhase trappedInCastle)
+				(== gamePhase trappedInCastle)
+			)
+			(ego
+				view: 4
+				loop: 1
+				posn: 190 125
+				setStep: 4 2
+				init:
+				setCycle: Walk
+			) 
+		)
 	)
 	
 	(method (doit)
 		(super doit:)
-		(if
-		(and (& (ego onControl:) $0040) (!= gamePhase startingOut))
+		(if (and (& (ego onControl:) cBROWN) (!= gamePhase startingOut))
 			(curRoom newRoom: 87)
 		)
 	)
@@ -133,7 +143,7 @@
 					(cond 
 						(
 							(or
-								(Said 'look[<around][/!*]')
+								(Said 'look[<around][/noword]')
 								(Said 'look/room,castle,hall')
 							)
 							(Print
@@ -144,12 +154,24 @@
 						)
 						((Said 'look>')
 							(cond 
-								((Said '/door') (Print 86 1))
-								((Said '/table') (Print 86 2))
-								((Said '/candelabra,candle') (Print 86 3))
-								((Said '/chair') (Print 86 4))
-								((Said '/wall') (Print 86 5))
-								((or (Said '/dirt') (Said '<down')) (Print 86 6))
+								((Said '/door')
+									(Print 86 1)
+								)
+								((Said '/table')
+									(Print 86 2)
+								)
+								((Said '/candelabra,candle')
+									(Print 86 3)
+								)
+								((Said '/chair')
+									(Print 86 4)
+								)
+								((Said '/wall')
+									(Print 86 5)
+								)
+								((or (Said '/dirt') (Said '<down'))
+									(Print 86 6)
+								)
 							)
 						)
 						((Said 'bang/door')
@@ -162,11 +184,15 @@
 						((Said 'open/door')
 							(if (not (ego inRect: 171 115 204 122))
 								(Print 800 1)
+								
 							else
-								(Print 86 8)
+								;(Print 86 8)
+								(self setScript: openDoor)
 							)
 						)
-						((Said 'close/door') (Print 86 9))
+						((Said 'close/door')
+							(Print 86 9)
+						)
 						((Said 'unlatch/door')
 							(if (ego inRect: 171 115 204 122)
 								(Print 86 8)
@@ -174,8 +200,12 @@
 								(Print 800 1)
 							)
 						)
-						((Said 'sit/chair') (Print 86 10))
-						((Said 'get/candelabra') (Print 86 11))
+						((Said 'sit/chair')
+							(Print 86 10)
+						)
+						((Said 'get/candelabra')
+							(Print 86 11)
+						)
 					)
 				)
 			)
@@ -184,8 +214,6 @@
 )
 
 (instance openDoor of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
@@ -196,17 +224,19 @@
 			)
 			(1
 				(HandsOn)
-				(curRoom newRoom: 83)
+				(if (>= gamePhase getTheUnicorn)
+					(curRoom newRoom: 703)
+				else
+					(curRoom newRoom: 83)
+				)
 			)
 		)
 	)
 )
 
 (instance intoDungeon of Script
-	(properties)
-	
-	(method (init param1)
-		(super init: param1)
+	(method (init who)
+		(super init: who)
 	)
 	
 	(method (changeState newState)
@@ -251,8 +281,6 @@
 )
 
 (instance toThrone of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
@@ -268,8 +296,6 @@
 )
 
 (instance henchChase of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0

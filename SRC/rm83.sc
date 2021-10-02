@@ -140,7 +140,7 @@
 						)
 						((Said 'look>')
 							(cond 
-								((Said '/skeleton') (Print 83 1))
+								((Said '/skeleton,james') (Print 83 1))
 								((Said '/machine') (Print 83 2))
 								((Said '/whip') (Print 83 3))
 								((Said '/chain') (Print 83 4))
@@ -210,9 +210,9 @@
 						)
 						((Said 'show/breasts') (Print 83 28))
 						((Said 'fuck/roger') (Print 83 50))
-						((Said 'fuck/skeleton') (Print 83 33))
+						((Said 'fuck/skeleton,james') (Print 83 33)) ;the skeleton was called James in the AGI version - DL
 						((Said 'kill/roger') (rogerActions changeState: 20))
-						((Said 'deliver/tooth[/roger,man]') ;I suck at said spec :(
+						((Said 'deliver/tooth[/roger,man]')
 							(if (ego has: iTooth) 
 								(Print 83 37)
 								((Inventory at: iTooth) moveTo:3)

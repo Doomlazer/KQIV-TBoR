@@ -26,6 +26,8 @@
 	lsBottom
 	lsLeft
 	saveWindow
+	rapMsgNum
+	rapLoop
 )
 (instance Room703 of Room
 	(properties
@@ -43,18 +45,19 @@
 		(Load VIEW 512)
 		(self setRegions: LOLOTTE)
 		(super init:)
+		(= rapMsgNum 19)
 		((Prop new:)
-			view: 703 ;512
+			view: 703
 			loop: 6
-			posn: 35 55
+			posn: 35 66
 			setPri: 3
 			init:
 			setCycle: Forward
 		)
 		((Prop new:)
-			view: 703		;512
+			view: 703	
 			loop: 6
-			posn: 267 54
+			posn: 267 65
 			setPri: 3
 			init:
 			setCycle: Forward
@@ -72,7 +75,10 @@
 	
 	(method (doit)
 		(super doit:)
-		(if (and (== gamePhase endGame) (& (ego onControl: 0) cBROWN))
+		(if (& (ego onControl: 0) cBROWN)
+			(if (!= systemWindow saveWindow)
+				(= systemWindow saveWindow)
+			)
 			(curRoom newRoom: 86)
 		)
 	)
@@ -88,64 +94,67 @@
 								(Said 'look[<around][/noword]')
 								(Said 'look/room,castle')
 							)
-							(Print 83 0)
+							(Print 703 0 #font 605)
 						)
 						((Said 'look>')
 							(cond 
-								((Said '/skeleton,bone')
-									(Print 83 1)
+								((Said '/skeleton,bone,james') ;skelly was called james in the AGI version for some reason.
+									(Print 703 1 #font 605)
 								)
 								((Said '/machine')
-									(Print 83 2)
+									(Print 703 2 #font 605)
 								)
 								((Said '/whip')
-									(Print 83 3)
+									(Print 703 3 #font 605)
 								)
 								((Said '/chain')
-									(Print 83 4)
+									(Print 703 35 #font 605) ;different from SCI version
 								)
 								((Said '/window')
-									(Print 83 5)
+									(Print 703 5 #font 605)
 								)
 								((Said '/wall')
-									(Print 83 6)
+									(Print 703 6 #font 605)
 								)
 								((or (Said '/dirt') (Said '<down'))
-									(Print 83 7)
+									(Print 703 7 #font 605)
 								)
 							)
 						)
 						((or (Said 'use,(turn<on)/machine') (Said 'turn/wheel'))
-							(Print 83 8)
+							(Print 703 8 #font 605)
 						)
 						((Said 'get/whip')
-							(Print 83 9)
+							(Print 703 9 #font 605)
 						)
 						((Said 'get/chain')
-							(Print 83 4)
+							(Print 703 4 #font 605)
 						)
 						((Said 'open/window')
-							(Print 83 10)
+							(Print 703 10 #font 605)
 						)
 						((Said 'break/window')
-							(Print 83 11)
+							(Print 703 11 #font 605)
 						)
 						((Said 'open/door')
-							(if (< gamePhase killedLolotte)
-								(Print 83 12)
-							else
-								(Print 83 13)
-							)
+							(Print 703 13 #font 605) ;different in SCI?	
 						)
 						((Said 'unlatch/door')
-							(if (< gamePhase killedLolotte)
-								(Print 83 14)
-							else
-								(Print 83 15)
+								(Print 703 13 #font 605)
+						)
+						((or (Said 'call/help')(Said 'save/me')) ;different from SCI version
+							(Print 703 16 #font 605)
+						)
+						((Said 'rap/kq')
+							(if (ego inRect: 100 110 200 180)
+								(ego setScript: rapScript)
+							else 
+								(Print {The middle of the room looks like a great place to get down and rap.  You need to move closer.} #font 605)
 							)
 						)
-						((Said 'call/help,save')	;EO: fixed said spec
-							(Print 83 16)
+						(else 
+							(Print {Try saying that another way.} #font 605 )
+							(event claimed: TRUE)
 						)
 					)
 				)
@@ -154,56 +163,82 @@
 	)
 )
 
-(instance takeBack of Script
+(instance danceScript of Script
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(= seconds 30)
+				
 			)
 			(1
-				(User canControl: FALSE canInput: FALSE)
-				(ego setMotion: 0)
-				(Print 83 17)
-				(if (ego inRect: 123 142 193 180)
-					(ego setMotion: MoveTo 150 130 self)
-				else
-					(self cue:)
+				(= rapLoop (Random 1 5))
+				(ego 
+					view: 703
+					loop: rapLoop
+					setCycle: EndLoop self
 				)
 			)
 			(2
-				(ego loop: 2)
-				((= henchman (Actor new:))
-					view: 141
-					posn: 150 194
-					illegalBits: 0
-					ignoreActors: TRUE
-					init:
-					setCycle: Walk
-					setMotion: MoveTo 150 160 self
+				(ego 
+					view: 703
+					loop: rapLoop
+					setCycle: BegLoop self
 				)
 			)
 			(3
-				(= printObj
-					(Print 83 18
-						#at -1 10
-						#font smallFont
-						#dispose
-					)
+				(ego 
+					view: 703
+					loop: rapLoop
+					setCycle: EndLoop self
 				)
-				(User canControl: FALSE canInput: FALSE)
-				(ego illegalBits: 0 setMotion: MoveTo 160 (ego y?) self)
 			)
 			(4
-				(ego illegalBits: 0 setLoop: 2 setMotion: Follow henchman 5)
-				(self cue:)
+				(ego 
+					view: 703
+					loop: rapLoop
+					setCycle: BegLoop self
+				)
 			)
 			(5
-				(henchman setMotion: MoveTo 150 225 self)
+				(= state 0)
+				(= cycles 1) ;-1
 			)
-			(6
-				(cls)
-				(ego setLoop: -1 setAvoider: 0)
-				(curRoom newRoom: 86)
+		)
+	)
+)
+
+(instance rapScript of Script
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego setMotion: MoveTo 160 140 self)
+			)
+			(1
+				(curRoom setScript: danceScript)
+				(danceScript changeState: 1)
+				(= cycles 1)
+			)
+			(2
+				(if (< rapMsgNum 34)		
+					(Print 703 rapMsgNum #dispose #time 8 #font 605 #at 10 5)
+					(= seconds 8)
+				else 
+					(= rapMsgNum 19)
+					(danceScript dispose:)
+					(ego 
+						view: 705
+						setCycle: Walk
+						;cel: 0
+						setMotion: 0
+					)
+					(HandsOn)
+				)
+
+			)
+			(3
+				(++ rapMsgNum)
+				(= state 1) ;-1
+				(= cycles 1)	
 			)
 		)
 	)
@@ -225,7 +260,6 @@
   )
  
   (method (open &tmp port temp1)
-    ;(SetPort 0)
     (= color 0); gColor)
     (= back 15);gBack)
     (= type 128)
