@@ -43,6 +43,7 @@
 		(Load VIEW 607)
 		(Load VIEW 141)
 		(Load VIEW 633)
+		(Load VIEW 581) ;beam
 		(super init:)
 		(self setRegions: LOLOTTE)
 		((= door (Prop new:))
@@ -125,19 +126,13 @@
 				init:
 				setCycle: Walk
 			) 
+			(door cel: -1 setCycle: BegLoop self)
 		)
 		(if (== prevRoomNum 704) ;beam me
 			(if (< gamePhase trappedInCastle)
 				(= gamePhase trappedInCastle)
 			)
-			(ego
-				view: 4
-				loop: 2
-				posn: 130 140
-				setStep: 4 2
-				init:
-				setCycle: Walk
-			) 
+			(ego posn: 130 141 view: 581 loop: 8 cel: -1 xStep: 4 yStep: 2 setScript: beamIn init:)
 		)
 	)
 	
@@ -219,6 +214,10 @@
 						((Said 'get/candelabra')
 							(Print 86 11)
 						)
+						((Said 'beam/me')
+							(curRoom setScript: beamOut)
+						)
+						
 					)
 				)
 			)
@@ -324,6 +323,61 @@
 			(2
 				(= inCutscene TRUE)
 				(curRoom newRoom: 81)
+			)
+		)
+	)
+)
+
+(instance beamIn of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0 
+				(HandsOff)
+				(Print {Beaming in!} #font 605 #time 3 #dispose)
+				(ego 
+					view: 581
+					loop: 8
+					cel: 6
+					;posn: 130 140
+					setCycle: BegLoop self
+				)
+			
+			)	
+			(1
+				(ego 
+					view: 4
+					loop: 2
+					cel: 0
+					setCycle: Walk
+					setMotion: 0
+					setScript: 0
+				)
+				(HandsOn)
+			)
+		)
+	)
+)
+
+(instance beamOut of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0 
+				(Print {Beaming out!} #time 2 #dispose)
+				(ego 
+					view: 581
+					loop: 8
+					cel: 0
+					setMotion: 0
+					setCycle: EndLoop)
+					(= seconds 2)
+			
+			)	
+			(1
+				(curRoom newRoom: 704)
 			)
 		)
 	)

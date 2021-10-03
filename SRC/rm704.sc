@@ -19,13 +19,14 @@
 
 (local
 
-	window
-	printObj
+	;window
+	;printObj
 	lsTop
 	lsRight
 	lsBottom
 	lsLeft
 	saveWindow
+	spaceObj
 )
 (instance Room704 of Room
 	(properties
@@ -42,6 +43,7 @@
 		(Load VIEW 581)
 		(self setRegions: LOLOTTE)
 		(super init:)
+		(curRoom setScript: spaceWindow)
 		((Prop new:)
 			view: 581
 			loop: 1
@@ -114,11 +116,23 @@
 			;setPri: 3
 			init:
 		)
+		((= spaceObj (Prop new:))
+			view: 581
+			loop: 1
+			cel: 8
+			posn: 0 8
+			;setPri: 3
+			setScript: spaceWindow
+			init:
+			
+		 )
 		(ego
 			posn: 300 159
-			view: 705
+			view: 581
+			setScript: beamIn
 			illegalBits: cWHITE
-			loop: 2
+			loop: 8
+			cel: -1
 			xStep: 4
 			yStep: 2
 			init:
@@ -127,12 +141,8 @@
 	
 	(method (doit)
 		(super doit:)
-		(if (& (ego onControl: 0) cBROWN)
-			(if (!= systemWindow saveWindow)
-				(= systemWindow saveWindow)
-				(Sq1Window dispose:)
-			)
-			(curRoom newRoom: 86)
+		(if (and (& (ego onControl: 0) cBROWN)(== (ego script?) 0))
+			(ego setScript: beamOut)
 		)
 	)
 	
@@ -183,7 +193,7 @@
 							(Print {Chane says, "Has anybody seen my B.B. King tape?"} #font 605)
 						)
 						((Said 'beam/me')
-							(Print {not working yet} #font 605)
+							(ego setScript: beamOut)
 						)
 						(else 
 							(Print {Try saying that another way.} #font 605 )
@@ -239,4 +249,94 @@
     ; Open a logical window for the contents to be drawn into
 	(SetPort port)
   )
+)
+
+(instance beamIn of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0 
+				(HandsOff)
+				(Print {Beaming in!} #font 605 #time 3 #dispose)
+				(ego setCycle: BegLoop self)
+			
+			)	
+			(1
+				(ego 
+					view: 705
+					loop: 2
+					cel: 0
+					setCycle: Walk
+					setMotion: 0
+					setScript: 0
+				)
+				(HandsOn)
+				
+			)
+		)
+	)
+)
+
+(instance beamOut of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0 
+				(Print {Beaming out!} #font 605 #time 2 #dispose)
+				(ego 
+					view: 581
+					loop: 0
+					cel: 0
+					setMotion: 0
+					setCycle: EndLoop)
+					
+				(= seconds 2)
+			 
+			)	
+			(1
+				(if (!= systemWindow saveWindow)
+					(= systemWindow saveWindow)
+					(Sq1Window dispose:)
+				)
+				(curRoom newRoom: 86)
+			)
+		)
+	)
+)
+
+(instance spaceWindow of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0 
+				(Print {Beaming out!} #font 605 #time 2 #dispose)
+				(ego 
+					view: 581
+					loop: 0
+					cel: 0
+					setMotion: 0
+					setCycle: EndLoop)
+					
+				(= seconds 2)
+			 
+			)	
+			(1
+				(if (!= systemWindow saveWindow)
+					(= systemWindow saveWindow)
+					(Sq1Window dispose:)
+				)
+				(curRoom newRoom: 86)
+			)
+		)
+	)
+	
+	(method (doit)
+		(super doit:)
+		(if (or (> (spaceObj x?) 200)(< (spaceObj x?) 1))
+			(self (= state -1))
+		)
+	)
 )

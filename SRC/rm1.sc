@@ -40,7 +40,7 @@
 	)
 	
 	(method (init)
-		(= north 25)
+		(= north 25) ;25
 		(= south 7)
 		(= west 31)
 		(= east 2)
