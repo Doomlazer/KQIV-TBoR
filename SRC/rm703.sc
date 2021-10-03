@@ -63,7 +63,7 @@
 			setCycle: Forward
 		)
 		(ego
-			posn: 150 140
+			posn: 150 170
 			view: 705
 			illegalBits: cWHITE
 			loop: 3
@@ -78,6 +78,7 @@
 		(if (& (ego onControl: 0) cBROWN)
 			(if (!= systemWindow saveWindow)
 				(= systemWindow saveWindow)
+				(Sq1Window dispose:)
 			)
 			(curRoom newRoom: 86)
 		)

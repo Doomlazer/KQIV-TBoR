@@ -115,12 +115,25 @@
 		)
 		(if (== prevRoomNum 703)
 			(if (< gamePhase trappedInCastle)
-				(== gamePhase trappedInCastle)
+				(= gamePhase trappedInCastle)
 			)
 			(ego
 				view: 4
-				loop: 1
+				loop: 2
 				posn: 190 125
+				setStep: 4 2
+				init:
+				setCycle: Walk
+			) 
+		)
+		(if (== prevRoomNum 704) ;beam me
+			(if (< gamePhase trappedInCastle)
+				(= gamePhase trappedInCastle)
+			)
+			(ego
+				view: 4
+				loop: 2
+				posn: 130 140
 				setStep: 4 2
 				init:
 				setCycle: Walk

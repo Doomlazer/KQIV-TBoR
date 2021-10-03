@@ -27,6 +27,7 @@
 	tooth
 	randomPick
 	toofmsg
+	choice
 )
 (instance Room83 of Room
 	(properties
@@ -228,41 +229,45 @@
 						((Said 'talk/roger,man')  
 						(if (and (ego has: iTooth)(ego has: iDecoderRing)) 
 							;sloppy logic tree
+							(= choice 0)
 							(switch (= randomPick (Random 1 3))	
-								
 									(1
-										(if (== (Print 83 45 #dispose #button {Lantern} 1 #button {Pandora's Box} 2) 1)
+										(= choice (Print 83 45 #time 10 #button {Lantern} 1 #button {Pandora's Box} 2))
+										(if (== choice 1)
 											(ego get: iLantern)
 											(Print 83 51)
-										else
+										)
+										(if (== choice 2)
 											(ego get: iPandorasBox)
 											(Print {"Good choice! Fuck those ghosts, right?"})
+										else
+											(Print {"Neither than, I guess?"})
 										)
 									)
-									(2
-										(if
-											(==
-												(Print 83 45 #dispose #button {Pan's Flute} 1 #button {Axe} 2)
-												1
-											)
+									(2									
+										(= choice (Print 83 45 #button {Pan's Flute} 1 #button {Axe} 2))
+										(if (== choice 1)
 											(ego get: iSilverFlute)
 											(Print {"I had to kill a Pan to get this. Those hooves can be dangerous!"})
-										else
+										)
+										(if (== choice 2)
 											(ego get: iAxe)
 											(Print {"This axe inspired the chainsaw in Silent Hill, at least in my dimension; not sure if that's true here."})
+										else
+											(Print {"Neither than, I guess?"})
 										)
 									)
-									(3
-										(if
-											(==
-												(Print 83 45 #dispose #button {Magic Fruit} 1 #button {Magic Hen} 2)
-												1
-											)
+									(3											
+										(= choice (Print 83 45  #button {Magic Fruit} 1 #button {Magic Hen} 2))
+										(if (== choice 1)
 											(ego get: iMagicFruit)
 											(Print {"hop hop hop hop hop hop hop hop hop hop hop"})
-										else
+										)
+										(if (== choice 2)
 											(ego get: iMagicHen)
 											(Print {"Legally I'm not allowed within 1,000 feet of this thing, so you can have it."})
+										else
+											(Print {"Neither than, I guess?"})
 										)
 									)
 								
