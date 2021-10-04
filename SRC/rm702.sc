@@ -24,6 +24,8 @@
 	lsRight
 	lsBottom
 	lsLeft
+	tempPort
+	myTextColor
 )
 
 (instance drunkenSailor of Sound
@@ -68,7 +70,7 @@
 		
 		)
 		
-		
+		(= myTextColor 4)
 		(Load VIEW 582)
 		(super init:)
 		(= randomPick (Random 0 1))
@@ -93,7 +95,6 @@
 
 )
 
-
 (class Sq1Window of SysWindow
   (properties
     underBits 0
@@ -110,7 +111,7 @@
   )
  
   (method (open &tmp port temp1)
-    ;(SetPort 0)
+     ;(SetPort 0)
     (= color 0); gColor)
     (= back 15);gBack)
     (= type 128)
@@ -136,5 +137,75 @@
     (kernel_112 grUPDATE_BOX lsTop lsLeft lsBottom lsRight 1)
     ; Open a logical window for the contents to be drawn into
 	(SetPort port)
+
+
+;version for scummvm?
+;;;		(SetPort 0)
+;;;		(= color 0); gColor)
+;;;		(= back 15);gBack)
+;;;		(= temp1 1)
+;;;		(if (!= priority -1) (= temp1 (| temp1 $0002)))
+;;;		(= lsTop (- top bordWid))
+;;;		(= lsLeft (- left bordWid))
+;;;		(= lsRight (+ right bordWid))
+;;;		(= lsBottom (+ bottom bordWid))
+;;;		(= underBits
+;;;			(kernel_112 GSaveBits lsTop lsLeft lsBottom lsRight 1)
+;;;		)
+;;;		(if (!= priority -1)
+;;;			(= pUnderBits
+;;;				(kernel_112 GSaveBits lsTop lsLeft lsBottom lsRight 2)
+;;;			)
+;;;		)
+;;;		(kernel_112
+;;;			GFillRect
+;;;			lsTop
+;;;			lsLeft
+;;;			lsBottom
+;;;			lsRight
+;;;			temp1
+;;;			back
+;;;			priority
+;;;		)
+;;;		(kernel_112
+;;;			GDrawLine
+;;;			(+ lsTop 1)
+;;;			(+ lsLeft 1)
+;;;			(+ lsTop 1)
+;;;			(- lsRight 2)
+;;;			myTextColor
+;;;			priority
+;;;		)
+;;;		(kernel_112
+;;;			GDrawLine
+;;;			(- lsBottom 2)
+;;;			(+ lsLeft 1)
+;;;			(- lsBottom 2)
+;;;			(- lsRight 2)
+;;;			myTextColor
+;;;			priority
+;;;		)
+;;;		(kernel_112
+;;;			GDrawLine
+;;;			(+ lsTop 1)
+;;;			(+ lsLeft 1)
+;;;			(- lsBottom 2)
+;;;			(+ lsLeft 1)
+;;;			myTextColor
+;;;			priority
+;;;		)
+;;;		(kernel_112
+;;;			GDrawLine
+;;;			(+ lsTop 1)
+;;;			(- lsRight 2)
+;;;			(- lsBottom 2)
+;;;			(- lsRight 2)
+;;;			myTextColor
+;;;			priority
+;;;		)
+;;;		(kernel_112 GShowBits lsTop lsLeft lsBottom lsRight 1)
+;;;		(= type 128)
+;;;		(super open:)
+
   )
 )
