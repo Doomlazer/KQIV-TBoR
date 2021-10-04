@@ -26,3 +26,7 @@ Multiple solutions and hidden skips - Complete original KQ4 puzzles exactly as i
 <a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki/Quality-of-Life-Changes">QoL Change list</a>
 
 <a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki">Wiki (walkthrough)</a>
+
+## Progress
+
+Currently working on porting the KQIV AGI easter eggs to the SCI version. This is almost done and the eggs will be included in KQIV:TE:TBoR by default. Once that's finished I'll go back to completing the remaining cinematics and said spec. 
