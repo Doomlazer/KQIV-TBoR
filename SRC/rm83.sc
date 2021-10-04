@@ -329,7 +329,9 @@
 				)
 			)
 			(2
-				(Print 83 52 #at 0 50 #font smallFont #time 5 #title {Roger}) ;re-enforce the odd nature of the tooth
+				(if (ego has: iTooth)
+					(Print 83 52 #at 0 50 #font smallFont #time 5 #title {Roger}) ;re-enforce the odd nature of the tooth
+				)
 				(ego loop: 2)
 				((= hench (Actor new:))
 					view: 141

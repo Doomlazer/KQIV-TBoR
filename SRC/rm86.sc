@@ -98,6 +98,8 @@
 					setCycle: Walk
 					setScript: toThrone
 				)
+				(door cel: -1 setCycle: BegLoop self) ;;a nice addition by me
+				(doorOpenMusic play:) ; -DL
 			else
 				(ego posn: 190 120 view: 4 setStep: 4 2 init:)
 			)

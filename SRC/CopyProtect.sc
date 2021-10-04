@@ -535,7 +535,7 @@
 			
 			((== inputSum 750) (curRoom newRoom: 700)) ;wave anchor		
 			((== inputSum 437) (curRoom newRoom: 700)) ;bobalu
-			((== inputSum 435) (curRoom newRoom: 700)) ;marble
+			((== inputSum 435) (curRoom newRoom: 703)) ;marble
 			((== inputSum 453) (curRoom newRoom: 702)) ;pirate room is 702
 			((== inputSum requestSum)
 				(curRoom newRoom: 700)
