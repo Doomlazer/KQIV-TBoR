@@ -127,6 +127,7 @@
 				setCycle: Walk
 			) 
 			(door cel: -1 setCycle: BegLoop self)
+			(doorOpenMusic play:)
 		)
 		(if (== prevRoomNum 704) ;beam me
 			(if (< gamePhase trappedInCastle)

@@ -26,7 +26,8 @@
 	lsBottom
 	lsLeft
 	saveWindow
-	spaceObj
+	spaceObjLoop
+	spaceObjY
 )
 (instance Room704 of Room
 	(properties
@@ -43,6 +44,7 @@
 		(Load VIEW 581)
 		(self setRegions: LOLOTTE)
 		(super init:)
+		(spaceObj init:)
 		(curRoom setScript: spaceWindow)
 		((Prop new:)
 			view: 581
@@ -116,16 +118,6 @@
 			;setPri: 3
 			init:
 		)
-		((= spaceObj (Prop new:))
-			view: 581
-			loop: 1
-			cel: 8
-			posn: 0 8
-			;setPri: 3
-			setScript: spaceWindow
-			init:
-			
-		 )
 		(ego
 			posn: 300 159
 			view: 581
@@ -278,12 +270,20 @@
 	)
 )
 
+(instance spaceObj of Actor
+	(properties
+		view 581
+		illegalBits $0000	
+	)	
+)
+
 (instance beamOut of Script
 	(properties)
 	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0 
+				(HandsOff)
 				(Print {Beaming out!} #font 605 #time 2 #dispose)
 				(ego 
 					view: 581
@@ -296,6 +296,7 @@
 			 
 			)	
 			(1
+				(HandsOn)
 				(if (!= systemWindow saveWindow)
 					(= systemWindow saveWindow)
 					(Sq1Window dispose:)
@@ -311,32 +312,37 @@
 	
 	(method (changeState newState)
 		(switch (= state newState)
-			(0 
-				(Print {Beaming out!} #font 605 #time 2 #dispose)
-				(ego 
-					view: 581
-					loop: 0
-					cel: 0
-					setMotion: 0
-					setCycle: EndLoop)
-					
-				(= seconds 2)
-			 
-			)	
+			(0
+				(= cycles 1)
+			)
 			(1
-				(if (!= systemWindow saveWindow)
-					(= systemWindow saveWindow)
-					(Sq1Window dispose:)
+				
+				(= spaceObjY (Random 85 100))
+				(= spaceObjLoop (Random 2 7))
+				;(Print (Format @str {spaceObjY__%d)} spaceObjY))
+				(if (== 0 (mod spaceObjLoop 2))
+					(spaceObj
+						setLoop: spaceObjLoop
+						posn: 40 spaceObjY
+						setPri: 3
+						setCycle: Forward
+						setMotion: MoveTo 280 spaceObjY self
+					)
+				else
+					(spaceObj
+						loop: spaceObjLoop
+						posn: 280 spaceObjY
+						setPri: 3
+						setCycle: Forward
+						setMotion: MoveTo 40 spaceObjY self
+					)
 				)
-				(curRoom newRoom: 86)
+			)	
+			(2
+				(= state 0)
+				(= cycles 1)
 			)
 		)
 	)
 	
-	(method (doit)
-		(super doit:)
-		(if (or (> (spaceObj x?) 200)(< (spaceObj x?) 1))
-			(self (= state -1))
-		)
-	)
 )
