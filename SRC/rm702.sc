@@ -24,7 +24,6 @@
 	lsRight
 	lsBottom
 	lsLeft
-	tempPort
 	myTextColor
 )
 
@@ -110,8 +109,7 @@
     (super dispose:)
   )
  
-  (method (open &tmp port temp1)
-     ;(SetPort 0)
+  (method (open &tmp port temp1) ;;scummvm gives a warning if missing temp0
     (= color 0); gColor)
     (= back 15);gBack)
     (= type 128)
@@ -135,8 +133,10 @@
     (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (- lsBottom 2) (+ lsLeft 1) 4 priority)
     (kernel_112 grDRAW_LINE (+ lsTop 1) (- lsRight 2) (- lsBottom 2) (- lsRight 2) 4 priority)
     (kernel_112 grUPDATE_BOX lsTop lsLeft lsBottom lsRight 1)
-    ; Open a logical window for the contents to be drawn into
+
 	(SetPort port)
+  )
+)
 
 
 ;version for scummvm?
@@ -206,6 +206,6 @@
 ;;;		(kernel_112 GShowBits lsTop lsLeft lsBottom lsRight 1)
 ;;;		(= type 128)
 ;;;		(super open:)
-
-  )
-)
+;;;
+;;;  )
+;;;)
