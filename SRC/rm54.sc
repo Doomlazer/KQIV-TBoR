@@ -39,6 +39,7 @@
 	dirtyDishes10
 	diamondPouch
 	busy
+	grither
 )
 (instance Room54 of Room
 	(properties
@@ -307,6 +308,19 @@
 					)
 				)
 			)
+			((Said 'grither')
+				(cond 
+					((== (closetDoor cel?) 0)
+						(Print 54 55)
+					)
+					((ego inRect: 40 47 190 180) ;(ego inRect: 40 137 90 160)
+						(closetDoor setScript: doorGrither)
+					)
+					(else
+						(Print 54 56)
+					)
+				)
+			)
 			((Said 'close/door,closet,pantry')
 				(cond 
 					((> (closetDoor cel?) 0)
@@ -552,175 +566,6 @@
 			)
 		)
 	)	
-	
-	
-;;;	(method (handleEvent event)
-;;;		(super handleEvent: event)
-;;;		(if
-;;;		(or (!= (event type?) saidEvent) (event claimed?))
-;;;			(return)
-;;;		)
-;;;		(cond 
-;;;			((or (Said 'is<how<time') (Said '[!*]/time')) (Print 54 0))
-;;;			((Said 'open,(look<in)/cabinet') (Print 54 1))
-;;;			((Said 'close/cabinet')
-;;;				(if (not dwarfHouseState)
-;;;					(Print 54 2)
-;;;				else
-;;;					(Print 54 3)
-;;;				)
-;;;			)
-;;;			((Said 'open/door,closet,pantry')
-;;;				(cond 
-;;;					((== (closetDoor cel?) 0) (Print 54 4))
-;;;					((ego inRect: 40 137 70 150) (closetDoor setScript: doorOpen))
-;;;					(else (Print 800 1))
-;;;				)
-;;;			)
-;;;			((Said 'close/door,closet,pantry')
-;;;				(cond 
-;;;					((> (closetDoor cel?) 0) (Print 54 3))
-;;;					((ego inRect: 0 137 70 145) (closetDoor setScript: doorClose))
-;;;					(else (Print 800 1))
-;;;				)
-;;;			)
-;;;			((Said 'sit') (Print 54 5))
-;;;			((Said 'clean[/cottage]')
-;;;				(if (== dwarfBouncesEgo TRUE) (Print 54 5) (return))
-;;;				(cond 
-;;;					((& (ego onControl:) $0004) (Print 54 6))
-;;;					((== dwarfHouseState 0) (Print 54 54) (ego setScript: startClean)) ;;mod cleaning bmessage
-;;;					((not dwarfTableClean) (ego setScript: cleanTable))
-;;;					(else (Print 54 7))
-;;;				)
-;;;			)
-;;;			((Said 'clean,scrub/table,dish')
-;;;				(cond 
-;;;					((and dwarfHouseState (not dwarfTableClean)) (ego setScript: cleanTable))
-;;;					((and dwarfHouseState dwarfTableClean) (Print 54 8))
-;;;					(else (Print 54 2))
-;;;				)
-;;;			)
-;;;			(
-;;;			(Said 'clean,do,scrub,sweep,dust[/dish,dirt,furniture]') (if dwarfHouseState (Print 54 9) else (Print 54 2)))
-;;;			((Said 'eat,drink,eat/soup') (if (not ateSoup) (Print 54 5) else (Print 54 10)))
-;;;			((Said 'get>')
-;;;				(cond 
-;;;					((Said '/dish[<dirty]')
-;;;						(if (or (not dwarfHouseState) (not dwarfTableClean))
-;;;							(Print 54 11)
-;;;						else
-;;;							(Print 54 12)
-;;;						)
-;;;					)
-;;;					((Said '/broom')
-;;;						(if (& (ego onControl: TRUE) $0004)
-;;;							(Print 54 13)
-;;;						else
-;;;							(Print 54 14)
-;;;						)
-;;;					)
-;;;					((Said '/caldron') (Print 54 15))
-;;;					((Said '/bowl') (Print 54 16))
- 
-;;;					((Said '/pouch,diamond')
-;;;						(cond 
-;;;							((ego has: iDiamondPouch) (event claimed: FALSE))
-;;;							((== ((inventory at: iDiamondPouch) owner?) curRoomNum)
-;;;								(if (ego inRect: 200 140 276 164)
-;;;									(ego get: iDiamondPouch)
-;;;									(= gotItem TRUE)
-;;;									(theGame changeScore: 2)
-;;;									(diamondPouch dispose:)
-;;;								else
-;;;									(Print 800 1)
-;;;								)
-;;;							)
-;;;							(else (Print 54 19))
-;;;						)
-;;;					)
-;;;				)
-;;;			)
-;;;			((Said 'look>')
-;;;				(cond 
-;;;					((and (== ateSoup TRUE) (Said '/soup')) (Print 54 20))
-;;;					(
-;;;					(and ((Inventory at: iDiamondPouch) ownedBy: 54) (Said '/pouch,diamond')) (Print 54 21))
-;;;					((Said '/window')
-;;;						(if (ego inRect: 124 117 197 130)
-;;;							(Print 54 22)
-;;;						else
-;;;							(Print 800 1)
-;;;						)
-;;;					)
-;;;					((Said '/mantel,mantel')
-;;;						(if
-;;;							(and
-;;;								(cast contains: [bowl 0])
-;;;								(== ([bowl 0] view?) 677)
-;;;							)
-;;;							(Print 54 23)
-;;;						else
-;;;							(Print 54 24)
-;;;						)
-;;;					)
-;;;					((Said '<under/table') (Print 54 25))
-;;;					((Said '/table')
-;;;						(if dwarfTableClean
-;;;							(Print 54 26)
-;;;							(if (== ((inventory at: iDiamondPouch) owner?) 54) (Print 54 27))
-;;;						else
-;;;							(Print 54 28)
-;;;							(if (== ((inventory at: iDiamondPouch) owner?) curRoomNum)
-;;;								(Print 54 27)
-;;;							)
-;;;						)
-;;;					)
-;;;					((Said '/stair') (Print 54 29))
-;;;					((Said '/cabinet') (Print 54 30))
-;;;					((Said '<in/cabinet') (Print 54 1))
-;;;					((Said '/wall') (Print 54 31))
-;;;					((or (Said '/dirt') (Said '<down')) (Print 54 32))
-;;;					((Said '/bowl') (if dwarfTableClean (Print 54 33) else (Print 54 34)))
-;;;					((Said '/caldron,soup') (Print 54 35))
-;;;					((Said '/fire,fireplace') (Print 54 36))
-;;;					((Said '/carpet') (Print 54 37))
-;;;					((Said '/sink') (if dwarfHouseState (Print 54 38) else (Print 54 39)))
-;;;					((Said '/dish[<dirty]')
-;;;						(if (or (not dwarfHouseState) (not dwarfTableClean))
-;;;							(Print 54 40)
-;;;						else
-;;;							(Print 54 41)
-;;;						)
-;;;					)
-;;;					((Said '/clock[<cuckoo]') (Print 54 42))
-;;;					((Said '/time') (Print 54 43))
-;;;					((Said '<in/closet')
-;;;						(cond 
-;;;							((& (ego onControl: TRUE) $0004) (Print 54 44))
-;;;							((> (closetDoor cel?) 0) (Print 54 45))
-;;;							(else (Print 800 1))
-;;;						)
-;;;					)
-;;;					((Said '/closet')
-;;;						(if (& (ego onControl: TRUE) $0004)
-;;;							(Print 54 46)
-;;;						else
-;;;							(Print 54 47)
-;;;						)
-;;;					)
-;;;					((Said '/broom')
-;;;						(if (& (ego onControl: TRUE) $0004)
-;;;							(Print 54 48)
-;;;						else
-;;;							(Print 54 49)
-;;;						)
-;;;					)
-;;;					((Said '[<around][/cottage,kitchen]') (Print 54 50) (if (== dwarfHouseState 0) (Print 54 51)))
-;;;				)
-;;;			)
-;;;		)
-;;;	)
 	
 	(method (newRoom newRoomNumber)
 		(if (== newRoomNumber 22) ((ScriptID 601) keep: 0))
@@ -1045,6 +890,49 @@
 	)
 )
 
+(instance doorGrither of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(Load VIEW 580)
+				(Print 54 57)
+				(ego setMotion: MoveTo 135 160 self)
+			)
+			(1
+				(ego loop: 1)
+				(closetDoor setCycle: BegLoop self)
+			)
+			(2
+				(ego ignoreControl: cGREEN)
+				(= grither (Prop new:))
+				(grither
+					view: 580
+					loop: 1
+					cel: 0
+					posn: 95 125
+					setPri: 13
+					ignoreActors: 
+					setCycle: EndLoop self
+					init:
+				)
+			)
+			(3
+				(grither dispose:)
+				(ego view: 42 loop: 1)
+				(= seconds 2)	
+			)
+			(4 
+				(Print 54 58)	
+				(= dead 1)
+				(= seconds 1)
+			)
+		)
+	)
+)
+
 (instance doorClose of Script
 	(properties)
 	
@@ -1098,6 +986,14 @@
 			)
 		)
 	)
+)
+
+(instance grither of Prop
+	(properties
+		view 580
+		loop 1	
+	)
+	
 )
 
 (instance bounceBitchScript of Script

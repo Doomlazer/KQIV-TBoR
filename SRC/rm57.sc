@@ -400,6 +400,7 @@
 						else
 							(theGame changeScore: 3)
 							(ego put: iWitchGlassEye -1)
+							(= gotItem TRUE)
 							(Print 57 11)
 						)
 						(witchMoan changeState: 4)

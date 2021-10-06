@@ -9,6 +9,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room4 0
@@ -308,7 +309,19 @@
 							(cond 
 								(
 								(or (cast contains: ogress) (cast contains: ogre)) (Print 4 17))
-								((!= gamePhase 2) (Print 4 18))
+								((!= gamePhase 2) 
+									;	(if (ego has: iTooth)
+											(Print {If you want to go in there I don't give a fuck. Gook luck.})
+											;((Inventory at: iBone) moveTo: ego) testing only
+											(ego loop: 3)
+											(HandsOff)
+											(door setPri: 9 setCycle: EndLoop)
+											(doorSound number: 300 play: door)
+											(ego illegalBits: -32768)
+									;	else
+									;		(Print 4 18)
+									;	)	
+									)
 								(else
 									(ego loop: 3)
 									(HandsOff)
