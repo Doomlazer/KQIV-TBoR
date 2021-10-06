@@ -215,11 +215,12 @@
   )
  
   (method (open &tmp port temp1)
-    (= color 0); gColor)
-    (= back 15);gBack)
+    (= color 0) ;gColor
+    (= back 15) ;gBack
     (= type 128)
     (super open:)
-    (= port (SetPort 0))
+    (= port (GetPort))
+    (SetPort 0)
     (= temp1 1)
     (if (!= priority -1) (= temp1 (| temp1 $0002)))
     (= lsTop (- top bordWid))
@@ -233,12 +234,12 @@
     ; Draw the background
     (kernel_112 grFILL_BOX lsTop lsLeft lsBottom lsRight temp1 back priority)
     ; Draw the border
-    (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (+ lsTop 1) (- lsRight 2) 6 priority) ;6 line color
+    (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (+ lsTop 1) (- lsRight 2) 6 priority) ;line color
     (kernel_112 grDRAW_LINE (- lsBottom 2) (+ lsLeft 1) (- lsBottom 2) (- lsRight 2) 6 priority)
     (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (- lsBottom 2) (+ lsLeft 1) 6 priority)
     (kernel_112 grDRAW_LINE (+ lsTop 1) (- lsRight 2) (- lsBottom 2) (- lsRight 2) 6 priority)
     (kernel_112 grUPDATE_BOX lsTop lsLeft lsBottom lsRight 1)
-    ; Open a logical window for the contents to be drawn into
+
 	(SetPort port)
   )
 )

@@ -109,12 +109,14 @@
     (super dispose:)
   )
  
-  (method (open &tmp port temp1) ;;scummvm gives a warning if missing temp0
-    (= color 0); gColor)
-    (= back 15);gBack)
+  (method (open &tmp port temp1)
+    (= color 0)
+    (= back 15)
     (= type 128)
     (super open:)
-    (= port (SetPort 0))
+    ;(= port (SetPort 0))
+    (= port (GetPort))
+    (SetPort 0)
     (= temp1 1)
     (if (!= priority -1) (= temp1 (| temp1 $0002)))
     (= lsTop (- top bordWid))
@@ -128,7 +130,7 @@
     ; Draw the background
     (kernel_112 grFILL_BOX lsTop lsLeft lsBottom lsRight temp1 back priority)
     ; Draw the border
-    (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (+ lsTop 1) (- lsRight 2) 4 priority) ;global131 priority)
+    (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (+ lsTop 1) (- lsRight 2) 4 priority) ;4 was global131 linecolor
     (kernel_112 grDRAW_LINE (- lsBottom 2) (+ lsLeft 1) (- lsBottom 2) (- lsRight 2) 4 priority)
     (kernel_112 grDRAW_LINE (+ lsTop 1) (+ lsLeft 1) (- lsBottom 2) (+ lsLeft 1) 4 priority)
     (kernel_112 grDRAW_LINE (+ lsTop 1) (- lsRight 2) (- lsBottom 2) (- lsRight 2) 4 priority)
@@ -137,75 +139,3 @@
 	(SetPort port)
   )
 )
-
-
-;version for scummvm?
-;;;		(SetPort 0)
-;;;		(= color 0); gColor)
-;;;		(= back 15);gBack)
-;;;		(= temp1 1)
-;;;		(if (!= priority -1) (= temp1 (| temp1 $0002)))
-;;;		(= lsTop (- top bordWid))
-;;;		(= lsLeft (- left bordWid))
-;;;		(= lsRight (+ right bordWid))
-;;;		(= lsBottom (+ bottom bordWid))
-;;;		(= underBits
-;;;			(kernel_112 GSaveBits lsTop lsLeft lsBottom lsRight 1)
-;;;		)
-;;;		(if (!= priority -1)
-;;;			(= pUnderBits
-;;;				(kernel_112 GSaveBits lsTop lsLeft lsBottom lsRight 2)
-;;;			)
-;;;		)
-;;;		(kernel_112
-;;;			GFillRect
-;;;			lsTop
-;;;			lsLeft
-;;;			lsBottom
-;;;			lsRight
-;;;			temp1
-;;;			back
-;;;			priority
-;;;		)
-;;;		(kernel_112
-;;;			GDrawLine
-;;;			(+ lsTop 1)
-;;;			(+ lsLeft 1)
-;;;			(+ lsTop 1)
-;;;			(- lsRight 2)
-;;;			myTextColor
-;;;			priority
-;;;		)
-;;;		(kernel_112
-;;;			GDrawLine
-;;;			(- lsBottom 2)
-;;;			(+ lsLeft 1)
-;;;			(- lsBottom 2)
-;;;			(- lsRight 2)
-;;;			myTextColor
-;;;			priority
-;;;		)
-;;;		(kernel_112
-;;;			GDrawLine
-;;;			(+ lsTop 1)
-;;;			(+ lsLeft 1)
-;;;			(- lsBottom 2)
-;;;			(+ lsLeft 1)
-;;;			myTextColor
-;;;			priority
-;;;		)
-;;;		(kernel_112
-;;;			GDrawLine
-;;;			(+ lsTop 1)
-;;;			(- lsRight 2)
-;;;			(- lsBottom 2)
-;;;			(- lsRight 2)
-;;;			myTextColor
-;;;			priority
-;;;		)
-;;;		(kernel_112 GShowBits lsTop lsLeft lsBottom lsRight 1)
-;;;		(= type 128)
-;;;		(super open:)
-;;;
-;;;  )
-;;;)
