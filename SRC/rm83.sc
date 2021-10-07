@@ -227,7 +227,7 @@
 						)
 						
 						((Said 'talk/roger,man')  
-						(if (and (ego has: iTooth)(ego has: iDecoderRing)) 
+						(if (and (ego has: iTooth)(ego has: iDecoderRing) (ego has: iPeacockFeather)) 
 							;sloppy logic tree
 							(= choice 0)
 							(switch (= randomPick (Random 1 3))	
