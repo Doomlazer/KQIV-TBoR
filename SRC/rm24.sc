@@ -181,7 +181,7 @@
 			(east
 				(ego view: 8 loop: 1 posn: 207 159)
 			)
-			(100
+			(579
 				;from police quest world
 				(ego setScript: egoFrogActions)
 				(egoFrogActions changeState: 40)

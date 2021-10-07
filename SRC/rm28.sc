@@ -47,6 +47,7 @@
 		(Load VIEW 21)
 		(Load SOUND 51)
 		(= mineDoor (View new:))
+		
 		(if isNightTime
 			(mineDoor
 				view: 600
@@ -150,7 +151,20 @@
 									(Print 800 1)
 								)
 							)
-							((Said 'open/door') (Print 28 8))
+							((Said 'open/door')
+								(Print {Wallah!});(Print 28 8)
+								(ego ignoreControl: 16384)
+								(mineDoor
+									view: 600
+									loop: 1
+									cel: 0
+									ignoreActors: 1
+									setPri: 9
+									posn: 284 131
+								;	init:
+								;	stopUpd:
+								)
+							)
 							((Said 'unlatch,detach,get') (Print 28 9))
 						)
 					)

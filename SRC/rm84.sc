@@ -17,6 +17,7 @@
 (local
 	pandoraBox
 	hen
+	timeMachine
 )
 (instance chickenMusic of Sound
 	(properties
@@ -114,7 +115,7 @@
 			((= pandoraBox (View new:))
 				view: 519
 				ignoreActors: 0
-				posn: 200 135
+				posn: 150 135
 				init:
 			)
 		)
@@ -128,7 +129,14 @@
 			)
 			(chickenMusic play:)
 		)
-		(if (or (== prevRoomNum 87) (== prevRoomNum 0))
+			((= timeMachine (View new:))
+				view: 583
+				ignoreActors: 0
+				posn: 230 160
+				setPri: 10
+				init:
+			)
+		(if (or (== prevRoomNum 87) (== prevRoomNum 0)(== prevRoomNum 701))
 			(ego posn: 157 162 view: 4 xStep: 4 yStep: 2 init:)
 			(if henchChasingEgo (= henchChasingEgo FALSE))
 		)
@@ -139,14 +147,13 @@
 		(if (& (ego onControl: 0) $0040) (curRoom newRoom: 87))
 	)
 	
-	(method (handleEvent event &tmp [temp0 80])
+(method (handleEvent event &tmp [temp0 80])
 		(return
 			(cond 
 				((event claimed?) (return TRUE))
 				((== (event type?) saidEvent)
 					(cond 
-						(
-						(or (Said 'look[<around][/!*]') (Said 'look/room'))
+						((or (Said 'look[<around][/noword]') (Said 'look/room'))
 							(Print 84 0)
 							(cond 
 								(
@@ -156,21 +163,46 @@
 									)
 									(Print 84 1)
 								)
-								((== ((inventory at: iMagicHen) owner?) 84) (Print 84 2))
-								((== ((inventory at: iPandorasBox) owner?) 84) (Print 84 3))
-								(else (Print 84 4))
+								((== ((inventory at: iMagicHen) owner?) 84)
+									(Print 84 2)
+								)
+								((== ((inventory at: iPandorasBox) owner?) 84)
+									(Print 84 3)
+								)
+								(else
+									(Print 84 4)
+								)
 							)
 						)
 						((Said 'look>')
 							(cond 
-								((Said '/box') (Print 84 5))
-								((Said '/barrel') (Print 84 6))
-								((Said '/chest') (Print 84 7))
-								((Said '/shelf') (Print 84 8))
-								((Said '/[') (Print 84 9))
-								((Said '/window') (Print 84 10))
-								((Said '/wall') (Print 84 11))
-								((or (Said '/dirt') (Said '<down')) (Print 84 12))
+								((Said '/machine[<time]')
+									(Print 84 19)
+								)
+								((Said '/box')
+									(Print 84 5)
+								)
+								((Said '/barrel')
+									(Print 84 6)
+								)
+								((Said '/chest')
+									(Print 84 7)
+								)
+								((Said '/shelf')
+									(Print 84 8)
+								)
+								((Said '/bone')	;EO: fixed said spec
+									(Print 84 9)
+								)
+								((Said '/window')
+									(Print 84 10)
+								)
+								((Said '/wall')
+									(Print 84 11)
+								)
+								((or (Said '/dirt') (Said '<down'))
+									(Print 84 12)
+								)
 								((Said '/chicken')
 									(if (== ((inventory at: iMagicHen) owner?) 84)
 										(Print 84 13)
@@ -184,21 +216,30 @@
 							(cond 
 								((Said '/box<pandora')
 									(cond 
-										((ego has: iPandorasBox) (Print 800 0))
-										((!= ((inventory at: iPandorasBox) owner?) 84) (Print 84 15))
+										((ego has: iPandorasBox)
+											(Print 800 0)
+										)
+										((!= ((inventory at: iPandorasBox) owner?) 84)
+											(Print 84 15)
+										)
 										((< (ego distanceTo: pandoraBox) 20)
 											(ego get: iPandorasBox)
 											(theGame changeScore: 2)
 											(egoPickUp changeState: 0)
 											(pandoraBox dispose:)
 										)
-										(else (Print 800 1))
+										(else
+											(Print 800 1)
+										)
 									)
 								)
 								((Said '/chicken')
 									(cond 
-										((ego has: iMagicHen) (Print 84 16))
-										((!= ((inventory at: iMagicHen) owner?) 84) (Print 84 15))
+										((ego has: iMagicHen)
+											(Print 84 16)
+										)
+										((!= ((inventory at: iMagicHen) owner?) 84)
+											(Print 84 15))
 										((< (ego distanceTo: hen) 20)
 											(chickenMusic dispose:)
 											(ego get: iMagicHen)
@@ -206,22 +247,42 @@
 											(egoPickUp changeState: 0)
 											(hen dispose:)
 										)
-										(else (Print 800 1))
+										(else
+											(Print 800 1)
+										)
 									)
 								)
-								((Said '/box') (Print 84 5))
-								((Said '/chest') (Print 84 7))
-								((Said 'open/window') (Print 84 17))
-								((Said 'break/window') (Print 84 18))
-								((Said '/[') (Print 84 9))
+								((Said '/box')
+									(Print 84 5)
+								)
+								((Said '/chest')
+									(Print 84 7)
+								)
+								((Said 'open/window')
+									(Print 84 17)
+								)
+								((Said 'break/window')
+									(Print 84 18)
+								)
+								((Said '/bone')	;EO: fixed said spec
+									(Print 84 9)
+								)
 							)
 						)
 						((Said 'open>')
 							(cond 
-								((Said '/box<pandora') (event claimed: FALSE))
-								((Said '/box') (Print 84 5))
-								((Said '/barrel') (Print 84 6))
-								((Said '/chest') (Print 84 7))
+								((Said '/box<pandora')
+									(event claimed: FALSE)
+								)
+								((Said '/box')
+									(Print 84 5)
+								)
+								((Said '/barrel')
+									(Print 84 6)
+								)
+								((Said '/chest')
+									(Print 84 7)
+								)
 							)
 						)
 					)

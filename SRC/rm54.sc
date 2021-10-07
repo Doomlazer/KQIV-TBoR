@@ -10,6 +10,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room54 0
@@ -313,7 +314,7 @@
 					((== (closetDoor cel?) 0)
 						(Print 54 55)
 					)
-					((ego inRect: 40 47 190 180) ;(ego inRect: 40 137 90 160)
+					((ego inRect: 40 47 150 180) ;(ego inRect: 40 137 90 160)
 						(closetDoor setScript: doorGrither)
 					)
 					(else
@@ -890,6 +891,13 @@
 	)
 )
 
+(instance gritherTheme of Sound
+	(properties
+		number 81
+		loop -1
+	)
+)
+
 (instance doorGrither of Script
 	(properties)
 	
@@ -906,6 +914,7 @@
 				(closetDoor setCycle: BegLoop self)
 			)
 			(2
+				(gritherTheme play:)
 				(ego ignoreControl: cGREEN)
 				(= grither (Prop new:))
 				(grither

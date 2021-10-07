@@ -58,25 +58,26 @@
 		(ego edgeHit: 0)
 		(self setRegions: FOREST)
 		(super init:)
-		(if isNightTime (curRoom overlay: 117))
-		(if (and isNightTime (not (ego has: iObsidianScarab)))
-			(Load VIEW 270)
-			(Load VIEW 36)
-			(Load VIEW 35)
-			(= z6 (Actor new:))
-			(z6
-				view: 270
-				cel: 0
-				loop: 0
-				posn: 146 145
-				setPri: 10
-				illegalBits: 0
-				ignoreActors:
-				setScript: z6Actions
-				init:
-				hide:
-			)
-		)
+		;;fuck off door zombie
+;;;		(if isNightTime (curRoom overlay: 117))
+;;;		(if (and isNightTime (not (ego has: iObsidianScarab)))
+;;;			(Load VIEW 270)
+;;;			(Load VIEW 36)
+;;;			(Load VIEW 35)
+;;;			(= z6 (Actor new:))
+;;;			(z6
+;;;				view: 270
+;;;				cel: 0
+;;;				loop: 0
+;;;				posn: 146 145
+;;;				setPri: 10
+;;;				illegalBits: 0
+;;;				ignoreActors:
+;;;				setScript: z6Actions
+;;;				init:
+;;;				hide:
+;;;			)
+;;;		)
 		(door
 			view: 610
 			loop: 0

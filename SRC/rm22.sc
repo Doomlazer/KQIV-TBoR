@@ -192,7 +192,7 @@
 						(if (ego inRect: 170 112 202 120)
 							(cond 
 								((== kickedOut 1) (Print 22 8))
-								((not isNightTime)
+								( (or (not isNightTime) (ego has: iTooth))
 									(HandsOff)
 									(ego loop: 3)
 									(doorSound number: 300 play: door)

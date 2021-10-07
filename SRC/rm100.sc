@@ -22,6 +22,7 @@
 	witch2Body
 	witch3Body
 	witch3	
+	barTender
 )
 
 (instance Room100 of Room
@@ -35,7 +36,7 @@
 	
 	(method (init)
 		(Load VIEW 631)
-
+		(Load VIEW 584)
 			(Load VIEW 183)
 			(Load VIEW 184)
 			(Load VIEW 185)
@@ -52,6 +53,20 @@
 		(= noWearCrown TRUE)
 		;(self setRegions: )
 		(musicSound play:)
+			((= barTender (Actor new:))
+				view: 584
+				loop: 2
+				cel: 0
+				posn: 135 190
+				setLoop: 1
+				;setCycle: Forward
+			;	ignoreControl:
+				ignoreActors:
+				;ignoreHorizon: ;maybe?
+				init:
+				setScript: barTenderScript
+				;stopUpd:
+			)
 			((= witch2 (Actor new:))
 				view: 186
 				loop: 0
@@ -60,8 +75,8 @@
 				setLoop: 1
 				setCycle: Forward
 			;	ignoreControl:
-			ignoreActors:
-			ignoreHorizon: ;maybe?
+				ignoreActors:
+				ignoreHorizon: ;maybe?
 				init:
 				;stopUpd:
 			)
@@ -187,5 +202,41 @@
 (instance musicSound of Sound
 	(properties
 		number 595
+	)
+)
+
+
+(instance barTenderScript of Script
+	(properties)
+	
+	(method (changeState newState &tmp [temp0 2])
+		(switch (= state newState)
+			(0 (= seconds (Random 2 5)))
+			(1
+				(barTender
+					setCycle: Walk
+					setLoop: -1
+					setMotion: MoveTo (Random 104 210) 193 self
+				)
+			)
+			(2
+				(if (> (Random 0 100) 80)
+					(self init:)
+				else
+					(= cycles (Random 2 6))
+				)
+			)
+			(3
+				(if (> (Random 0 100) 50)
+					;(self setLoop: 3)
+					(= state 2)
+				else
+					;(self setLoop: 2)
+					(= state 1)
+				)
+				;(self init:)
+				(= cycles 1)
+			)
+		)
 	)
 )
