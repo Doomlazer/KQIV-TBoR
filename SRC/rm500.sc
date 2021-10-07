@@ -107,8 +107,7 @@
 		(return
 			(if (== (event type?) saidEvent)
 				(cond 
-					((Said 'look') (Print 100 1))
-					((Said 'look/house') (Print 100 2))
+					((Said 'look') (Print 500 1))
 					((Said 'kill/edgar') (Print {That's not implemented yet. This will be a 'bad' ending in the final release.})) ;(rosellaActions changeState: 555))
 					((Said 'kill/self') (rosellaActions changeState: 666))
 					((Said 'show/breasts') (Print 500 18))
