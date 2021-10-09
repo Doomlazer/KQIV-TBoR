@@ -28,6 +28,7 @@
 		(= north 40)
 		(= west (= east (= south 31)))
 		(= horizon 114)
+		(if isNightTime (= picture 132))
 		(super init:)
 		(self setRegions: GULL OCEAN)
 		(= ripple1 (Prop new:))

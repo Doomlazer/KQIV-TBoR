@@ -393,7 +393,7 @@
 				(larry  setCycle: Forward setMotion: MoveTo 150 160 self)
 			)
 			(3
-				(larry setMotion: 0)
+				(larry setCycle: 0)
 				(HandsOn)
 				(Print 45 43)	
 			)

@@ -23,7 +23,7 @@
 	ripple1
 	ripple2
 	ripple3
-	ripple6
+	parrot
 )
 (instance Room_36 of Room
 	(properties
@@ -36,6 +36,7 @@
 		(= south 39)
 		(= east 37)
 		(= horizon 82)
+		(if isNightTime (= picture 136))
 		(= isIndoors FALSE)
 		(super init:)
 		(self setRegions: GENESTA)
@@ -108,37 +109,61 @@
 			ignoreActors:
 			init:
 		)
-		(= ripple6 (Prop new:))
-		(ripple6
-			isExtra: TRUE
-			view: 341
-			loop: 4
-			cel: 2
-			posn: 84 30
-			setPri: 0
-			setCycle: Forward
-			cycleSpeed: 1
-			ignoreActors:
-			init:
+		(= parrot (Prop new:))
+		(if isNightTime
+			(parrot
+				isExtra: TRUE
+				view: 341
+				loop: 5
+				cel: 0
+				posn: 84 30
+				setPri: 0
+				ignoreActors:
+				init:
+			)
+		else	
+			(parrot
+				isExtra: TRUE
+				view: 341
+				loop: 4
+				cel: 2
+				posn: 84 30
+				setPri: 0
+				setCycle: Forward
+				cycleSpeed: 1
+				ignoreActors:
+				init:
+			)	
 		)
 		(ego view: 2 xStep: 3 yStep: 2 init:)
 		(self setScript: Ego_drinking_water)
-		(if isNightTime (= picture 136))
 		(cond 
 			((== prevRoomNum 33) (ego posn: 100 85))
 			((== prevRoomNum 39) (ego x: 165 y: 186))
 		)
 		(= swan (Actor new:))
-		(swan
-			posn: 188 120
-			view: 345
-			setCycle: Walk
-			moveSpeed: 2
-			setMotion: Wander
-			illegalBits: cWHITE
-			xStep: 1
-			yStep: 1
-			init:
+		(if isNightTime
+			(swan
+				posn: 188 120
+				view: 345
+				loop: 4
+				cel: 0
+				moveSpeed: 2
+				illegalBits: cWHITE
+				init:
+			)
+		else
+			(swan
+				posn: 188 120
+				view: 345
+				setCycle: Walk
+				moveSpeed: 2
+				setMotion: Wander
+				illegalBits: cWHITE
+				xStep: 1
+				yStep: 1
+				init:
+			)
 		)
 	)
 	
