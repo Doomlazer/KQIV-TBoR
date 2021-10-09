@@ -175,3 +175,16 @@
 	LOLOTTE			;604
 	TROLL_CAVE		;605
 )
+
+(define INVDESC	702)	;UPGRADE: adds inventory item descriptions from AGI version
+
+;Required memory sizes in bytes
+(define DeathSize		800)
+(define InstrumentSize	800)
+(define BowSize			850)
+(define SaveSize		1028)
+(define CrownSize		1400)
+(define GaugeSize		1850)
+(define ReadSize		2000)
+(define InvSize			2348)
+(define PandoraSize		4500)

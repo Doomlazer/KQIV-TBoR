@@ -18,6 +18,7 @@
 	i
 	ch
 	inputSum
+	[str 100]
 )
 (instance copyProtect of Room
 	(properties

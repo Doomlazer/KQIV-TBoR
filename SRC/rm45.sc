@@ -32,6 +32,7 @@
 	larry
 	virginity
 	[local10 2]
+	[str 200]
 )
 (instance Room45 of Room
 	(properties

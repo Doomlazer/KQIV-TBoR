@@ -25,6 +25,7 @@
 	local6
 	window1
 	window2
+	[str 200]
 )
 (procedure (UnlockDoor)
 	(= unlockedLolotteDoor TRUE)

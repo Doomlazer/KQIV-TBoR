@@ -28,6 +28,7 @@
 	ripple1
 	ripple2
 	local11
+	[str 200]
 )
 (instance poofSound of Sound
 	(properties)

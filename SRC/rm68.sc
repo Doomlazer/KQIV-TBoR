@@ -17,6 +17,7 @@
 	newAct
 	doorway
 	local3
+	[str 200]
 )
 (instance Room68 of Room
 	(properties

@@ -17,6 +17,7 @@
 	bone
 	bonePile
 	oldEgoView
+	[str 200]
 )
 (procedure (ShowCaveForeground visible)
 	(if visible

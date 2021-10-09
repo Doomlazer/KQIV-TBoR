@@ -32,6 +32,7 @@
 	ripple1
 	ripple2
 	newProp_4
+	[str 200]
 )
 (instance gotFruit of Sound
 	(properties)

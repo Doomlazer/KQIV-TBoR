@@ -29,6 +29,12 @@
 	)
 )
 
+(instance candleView of Prop
+	(properties
+		view 536	
+	)
+)
+
 (instance Room65 of Room
 	(properties
 		picture 65
@@ -40,7 +46,7 @@
 		(Load VIEW 536)
 		(self setRegions: HAUNTED_HOUSE)
 		(super init:)
-		((View new:)
+		((candleView new:)
 			view: 536
 			loop: 5
 			cel: 0
@@ -58,10 +64,10 @@
 				setPri: 6
 				addToPic:
 			)
-				(if (or ((inventory at: iTooth) ownedBy: ego) ((inventory at: iTooth) ownedBy: 65))
-				else
+			(if (or ((inventory at: iTooth) ownedBy: ego) ((inventory at: iTooth) ownedBy: 65))
+			else
 					;candle 1 flame
-					((Prop new:)
+					((candleView new:)
 					view: 536
 					loop: 1
 					posn: 237 73
@@ -78,7 +84,7 @@
 		(if (or ((inventory at: iTooth) ownedBy: ego) ((inventory at: iTooth) ownedBy: 65))
 		;candle 2
 		(poofSound play:)
-		((View new:)
+		((candleView new:)
 			view: 536
 			loop: 5
 			cel: 0
@@ -87,7 +93,7 @@
 			addToPic:
 		)
 		;candle 3
-		((View new:)
+		((candleView new:)
 			view: 536
 			loop: 5
 			cel: 0
@@ -98,7 +104,7 @@
 		
 		(if ((inventory at: iBriefcase) ownedBy: 65)
 			;candle 1 flame
-				((Prop new:)
+				((candleView new:)
 					view: 536
 					loop: 1
 					posn: 237 73
@@ -109,7 +115,7 @@
 		)
 		(if ((inventory at: iSkull) ownedBy: 65)	
 			;candle 2 flame
-			((Prop new:)
+			((candleView new:)
 				view: 536
 				loop: 1
 				posn: 214 73
@@ -120,7 +126,7 @@
 		)
 		(if ((inventory at: iVirginity) ownedBy: 65)
 			;candle 3 flame
-			((Prop new:)
+			((candleView new:)
 				view: 536
 				loop: 1
 				posn: 179 73
@@ -222,12 +228,12 @@
 								((Said '/display,case,pedestal,jar') 
 									(if (or ((inventory at: iTooth) ownedBy: ego) ((inventory at: iTooth) ownedBy: 65)) 
 										(if ((inventory at: iTooth) ownedBy: 65)
-											(Print {Roger's rotten tooth is here on display. Thankfully the glass keeps the smell down a bit.})
+											(Print 65 27)
 										else	
-											(Print {It's a small display case. A tiny engraved plaque simply reads "TOOF".})
+											(Print 65 28)
 										)
 									else 
-										(Print {That's not here.})	
+										(Print 65 29)	
 									)
 								)
 								
@@ -270,7 +276,7 @@
 											(Print 65 16)
 										)
 									else
-										(Print {You don't have the tooth, stupid.})	
+										(Print 65 30)	
 									)
 								)
 								((Said '/case[/cauldron,pot]') 
@@ -288,7 +294,7 @@
 											(Print 65 26)
 										)	
 									else
-										(Print {You don't have that, stupid.})	
+										(Print 65 31)	
 									)
 								)
 								((Said '/skull,death[/cauldron,pot]') 
@@ -306,7 +312,7 @@
 										
 										)
 									else
-										(Print {You don't have that, stupid.})	
+										(Print 65 31)	
 									)
 								)
 								((Said '/virginity,love[/cauldron,pot]') 
@@ -323,7 +329,7 @@
 											(Print 65 26)
 										)
 									else
-										(Print {You don't have that, stupid.})	
+										(Print 65 31)	
 									)
 								)
 							)
@@ -339,7 +345,7 @@
 								(ego setScript: jarActions)
 								(jarActions changeState: 20)
 							else
-								(Print {You're getting warmer. Or is it colder? I can never remember which.})
+								(Print 65 32)
 							)
 						)
 						((Said 'get>')
@@ -358,7 +364,7 @@
 												(Print 65 16)
 											)
 										else
-											(Print {You already have the tooth, dumbass.})
+											(Print 65 33)
 										)
 								)
 								(else (event claimed: FALSE))
@@ -408,13 +414,13 @@
 			(20
 				;shake 
 				(ShakeScreen 5 2)
-				(Print {Oh Shit.})
+				(Print 65 34 #title {Rosella})
 				
 				(self cue:)
 			)
 			(21
 				(ShakeScreen 10 3)
-				(Print {You've really done it this time, Rosella!})
+				(Print 65 35)
 				(curRoom newRoom: 502)	
 			)
 		)

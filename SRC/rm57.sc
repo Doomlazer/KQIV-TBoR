@@ -36,6 +36,7 @@
 	witchGrabEgo
 	ouchMsg
 	skullEyes
+	[str 200]
 )
 (instance Room57 of Room
 	(properties

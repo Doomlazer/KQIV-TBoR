@@ -21,6 +21,7 @@
 	[local1 3]
 	ogress
 	local5
+	[str 200]
 )
 (instance Room48 of Room
 	(properties

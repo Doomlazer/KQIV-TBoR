@@ -44,6 +44,7 @@
 	[local24 2]
 	dwarf
 	local27
+	[str 200]
 )
 (instance Room53 of Room
 	(properties

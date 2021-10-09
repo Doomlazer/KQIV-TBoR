@@ -25,6 +25,7 @@
 	climbingLadder
 	climbedDown
 	mummyAwake
+	[str 200]
 )
 (instance fallMusic of Sound
 	(properties

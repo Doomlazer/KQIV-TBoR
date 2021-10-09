@@ -29,6 +29,7 @@
 	fishermanSitting
 	newProp
 	wifeAtCounter
+	[str 200]
 	deadswitch
 )
 (instance Room42 of Room

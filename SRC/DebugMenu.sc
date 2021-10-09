@@ -31,6 +31,10 @@ $600 debugM
 	controlI
 )
 
+(local
+	[str 50]
+)
+
 (instance DebugMenu of Script
 	(properties)
 	

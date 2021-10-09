@@ -20,6 +20,7 @@
 	candle1
 	candle2
 	candle3
+	[str 200]
 	door
 )
 (instance theMusic of Sound)

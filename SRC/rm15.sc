@@ -31,6 +31,7 @@
 	ripple2
 	ripple3
 	ripple4
+	[str 200]
 )
 (instance frogTheme of Sound
 	(properties

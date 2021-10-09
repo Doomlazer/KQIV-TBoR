@@ -19,6 +19,7 @@
 	onStairs
 	fatalFall
 	local3
+	[str 200]
 )
 (instance fallSound of Sound
 	(properties

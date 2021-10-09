@@ -21,6 +21,7 @@
 	rosellaBody
 	local6
 	local7
+	[str 200]
 )
 (instance Room694 of Room
 	(properties

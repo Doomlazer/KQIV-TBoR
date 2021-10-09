@@ -9,6 +9,11 @@
 	Room27 0
 )
 
+(local
+	[str 200]
+)
+
+
 (instance Room27 of Room
 	(properties
 		picture 27
