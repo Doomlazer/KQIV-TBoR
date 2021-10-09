@@ -451,6 +451,7 @@
 		arrowed
 		marieUntied
 		sequenceBreakNight
+		fairyFlip
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))
@@ -698,13 +699,13 @@
 				Briefcase
 				Skull
 		)
-		;(ego get: iAxe)
-		;(ego get: iTooth)
-		;(ego get: iBriefcase)
+		(ego get: iAxe)
+		(ego get: iTooth)
+		(ego get: iGoldBall)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
-		;(ego get: iCupidBow)
+		(ego get: iCupidBow)
 		
 		(= showStyle HSHUTTER)
 		(= userFont (= bigFont USERFONT))

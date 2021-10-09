@@ -60,14 +60,26 @@
 		(Load VIEW 613)
 		(Load VIEW 2)
 		(Load VIEW 114)
-		(door
-			view: 613
-			loop: 0
-			cel: 0
-			posn: 158 93
-			setPri: 5
-			init:
-			stopUpd:
+		(if (== isNightTime 1)
+			(door
+				view: 613
+				loop: 3
+				cel: 0
+				posn: 158 93
+				setPri: 5
+				init:
+				stopUpd:
+			)
+		else
+			(door
+				view: 613
+				loop: 0
+				cel: 0
+				posn: 158 93
+				setPri: 5
+				init:
+				stopUpd:
+			)
 		)
 		(if (<= (ego y?) horizon) (ego y: (+ horizon 2)))
 		(switch prevRoomNum
@@ -105,7 +117,11 @@
 			yStep: 1
 			init:
 		)
-		(Print 37 0)
+		(if (not fairyFlip)
+			(= fairyFlip 1)
+			(Print 37 0)
+		)
+		
 		(fairieTheme play:)
 	)
 	

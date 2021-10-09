@@ -35,6 +35,7 @@
 	)
 	
 	(method (init)
+		(if isNightTime (= picture 140))
 		(= north 37)
 		(= south 32)
 		(= east 41)
@@ -79,14 +80,26 @@
 			setCycle: Forward
 			init:
 		)
-		(door
-			view: 613
-			loop: 1
-			cel: 0
-			posn: 156 77
-			setPri: 4
-			init:
-			addToPic:
+		(if (== isNightTime 1)
+			(door
+				view: 613
+				loop: 1
+				cel: 1
+				posn: 156 77
+				setPri: 4
+				init:
+				addToPic:
+			)
+		else
+			(door
+				view: 613
+				loop: 1
+				cel: 0
+				posn: 156 77
+				setPri: 4
+				init:
+				addToPic:
+			)
 		)
 		(cond 
 			((== prevRoomNum 32) (ego x: 160 y: 188))

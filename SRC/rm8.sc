@@ -40,25 +40,48 @@
 		(if wifeDead
 			(if shouldknowwifedead
 				(if wifeGraveDugUp	
-					((= grave (Prop new:))
-						view: 562
-						loop: 0
-						cel: 1
-						posn: 35 150
-						setPri: 9
-						ignoreActors: TRUE
-						init:
-						
-					)
+					(if isNightTime
+						((= grave (Prop new:))
+							view: 562
+							loop: 1
+							cel: 1
+							posn: 35 150
+							setPri: 9
+							ignoreActors: TRUE
+							init:	
+						)
 					else
-					((= grave (Prop new:))
-						view: 562
-						loop: 0
-						cel: 0
-						posn: 35 150
-						setPri: 9
-						ignoreActors: TRUE
-						init:
+						((= grave (Prop new:))
+							view: 562
+							loop: 1
+							cel: 0
+							posn: 35 150
+							setPri: 9
+							ignoreActors: TRUE
+							init:
+						)
+					)
+				else
+					(if isNightTime	
+						((= grave (Prop new:))
+							view: 562
+							loop: 0
+							cel: 1
+							posn: 35 150
+							setPri: 9
+							ignoreActors: TRUE
+							init:	
+						)
+					else
+						((= grave (Prop new:))
+							view: 562
+							loop: 0
+							cel: 0
+							posn: 35 150
+							setPri: 9
+							ignoreActors: TRUE
+							init:
+						)
 					)
 				)
 				(musicSound play:)

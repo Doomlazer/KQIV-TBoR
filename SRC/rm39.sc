@@ -37,6 +37,7 @@
 	)
 	
 	(method (init)
+		(if isNightTime (= picture 139))
 		(= south 32)
 		(= east 40)
 		(= west 31)

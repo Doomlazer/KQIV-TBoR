@@ -38,7 +38,14 @@
 
 (instance sharkMusic of Sound
 	(properties
-		number 78
+		number 78 ;78 is the SCI disc version with 5 second delay
+		loop -1
+	)
+)
+
+(instance oSharkMusic of Sound
+	(properties
+		number 98 ;99 is agi version of jaws, but shorter. I need better intrument selsction for the ported midis. by default  I can't hear the imported patches
 		loop -1
 	)
 )
@@ -187,7 +194,7 @@
 			(= global136 local1)
 			(= global137 local2)
 			(if (!= (ego view?) 312)
-				(if (and (== local3 1) isNightTime)
+				(if (and (== local3 4) isNightTime) ;was 1
 					(= local1 1000)
 					(= local2 1000)
 				)
@@ -550,7 +557,7 @@
 	
 	(method (changeState newState)
 		(switch (= state newState)
-			(0 (= seconds (Random 2 3)))
+			(0 (= seconds (Random 2 8)))
 			(1
 				(= whale (Prop new:))
 				(whaleMusic play:)
@@ -625,7 +632,11 @@
 		(switch (= state newState)
 			(0 (= seconds (Random 1 5)))
 			(1
-				(sharkMusic play:)
+				(if (ego has: iTooth)
+					(oSharkMusic play:)
+				else
+					(sharkMusic play:)
+				)
 				((= shark (Actor new:))
 					ignoreHorizon:
 					posn: (Random 100 200) (Random 75 189)

@@ -38,6 +38,7 @@
 	)
 	
 	(method (init)
+		(if isNightTime (= picture 141))
 		(= north 35)
 		(= south 32)
 		(= east 31)
@@ -52,7 +53,7 @@
 			view: 664
 			loop: 0
 			cel: 3
-			posn: 150 125
+			posn: 150 125 ;this wave is fucked up. Thanks, Sierra.
 			setPri: 0
 			setCycle: Forward
 			ignoreActors:
@@ -114,7 +115,7 @@
 			)
 			(curRoom newRoom: 35)
 		)
-		(if (& gEgoOnControl $0010) (curRoom newRoom: 38))
+		(if (& gEgoOnControl ctlMAROON) (curRoom newRoom: 38))
 	)
 	
 	(method (dispose)

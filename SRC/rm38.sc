@@ -35,8 +35,36 @@
 		(ego view: 2 xStep: 3 yStep: 2 init:)
 		(= ripple1 (Prop new:))
 		(= ripple2 (Prop new:))
-		(= bird1 (Extra new:))
-		(= bird2 (Extra new:))
+		(if (not isNightTime)
+			(= bird1 (Extra new:))
+			(= bird2 (Extra new:))
+			(bird1
+				view: 341
+				loop: 2
+				posn: 243 37
+				minPause: 4
+				maxPause: 60
+				pauseCel: 1
+				minCycles: 10
+				maxCycles: 40
+				ignoreActors:
+				cycleSpeed: 2
+				init:
+			)
+			(bird2
+				view: 341
+				loop: 3
+				pauseCel: 1
+				minPause: 4
+				maxPause: 60
+				minCycles: 10
+				maxCycles: 50
+				posn: 214 26
+				ignoreActors:
+				cycleSpeed: 2
+				init:
+			)
+		)
 		(ripple1
 			view: 662
 			loop: 3
@@ -55,32 +83,6 @@
 			posn: 303 98
 			setPri: 0
 			setCycle: Forward
-			ignoreActors:
-			cycleSpeed: 2
-			init:
-		)
-		(bird1
-			view: 341
-			loop: 2
-			posn: 243 37
-			minPause: 4
-			maxPause: 60
-			pauseCel: 1
-			minCycles: 10
-			maxCycles: 40
-			ignoreActors:
-			cycleSpeed: 2
-			init:
-		)
-		(bird2
-			view: 341
-			loop: 3
-			pauseCel: 1
-			minPause: 4
-			maxPause: 60
-			minCycles: 10
-			maxCycles: 50
-			posn: 214 26
 			ignoreActors:
 			cycleSpeed: 2
 			init:

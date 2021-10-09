@@ -474,7 +474,11 @@
 				(uniTheme play:)
 			)
 			(1
-				(Print 333 1)
+				(if (ego has: iTooth)
+					(Print 333 2)
+				else
+					(Print 333 1)
+				)
 				(if (== (ego loop?) 1)
 					(ego view: 390 cel: 0 loop: 0 setCycle: EndLoop self)
 				else

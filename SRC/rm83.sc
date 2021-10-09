@@ -211,7 +211,7 @@
 						)
 						((Said 'show/breasts') (Print 83 28))
 						((Said 'fuck/roger') (Print 83 50))
-						((Said 'fuck/skeleton,james') (Print 83 33)) ;the skeleton was called James in the AGI version - DL
+						((Said 'fuck/skeleton,james') (Print 83 33)) ;the skeleton in the whale is james, not this dude, but you could use it here in the AGI cell
 						((Said 'kill/roger') (rogerActions changeState: 20))
 						((Said 'deliver/tooth[/roger,man]')
 							(if (ego has: iTooth) 
