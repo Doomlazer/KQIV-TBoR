@@ -53,8 +53,8 @@
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
 		(= inCutscene FALSE)
+		(if isNightTime (= picture 124))
 		(super init:)
-		(if isNightTime (curRoom overlay: 124))
 		(self setRegions: WATER RIVER MOUNTAIN FOREST) ;remove forest to save mem it mostly crow.
 		(Load VIEW 8)
 		(if (ego has: iSmallCrown)

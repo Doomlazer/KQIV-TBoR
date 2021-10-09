@@ -456,6 +456,7 @@
 					
 				(genestaCloseup dispose:)	
 				(ego get: iVirginity)
+				(= gotItem 1)
 				(theGame changeScore: 1)
 				(larry
 					loop: 4

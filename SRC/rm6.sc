@@ -26,8 +26,8 @@
 		(= horizon 80)
 		(= isIndoors FALSE)
 		(ego view: 2 edgeHit: 0)
+		(if isNightTime (= picture 106))
 		(super init:)
-		(if isNightTime (curRoom overlay: 106))
 		(self setRegions: FOREST MOUNTAIN)
 		(switch prevRoomNum
 			(west

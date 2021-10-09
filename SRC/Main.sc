@@ -267,6 +267,7 @@
 	ghostHaunts
 	introScript
 	lolotteDoorOpen
+	scoredTooth
 	
 		;;TBoR mod globals
 		wifeGraveDugUp

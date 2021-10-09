@@ -57,9 +57,9 @@
 		(= horizon 80)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 113)) 
 		(super init:)
 		(if wifeDead (= shouldknowwifedead 1))
-		(if isNightTime (curRoom overlay: 113))
 		(wave1
 			isExtra: TRUE
 			view: 665

@@ -34,8 +34,8 @@
 		(= horizon 75)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 126))
 		(super init:)
-		(if isNightTime (curRoom overlay: 126))
 		(self setRegions: WATER RIVER MEADOW UNICORN)
 		(switch prevRoomNum
 			(2

@@ -31,8 +31,8 @@
 		(= west 7)
 		(= horizon 68)
 		(= isIndoors FALSE)
+		(if isNightTime (= picture 108))
 		(super init:)
-		(if isNightTime (curRoom overlay: 108))
 		(ego view: 2 init:)
 		(self setRegions: MEADOW PAN)
 		
@@ -276,6 +276,7 @@
 				(self cue:)
 				(ego get: iSkull)
 				(theGame changeScore: 111)
+				(= gotItem 1)
 			)
 			(3
 				(ego

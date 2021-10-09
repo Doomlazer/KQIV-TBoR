@@ -175,7 +175,11 @@
 							(if ((Inventory at: iTooth) ownedBy: 83)
 								(if (ego inRect: 60 115 85 135)
 									(ego get: iTooth)
-									(theGame changeScore: 665)
+									(if (not scoredTooth)
+										(theGame changeScore: 665)
+										(= gotItem 1)
+										(= scoredTooth 1)
+									)
 									(Print 83 36)
 									(if (not toofmsg) (Print 83 46)(= toofmsg 1)) ;try to make tooth function more obvious
 								else 

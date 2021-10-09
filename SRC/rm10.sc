@@ -42,8 +42,8 @@
 		(= horizon 72)
 		(= isIndoors FALSE)
 		(= noWearCrown 1)
-		(super init:)
-		(if isNightTime (curRoom overlay: 110))
+		(if isNightTime (= picture 110))
+		(super init:)	
 		(self setRegions: FOREST OGRE)
 		(switch prevRoomNum
 			(16

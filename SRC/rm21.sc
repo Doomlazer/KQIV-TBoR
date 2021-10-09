@@ -34,10 +34,8 @@
 		(= horizon 68)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 121))
 		(super init:)
-		(if isNightTime
-			(curRoom overlay: 121)
-		)
 		(self setRegions: WOODS WATER RIVER)
 		(Load VIEW 518)
 		(Load VIEW 21)

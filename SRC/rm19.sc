@@ -45,10 +45,8 @@
 		(= horizon 104)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 119))
 		(super init:)
-		(if isNightTime
-			(curRoom overlay: 119)
-		)
 		(= meetTime
 			(+
 				(* (- gameHours hourLastMetMinstrel) 60)

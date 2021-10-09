@@ -57,9 +57,9 @@
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
 		(self setRegions: FOREST)
+		(if isNightTime (= picture 117))
 		(super init:)
 		;;fuck off door zombie
-;;;		(if isNightTime (curRoom overlay: 117))
 ;;;		(if (and isNightTime (not (ego has: iObsidianScarab)))
 ;;;			(Load VIEW 270)
 ;;;			(Load VIEW 36)

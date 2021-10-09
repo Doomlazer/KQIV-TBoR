@@ -75,8 +75,8 @@
 		(Load VIEW 47)
 		(ego edgeHit: 0 observeControl: 16384)
 		(= numZombies 0)
+		(if isNightTime (= picture 118))
 		(super init:)
-		(if isNightTime (curRoom overlay: 118))
 		(self setRegions: CEMETERY MOUNTAIN)
 		(if isNightTime
 			(Load VIEW 261)

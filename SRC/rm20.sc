@@ -21,9 +21,9 @@
 		(= west 19)
 		(= horizon 68)
 		(= isIndoors FALSE)
+		(if isNightTime (= picture 120))
 		(super init:)
 		(ego view: 2 init:)
-		(if isNightTime (curRoom overlay: 120))
 		(self setRegions: MEADOW UNICORN)
 	)
 	

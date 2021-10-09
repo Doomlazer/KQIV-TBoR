@@ -49,8 +49,8 @@
 		(= isIndoors FALSE)
 		(= inCinematic FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 125))
 		(super init:)
-		(if isNightTime (curRoom overlay: 125))
 		(self setRegions: GULL WATER BEACH MEADOW)
 		(Load VIEW 2)
 		(Load VIEW 5)
@@ -58,11 +58,6 @@
 		(Load VIEW 7)
 		(Load VIEW 8)
 		(Load VIEW 21)
-		
-		;(ego get: iBriefcase)
-		;(ego get: iSkull)
-		;(ego get: iVirginity)
-		;(ego get: iTooth)
 				
 		(wave1
 			isExtra: TRUE

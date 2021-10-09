@@ -51,8 +51,8 @@
 		(= horizon 85)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if isNightTime (= picture 130))
 		(super init:)
-		(if isNightTime (curRoom overlay: 130))
 		(self setRegions: FOREST MOUNTAIN)
 		
 		(if (ego has: iPandorasBox)(= sequenceBreakNight TRUE)) ;;sequence break fix. It must be night before shooting lolotte with bow  

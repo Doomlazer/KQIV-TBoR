@@ -56,8 +56,8 @@
 			(ego y: (+ horizon 1))
 		)
 		(if (== prevRoomNum 22) (ego x: 158))
+		(if isNightTime (= picture 116))
 		(super init:)
-		(if isNightTime (curRoom overlay: 116))
 		(self setRegions: CEMETERY)
 		(if isNightTime
 			(Load VIEW 261)

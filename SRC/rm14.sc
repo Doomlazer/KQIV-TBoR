@@ -32,8 +32,8 @@
 		(if (and (== prevRoomNum 20) (> (ego x?) 209))
 			(ego x: 209)
 		)
+		(if isNightTime (= picture 114))
 		(super init:)
-		(if isNightTime (curRoom overlay: 114))
 		(= local0
 			(+
 				(* (- gameHours hourLastMetMinstrel) 60)

@@ -260,6 +260,7 @@
 										(briefcase dispose:)
 										(theGame changeScore: 69)
 										((Inventory at: iBriefcase) moveTo: ego)
+										(= gotItem 1)
 										(if marieUntied
 											(Print {"That was my husband's you fucking bitch! Get the fuck out of my house!!!"} #title {Marie})	
 										)
