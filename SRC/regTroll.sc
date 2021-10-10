@@ -80,7 +80,7 @@
 		(if (== script gotchaScript) (return))
 		(if
 			(and
-				trollAlive
+				(not trollDead)
 				(not (LanternIsOn))
 				(not (& (ego onControl: 0) $0002))
 			)
@@ -91,7 +91,7 @@
 			(return)
 		)
 		(if
-		(and (not (cast contains: troll)) (== trollAttacks TRUE) trollAlive)
+		(and (not (cast contains: troll)) (== trollAttacks TRUE) (not trollDead))
 			(trollScript changeState: 1)
 		)
 		(if (not local1)
@@ -102,7 +102,7 @@
 					(< (Random 0 100) 30) ;was 50%
 					(!= curRoomNum 76)
 					(!= curRoomNum 73)
-					trollAlive
+					(not trollDead)
 				)
 				(trollScript start: 0)
 				(self setScript: trollScript)
@@ -127,16 +127,22 @@
 							((Said 'light,ignite,(turn<on)') (self notify: TRUE))
 						)
 					)
-					((Said 'shoot,kill/troll[/bow]')
-						(if (not trollAlive)
-							(Print {Take a chill pill, you already murdered the poor thing.})
-						else
-							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
-								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
-								(trollBowScript changeState: 20)
+					((or (Said 'shoot,kill/troll[/bow]')(Said 'shoot/bow[/troll]'))
+						(if (cast contains: troll)
+							(if trollDead
+								(Print {Take a chill pill, you already murdered the poor thing.})
 							else
-								(Print {Bring that bow next time maybe?})
-							)	
+								(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+									((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+									(trollScript changeState: 333)
+									(self setScript: trollBowScript)
+									(trollBowScript changeState: 20)
+								else
+									(Print {Bring that bow next time maybe?})
+								)	
+							)
+						else
+							(Print {You don't see anything to murder right now, Rosella.})
 						)
 					)
 					((Said 'look>')
@@ -157,7 +163,7 @@
 					((cast contains: troll)
 						(cond 
 							((Said 'converse/troll') (Print 605 9))
-							((Said 'kill/troll') (Print 605 10))
+							;((Said 'kill/troll') (Print 605 10))
 							((Said 'get,capture/troll') (Print 605 11))
 							((or (Said 'kiss/troll') (Said 'kiss[/noword]')) (Print 605 12))
 							(
@@ -375,6 +381,11 @@
 				(gotchaScript start: 1)
 				(curRoom setScript: gotchaScript)
 			)
+			(333
+				(trollMusic stop:)
+					
+			)
+			
 		)
 	)
 )
@@ -455,12 +466,13 @@
 		(switch (= state newState)	
 			(20
 				(FaceObject ego troll)
-				(Print {Quick thinking, Rosella!})
+				(cls)
+				(Print {Fearing for her life, Rosella hopes Tamir's stand-your-ground laws are as racially biased as Daventry's.})
 				(ego
 					view: 68
 					setCycle: EndLoop self
 				)
-				(= trollAlive 1)
+				(= trollDead 1)
 				
 				
 			)
@@ -479,28 +491,17 @@
 					
 			)
 			(22
+				(Print {Dispite the darkness the arrow manages to strike the Troll. You hear it collapse on the cave floor.})
 				(troll
-					view: 561
-					loop: 0
-					setCycle: EndLoop self
+					dispose:
 				)
 				(heart dispose:)
+				(= seconds 2)
 			)
 			(23
-				(troll
-					loop: 1
-					setCycle: EndLoop self
-						
-				)	
-			)
-			(24
 				(Print {The Troll wasn't evil, just allergic to Cherubs. Didn't it have a right to exist too, Rosella?})
-				(troll
-					view: 561
-					loop: 2
-					setCycle: Forward
-				)
-				
+				(theGame changeScore: 10) 
+				(= gotItem 1)	
 			)
 		)
 	)

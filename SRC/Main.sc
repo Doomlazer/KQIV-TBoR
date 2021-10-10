@@ -280,7 +280,7 @@
 		marieUntied
 		sequenceBreakNight
 		fairyFlip
-		trollAlive
+		trollDead
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))
