@@ -1,7 +1,7 @@
 # KQIV:TE:TBoR
 King’s Quest IV: Topless Edition: The Breasts of Rosella
 
-BETA release version 0.9.5 
+BETA release version 0.9.7 
 Content rating: Mature, 18+ for violence and strong sexual themes.
 
 Developed using <a href="http://scicompanion.com/">SCI Companion</a>
