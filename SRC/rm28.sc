@@ -39,8 +39,9 @@
 		(= horizon 126)
 		(= isIndoors FALSE)
 		(HandsOn)
+		(if (ego has: iTooth) (= picture 328))
 		(if isNightTime (= picture 128))
-		(ego edgeHit: 0 illegalBits: -32768)
+		(ego edgeHit: 0 illegalBits: ctlWHITE)
 		(super init:)
 		(self setRegions: FOREST)
 		(Load VIEW 17)
@@ -59,7 +60,7 @@
 				init:
 				stopUpd:
 			)
-			(ego observeControl: 16384)
+			(ego observeControl: ctlYELLOW)
 		else
 			(mineDoor
 				view: 600

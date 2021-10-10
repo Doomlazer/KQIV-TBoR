@@ -53,6 +53,7 @@
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
 		(= inCutscene FALSE)
+		(if (ego has: iTooth) (= picture 324))
 		(if isNightTime (= picture 124))
 		(super init:)
 		(self setRegions: WATER RIVER MOUNTAIN FOREST) ;remove forest to save mem it mostly crow.

@@ -32,6 +32,7 @@
 		(if (and (== prevRoomNum 20) (> (ego x?) 209))
 			(ego x: 209)
 		)
+		(if (ego has: iTooth) (= picture 314))
 		(if isNightTime (= picture 114))
 		(super init:)
 		(= local0

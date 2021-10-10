@@ -21,6 +21,7 @@
 		(= west 19)
 		(= horizon 68)
 		(= isIndoors FALSE)
+		(if (ego has: iTooth) (= picture 320))
 		(if isNightTime (= picture 120))
 		(super init:)
 		(ego view: 2 init:)

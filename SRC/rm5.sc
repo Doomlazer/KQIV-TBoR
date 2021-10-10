@@ -45,6 +45,7 @@
 		(= horizon 86)
 		(= isIndoors FALSE)
 		(Load SOUND 65)
+		(if (ego has: iTooth) (= picture 305))
 		(if isNightTime (= picture 105))
 		(ego edgeHit: 0)
 		(self setRegions: SCARY_FOREST)

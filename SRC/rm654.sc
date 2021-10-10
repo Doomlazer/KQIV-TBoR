@@ -99,7 +99,16 @@
 						((or (Said 'look[<around][/noword]') (Said 'look/room'))
 							(Print 654 1)
 						)
-
+						((Said 'show/breasts')
+							
+							(if (== (self script?) dwarfsInToEat)
+								(Print 654 41)
+								(dwarfsInToEat changeState: 12)	
+							else
+								(Print 654 40)
+							)
+						
+						)
 						((Said 'look>')
 							(cond 
 								((Said '/window')
@@ -371,7 +380,7 @@
 				(dwarfMusic dispose:)
 				(= ateSoup TRUE)
 				(ego setScript: eatOut)
-				(= seconds 20) ;60 seconds? fuck no
+				(= seconds 60) ;60 seconds? fuck no
 			)
 			(12 (= local63 1))
 			(13

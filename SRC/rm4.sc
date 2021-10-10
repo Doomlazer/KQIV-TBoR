@@ -73,6 +73,7 @@
 		(= noWearCrown 1)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 304))
 		(if isNightTime (= picture 104))
 		(super init:)
 		(self setRegions: FOREST OGRE)

@@ -68,6 +68,7 @@
 		(= horizon 75)
 		(= isIndoors FALSE)
 		(self setRegions: WOODS)
+		(if (ego has: iTooth) (= picture 303))
 		(if isNightTime (= picture 103))
 		(super init:)
 		(ego view: 2 init:)

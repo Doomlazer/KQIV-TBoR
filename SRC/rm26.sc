@@ -34,6 +34,7 @@
 		(= horizon 75)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 326))
 		(if isNightTime (= picture 126))
 		(super init:)
 		(self setRegions: WATER RIVER MEADOW UNICORN)

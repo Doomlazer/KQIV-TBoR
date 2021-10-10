@@ -61,6 +61,7 @@
 			(ego posn: (ego x?) (- horizon 2))
 		)
 		(if (< (ego x?) 29) (ego x: 29))
+		(if (ego has: iTooth) (= picture 315))
 		(if isNightTime (= picture 115))
 		(super init:)
 		(self setRegions: WOODS)

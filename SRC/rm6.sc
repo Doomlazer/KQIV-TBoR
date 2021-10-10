@@ -27,6 +27,7 @@
 		(= isIndoors FALSE)
 		(ego view: 2 edgeHit: 0)
 		(if isNightTime (= picture 106))
+		(if (ego has: iTooth) (= picture 306))
 		(super init:)
 		(self setRegions: FOREST MOUNTAIN)
 		(switch prevRoomNum

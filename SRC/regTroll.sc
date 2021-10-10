@@ -9,6 +9,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	regTroll 0
@@ -24,6 +25,7 @@
 	local1
 	local2
 	local3
+	heart
 )
 (instance trollCaveMusic of Sound
 	(properties
@@ -78,6 +80,7 @@
 		(if (== script gotchaScript) (return))
 		(if
 			(and
+				trollAlive
 				(not (LanternIsOn))
 				(not (& (ego onControl: 0) $0002))
 			)
@@ -88,7 +91,7 @@
 			(return)
 		)
 		(if
-		(and (not (cast contains: troll)) (== trollAttacks TRUE))
+		(and (not (cast contains: troll)) (== trollAttacks TRUE) trollAlive)
 			(trollScript changeState: 1)
 		)
 		(if (not local1)
@@ -99,6 +102,7 @@
 					(< (Random 0 100) 30) ;was 50%
 					(!= curRoomNum 76)
 					(!= curRoomNum 73)
+					trollAlive
 				)
 				(trollScript start: 0)
 				(self setScript: trollScript)
@@ -121,6 +125,18 @@
 						(cond 
 							((Said 'extinguish,(turn<off)') (self notify: FALSE))
 							((Said 'light,ignite,(turn<on)') (self notify: TRUE))
+						)
+					)
+					((Said 'shoot,kill/troll[/bow]')
+						(if (not trollAlive)
+							(Print {Take a chill pill, you already murdered the poor thing.})
+						else
+							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+								(trollBowScript changeState: 20)
+							else
+								(Print {Bring that bow next time maybe?})
+							)	
 						)
 					)
 					((Said 'look>')
@@ -425,6 +441,66 @@
 			(0 (Timer setReal: self 2))
 			(1
 				(trollCaveMusic loop: 1 playMaybe:)
+			)
+		)
+	)
+)
+
+
+
+(instance trollBowScript of Script 
+(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)	
+			(20
+				(FaceObject ego troll)
+				(Print {Quick thinking, Rosella!})
+				(ego
+					view: 68
+					setCycle: EndLoop self
+				)
+				(= trollAlive 1)
+				
+				
+			)
+			(21
+				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= heart (Prop new:))
+				(heart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 15
+					posn: (troll x?) (- (troll y?) 15)
+					setCycle: EndLoop self
+					init:
+				)
+					
+			)
+			(22
+				(troll
+					view: 561
+					loop: 0
+					setCycle: EndLoop self
+				)
+				(heart dispose:)
+			)
+			(23
+				(troll
+					loop: 1
+					setCycle: EndLoop self
+						
+				)	
+			)
+			(24
+				(Print {The Troll wasn't evil, just allergic to Cherubs. Didn't it have a right to exist too, Rosella?})
+				(troll
+					view: 561
+					loop: 2
+					setCycle: Forward
+				)
+				
 			)
 		)
 	)

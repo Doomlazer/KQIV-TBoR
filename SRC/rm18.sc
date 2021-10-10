@@ -75,6 +75,7 @@
 		(Load VIEW 47)
 		(ego edgeHit: 0 observeControl: 16384)
 		(= numZombies 0)
+		(if (ego has: iTooth) (= picture 318))
 		(if isNightTime (= picture 118))
 		(super init:)
 		(self setRegions: CEMETERY MOUNTAIN)

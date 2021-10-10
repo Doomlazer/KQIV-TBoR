@@ -34,6 +34,7 @@
 		(= horizon 68)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 321))
 		(if isNightTime (= picture 121))
 		(super init:)
 		(self setRegions: WOODS WATER RIVER)

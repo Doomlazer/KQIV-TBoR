@@ -35,6 +35,7 @@
 			(ego y: (+ horizon 2))
 		)
 		(if (< (ego x?) 93) (ego x: 93))
+		(if (ego has: iTooth) (= picture 309))
 		(if isNightTime (= picture 109))
 		(super init:)
 		(ego view: 2 init:)

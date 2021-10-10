@@ -51,6 +51,7 @@
 		(= horizon 85)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 330))
 		(if isNightTime (= picture 130))
 		(super init:)
 		(self setRegions: FOREST MOUNTAIN)

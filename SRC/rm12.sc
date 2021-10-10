@@ -50,6 +50,7 @@
 		(= isIndoors FALSE)
 		(Load SOUND 65)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 312))
 		(if isNightTime (= picture 112))
 		(super init:)
 		(= treeEye1 (Prop new:))

@@ -45,6 +45,7 @@
 		(= horizon 104)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 319))
 		(if isNightTime (= picture 119))
 		(super init:)
 		(= meetTime

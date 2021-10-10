@@ -99,6 +99,7 @@
 		(= horizon 86)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 307))
 		(if isNightTime (= picture 107))
 		(super init:)
 		(self setRegions: BEACH GULL)

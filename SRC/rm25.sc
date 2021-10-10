@@ -49,6 +49,7 @@
 		(= isIndoors FALSE)
 		(= inCinematic FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 325))
 		(if isNightTime (= picture 125))
 		(super init:)
 		(self setRegions: GULL WATER BEACH MEADOW)

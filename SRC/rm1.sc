@@ -47,6 +47,7 @@
 		(= horizon 100)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(if (ego has: iTooth) (= picture 301))
 		(if isNightTime (= picture 101))
 		(super init:)
 		(if wifeDead (= shouldknowwifedead 1))

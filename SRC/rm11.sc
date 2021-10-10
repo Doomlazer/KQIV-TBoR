@@ -49,6 +49,7 @@
 		(= horizon 86)
 		(= isIndoors FALSE)
 		(Load SOUND 65)
+		(if (ego has: iTooth) (= picture 311))
 		(if isNightTime (= picture 111))
 		(ego edgeHit: 0)
 		(super init:)

@@ -57,6 +57,7 @@
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
 		(self setRegions: FOREST)
+		(if (ego has: iTooth) (= picture 317))
 		(if isNightTime (= picture 117))
 		(super init:)
 		;;fuck off door zombie

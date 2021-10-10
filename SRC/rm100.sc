@@ -60,7 +60,7 @@
 				posn: 135 190
 				setLoop: 1
 				;setCycle: Forward
-			;	ignoreControl:
+				setPri: 15
 				ignoreActors:
 				;ignoreHorizon: ;maybe?
 				init:
