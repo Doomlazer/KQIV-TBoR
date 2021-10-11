@@ -84,10 +84,14 @@
 				(not (LanternIsOn))
 				(not (& (ego onControl: 0) $0002))
 			)
-			(ego dispose:)
-			(AnimateCast)
-			(Print 605 1)
-			(self setScript: gotchaScript)
+;;;			(ego dispose:)
+;;;			(AnimateCast)
+;;;			(Print 605 1)
+;;;			(self setScript: gotchaScript)
+		
+			(trollScript start: 0) ;so you skip the lantern using the bow
+			(self setScript: trollScript)
+		
 			(return)
 		)
 		(if
@@ -475,10 +479,7 @@
 				(ego
 					view: 68
 					setCycle: EndLoop self
-				)
-				(= trollDead 1)
-				
-				
+				)	
 			)
 			(21
 				(ego view: 4 setMotion: 0 setCycle: Walk)
@@ -507,11 +508,12 @@
 			)
 			(23
 				(Print 605 19)
-				(= seconds 4)	
+				(theGame changeScore: -100) 
+				(= trollDead 1)
+				(= seconds 2)	
 			)
 			(24
 				(Print 605 18)
-				(theGame changeScore: -100) 	
 			)
 		)
 	)

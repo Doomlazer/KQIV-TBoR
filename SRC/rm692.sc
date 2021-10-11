@@ -257,7 +257,7 @@
 			ignoreActors:
 			posn: 184 111
 			init:
-			stopUpd:
+			;startUpd:
 		)
 		(weddingMarch play:)
 	)
@@ -302,7 +302,7 @@
 				(minister cycleSpeed: 2 setCycle: EndLoop self)
 			)
 			(6
-				(minister stopUpd:)
+				;(minister stopUpd:)
 				(= timedMessage (Print 692 0 #at -1 10 #dispose))
 				(= seconds 12)
 			)
