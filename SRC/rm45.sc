@@ -219,15 +219,23 @@
 						)
 						((Said 'deliver,return/amulet[/genesta]')
 							(if (ego has: iTalisman)
-								(cls)
-								(HandsOff)
-								(= gameHours 30)
-								(= gameMinutes 1)
-								(ego put: iTalisman 999)
-								(fairyMusic dispose:)
-								(Print 45 14 #at 0 10 #font smallFont)
-								(= inCinematic TRUE) ;bring on the endgame
-								(self setScript: closer)
+								(if trollDead
+									(Print {Genesta snatches the talisman out of your hands.})
+									(Print {"I should have know someone from Daventry would make a mess of things. You killed my fucking cave troll! As punishment you can marry that C.H.U.D. Edgar."} #title {Genesta})
+									(= inCutscene TRUE)
+									(= isHandsOff FALSE)
+									(curRoom newRoom: 692)
+								else
+									(cls)
+									(HandsOff)
+									(= gameHours 30)
+									(= gameMinutes 1)
+									(ego put: iTalisman 999)
+									(fairyMusic dispose:)
+									(Print 45 14 #at 0 10 #font smallFont)
+									(= inCinematic TRUE) ;bring on the endgame
+									(self setScript: closer)
+								)
 							else
 								(Print 800 2)
 							)

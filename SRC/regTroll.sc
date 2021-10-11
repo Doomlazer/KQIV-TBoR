@@ -138,7 +138,11 @@
 									(self setScript: trollBowScript)
 									(trollBowScript changeState: 20)
 								else
-									(Print {Bring that bow next time maybe?})
+									(if (ego has: iCupidBow) 
+										(Print {You're out of arrows.})
+									else
+										(Print {Maybe try bring the bow next time?})
+									)
 								)	
 							)
 						else
@@ -478,6 +482,7 @@
 			)
 			(21
 				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= gotItem 1)
 				(= heart (Prop new:))
 				(heart
 					view: 681
@@ -485,23 +490,28 @@
 					loop: 0
 					setPri: 15
 					posn: (troll x?) (- (troll y?) 15)
-					setCycle: EndLoop self
+					setCycle: EndLoop
 					init:
 				)
-					
+				(= seconds 3)
 			)
 			(22
-				(Print {Dispite the darkness the arrow manages to strike the Troll. You hear it collapse on the cave floor.})
+				(Print 605 20)
 				(troll
-					dispose:
+					loop: 4
+					cel:0
+					setCycle: EndLoop self
 				)
 				(heart dispose:)
-				(= seconds 2)
+			
 			)
 			(23
-				(Print {The Troll wasn't evil, just allergic to Cherubs. Didn't it have a right to exist too, Rosella?})
-				(theGame changeScore: 10) 
-				(= gotItem 1)	
+				(Print 605 19)
+				(= seconds 4)	
+			)
+			(24
+				(Print 605 18)
+				(theGame changeScore: -100) 	
 			)
 		)
 	)

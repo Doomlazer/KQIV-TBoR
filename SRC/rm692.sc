@@ -212,13 +212,24 @@
 			addToPic:
 		)
 		(User canControl: 0 canInput: 0)
-		((= lolotte (Prop new:))
-			view: 807
-			loop: 3
-			cel: 0
-			posn: 162 93
-			setPri: 5
-			init:
+		(if (== ((inventory at: iTalisman) owner?) 82)
+			((= lolotte (Prop new:))
+				view: 807
+				loop: 3
+				cel: 0
+				posn: 162 93
+				setPri: 5
+				init:
+			)
+		else
+			((= lolotte (Prop new:))
+				view: 106
+				loop: 0
+				cel: 3
+				posn: 162 93
+				setPri: 5
+				init:
+			)
 		)
 		(ego
 			view: 808
@@ -336,7 +347,11 @@
 				(= seconds 4)
 			)
 			(14
-				(Print 692 2 #at -1 10 #time 15)
+				(if lolotteAlive
+					(Print 692 2 #at -1 10 #time 15)
+				else
+					(Print {Wow, Genesta must have really loved that cave troll!} #at -1 10 #time 15)
+				)
 				(cls)
 				(User canControl: TRUE canInput: TRUE)
 				(= dead TRUE)

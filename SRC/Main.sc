@@ -528,7 +528,7 @@
 				Briefcase
 				Skull
 		)
-		;(ego get: iAxe)
+
 		;(ego get: iTooth)
 		;(ego get: iGoldBall)
 		;(ego get: iSkull)
