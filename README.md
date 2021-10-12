@@ -29,4 +29,4 @@ Multiple solutions and hidden skips - Complete original KQ4 puzzles exactly as i
 
 ## Progress
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hTJVPhAuy34" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+a few of the recent additions: https://www.youtube.com/embed/hTJVPhAuy34
