@@ -529,8 +529,8 @@
 				Skull
 		)
 
-		(ego get: iTooth)
-		(ego get: iAxe)
+		;(ego get: iTooth)
+		;(ego get: iAxe)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
