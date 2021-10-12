@@ -23,6 +23,8 @@
 	witch3Body
 	witch3	
 	barTender
+	barX
+	greeted
 )
 
 (instance Room100 of Room
@@ -57,11 +59,13 @@
 				view: 584
 				loop: 2
 				cel: 0
-				posn: 135 190
+				posn: 135 180
 				setLoop: 1
 				;setCycle: Forward
 				setPri: 15
-				ignoreActors:
+				illegalBits: 0
+				ignoreActors: 
+				ignoreControl: 
 				;ignoreHorizon: ;maybe?
 				init:
 				setScript: barTenderScript
@@ -139,7 +143,40 @@
 					((Said 'look') (Print 100 1))
 					((Said 'use/axe') (axeScript changeState: 1))
 					
-	
+					((Said 'talk/bartender,man') 
+						(if (ego inRect: 98 165 218 185)
+							(Print {"Welcome to the Space Bar. If you're low on arrows I can trade you one for 200 score points."} #title {Bartender})	
+						
+							(if (ego has: iCupidBow)
+								(if (> ((Inventory at: iCupidBow) loop?) 0)
+									(if (> score 200) 
+										(if (== (Print {"Buy an arrow for 200 points?"} #button {Sure} 1 #button {Nah} 2 #title {Bartender}) 1)
+											(if (> ((Inventory at: iCupidBow) loop?) 0)
+												(theGame changeScore: -200)
+												;(= gotItem 1) too noisy in bar for this
+												((Inventory at: iCupidBow) loop: (- ((Inventory at: iCupidBow) loop?) 1))
+												(Print {"Here you go. One cherub's arrow. No questions asked."} #title {Bartender})
+											else
+												(Print {"You already have max arrows."} #title {Bartender})
+											)
+										else	
+											(Print {"Fuck off then."} #title {Bartender})
+										)
+									
+									else
+										(Print {"...but you don't have enough score to buy arrows."} #title {Bartender})
+									)
+								else
+									(Print {"...but You already have two arrows. That's the legal limit. I've got to cut you off."} #title {Bartender})
+								)
+						else
+							(Print {"...but you don't even have a cherub's bow. Come back when you get one."} #title {Bartender})
+						)	
+						
+					else
+						(Print {Get closer to the bar, Rosella. I know most people in Daventry drink in a ditch, but try to keep up!})	
+					)
+					)
 				)
 			else
 				0
@@ -211,31 +248,50 @@
 	
 	(method (changeState newState &tmp [temp0 2])
 		(switch (= state newState)
-			(0 (= seconds (Random 2 5)))
-			(1
-				(barTender
-					setCycle: Walk
-					setLoop: -1
-					setMotion: MoveTo (Random 104 210) 193 self
-				)
+			(0
+				(= cycles 1)
+			)
+			(1 
+				;(Print {1})
+				(= seconds (Random 2 5))
 			)
 			(2
-				(if (> (Random 0 100) 80)
-					(self init:)
+				;(Print {22})
+				(= barX (Random 104 210))
+				(if (< barX (barTender x?))
+					(barTender
+						setCycle: Walk
+						setLoop: 1
+						setMotion: MoveTo barX 180 self
+					)
 				else
-					(= cycles (Random 2 6))
+					(barTender
+						setCycle: Walk
+						setLoop: 0
+						setMotion: MoveTo barX 180 self
+					)
 				)
 			)
 			(3
-				(if (> (Random 0 100) 50)
-					;(self setLoop: 3)
-					(= state 2)
+				;(Print {333})
+				(if (> (Random 0 100) 80)
+					(= state 0) 
+					(= cycles 1)
 				else
-					;(self setLoop: 2)
-					(= state 1)
+					(= cycles 1)
+				)
+			)
+			(4
+				;(Print {4444})
+				(if (> (Random 0 100) 50)
+					(barTender setLoop: 3)
+					(= state 0)
+				else
+					(barTender setLoop: 2)
+					(= state 0)
 				)
 				;(self init:)
-				(= cycles 1)
+				(= seconds (Random 2 5))
 			)
 		)
 	)
