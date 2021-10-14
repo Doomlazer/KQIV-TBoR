@@ -27,6 +27,7 @@
 	local5
 	genesta
 	genestaCloseup
+	genestaCloseup2
 	genestaFace
 	poof
 	larry
@@ -188,6 +189,7 @@
 										(Print 45 4)
 									)
 								)
+								((Said '/larry,man') (Print 45 52))
 								((Said '/blossom,flora') (Print 45 5))
 								((Said '/stair') (Print 45 6))
 								((Said '/chest,dresser,drawer>')
@@ -221,7 +223,7 @@
 							(if (ego has: iTalisman)
 								(if trollDead
 									(Print {Genesta snatches the talisman out of your hands.})
-									(Print {"I should have know someone from Daventry would make a mess of things. You killed my fucking cave troll! As punishment you can marry that C.H.U.D. Edgar."} #title {Genesta})
+									(Print 45 49 #title {Genesta})
 									(= inCutscene TRUE)
 									(= isHandsOff FALSE)
 									(curRoom newRoom: 692)
@@ -265,7 +267,9 @@
 						((Said 'kill/genesta') (Print 45 19))
 						((Said 'get/genesta') (Print 45 20))
 						((or (Said 'kiss/genesta') (Said 'kiss[/!*]')) (Print 45 21))
+						((Said 'fuck/genesta')(Print {I mean she's dying, so I'm going to guess that's not cool with her right now.}))
 						((Said 'help/genesta') (Print 45 22))
+						((Said 'talk/larry,man') (Print 45 50 #title {Larry}))
 						(else (event claimed: FALSE))
 					)
 					(if (not (event claimed?))
@@ -276,7 +280,35 @@
 							((Said 'get/fairies') (Print 45 26))
 							((Said 'capture/fairies') (Print 45 26))
 							((Said 'kiss/fairies') (Print 45 27))
-							((Said 'fuck,kiss/larry') (if larry (larryScript changeState: 20)))
+							((or (Said 'deliver/condom') (Said 'deliver/condom/larry,man')(Said 'deliver/larry,man/condom')) 
+								(if (ego has: iCondom)
+									(if (ego inRect: 163 153 200 163)
+										((Inventory at: iCondom) moveTo: 45)
+										(Print {"Well... it looks a little small. I'm not sure it will fit me."} #title {Larry})
+										(= gotItem 1)
+										(theGame changeScore: 10)
+									else
+										(Print {Try standing in front of him.})
+									)
+								else
+									(Print {You don't have the condom.})	
+								)
+							)
+							((Said 'fuck,kiss/larry') 
+								(Print 45 51 #title {Rosella})
+								(if larry 
+									(if ((Inventory at: iCondom) ownedBy: 45)
+										(larryScript changeState: 20)
+									else
+										(Print 45 48 #title {Larry})
+									)
+									
+								else
+									(Print {What now?})
+								)
+								
+							)
+						
 							((Said 'help/fairies') (Print 45 28))
 							((Said 'converse/cat[<snow,white]') (Print 45 29))
 							((Said 'kill/cat[<snow,white]') (Print 45 30))
@@ -393,8 +425,7 @@
 				(= seconds 3)	
 			)
 			(1
-				(Print {Warning: this scene is unfinished and has issues. You can get one item from larry with the right command.})
-				(Print 45 41)
+				(Print 45 41 #title {Larry})
 				(Print 45 42)
 				(self cue:)
 			)
@@ -404,7 +435,7 @@
 			(3
 				(larry setCycle: 0)
 				(HandsOn)
-				(Print 45 43)	
+				(Print 45 43 #title {Larry})	
 			)
 			(20
 				(HandsOff)
@@ -440,6 +471,15 @@
 				(= seconds 3)
 			)
 			(25
+				((= genestaCloseup2 (Prop new:))
+					view: 103
+					loop: 0
+					posn: (genesta x?) (genesta y?)
+					setPri: (genesta priority?)
+				;	cycleSpeed: 5
+				;	setCycle: EndLoop
+					init:
+				)
 				((= genestaCloseup (Prop new:))
 					view: 103
 					loop: 3
@@ -462,7 +502,8 @@
 			)
 			(28
 					
-				(genestaCloseup dispose:)	
+				(genestaCloseup dispose:)
+				(genestaCloseup2 dispose:)	
 				(ego get: iVirginity)
 				(= gotItem 1)
 				(theGame changeScore: 1)

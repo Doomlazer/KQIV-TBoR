@@ -527,6 +527,7 @@
 				Decoder_Ring
 				Briefcase
 				Skull
+				Condom
 		)
 
 		;(ego get: iTooth)
@@ -1830,6 +1831,16 @@
 		owner 3
 		view 1
 		name "Tooth"
+	)
+)
+
+(instance Condom of newInvItem
+	(properties
+		said '/condom'
+		owner 62
+		view 1
+		cel 1
+		name "Condom"
 	)
 )
 

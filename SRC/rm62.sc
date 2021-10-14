@@ -6,12 +6,19 @@
 (use Motion)
 (use Game)
 (use Actor)
+(use Invent)
+(use System)
 
 (public
 	Room62 0
 )
 (synonyms
 	(room bedroom)
+)
+
+(local
+	condom
+	
 )
 
 (instance Room62 of Room
@@ -43,6 +50,18 @@
 				setPri: 4
 				setCycle: Forward
 			)
+		)
+		(if ((Inventory at: iCondom) ownedBy: 62)
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 116 119
+				init:
+			;	setPri: 4
+			;	setCycle: Forward
+			)	
 		)
 		(if (== prevRoomNum 59)
 			(ego posn: 47 129 view: 4 xStep: 4 yStep: 2 init:)
@@ -81,7 +100,17 @@
 								((Said '/chest,dresser') (if (< (ego x?) 150) (Print 62 4) else (Print 62 5)))
 								((Said '/wall') (Print 62 6))
 								((Said '/chandelier') (Print 62 7))
-								((or (Said '/dirt') (Said '<down')) (Print 62 8))
+								((or (Said '/dirt') (Said '<down')) 
+									(if ((Inventory at: iCondom) ownedBy: 62)
+										(if (ego inRect: 20 10 130 180)
+											(Print {You notice a sealed condom in a purple wrapper lying on the floor, near the bead.})
+										else
+											(Print {You don't see much from here.})
+										)
+									else
+										(Print 62 8)
+									)
+								)
 								((Said '/mirror')
 									(if
 										(or
@@ -105,8 +134,49 @@
 							)
 							(Print 62 13)
 						)
+						((Said 'get/condom')
+							(if ((Inventory at: iCondom) ownedBy: 62)
+								(if (ego inRect:100 114 132 132)
+									
+									(getCondom changeState: 0)
+								else
+									(Print {Not close enough.})
+								)
+							else
+								(Print {Aren't you a bit young to have dementia, Rosella?})		
+							)				
+						)	
 					)
 				)
+			)
+		)
+	)
+)
+
+
+
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print {Rosella picks up the condom not knowing what it is, because birth control isn't practiced in Daventry.})
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 5)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)

@@ -50,6 +50,7 @@
 	iDecoderRing    ;38
 	iBriefcase      ;39
 	iSkull          ;40
+	iCondom          ;41
 )
 
 
