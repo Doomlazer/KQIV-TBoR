@@ -893,8 +893,8 @@
 
 (instance gritherTheme of Sound
 	(properties
-		number 81
-		loop -1
+		number 689 ;81
+		;loop -1
 	)
 )
 
@@ -904,6 +904,7 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
+				(gritherTheme play:)
 				(HandsOff)
 				(Load VIEW 580)
 				(Print 54 57)
@@ -914,7 +915,6 @@
 				(closetDoor setCycle: BegLoop self)
 			)
 			(2
-				(gritherTheme play:)
 				(ego ignoreControl: cGREEN)
 				(= grither (Prop new:))
 				(grither
@@ -1007,9 +1007,6 @@
 
 (instance bounceBitchScript of Script
 	(properties)
-	;EO: This script crashes the game with an "Out of Heap Space" error!
-	;In fact, this room uses so much heap that saving, restoring, and inventory are disabled.
-	;DL: I can't get it to crash, so solving one of the othere heap space crashes might have helped. I can save and load in this room now.
 	(method (changeState newState)
 		(switch (= state newState)
 			(0 (= seconds 60)) ;60

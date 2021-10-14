@@ -17,14 +17,19 @@
 )
 
 (local 
-	witch1
-	witch2
-	witch2Body
-	witch3Body
-	witch3	
+;;;	witch1
+;;;	witch2
+;;;	witch2Body
+;;;	witch3Body
+;;;	witch3	
 	barTender
 	barX
-	greeted
+;	greeted
+	pan
+)
+
+(instance panCage of Cage
+	(properties)
 )
 
 (instance Room100 of Room
@@ -37,18 +42,18 @@
 	)
 	
 	(method (init)
-		(Load VIEW 631)
+;		(Load VIEW 631)
 		(Load VIEW 584)
-			(Load VIEW 183)
-			(Load VIEW 184)
-			(Load VIEW 185)
-			(Load VIEW 186)
-			(Load VIEW 180)
-			(Load VIEW 64)
-			(Load VIEW 21)
+;;;			(Load VIEW 183)
+;;;			(Load VIEW 184)
+;;;			(Load VIEW 185)
+;;;			(Load VIEW 186)
+;;;			(Load VIEW 180)
+	;		(Load VIEW 64)
+	;		(Load VIEW 21)
 	
-		(Load VIEW 65)
-		(Load VIEW 66)
+	;	(Load VIEW 65)
+	;	(Load VIEW 66)
 		(super init:)
 		(self setScript: RoomScript)
 		(= isIndoors TRUE)
@@ -71,44 +76,74 @@
 				setScript: barTenderScript
 				;stopUpd:
 			)
-			((= witch2 (Actor new:))
-				view: 186
-				loop: 0
-				cel: 5
-				posn: 135 102
-				setLoop: 1
-				setCycle: Forward
-			;	ignoreControl:
-				ignoreActors:
-				ignoreHorizon: ;maybe?
-				init:
-				;stopUpd:
-			)
-			((= witch2Body (Prop new:))
-				view: 186
-				setLoop: 3
-				cel: 0
-				posn: 138 121
-				init:
-				stopUpd:
-			)
-			((= witch3 (Prop new:))
-				view: 184
-				loop: 0
-				cel: 5
-				posn: 165 100
-				setCycle: Forward
-				init:
-				;stopUpd:
-			)
-			((= witch3Body (Prop new:))
-				view: 184
-				setLoop: 2
-				cel: 0
-				posn: 165 120
-				init:
-				stopUpd:
-			)
+;;;			(if (ego has: 9) (Load rsVIEW 54) (Load rsVIEW 150))
+				(panCage
+					left: 140
+					right: 185
+					bottom: 120
+					top: 110
+					init:
+				)
+				(= pan (Actor new:))
+				(pan
+					view: 150
+					loop: 2
+					cel: 0
+					posn: 165 115
+					xStep: 2
+					yStep: 1
+					setScript: panActions
+					observeBlocks: panCage
+					;setCycle: Forward
+					;setMotion: Wander 15
+				;	setMotion: 0
+					illegalBits: 0
+					;setCycle: Forward
+					ignoreActors: 
+					ignoreControl: 
+					ignoreHorizon: 
+					init:
+					;yourself:
+				)
+;;;			((= witch2 (Actor new:))
+;;;				view: 186
+;;;				loop: 0
+;;;				cel: 5
+;;;				posn: 135 102
+;;;				setLoop: 1
+;;;				setCycle: Forward
+;;;			;	ignoreControl:
+;;;				;ignoreActors:
+;;;				;ignoreHorizon: ;maybe?
+;;;				illegalBits: 0
+;;;				;init:
+;;;				;stopUpd:
+;;;			)
+;;;			((= witch2Body (Prop new:))
+;;;				view: 186
+;;;				setLoop: 3
+;;;				cel: 0
+;;;				posn: 138 121
+;;;				init:
+;;;				stopUpd:
+;;;			)
+;;;			((= witch3 (Prop new:))
+;;;				view: 184
+;;;				loop: 0
+;;;				cel: 5
+;;;				posn: 165 100
+;;;				setCycle: Forward
+;;;				init:
+;;;				;stopUpd:
+;;;			)
+;;;			((= witch3Body (Prop new:))
+;;;				view: 184
+;;;				setLoop: 2
+;;;				cel: 0
+;;;				posn: 165 120
+;;;				init:
+;;;				stopUpd:
+;;;			)
 		
 		(switch prevRoomNum
 			(6
@@ -141,7 +176,7 @@
 				(cond 
 					((Said 'look/house') (Print 100 2))
 					((Said 'look') (Print 100 1))
-					((Said 'use/axe') (axeScript changeState: 1))
+					;((Said 'use/axe') (axeScript changeState: 1))
 					
 					((Said 'talk/bartender,man') 
 						(if (ego inRect: 98 165 218 185)
@@ -194,51 +229,12 @@
 	)
 )
 
-(instance axeScript of Script
-	(properties)
-	
-	(method (doit)
-		(super doit:)
-		; code executed each game cycle
 
-;;;		(if (& (ego onControl:) clYELLOW)
-;;;			;;(if (ego inRect: 129 107 159 121)
-;;;        (curRoom newRoom: 97) 
-;;;		)
-	)
-	
-		; handle Said's, etc...
-;;;		(method (handleEvent event &tmp inventorySaidMe)
-;;;		(if (event claimed?) (return TRUE))
-;;;		(return
-;;;			(if (== (event type?) saidEvent)
-;;;				(cond 
-;;;					((Said 'use/axe') (self changeState: 1))
-;;;					;((Said 'look') (Print 100 1))
-;;;					
-;;;	
-;;;				)
-;;;			else
-;;;				0
-;;;			)
-;;;		)
-;;;	)
-	
-	(method (changeState newState)
-		(= state newState)
-		(switch state
-			(0
-				)
-			(1 ; Handle state changes
-				(witch2 setMotion: JumpTo 115 180)
-			)
-		)
-	)
-)
 
 (instance musicSound of Sound
 	(properties
-		number 595
+		number 595 ;688 ;595
+		loop -1
 	)
 )
 
@@ -292,6 +288,26 @@
 				)
 				;(self init:)
 				(= seconds (Random 2 5))
+			)
+		)
+	)
+)
+
+(instance panActions of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(= seconds 4)
+			)
+			(1
+				(pan
+					observeBlocks: panCage
+					view: 157
+					setCycle: Forward
+					setMotion: Wander 15
+				)
 			)
 		)
 	)

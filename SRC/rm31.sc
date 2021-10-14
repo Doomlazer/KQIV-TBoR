@@ -38,8 +38,8 @@
 
 (instance sharkMusic of Sound
 	(properties
-		number 78 ;78 is the SCI disc version with 5 second delay
-		loop -1
+		number 78 ;is the SCI disc version that doesn't work great
+		;loop -1
 	)
 )
 
