@@ -14,6 +14,8 @@
 )
 
 (local
+	breastBanner
+	breastBanner2
 	sparkle1
 	sparkle2
 	sparkle3
@@ -38,25 +40,43 @@
 			view: 879
 			loop: 0
 			cel: 0
-			posn: 124 192
+			posn: 124 187; 192
 			addToPic:
 		)
 		((View new:)
 			view: 879
 			loop: 0
 			cel: 1
-			posn: 165 192
+			posn: 165 187 ;192
 			addToPic:
 		)
 		((View new:)
 			view: 879
 			loop: 0
 			cel: 2
-			posn: 206 192
+			posn: 206 187 ;192
 			addToPic:
 		)
 		(= oldDeadState dead)
 		(= dead FALSE)
+		((= breastBanner (Prop new:))
+			view: 585
+			cel: 0
+			posn: 80 50
+			;setLoop: 2
+			setPri: 14
+			init:
+			;setScript: banner
+		)
+		((= breastBanner2 (Prop new:))
+			view: 585
+			cel: 1
+			posn: 250 175
+			;setLoop: 2
+			setPri: 14
+			init:
+			;setScript: banner
+		)
 		((= sparkle1 (Prop new:))
 			view: 879
 			setLoop: 2
@@ -87,7 +107,11 @@
 		(if (== runTitleSequence 0)
 			(if
 				(==
-					(Print 699 0 #time 10 #button {Yes} 1 #button {No} 2)
+					(Print 699 0
+						#time 10
+						#button {Yes} 1
+						#button {No} 2
+					)
 					2
 				)
 				(theGame restart:)
@@ -99,10 +123,13 @@
 	)
 	
 	(method (handleEvent event)
-		(if (event claimed?) (return 1))
+		(if (event claimed?) (return TRUE))
 		(event claimed: TRUE)
 		(= local8 0)
-		(if oldDeadState (= oldDeadState FALSE) (theGame restart:))
+		(if oldDeadState
+			(= oldDeadState FALSE)
+			(theGame restart:)
+		)
 		(return
 			(cond 
 				(
@@ -120,34 +147,35 @@
 					)
 					(theGame restart:)
 				)
-				(else (cast eachElementDo: #dispose) (curRoom newRoom: 98))
+				(else
+					(cast eachElementDo: #dispose)
+					(curRoom newRoom: 98)
+				)
 			)
 		)
 	)
 )
 
 (instance spark1 of Script
-	(properties)
-	
-	(method (init param1)
-		(super init: param1)
+	(method (init who)
+		(super init: who)
 		(client init:)
 	)
 	
-	(method (changeState newState &tmp temp0)
+	(method (changeState newState &tmp rand)
 		(switch (= state newState)
 			(0
-				(= temp0 (/ (Random 10 40) 10))
+				(= rand (/ (Random 10 40) 10))
 				(client
 					posn:
-						(switch temp0
+						(switch rand
 							(1 96)
 							(2 135)
 							(3 230)
 							(4 260)
 							(else  150)
 						)
-						(switch temp0
+						(switch rand
 							(1 39)
 							(2 158)
 							(3 18)
@@ -169,26 +197,24 @@
 )
 
 (instance spark2 of Script
-	(properties)
-	
-	(method (init param1)
-		(super init: param1)
+	(method (init who)
+		(super init: who)
 		(client init:)
 	)
 	
-	(method (changeState newState &tmp temp0)
+	(method (changeState newState &tmp rand)
 		(switch (= state newState)
 			(0
-				(= temp0 (/ (Random 10 40) 10))
+				(= rand (/ (Random 10 40) 10))
 				(client
 					posn:
-						(switch temp0
+						(switch rand
 							(1 80)
 							(2 204)
 							(3 141)
 							(4 267)
 						)
-						(switch temp0
+						(switch rand
 							(1 83)
 							(2 121)
 							(3 80)
@@ -209,42 +235,29 @@
 )
 
 (instance spark3 of Script
-	(properties)
-	
-	(method (init param1)
-		(super init: param1)
+	(method (init who)
+		(super init: who)
 		(client init:)
 	)
 	
-	(method (changeState newState &tmp temp0)
+	(method (changeState newState &tmp rand)
 		(switch (= state newState)
 			(0
-				(= temp0 (/ (Random 10 40) 10))
+				(= rand (/ (Random 10 40) 10))
 				(client
-					posn: (switch temp0
-							(1 298)
+					posn:
+						(switch rand
+							(1 197)
 							(2 182)
-							(3 247)
+							(3 116)
 							(4 104)
 						)
-						(switch temp0
-							(1 142)
+						(switch rand
+							(1 47)
 							(2 158)
-							(3 165)
+							(3 49)
 							(4 185)
 						)
-						;(switch temp0
-						;	(1 197)
-						;	(2 182)
-						;	(3 116)
-						;	(4 104)
-						;)
-						;(switch temp0
-						;	(1 47)
-						;	(2 158)
-						;	(3 49)
-						;	(4 185)
-						;)
 					show:
 					cycleSpeed: (Random 0 2)
 					setCycle: EndLoop self
@@ -260,26 +273,24 @@
 )
 
 (instance spark4 of Script
-	(properties)
-	
-	(method (init param1)
-		(super init: param1)
+	(method (init who)
+		(super init: who)
 		(client init:)
 	)
 	
-	(method (changeState newState &tmp temp0)
+	(method (changeState newState &tmp rand)
 		(switch (= state newState)
 			(0
-				(= temp0 (/ (Random 10 40) 10))
+				(= rand (/ (Random 10 40) 10))
 				(client
 					posn:
-						(switch temp0
+						(switch rand
 							(1 141)
 							(2 102)
 							(3 268)
 							(4 210)
 						)
-						(switch temp0
+						(switch rand
 							(1 80)
 							(2 117)
 							(3 96)
@@ -306,12 +317,14 @@
 )
 
 (instance playMusic of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
-			(0 (bannerSound play: self))
-			(1 (curRoom newRoom: 98))
+			(0
+				(bannerSound play: self)
+			)
+			(1
+				(curRoom newRoom: 98)
+			)
 		)
 	)
 )
