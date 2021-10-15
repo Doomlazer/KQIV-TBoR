@@ -1,5 +1,5 @@
-# KQIV:TE:TBoR
-King’s Quest IV: Topless Edition: The Breasts of Rosella
+# KQIV:TBoR
+King’s Quest IV: The Breasts of Rosella
 
 ## warning v0.9.8 breaks all previous version save games - a new inventory item was added
 
@@ -25,9 +25,9 @@ Cameos - Characters, items, music and locations from other SCI0 games.
 
 Multiple solutions and hidden skips - Complete original KQ4 puzzles exactly as intended, albeit with dialog changes, or explore all new playthrough options and dimension-bending content. Nearly all the additions are optional.
 
-<a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki/Quality-of-Life-Changes">QoL Change list</a>
+<a href="https://github.com/Doomlazer/KQIV-TBoR/wiki/Quality-of-Life-Changes">QoL Change list</a>
 
-<a href="https://github.com/Doomlazer/KQIV-TE-TBoR/wiki">Wiki (walkthrough)</a>
+<a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">Wiki (walkthrough)</a>
 
 ## Progress
 
