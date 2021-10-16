@@ -76,7 +76,6 @@
 				init:
 			)	
 		)
-		
 			((= edgar (Actor new:))
 			;setScript: SonnyScript
 			setScript: 0

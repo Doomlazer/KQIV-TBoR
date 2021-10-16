@@ -12,16 +12,32 @@
 	forestReg 0
 )
 
+(local
+	birdSwitch
+)
+
+
 (instance forestReg of Region
 	(properties
 		name "Forest Region"
 	)
 	
 	(method (init)
+		(if (ego has: iTooth)
+			(if (== (Random 1 5) 4)
+				(= birdSwitch 586) ;cedric
+			else
+			(= birdSwitch 356) ;crow
+			)
+		else
+			(= birdSwitch 356) ;crow
+		)
+			
+			
 		(if (== (Random 1 5) 4)
 			(= crow (Actor new:))
 			(crow
-				view: 356
+				view: birdSwitch
 				illegalBits: 0
 				ignoreActors:
 				setPri: 14
@@ -67,7 +83,11 @@
 							((Said '/forest') (Print 508 6))
 							((Said '/crow,bird,crow')
 								(if (cast contains: crow)
-									(Print 508 7)
+									(if (== birdSwitch 586)
+										(Print 508 17)
+									else
+										(Print 508 7)
+									)
 								else
 									(Print 508 8)
 								)
@@ -79,7 +99,11 @@
 					((Said 'climb/forest') (Print 508 11))
 					((Said 'converse/crow,bird,crow')
 						(if (cast contains: crow)
-							(Print 508 12)
+							(if (== birdSwitch 586)
+								(Print 508 18)
+							else
+								(Print 508 12)
+							)
 						else
 							(Print 508 13)
 						)

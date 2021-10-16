@@ -40,21 +40,21 @@
 			view: 879
 			loop: 0
 			cel: 0
-			posn: 124 187; 192
+			posn: 124 189; 192
 			addToPic:
 		)
 		((View new:)
 			view: 879
 			loop: 0
 			cel: 1
-			posn: 165 187 ;192
+			posn: 165 189 ;192
 			addToPic:
 		)
 		((View new:)
 			view: 879
 			loop: 0
 			cel: 2
-			posn: 206 187 ;192
+			posn: 206 189 ;192
 			addToPic:
 		)
 		(= oldDeadState dead)
@@ -62,7 +62,7 @@
 		((= breastBanner (Prop new:))
 			view: 585
 			cel: 0
-			posn: 80 50
+			posn: 80 55
 			;setLoop: 2
 			setPri: 14
 			init:

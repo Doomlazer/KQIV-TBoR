@@ -295,11 +295,12 @@
 								)
 							)
 							((Said 'fuck,kiss/larry') 
-								(Print 45 51 #title {Rosella})
 								(if larry 
 									(if ((Inventory at: iCondom) ownedBy: 45)
+										(Print 45 53 #title {Rosella})
 										(larryScript changeState: 20)
 									else
+										(Print 45 51 #title {Rosella})
 										(Print 45 48 #title {Larry})
 									)
 									
