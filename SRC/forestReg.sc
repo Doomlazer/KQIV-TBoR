@@ -31,9 +31,7 @@
 			)
 		else
 			(= birdSwitch 356) ;crow
-		)
-			
-			
+		)	
 		(if (== (Random 1 5) 4)
 			(= crow (Actor new:))
 			(crow
@@ -81,6 +79,14 @@
 							((Said '/flora') (Print 508 4))
 							((Said '/blossom') (Print 508 5))
 							((Said '/forest') (Print 508 6))
+							((Said '/cedric')
+								(if (cast contains: crow)
+									(if (== birdSwitch 586)
+										(Print 508 17)
+									)
+									
+								)
+							)
 							((Said '/crow,bird,crow')
 								(if (cast contains: crow)
 									(if (== birdSwitch 586)
@@ -97,6 +103,22 @@
 					((Said 'climb/boulder') (Print 508 9))
 					((Said 'get/blossom') (Print 508 10))
 					((Said 'climb/forest') (Print 508 11))
+					((Said 'converse/cedric')
+						(if (cast contains: crow)
+							(if (== birdSwitch 586)
+								(Print 508 18)
+							else
+								(Print 508 19)
+							)
+						)
+					)
+					((or (Said 'show/breasts[/cedric]')(Said 'show/cedric/breasts'))
+						(if (cast contains: crow)
+							(if (== birdSwitch 586)
+								(Print 508 20 #title {Cedric}) 
+							)
+						)
+					)
 					((Said 'converse/crow,bird,crow')
 						(if (cast contains: crow)
 							(if (== birdSwitch 586)
