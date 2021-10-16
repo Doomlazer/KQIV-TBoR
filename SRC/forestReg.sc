@@ -106,7 +106,7 @@
 					((Said 'converse/cedric')
 						(if (cast contains: crow)
 							(if (== birdSwitch 586)
-								(Print 508 18)
+								(Print 508 18 #title {Cedric})
 							else
 								(Print 508 19)
 							)
@@ -122,7 +122,7 @@
 					((Said 'converse/crow,bird,crow')
 						(if (cast contains: crow)
 							(if (== birdSwitch 586)
-								(Print 508 18)
+								(Print 508 18 #title {Cedric})
 							else
 								(Print 508 12)
 							)

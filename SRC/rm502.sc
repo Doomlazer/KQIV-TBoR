@@ -105,12 +105,12 @@
 	)
 )
 
-(instance musicSound of Sound
-	(properties
-		number 591
-	)
-)
-
+;;;(instance musicSound of Sound
+;;;	(properties
+;;;		number 591
+;;;	)
+;;;)
+;;;
 
 
 (instance propScript of Script
