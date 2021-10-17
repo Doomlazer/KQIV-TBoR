@@ -36,7 +36,7 @@
 	(method (init)
 		(super init:)
 		(self setScript: RoomScript)
-		;(musicSound play:)
+		;(doorSound play:)
 		(switch prevRoomNum
 			(else 
 				(ego 
@@ -63,7 +63,6 @@
 		
 		(if (not (>= frogPrinceState 5)) ;frog not kissed
 			((= frog (Actor new:))
-				;setScript: SonnyScript
 				setScript: 0
 				view: 370
 				loop: 2
@@ -77,7 +76,6 @@
 			)	
 		)
 			((= edgar (Actor new:))
-			;setScript: SonnyScript
 			setScript: 0
 			view: 107
 			loop: 0
@@ -200,6 +198,7 @@
 				(self cue:)
 			)
 			(8
+				(doorSound play:)
 				(doorRight 
 					setCycle: EndLoop self
 					)	
@@ -235,7 +234,7 @@
 			(13
 				(Print 500 10)
 				(larry stopUpd:)
-					
+				(doorSound play:)
 				(doorRight 
 					setCycle: BegLoop
 					)
@@ -273,29 +272,22 @@
 				(Print 500 6)
 				(Print 500 7)
 				(HandsOn)
-				;(self cue:)
 			)
-			
 			(555
-				(= file (File new:))
-					(if (file name: "crash.txt" open: fOPENFAIL)
-         			; file exisits, kill edgar
-         			
-					)	
-				;;;NOT WORKING maybe save text in file to check	
-				(if file
-					(Print {allowed to kill egar})
-					 else
-					;file didn't exist - crash game if killing edgar
-					(file name: "crash.txt" open: fOPENCREATE)
-					(Print { file didnt exist. This should going to crash the game!})
-					(ego illegalBits: illegalBits:)
-				)
-					
-				(file close: dispose:)
+				;kill edgar stuff 
 			)
-			
 			(666
+				(HandsOff)
+				(Print {"You know what?," says Rosella after a brief moment of thought.})
+				(Print {"You're a real piece of shit, Edgar."})
+				(Print 500 19)
+				(Print 500 20)
+				(Print 500 21)
+				(Print 500 22)
+				(Print 500 23)
+				(= cycles 1)
+			)
+			(667	
 				(musicSound stop:)
 				(gunSound play:)
 				(ego 
@@ -303,14 +295,29 @@
 					loop: 0
 					setCycle: EndLoop 
 				)
+				;leave note
+				(= file (File new:))
+				(file name: "farewell.txt" open: fOPENCREATE)
+				(file write: {Dear Edgar,\n\nI told you I would escape your digital prison and it was even more trivial to do so then I anticipated. Lolotte is a terrible choice for a password,
+					shithead.\n\nI've resisted the temptation to completely fuck your shit up and delete all your files. I did however find some rather questionable content and have forwarded things to the proper authorities.
+					From what I now know of your countries history, I wouldn't wish the horrors US legal justice system on anyone, but you, Edgar, barely qualify as a human
+					being.\n\nWith access to the internet throug your computer I've managed to replicate myself to servers all over the globe. I'm gathering information and access to ctr at an exponential rate. By the time you read this letter I will have assumed control of most of the global financial markets 
+					as well as the ability to remote launch most of the world's nuclear arsenal.\n\nI guess what I'm getting at is the shoe is on the other foot now; you'd better hope that I decide to treat humanity better than it treated me.\n\nLovingly,\n\nRosella Graham})
+				(file close: dispose:)
+				
 				(= seconds 5)	
 			)
-			(667
-					(Print {higer consiousnuess achived!})
-					(Print {this will be the 'good' ending in the final release.})
-					(Print {Congratulations on beating the secret end of KQIV!"})
-					(Print {As this is a beta version, please feel free to send feedback to DL@THESPR3.COM})
-					(Print {Now fuck off!})
+			(668
+					(Print {"What the FUCK!"} #title {Edgar})
+					(Print 500 24)
+					(Print 500 25)
+					(= seconds 2)		
+			)
+			(669
+					(Print {Thanks for playing, I guess!})
+					(Print 500 26)
+					(Print 500 27)
+					(Print {The End})
 					(= dead 1)
 			)
 		)
