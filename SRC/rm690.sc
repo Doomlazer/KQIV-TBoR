@@ -25,8 +25,8 @@
 	ripple
 	edgarFace
 	edgarHands
-	wave1
-	wave2
+	wave3
+	wave4
 )
 (instance wave1 of Prop
 	(properties)
@@ -55,8 +55,6 @@
 		(super init:)
 		(self setRegions: END)
 		(= userFont smallFont)
-		(= wave1 (Prop new:))
-		(= wave2 (Prop new:))
 		(wave1
 			view: 664
 			loop: 3
@@ -344,9 +342,9 @@
 					ignoreActors:
 					init:
 				)
-				(= wave1 (Prop new:))
-				(= wave2 (Prop new:))
-				(wave1
+				(= wave3 (Prop new:))
+				(= wave4 (Prop new:))
+				(wave3
 					view: 787
 					loop: 4
 					cel: 1
@@ -356,7 +354,7 @@
 					setCycle: Forward
 					init:
 				)
-				(wave2
+				(wave4
 					view: 787
 					loop: 5
 					cel: 3

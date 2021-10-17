@@ -40,7 +40,7 @@
 	dirtyDishes10
 	diamondPouch
 	busy
-	grither
+	;grither
 )
 (instance Room54 of Room
 	(properties
@@ -916,7 +916,7 @@
 			)
 			(2
 				(ego ignoreControl: cGREEN)
-				(= grither (Prop new:))
+				;(= grither (Prop new:))
 				(grither
 					view: 580
 					loop: 1

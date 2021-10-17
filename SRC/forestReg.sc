@@ -25,7 +25,11 @@
 	(method (init)
 		(if (ego has: iTooth)
 			(if (== (Random 1 5) 4)
-				(= birdSwitch 586) ;cedric
+				(if (== (Random 1 5) 4)
+					(= birdSwitch 587) ;double easter egg!
+				else
+					(= birdSwitch 586) ;just cedric
+				)
 			else
 			(= birdSwitch 356) ;crow
 			)
@@ -108,7 +112,11 @@
 							(if (== birdSwitch 586)
 								(Print 508 18 #title {Cedric})
 							else
-								(Print 508 19)
+								(if (== birdSwitch 587)
+									(Print 508 21) ;cedro is going to the dump
+								else
+									(Print 508 19)
+								)
 							)
 						)
 					)
