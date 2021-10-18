@@ -1,9 +1,9 @@
 # KQIV:TBoR
 King’s Quest IV: The Breasts of Rosella
 
-## warning v0.9.8.1 breaks all previous version save games
+## warning v0.9.8 breaks all previous version save games
 
-BETA release version 0.9.8
+BETA release version 0.9.8.1
 Content rating: Mature, 18+ for violence and strong sexual themes.
 
 Developed using <a href="http://scicompanion.com/">SCI Companion</a>
