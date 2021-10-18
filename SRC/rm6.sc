@@ -30,6 +30,9 @@
 		(if (ego has: iTooth) (= picture 306))
 		(super init:)
 		(self setRegions: FOREST MOUNTAIN)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 705)
+		)
 		(switch prevRoomNum
 			(west
 				(cond 

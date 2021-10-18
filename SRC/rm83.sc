@@ -28,6 +28,7 @@
 	randomPick
 	toofmsg
 	choice
+	heart
 )
 (instance Room83 of Room
 	(properties
@@ -169,6 +170,7 @@
 						)
 						(
 						(or (Said 'use,(turn<on)/machine') (Said 'turn/wheel')) (Print 83 8))
+						((Said 'get/roger') (Print {Nobody truly 'gets' Roger Wilco. He's is own person, dig?}))
 						((Said 'get/whip') (Print 83 9))
 						((Said 'get/chain') (Print 83 4))
 						((Said 'get/tooth,toof') 
@@ -207,7 +209,7 @@
 						)
 						((Said 'call,help') (Print 83 16))
 						((Said 'kiss/roger')
-							(if (ego inRect: 80 120 140 135)
+							(if (ego inRect: 80 120 200 185)
 								(rogerActions changeState: 8)
 							else
 								(Print 83 49)
@@ -295,8 +297,6 @@
 										1
 									)
 									(ego get: iGoldenBridle)
-									;;small crown for testing only remove, keep bridle as QoL in mod
-									;(ego get: iSmallCrown)
 									(theGame changeScore: 3)
 									(Print 83 24)
 									(Print 83 27)
@@ -325,11 +325,12 @@
 				(User canControl: FALSE canInput: FALSE)
 				(ego setMotion: 0)
 				(Print 83 17)
-				(rogerego ignoreActors: 1) ;fix softlock?
+				(rogerego ignoreActors: 1) 
 				(if (ego inRect: 123 142 193 180)
 					(ego setMotion: MoveTo 150 130 self)
 				else
-					(self cue:)
+					(= state 1)
+					(= cycles 1)
 				)
 			)
 			(2
@@ -386,63 +387,91 @@
 				)
 			)
 			(8
-				(FaceObject ego rogerego)
-				;(ego setMotion: MoveTo 120 132 self)
-				(self cue:)
+				(HandsOff)
+				(rogerego ignoreActors: 1) 
+				(ego 
+					setCycle: Walk
+					setMotion: MoveTo 115 132 self
+				)
 			)
 			(9
-				(if kissed (Print 83 32) else (Print 83 29))
-				(self cue:)	
+				(FaceObject ego rogerego)
+				;(ego setMotion: MoveTo 120 132 self)
+				(= state 9)
+				(= cycles 5)
 			)
-			(10	
-				(HandsOff)
+			(10
+				(if kissed (Print 83 32) else (Print 83 29))
+				(ego 
+					view: 40
+					setCycle: EndLoop self
+				)	
+			)
+			(11
+				(= heart (Prop new:))
+				(heart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 14
+					ignoreActors:
+					posn: 105 120
+					setCycle: EndLoop self
+					init:
+				)
+			)
+			(12	
+				(heart dispose:)
 				(rogerego
 					view: 137
 					cel: 0
 					loop: 0
-					cycleSpeed: 5
+					cycleSpeed: 1
 					setCycle: Forward
 				)
+				(ego setCycle: BegLoop)
 				(rogerego setMotion: MoveTo 65 132 self)
-				;(= seconds 3)
 			)
-			(11
+			(13
 				(rogerego
 					view: 137
 					cel: 0
 					loop: 1
-					cycleSpeed: 5
+					cycleSpeed: 1
 					setCycle: EndLoop self
 				)
 				(if ((Inventory at: iTooth) ownedBy: 3)
-				((Inventory at: iTooth) moveTo: 83)
+					((Inventory at: iTooth) moveTo: 83)
 				)
-				;(= seconds 1)
-			)
-			(12
-				(rogerego
-					view: 3
-				)
-				(rogerego setMotion: MoveTo 100 132 self)
-			)
-			(13 
-				
-				(HandsOn)
-				(if kissed (Print 83 34) else (Print 83 26))
-				(= kissed 1) 
-				(self cue:)
-				
 			)
 			(14
 				(rogerego
 					view: 3
+				)
+				(rogerego setCycle: Walk setMotion: MoveTo 100 132 self)
+			)
+			(15
+				(if kissed (Print 83 34) else (Print 83 26))
+				(= kissed 1) 
+				(= state 15)
+				(= cycles 1)	
+				
+			)
+			(16
+				(ego view: 4 setScript: 0 setCycle: Walk)
+				(rogerego ignoreActors: 0)
+				(HandsOn)
+				(rogerego
+					view: 3
 					cel: 0
 					loop: 2
+					ignoreActors: 0
 				)
 			)
 			(20
 				(if rogerDead (Print 83 41) else (Print 83 39))
-				(self cue:) 
+				(= state 20)
+				(= cycles 1)	 
 				
 			)
 			(21
@@ -451,7 +480,7 @@
 					view: 576
 					cel: 0
 					loop: 1
-					cycleSpeed: 5
+					cycleSpeed: 1
 					setCycle: EndLoop self
 				)
 			)
@@ -460,7 +489,7 @@
 					view: 576
 					cel: 0
 					loop: 2
-					cycleSpeed: 5
+					cycleSpeed: 1
 					setCycle: EndLoop self
 				)
 			)
@@ -469,7 +498,7 @@
 					view: 576
 					cel: 0
 					loop: 1
-					cycleSpeed: 5
+					cycleSpeed: 1
 					setCycle: EndLoop self
 				)
 			)

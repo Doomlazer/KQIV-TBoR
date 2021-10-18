@@ -477,7 +477,7 @@
 				(Print 82 56 #at -1 10 #font smallFont)
 				(window1 setCycle: EndLoop self)
 				(window2 setCycle: EndLoop)
-				(= isNightTime FALSE)
+				(= isNightTime 0)
 			)
 			(6
 				(User canControl: TRUE canInput: TRUE)

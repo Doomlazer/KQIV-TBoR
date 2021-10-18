@@ -90,8 +90,12 @@
 									(if (>= (ego distanceTo: minstrel) 25)
 										(Print 516 2)
 									else
-										(sounds eachElementDo: #stop 0)
-										(minstrelActions changeState: 20)
+										(if (== ((inventory at: iLute) owner?) 203)
+											(sounds eachElementDo: #stop 0)
+											(minstrelActions changeState: 20)
+										else
+											(Print {"Sorry, I don't have anything else to give you, but I'll gladly take another gander!"} #title {Minstrel})
+										)
 									)
 							
 							)

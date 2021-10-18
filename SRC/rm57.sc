@@ -132,7 +132,7 @@
 				setCycle: Forward
 				setPri: 12
 				init:
-				stopUpd:
+				;stopUpd:
 				hide:
 			)
 			((= witch2 (Prop new:))
@@ -142,7 +142,7 @@
 				posn: 108 101
 				setLoop: 1
 				init:
-				stopUpd:
+				;stopUpd:
 			)
 			((= witch2Body (Prop new:))
 				view: 186
@@ -150,7 +150,7 @@
 				cel: 0
 				posn: 108 121
 				init:
-				stopUpd:
+				;stopUpd:
 			)
 			((= witch3 (Prop new:))
 				view: 184
@@ -158,7 +158,7 @@
 				cel: 5
 				posn: 135 100
 				init:
-				stopUpd:
+				;stopUpd:
 			)
 			((= witch3Body (Prop new:))
 				view: 184
@@ -166,7 +166,7 @@
 				cel: 0
 				posn: 135 120
 				init:
-				stopUpd:
+				;stopUpd:
 			)
 			(blockWitch2
 				top: 115
@@ -551,7 +551,7 @@
 				(witch2 loop: 0 setCycle: CycleTo 4 1 self)
 			)
 			(4
-				(witch3 stopUpd:)
+				;(witch3 stopUpd:)
 				(theEye
 					x: (- (witch2 x?) 1)
 					y: (- (witch2 y?) 12)
@@ -570,7 +570,7 @@
 				(witch3 setCycle: CycleTo 4 1 self)
 			)
 			(7
-				(witch2 stopUpd:)
+				;(witch2 stopUpd:)
 				(theEye
 					x: (+ (witch3 x?) 0)
 					y: (- (witch3 y?) 12)
@@ -592,7 +592,7 @@
 				(witch2 setCycle: CycleTo 4 1 self)
 			)
 			(10
-				(witch3 stopUpd:)
+				;(witch3 stopUpd:)
 				(theEye
 					x: (- (witch2 x?) 1)
 					y: (- (witch2 y?) 40)
@@ -683,8 +683,8 @@
 					view: 180
 					setMotion: MoveTo 95 (witch1 y?)
 				)
-				(witch2 stopUpd:)
-				(witch3 stopUpd:)
+				;(witch2 stopUpd:)
+				;(witch3 stopUpd:)
 				(witchMusic stop:)
 				(ego
 					view: 64
@@ -733,7 +733,7 @@
 				)
 			)
 			(1
-				(witch3Body stopUpd:)
+				;(witch3Body stopUpd:)
 				(witch2 hide: ignoreActors:)
 				(witch2Body
 					view: 183
@@ -744,7 +744,7 @@
 				)
 			)
 			(2
-				(witch2Body stopUpd:)
+				;(witch2Body stopUpd:)
 				(witch1 ignoreActors: 0 setMotion: MoveTo 125 133 self)
 			)
 			(3
@@ -880,7 +880,7 @@
 				)
 			)
 			(4
-				(scarab stopUpd:)
+				;(scarab stopUpd:) why is this shit everywhere?!?!
 				(= state 1)
 				(= seconds 5)
 			)

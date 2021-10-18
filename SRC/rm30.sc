@@ -56,7 +56,9 @@
 		(super init:)
 		(self setRegions: FOREST MOUNTAIN)
 		
-		(if (ego has: iPandorasBox)(= sequenceBreakNight TRUE)) ;;sequence break fix. It must be night before shooting lolotte with bow  
+		(if (& (ego has: iPandorasBox) lolotteAlive)
+			(= sequenceBreakNight TRUE)
+		) ;;sequence break fix. It must be night before shooting lolotte with bow  
 		
 		(Load VIEW 17)
 		(Load VIEW 18)
