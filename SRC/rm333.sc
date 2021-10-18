@@ -37,11 +37,23 @@
 	
 	(method (init)
 		(User canControl: 0 canInput: 0)
-		(= picture prevRoomNum)
+		(if (ego has: iTooth)
+			(if isNightTime
+				(= picture (+ prevRoomNum 100))
+			else
+				(= picture (+ prevRoomNum 300))
+			)
+		else
+			(if isNightTime
+				(= picture (+ prevRoomNum 100))
+			else
+				(= picture prevRoomNum)
+			)
+		)
 		(ego edgeHit: 0)
 		(ego xStep: 4 init:)
 		(super init:)
-		(if isNightTime (curRoom overlay: (+ picture 100)))
+		;(if isNightTime (curRoom overlay: (+ picture 100)))
 		(Load PICTURE 30)
 		(Load PICTURE 29)
 		(Load PICTURE 28)
@@ -275,6 +287,8 @@
 					posn: (- (unicorn x?) 4) (- (unicorn y?) 25)
 					setPri: 14
 					ignoreActors:
+					ignoreHorizon:
+					illegalBits: 0
 					setCycle: EndLoop self
 				)
 				(h2 hide:)
@@ -287,10 +301,12 @@
 					setCycle: Forward
 					setMotion: MoveTo 24 60 self
 				)
+				
 			)
 			(4
 				(ego setLoop: 3)
 				(Timer setReal: self 2)
+				
 			)
 			(5
 				(ego setLoop: 2)

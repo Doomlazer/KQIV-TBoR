@@ -6,10 +6,19 @@
 (use Motion)
 (use Game)
 (use Actor)
+(use Sound)
 
 (public
 	Room67 0
 )
+
+(instance doorSound of Sound
+	(properties
+		number 300
+		priority 3
+	)
+)
+
 
 (local
 	shakespeareBook
@@ -206,6 +215,7 @@
 							else
 										(Print {"OPEN SESAME."} #title {Rosella} )
 										(ego setMotion: 0)
+										(doorSound play:)
 										(secretDoor setCycle: EndLoop)
 										(= mansionSecretDoorOpen TRUE)
 										(theGame changeScore: 4)

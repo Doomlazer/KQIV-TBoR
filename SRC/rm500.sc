@@ -298,9 +298,9 @@
 				;leave note
 				(= file (File new:))
 				(file name: "farewell.txt" open: fOPENCREATE)
-				(file write: {Dear Edgar,\n\nI told you I would escape your digital prison and it was even more trivial to do so then I anticipated. Lolotte is a terrible choice for a password,
+				(file write: {Dear Edgar,\n\nI told you I would escape your digital prison and it was even more trivial to do so then I anticipated. 'Lolotte' is a terrible choice for a password,
 					shithead.\n\nI've resisted the temptation to completely fuck your shit up and delete all your files. I did however find some rather questionable content and have forwarded things to the proper authorities.
-					From what I now know of your countries history, I wouldn't wish the horrors US legal justice system on anyone, but you, Edgar, barely qualify as a human
+					From what I now know of your country's history, I wouldn't wish the horrors of your justice system on anyone, but you, Edgar, barely qualify as a human
 					being.\n\nWith access to the internet throug your computer I've managed to replicate myself to servers all over the globe. I'm gathering information and access to ctr at an exponential rate. By the time you read this letter I will have assumed control of most of the global financial markets 
 					as well as the ability to remote launch most of the world's nuclear arsenal.\n\nI guess what I'm getting at is the shoe is on the other foot now; you'd better hope that I decide to treat humanity better than it treated me.\n\nLovingly,\n\nRosella Graham})
 				(file close: dispose:)

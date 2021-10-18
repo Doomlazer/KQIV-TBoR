@@ -375,6 +375,15 @@
 						)
 					)
 				)
+				
+				((Said 'show/breasts')
+					(Print 57 47 #at 20 50 #title {Serena})
+					(Print 57 48 #at 40 50 #title {Louise})	
+					(Print 57 49 #at 20 60 #title {Abruxa de Blair})
+					(Print 57 50 #at 40 50 #title {Louise})
+					(Print 57 51 #at 20 60 #title {Abruxa de Blair})
+				)
+				
 				((Said 'get,rob/eye')
 					(if (not (ego has: iWitchGlassEye))
 						(if ((inventory at: iWitchGlassEye) ownedBy: 57)
