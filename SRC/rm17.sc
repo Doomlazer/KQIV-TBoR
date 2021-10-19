@@ -57,9 +57,12 @@
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
 		(self setRegions: FOREST)
-		(if (ego has: iTooth) (= picture 317))
 		(if isNightTime (= picture 117))
+		(if (ego has: iTooth) (= picture 317))
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 417)
+		)
 		;;fuck off door zombie
 ;;;		(if (and isNightTime (not (ego has: iObsidianScarab)))
 ;;;			(Load VIEW 270)

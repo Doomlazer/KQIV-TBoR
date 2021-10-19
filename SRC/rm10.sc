@@ -42,9 +42,12 @@
 		(= horizon 72)
 		(= isIndoors FALSE)
 		(= noWearCrown 1)
-		(if (ego has: iTooth) (= picture 310))
 		(if isNightTime (= picture 110))
-		(super init:)	
+		(if (ego has: iTooth) (= picture 310))
+		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 410)
+		)	
 		(self setRegions: FOREST OGRE)
 		(switch prevRoomNum
 			(16

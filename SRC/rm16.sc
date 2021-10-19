@@ -56,9 +56,12 @@
 			(ego y: (+ horizon 1))
 		)
 		(if (== prevRoomNum 22) (ego x: 158))
-		(if (ego has: iTooth) (= picture 316))
 		(if isNightTime (= picture 116))
+		(if (ego has: iTooth) (= picture 316))
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 416)
+		)
 		(self setRegions: CEMETERY)
 		(if isNightTime
 			(Load VIEW 261)

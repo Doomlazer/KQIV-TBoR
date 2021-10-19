@@ -26,6 +26,10 @@
 	)
 )
 
+(instance doorSound of Sound
+	(properties)
+)
+
 (instance Room28 of Room
 	(properties
 		picture 28
@@ -39,10 +43,13 @@
 		(= horizon 126)
 		(= isIndoors FALSE)
 		(HandsOn)
-		(if (ego has: iTooth) (= picture 328))
 		(if isNightTime (= picture 128))
+		(if (ego has: iTooth) (= picture 328))
 		(ego edgeHit: 0 illegalBits: ctlWHITE)
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 428)
+		)
 		(self setRegions: FOREST)
 		(Load VIEW 17)
 		(Load VIEW 21)
@@ -153,8 +160,9 @@
 								)
 							)
 							((Said 'open/door')
-								(Print {Wallah!});(Print 28 8)
+								;(Print 28 8)
 								(ego ignoreControl: 16384)
+								(doorSound number: 300 play:)
 								(mineDoor
 									view: 600
 									loop: 1

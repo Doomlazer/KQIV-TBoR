@@ -32,9 +32,12 @@
 		(if (and (== prevRoomNum 20) (> (ego x?) 209))
 			(ego x: 209)
 		)
-		(if (ego has: iTooth) (= picture 314))
 		(if isNightTime (= picture 114))
+		(if (ego has: iTooth) (= picture 314))
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 414)
+		)
 		(= local0
 			(+
 				(* (- gameHours hourLastMetMinstrel) 60)

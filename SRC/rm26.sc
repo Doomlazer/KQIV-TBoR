@@ -34,9 +34,12 @@
 		(= horizon 75)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
-		(if (ego has: iTooth) (= picture 326))
 		(if isNightTime (= picture 126))
+		(if (ego has: iTooth) (= picture 326))
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 426)
+		)
 		(self setRegions: WATER RIVER MEADOW UNICORN)
 		(switch prevRoomNum
 			(2

@@ -51,9 +51,12 @@
 		(= horizon 85)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
-		(if (ego has: iTooth) (= picture 330))
 		(if isNightTime (= picture 130))
+		(if (ego has: iTooth) (= picture 330))
 		(super init:)
+		(if (& (ego has: iTooth) isNightTime)
+			(curRoom overlay: 430)
+		)
 		(self setRegions: FOREST MOUNTAIN)
 		
 		(if (& (ego has: iPandorasBox) lolotteAlive)
