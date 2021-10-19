@@ -40,7 +40,6 @@
 	(method (init)
 		(= isIndoors TRUE)
 		(super init:)
-		(poofSound play:)
 		(= car(Prop new:)) ;
 				(car
 					view: 563

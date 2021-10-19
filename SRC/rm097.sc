@@ -202,18 +202,20 @@
 		(return
 			(if (== (event type?) saidEvent)
 				(cond 
-				
-					(
-							(or
-								(Said 'look[<around][/!*]')
-								(Said 'look/room,house')
+					((or
+						(Said 'look[<around][/!*]')
+						(Said 'look/room,house')
+					)
+						(if (== ((inventory at: iBriefcase) owner?) 97)
+							(if sdead
+								(Print 97 46)
+							else	
+								(Print 97 1)
 							)
-							(if (== ((inventory at: iBriefcase) owner?) 97)
-							(Print 97 1)
 							(Print 97  17) ; briefcase
-							else 
+						else 
 							(Print 97 1)
-							)
+						)	
 					)
 					((Said 'converse/sonny') 
 						(if (and (not talked)(not sdead))
@@ -223,47 +225,79 @@
 							(Print 97 41)
 						)
 					)
+					((Said 'converse')
+						(if (not sdead)
+							(Print {Who the fuck are you trying to talk to, Rosella?})
+						else
+							(if marieUntied
+								(Print 97 43)
+							else
+								(Print {Untie Marie if you want her to respond.})
+							)
+						)	
+					)
+					((Said 'converse/alien') (Print 97 42))
+					
 					((Said 'look/alien') (Print 97 22))
 					((Said 'look/couch') (Print 97 21))
 					((Said 'look/tv') (Print 97 23))
-					
 					((Said 'look/marie') (Print 97 2))
 					((Said 'look/briefcase') (Print 97 18))
+					((Said 'look/sonny') 
+						(if sdead
+							(if arrowed
+								(Print 97 44)	
+							else
+								(Print 97 45)
+							)
+						else	
+							(Print 97 5)
+						)
+					)
+					
 					((Said 'kiss/marie') (if sdead (Print 97 16) else (Print 97 3)))
-					((Said 'look/sonny') (Print 97 5))
 					((Said 'kiss/sonny') (if sdead (Print 97 6) else (Print 97 7)))
-					((Said 'show/breasts/sonny') (Print 97 8))
+					((Said 'show/breasts[/sonny]') 
+						(if sdead
+							(Print 97 47)
+						else
+							(Print 97 8)
+						)
+					)
 					((Said 'show/breasts/marie') (Print 97 9))
-					((Said 'shoot,kill/marie[/bow]') (Print {Nah, you wouldn't do that to Sweetcheeks Marie.}))
-					((Said 'shoot,kill/alien[/bow]') (Print {You wouldn't want to risk involving Daventry in some sort of intergalactic incident.}))
+					((Said 'shoot,kill/marie[/bow]') (Print 97 48))
+					((Said 'shoot,kill/alien[/bow]') (Print 97 49))
 					((Said 'shoot,kill/sonny[/bow]')
 						(if sdead
-							(Print {I'm sure it felt good the first time, but you can only kill Sonny Bonds once :(})
+							(Print 97 50)
 						else
 							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
 								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
 								(SonnyScript changeState: 20)
 								(= arrowed 1)
 							else
-								(Print {You don't have the means to kill something so purely evil as a cop.})
+								(Print 97 51)
 							)	
 						)
 					)
-					((Said 'untie,release/marie') (MarieScript changeState: 20))
-					
+					((Said 'untie,release/marie')
+						(if sdead
+							(if (< (ego distanceTo: marie) 10) 
+								(MarieScript changeState: 20)
+							else
+								(Print 97 53)
+							)
+						else
+							(Print 97 54)
+						)
+					)
 					((Said 'get/briefcase') 
 							(if ((Inventory at: iBriefcase) ownedBy: 97)
 								
 								(if (ego inRect: 90 125 160 166)
 								;; sonny and marie need to react to this if they are still alive
 									(if sdead
-										(briefcase dispose:)
-										(theGame changeScore: 69)
-										((Inventory at: iBriefcase) moveTo: ego)
-										(= gotItem 1)
-										(if marieUntied
-											(Print {"That was my husband's you fucking bitch! Get the fuck out of my house!!!"} #title {Marie})	
-										)
+										(ego setScript: getCase)
 									else
 										(Print {"You just signed your death warrant. Hasta la vista, little lady."})
 										(SonnyScript changeState: 777)
@@ -692,6 +726,35 @@
 				(Print 97 37 #title {Sonny})
 				(Print 97 38 #title {Rosella})
 				(Print 97 39 #title {Sonny})
+			)
+		)
+	)
+)
+
+(instance getCase of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 40)
+				(FaceObject ego briefcase)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(briefcase dispose:)
+				(theGame changeScore: 69)
+				((Inventory at: iBriefcase) moveTo: ego)
+				(= gotItem 1)
+				(if marieUntied
+					(Print 97 52 #title {Marie})	
+				)
+			)
+			(2
+				(ego view: 4 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)
