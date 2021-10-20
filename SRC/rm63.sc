@@ -117,6 +117,8 @@
 						((Said 'get,open,look/birdcage,birdcage')
 							(Print 63 1)
 						)
+						((Said 'show/breasts[/boy,ghost]') (Print 63 27))
+						((Said 'breastfeed[/boy,ghost]') (Print 63 28))
 						((Said 'play/boy,ghost')
 							(if (== curRoomNum ghostRoomNum)
 								(Print 63 2)
