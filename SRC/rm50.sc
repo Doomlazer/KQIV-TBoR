@@ -9,6 +9,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room50 0
@@ -20,6 +21,7 @@
 	smoke
 	candle1
 	candle2
+	heart
 )
 (instance theSelection of Sound
 	(properties)
@@ -96,7 +98,7 @@
 						)
 					)
 					(
-					(or (Said 'converse/giantess') (Said 'converse[/!*]'))
+					(or (Said 'converse/giantess') (Said 'converse[/noword]'))
 						(if (== (ogressChase state?) 0)
 							(Print 50 10)
 							(ogressChase seconds: 0 changeState: 2)
@@ -104,10 +106,34 @@
 							(Print 50 11)
 						)
 					)
+					((Said 'show/breasts') 
+						(if (== (ogressChase state?) 0)
+							(Print 50 20)
+							(ogressChase seconds: 0 changeState: 2)
+						else
+							(Print 50 21)
+						)
+					)
 					((Said 'get,rob/buck') (Print 50 12))
-					((Said 'kill/giantess') (Print 50 13))
+					;((Said 'kill/giantess') (Print 50 13))
+					((or (Said 'shoot,kill/giantess[/bow]')(Said 'shoot/bow[/giantess]'))
+						(if (cast contains: ogress)
+							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+								(self setScript: ogressBowScript)
+								(ogressBowScript changeState: 20)
+							else
+								(if (ego has: iCupidBow) 
+									(Print {You're out of arrows.})
+								else
+									(Print {Maybe try bring the bow next time?})
+								)
+							)	
+						)
+					)
+					
 					((Said 'get,capture/giantess') (Print 50 14))
-					((Said 'help,,/buck') (Print 50 15))
+					((Said 'help,save/buck') (Print 50 15))
 					(
 						(and
 							(Said 'deliver>')
@@ -213,6 +239,52 @@
 			)
 			(1
 				(if (!= theSelection 11) (= state -1) (self cue:))
+			)
+		)
+	)
+)
+
+
+(instance ogressBowScript of Script 
+(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)	
+			(20
+				(FaceObject ego ogress)
+				(cls)
+				(Print 50 22)
+				(ego
+					view: 68
+					setCycle: EndLoop self
+				)	
+			)
+			(21
+				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= gotItem 1)
+				(= heart (Prop new:))
+				(heart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 15
+					posn: (ogress x?) (- (ogress y?) 15)
+					setCycle: EndLoop
+					init:
+				)
+				(= seconds 3)
+			)
+			(22
+				(heart dispose:)
+				(FaceObject ogress ego)
+				(Print 50 23)
+				(= cycles 1)
+			
+			)
+			(23
+				(if (== (ogressChase state?) 0)
+					(ogressChase seconds: 0 changeState: 2)
+				)
 			)
 		)
 	)

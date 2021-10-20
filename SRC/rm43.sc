@@ -344,6 +344,7 @@
 								(User canControl: FALSE)
 								(= inCutscene TRUE)
 								(theGame changeScore: 2)
+								(= rodeDolphin 1)
 								(dolphActions changeState: 10)
 							else
 								(Print 800 1)

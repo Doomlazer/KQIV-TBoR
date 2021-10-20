@@ -518,7 +518,11 @@
 				(= local9 6)
 				(cls)
 				(= roomDialog
-					(Print 92 34 #at 5 15 #font smallFont #width 125 #dispose)
+					(if rodeDolphin
+						(Print 92 34 #at 50 80 #font smallFont #width 125 #title {Rosella} #dispose)
+					else
+						(Print 92 58 #at 50 80 #font smallFont #width 125 #title {Rosella} #dispose)
+					)
 				)
 				(= local8 1)
 				(= seconds 6)
@@ -599,7 +603,8 @@
 				(= local9 6)
 				(cls)
 				(= roomDialog
-					(Print 92 41 #at 5 15 #font smallFont #width 125 #dispose)
+					;(Print 92 41 #at 5 15 #font smallFont #width 125 #dispose)
+					(Print 92 41 #at 50 80 #font smallFont #width 125 #title {Rosella} #dispose)
 				)
 				(= local8 1)
 				(= seconds 10)
