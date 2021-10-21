@@ -8,6 +8,7 @@
 
 (public
 	regOgreHouse 0
+	ogreHere 1
 )
 (synonyms
 	(giant troll man)

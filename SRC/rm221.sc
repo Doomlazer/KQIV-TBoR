@@ -636,22 +636,22 @@
 	)
 )
 
-(instance stopRosella of Script
-	(properties)
-	
-	(method (cue)
-		(rosella stopUpd:)
-	)
-)
-
-(instance hideRosella of Script
-	(properties)
-	
-	(method (cue)
-		(rosella hide:)
-	)
-)
-
+;;;(instance stopRosella of Script
+;;;	(properties)
+;;;	
+;;;	(method (cue)
+;;;		(rosella stopUpd:)
+;;;	)
+;;;)
+;;;
+;;;(instance hideRosella of Script
+;;;	(properties)
+;;;	
+;;;	(method (cue)
+;;;		(rosella hide:)
+;;;	)
+;;;)
+;;;
 (instance stopMirror of Script
 	(properties)
 	

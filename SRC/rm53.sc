@@ -8,6 +8,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room53 0
@@ -45,6 +46,7 @@
 	dwarf
 	local27
 	[str 200]
+	condom
 )
 (instance Room53 of Room
 	(properties
@@ -73,6 +75,18 @@
 			posn: 42 87
 			setPri: 10
 			addToPic:
+		)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 245 152
+				init:
+				setPri: 15
+			;	setCycle: Forward
+			)	
 		)
 		(if (or (== prevRoomNum 54) (== prevRoomNum 0))
 			(ego
@@ -370,7 +384,13 @@
 					)
 					((Said '/shelf') (Print 53 8))
 					((Said '/wall') (Print 53 9))
-					((or (Said '/dirt') (Said '<down')) (Print 53 10))
+					((or (Said '/dirt') (Said '<down'))
+						(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+							(Print {You notice a purple condom on the floor near the dresser.})
+						else
+							(Print 53 10)
+						)	
+					)
 					((Said '/carpet,carpet') (Print 53 11))
 					((Said 'look[<around][/room]')
 						(Print
@@ -400,6 +420,17 @@
 					(Said 'sleep,lay[<down,on,in]')
 				)
 				(Print 53 15)
+			)
+			((Said 'get/condom')
+				(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+					(if	(< (ego distanceTo: condom) 8)							
+						(getCondom changeState: 0)
+					else
+						(Print {Not close enough.})
+					)
+				else
+					(Print {Aren't you a bit young to have dementia, Rosella?})		
+				)				
 			)
 		)
 	)
@@ -560,6 +591,32 @@
 			(3
 				(dwarf setMotion: Follow ego 20)
 				(ego setMotion: MoveTo 10 135 self)
+			)
+		)
+	)
+)
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print 53 17)
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 500)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)

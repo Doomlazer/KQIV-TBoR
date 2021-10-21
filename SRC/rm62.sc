@@ -51,7 +51,7 @@
 				setCycle: Forward
 			)
 		)
-		(if ((Inventory at: iCondom) ownedBy: 62)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
 			(= condom (Prop new:))
 			(condom
 				view: 1
@@ -101,9 +101,9 @@
 								((Said '/wall') (Print 62 6))
 								((Said '/chandelier') (Print 62 7))
 								((or (Said '/dirt') (Said '<down')) 
-									(if ((Inventory at: iCondom) ownedBy: 62)
+									(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
 										(if (ego inRect: 20 10 130 180)
-											(Print {You notice a sealed condom in a purple wrapper lying on the floor, near the bead.})
+											(Print {You notice a sealed condom in a purple wrapper lying on the floor, near the bed.})
 										else
 											(Print {You don't see much from here.})
 										)
@@ -135,9 +135,8 @@
 							(Print 62 13)
 						)
 						((Said 'get/condom')
-							(if ((Inventory at: iCondom) ownedBy: 62)
-								(if (ego inRect:100 114 132 132)
-									
+							(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
+								(if	(< (ego distanceTo: condom) 8)
 									(getCondom changeState: 0)
 								else
 									(Print {Not close enough.})
@@ -153,8 +152,6 @@
 	)
 )
 
-
-
 (instance getCondom of Script
 	(properties)
 	
@@ -168,7 +165,7 @@
 			)
 			(1
 				(ego setCycle: BegLoop self)
-				(Print {Rosella picks up the condom not knowing what it is, because birth control isn't practiced in Daventry.})
+				(Print 62 14)
 				((Inventory at: iCondom) moveTo: ego)
 				(= gotItem 1)
 				(theGame changeScore: 5)

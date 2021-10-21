@@ -8,6 +8,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Invent)
 
 
 (public
@@ -31,6 +32,7 @@
 	wifeAtCounter
 	[str 200]
 	deadswitch
+	condom
 )
 (instance Room42 of Room
 	(properties
@@ -58,6 +60,18 @@
 			setPri: -1
 			posn: 63 125
 			init:
+		)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 195 163
+				init:
+			;	setPri: 4
+			;	setCycle: Forward
+			)	
 		)
 		((= newProp (Prop new:))
 			view: 513
@@ -319,7 +333,14 @@
 							)
 							((Said '/door') (Print 42 17))
 							((Said '/wall') (Print 42 18))
-							((or (Said '/dirt') (Said '<down')) (Print 42 19))
+							((or (Said '/dirt') (Said '<down'))
+									(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
+										(Print {You notice a sealed condom in a purple wrapper lying on the floor, near the bed.})
+									else
+										(Print 42 19)
+									)
+								 
+							)
 							((Said '/pole')
 								(cond 
 									(
@@ -515,10 +536,20 @@
 							((Said '/caldron') (Print 42 55))
 							((Said '/can') (Print 42 56))
 							((Said '/fish') (Print 42 57))
+							((Said '/condom')
+								(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 1))
+									(if	(< (ego distanceTo: condom) 16)
+										(getCondom changeState: 0)
+									else
+										(Print {Not close enough.})
+									)
+								else
+									(Print {Aren't you a bit young to have dementia, Rosella?})		
+								)				
+							)
 						)
 					)
 					((Said 'create/bed') (Print 42 58))
-					
 				)
 			else
 				0
@@ -836,17 +867,44 @@
 	)
 )
 
-(instance chairBase of Code
-	(properties)
-	
-	(method (doit param1)
-		(param1 brTop: (- (param1 y?) 5))
-		(param1 brLeft: (- (param1 x?) 16))
-		(param1 brBottom: (+ (param1 y?) 1))
-		(param1 brRight: (+ (param1 x?) 5))
-	)
-)
+;;;(instance chairBase of Code
+;;;	(properties)
+;;;	
+;;;	(method (doit param1)
+;;;		(param1 brTop: (- (param1 y?) 5))
+;;;		(param1 brLeft: (- (param1 x?) 16))
+;;;		(param1 brBottom: (+ (param1 y?) 1))
+;;;		(param1 brRight: (+ (param1 x?) 5))
+;;;	)
+;;;)
 
 (instance chairBlock of Block
 	(properties)
+)
+
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print 42 79)
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 5)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
+			)
+		)
+	)
 )

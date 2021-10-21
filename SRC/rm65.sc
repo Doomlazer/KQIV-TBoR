@@ -332,9 +332,13 @@
 										(Print 65 31)	
 									)
 								)
+								(else
+									(Print {That's not an item you can thow into the void.})
+								)
 							)
 						)
-						((Said 'shout/thespr3') ;
+						
+						((or (Said 'shout/thespr3') (Said 'thespr3'));
 							(if (and
 								((inventory at: iVirginity) ownedBy: 65)
 								((inventory at: iSkull) ownedBy: 65)

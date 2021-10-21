@@ -26,6 +26,7 @@
 	window1
 	window2
 	[str 200]
+	condom
 )
 (procedure (UnlockDoor)
 	(= unlockedLolotteDoor TRUE)
@@ -66,6 +67,18 @@
 		(self setRegions: LOLOTTE)
 		(super init:)
 		(NotifyScript LOLOTTE 0)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 73 140
+				init:
+				;setPri: 15
+			;	setCycle: Forward
+			)	
+		)
 		((View new:)
 			view: 633
 			loop: 4
@@ -229,7 +242,14 @@
 											)
 										)
 										((Said '/wall') (Print 82 7))
-										((Said '/dirt') (Print 82 8))
+										((Said '/dirt') 
+											(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+												(Print {You notice a purple condom on the floor. Maybe one of the guards dropped it.})
+											else
+												(Print 82 8)
+											)
+										
+										)
 										((Said '/carpet') (Print 82 9))
 										((Said '/mirror')
 											(if (ego inRect: 42 123 108 144)
@@ -282,6 +302,17 @@
 									else
 										(event claimed: FALSE)
 									)
+								)
+								((Said 'get/condom')
+									(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
+										(if	(< (ego distanceTo: condom) 8)							
+											(getCondom changeState: 0)
+										else
+											(Print {Not close enough.})
+										)
+									else
+										(Print {Aren't you a bit young to have dementia, Rosella?})		
+									)				
 								)
 								((Said 'get/amulet')
 									(cond 
@@ -616,6 +647,32 @@
 				(User canControl: TRUE canInput: TRUE)
 				(edgar dispose:)
 				(= state -1)
+			)
+		)
+	)
+)
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print 82 60)
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 500)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)

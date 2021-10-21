@@ -22,6 +22,7 @@
 	candle1
 	candle2
 	heart
+	calcValue
 )
 (instance theSelection of Sound
 	(properties)
@@ -117,10 +118,11 @@
 					((Said 'get,rob/buck') (Print 50 12))
 					;((Said 'kill/giantess') (Print 50 13))
 					((or (Said 'shoot,kill/giantess[/bow]')(Said 'shoot/bow[/giantess]'))
-						(if (cast contains: ogress)
+						(if (== (ogressChase state?) 0)
 							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
 								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
-								(self setScript: ogressBowScript)
+								(= enteredOgreKitchen TRUE)
+								(ego setScript: ogressBowScript)
 								(ogressBowScript changeState: 20)
 							else
 								(if (ego has: iCupidBow) 
@@ -129,6 +131,8 @@
 									(Print {Maybe try bring the bow next time?})
 								)
 							)	
+						else
+							(Print 50 24)
 						)
 					)
 					
@@ -160,7 +164,7 @@
 	(method (doit)
 		(super doit:)
 		(if
-		(and (< (ego distanceTo: client) 25) (== state 0))
+		(and (< (ego distanceTo: client) 25) (== state 0) (< (ogressBowScript state?) 20))
 			(= seconds 0)
 			(self cue:)
 		)
@@ -179,7 +183,12 @@
 				)
 				(= seconds 5)
 			)
-			(1 (Print 50 18) (self cue:))
+			(1 
+				(if (< (ogressBowScript state?) 20)
+					(Print 50 18) 
+					(self cue:)
+				)
+			)
 			(2
 				(theSelection number: 10 loop: 1 play:)
 				(= enteredOgreKitchen TRUE)
@@ -222,27 +231,27 @@
 	)
 )
 
-(instance playMusic of Script
-	(properties)
-	
-	(method (changeState newState)
-		(switch (= state newState)
-			(0
-				(switch theSelection
-					(10
-						(ogressChaseMusic play: self)
-					)
-					(11
-						(ogressCatchMusic play: self)
-					)
-				)
-			)
-			(1
-				(if (!= theSelection 11) (= state -1) (self cue:))
-			)
-		)
-	)
-)
+;;;(instance playMusic of Script
+;;;	(properties)
+;;;	
+;;;	(method (changeState newState)
+;;;		(switch (= state newState)
+;;;			(0
+;;;				(switch theSelection
+;;;					(10
+;;;						(ogressChaseMusic play: self)
+;;;					)
+;;;					(11
+;;;						(ogressCatchMusic play: self)
+;;;					)
+;;;				)
+;;;			)
+;;;			(1
+;;;				(if (!= theSelection 11) (= state -1) (self cue:))
+;;;			)
+;;;		)
+;;;	)
+;;;)
 
 
 (instance ogressBowScript of Script 
@@ -251,6 +260,7 @@
 	(method (changeState newState)
 		(switch (= state newState)	
 			(20
+				(= seconds 0)
 				(FaceObject ego ogress)
 				(cls)
 				(Print 50 22)
@@ -262,29 +272,32 @@
 			(21
 				(ego view: 4 setMotion: 0 setCycle: Walk)
 				(= gotItem 1)
+				(= ogressShot (+ ogressShot 1))
+				(= calcValue (/ 500 ogressShot))
+				(theGame changeScore: calcValue)
 				(= heart (Prop new:))
 				(heart
 					view: 681
 					cel: 0
 					loop: 0
 					setPri: 15
-					posn: (ogress x?) (- (ogress y?) 15)
-					setCycle: EndLoop
+					posn: (- (ogress x?) 5) (- (ogress y?) 25)
+					setCycle: EndLoop self
 					init:
 				)
-				(= seconds 3)
 			)
 			(22
 				(heart dispose:)
-				(FaceObject ogress ego)
-				(Print 50 23)
-				(= cycles 1)
-			
+				(= seconds 1)
 			)
 			(23
-				(if (== (ogressChase state?) 0)
-					(ogressChase seconds: 0 changeState: 2)
-				)
+				(FaceObject ogress ego)
+				(Print 50 23)
+				(self cue:)
+			
+			)
+			(24
+				(ogressChase seconds: 0 changeState: 2)
 			)
 		)
 	)

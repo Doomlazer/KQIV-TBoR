@@ -9,6 +9,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room81 0
@@ -26,6 +27,7 @@
 	doorLocked
 	stolenInventory
 	gInvFirst
+	condom
 )
 (instance theMusic of Sound
 	(properties
@@ -121,6 +123,19 @@
 			init:
 			stopUpd:
 		)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 210 136
+				init:
+				setPri: 15
+			;	setCycle: Forward
+			)	
+		)
+		
 		(if (or (== prevRoomNum 85) (== prevRoomNum 0))
 			(ego
 				posn: 68 163
@@ -246,7 +261,11 @@
 											(if (== ((inventory at: iRose) owner?) 81)
 												(Print 81 7)
 											else
-												(Print 81 8)
+												(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+													(Print {You notice a purple condom on the rug. Gross. This is most likely Edgar's bedroom unless he's sleeping in a barn stall.})
+												else
+													(Print 81 8)
+												)
 											)
 										)
 										((Said '/mirror')
@@ -357,6 +376,18 @@
 						((Said 'look/door') (Print 81 12))
 						((Said 'look/wall') (Print 81 32))
 						((Said 'close/door') (Print 81 28))
+						
+						((Said 'get/condom')
+							(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+								(if	(< (ego distanceTo: condom) 6)							
+									(getCondom changeState: 0)
+								else
+									(Print {Not close enough.})
+								)
+							else
+								(Print {Aren't you a bit young to have dementia, Rosella?})		
+							)				
+						)	
 						
 						((Said 'open/door')
 							(cond 
@@ -555,6 +586,32 @@
 				((ScriptID LOLOTTE) keep: 0)
 				(curRoom newRoom: 692)
 				(= noWearCrown FALSE)
+			)
+		)
+	)
+)
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print 81 39)
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 500)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)

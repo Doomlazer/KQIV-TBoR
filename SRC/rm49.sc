@@ -162,7 +162,7 @@
 				((= ogress (Actor new:))
 					view: 245
 					illegalBits: -32768
-					posn: 301 131
+					posn: 451 131
 					setStep: 4 2
 					init:
 					setScript: ogressChase
@@ -245,7 +245,7 @@
 		(frontDoor
 			cel: (if ogreFrontDoorOpen (frontDoor lastCel:) else 0)
 			init:
-			stopUpd:
+			;stopUpd:
 		)
 		(if (not (frontDoor cel?))
 			(ego observeControl: 16384)
@@ -724,6 +724,10 @@
 				(if (== detailLevel 0) (= seconds 3) else (self cue:))
 			)
 			(4
+				(if (ego has: iTooth)
+					(Print 49 57 #title {Ogre} #at 120 40)
+					(Print 49 58)
+				)
 				(= ogreState 4)
 				(= local9 1)
 				(theOgre
@@ -760,6 +764,7 @@
 	)
 )
 
+
 (instance ogressChase of Script
 	(properties)
 	
@@ -767,6 +772,7 @@
 		(switch (= state newState)
 			(0
 				(= local9 1)
+				(Print {"Come back here you little, shit."} #title {Ogress} #at 125 20 #dispose #time 4)
 				(theMusic number: 10 loop: -1 play:)
 				(ogress
 					illegalBits: cWHITE

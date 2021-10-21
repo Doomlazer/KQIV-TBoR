@@ -704,29 +704,29 @@
 	)
 )
 
-(instance stopRosella of Code
-	(properties)
-	
-	(method (doit)
-		(rosella stopUpd:)
-	)
-)
-
-(instance hideRosella of Code
-	(properties)
-	
-	(method (doit)
-		(rosella hide:)
-	)
-)
-
-(instance gotHere of Code
-	(properties)
-	
-	(method (doit)
-		(Print 222 20)
-	)
-)
+;;;(instance stopRosella of Code
+;;;	(properties)
+;;;	
+;;;	(method (doit)
+;;;		(rosella stopUpd:)
+;;;	)
+;;;)
+;;;
+;;;(instance hideRosella of Code
+;;;	(properties)
+;;;	
+;;;	(method (doit)
+;;;		(rosella hide:)
+;;;	)
+;;;)
+;;;
+;;;(instance gotHere of Code
+;;;	(properties)
+;;;	
+;;;	(method (doit)
+;;;		(Print 222 20)
+;;;	)
+;;;)
 
 (instance blinkEyes of Script
 	(properties)

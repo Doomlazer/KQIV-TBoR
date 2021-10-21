@@ -85,7 +85,7 @@
 			(Load VIEW 246)
 			(Load VIEW 57)
 		)
-		(if (and (== prevRoomNum 49) (ego has: iMagicHen))
+		(if (or (and (== prevRoomNum 49) (ego has: iMagicHen)) enteredOgreKitchen)
 			(door
 				view: 602
 				loop: 0
@@ -95,6 +95,12 @@
 				ignoreActors:
 				init:
 				stopUpd:
+			)
+			(if enteredOgreKitchen
+				(= enteredOgreKitchen 0)
+				;these fuck up the house priority around the door?!?!? investigate later
+				;(door ignoreActors: 0 setCycle: BegLoop)
+				;(doorSound number: 300 play:)
 			)
 		else
 			(door

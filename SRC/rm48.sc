@@ -22,6 +22,7 @@
 	ogress
 	local5
 	[str 200]
+	condom
 )
 (instance Room48 of Room
 	(properties
@@ -107,6 +108,18 @@
 				stopUpd:
 			)
 		)
+		(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+			(= condom (Prop new:))
+			(condom
+				view: 1
+				loop: 1
+				cel: 0
+				posn: 237 160
+				init:
+				setPri: 15
+			;	setCycle: Forward
+			)	
+		)
 		((= ogress (Actor new:)) setScript: ogressChase)
 	)
 	
@@ -160,7 +173,13 @@
 								)
 							)
 							((Said '/wall') (Print 48 11))
-							((or (Said '/dirt') (Said '<down')) (Print 48 12))
+							((or (Said '/dirt') (Said '<down')) 
+								(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+									(Print {You notice a purple condom on the floor near the night stand.})
+								else
+									(Print 48 12)
+								)
+							)
 							((Said '[<around,at][/room,bedroom,cottage]')
 								(Print
 									(Format @str 48 13
@@ -174,6 +193,17 @@
 							)
 						)
 					)
+					((Said 'get/condom')
+						(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+							(if	(< (ego distanceTo: condom) 6)							
+								(getCondom changeState: 0)
+							else
+								(Print {Not close enough.})
+							)
+						else
+							(Print {Aren't you a bit young to have dementia, Rosella?})		
+						)				
+					)	
 					((Said 'get/ax')
 						(if (== ((inventory at: iAxe) owner?) 48)
 							(if (< (ego distanceTo: axe) 20)
@@ -361,6 +391,33 @@
 			)
 			(1
 				(if (!= local5 11) (= state -1) (self cue:))
+			)
+		)
+	)
+)
+
+(instance getCondom of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego view: 21)
+				(FaceObject ego condom)
+				(ego setCycle: EndLoop self)
+			)
+			(1
+				(ego setCycle: BegLoop self)
+				(Print 48 29 #title {Rosella})
+				((Inventory at: iCondom) moveTo: ego)
+				(= gotItem 1)
+				(theGame changeScore: 500)
+				(condom dispose:)
+			)
+			(2
+				(ego view: 2 setScript: 0 setCycle: Walk)
+				(HandsOn)
 			)
 		)
 	)

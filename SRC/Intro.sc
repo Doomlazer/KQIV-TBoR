@@ -528,21 +528,21 @@
 	)
 )
 
-(instance stopSon of Script
-	(properties)
-	
-	(method (cue)
-		(son stopUpd:)
-	)
-)
-
-(instance stopRosella of Script
-	(properties)
-	
-	(method (cue)
-		(rosella stopUpd:)
-	)
-)
+;;;(instance stopSon of Script
+;;;	(properties)
+;;;	
+;;;	(method (cue)
+;;;		(son stopUpd:)
+;;;	)
+;;;)
+;;;
+;;;(instance stopRosella of Script
+;;;	(properties)
+;;;	
+;;;	(method (cue)
+;;;		(rosella stopUpd:)
+;;;	)
+;;;)
 
 (instance checkHang of Script
 	(properties)
