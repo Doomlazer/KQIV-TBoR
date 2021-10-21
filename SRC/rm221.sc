@@ -15,22 +15,16 @@
 
 (local
 	soundIsOn
-	[local1 11]
-	shimmer
 	rosellaFace
 	rosella
-	[local15 4]
 	mirror
 	genesta
-	[local21 4]
-	poof
-	introDialog
-	[local27 2]
-	sparkle
-	[local30 200]
+	printObj
 )
 (instance openMusic of Sound
-	(properties)
+	(properties
+		number 105
+	)
 )
 
 (instance Room221 of Room
@@ -56,16 +50,14 @@
 		(curRoom setScript: PartTwo)
 	)
 	
-	(method (newRoom newRoomNumber)
+	(method (newRoom n)
 		(cls)
 		((ScriptID INTRO) keep: 0)
-		(super newRoom: newRoomNumber)
+		(super newRoom: n)
 	)
 )
 
 (instance PartTwo of Script
-	(properties)
-	
 	(method (changeState newState)
 		(addToPics dispose:)
 		(switch (= state newState)
@@ -76,7 +68,7 @@
 						loop: 0
 						posn: 158 64
 						cycleSpeed: 4
-						stopUpd:
+						;stopUpd:
 						init:
 						yourself:
 					)
@@ -111,29 +103,34 @@
 				(= seconds 2)
 			)
 			(1
-				(= introDialog
+				(= printObj
 					(Print 221 0
 						#title {Rosella}
-						#at 1 140
+						#at 1 130
 						#width 150
-						#title {Rosella}
 						#dispose
 						#draw
 					)
 				)
-				(= seconds 6)
+				(= seconds 7)
 			)
 			(2
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(mirror setLoop: 1 setCycle: Forward)
-				(= introDialog (Print 221 1 #at 180 40 #width 110 #dispose))
+				(= printObj
+					(Print 221 1
+						#at 180 40
+						#width 110
+						#dispose
+					)
+				)
 				(= seconds 6)
 			)
 			(3
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(mirror setLoop: 0 setCycle: 0)
 				(rosella setLoop: 2 cycleSpeed: 20 setCycle: Forward)
-				(= introDialog
+				(= printObj
 					(Print 221 2
 						#at 1 134
 						#title {Rosella}
@@ -144,13 +141,19 @@
 				(= seconds 10)
 			)
 			(4
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(mirror setLoop: 1 setCycle: Forward)
-				(= introDialog (Print 221 3 #at 180 40 #width 110 #dispose))
+				(= printObj
+					(Print 221 3
+						#at 180 40
+						#width 110
+						#dispose
+					)
+				)
 				(= seconds 12)
 			)
 			(5
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(cast eachElementDo: #dispose)
 				(curRoom drawPic: 207)
 				((View new:)
@@ -197,7 +200,7 @@
 						yourself:
 					)
 				)
-				(= introDialog
+				(= printObj
 					(Print 221 4
 						#at 1 151
 						#title {Rosella}
@@ -214,12 +217,15 @@
 					(= seconds 2)
 				else
 					((ScriptID INTRO 1) dispose:)
-					(openMusic number: 105 play:)
+					(openMusic
+						;number: 105
+						play:
+					)
 					(self cue:)
 				)
 			)
 			(7
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(genesta dispose:)
 				(rosella dispose:)
 				(curRoom drawPic: 205)
@@ -245,20 +251,9 @@
 						yourself:
 					)
 				)
-				(= sparkle
-					((Actor new:)
-						view: 762
-						loop: 4
-						cel: 0
-						ignoreHorizon:
-						posn: 142 18
-						setPri: 1
-						init:
-						yourself:
-					)
-				)
+				(sparkle init:)
 				(sparkle setScript: doSparkle)
-				(= introDialog
+				(= printObj
 					(Print 221 5
 						#title {Genesta}
 						#at -1 125
@@ -269,8 +264,8 @@
 				(= seconds 10)
 			)
 			(8
-				(if modelessDialog (modelessDialog dispose:))
-				(= introDialog
+				(cls)
+				(= printObj
 					(Print 221 6
 						#title {Genesta}
 						#at -1 125
@@ -281,7 +276,7 @@
 				(= seconds 12)
 			)
 			(9
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(genesta dispose:)
 				(sparkle setScript: 0 dispose:)
 				(curRoom drawPic: 207)
@@ -325,7 +320,7 @@
 						yourself:
 					)
 				)
-				(= introDialog
+				(= printObj
 					(Print 221 7
 						#title {Rosella}
 						#at 1 151
@@ -336,9 +331,9 @@
 				(= seconds 9)
 			)
 			(10
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(rosellaFace view: 766 loop: 3 cel: 0 posn: 230 71 setPri: 2)
-				(= introDialog
+				(= printObj
 					(Print 221 8
 						#title {Genesta}
 						#at 100 151
@@ -349,7 +344,7 @@
 				(= seconds 12)
 			)
 			(11
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(rosellaFace
 					view: 763
 					setLoop: 1
@@ -358,7 +353,7 @@
 					setCycle: Forward
 					cycleSpeed: 3
 				)
-				(= introDialog
+				(= printObj
 					(Print 221 9
 						#title {Rosella}
 						#at 1 151
@@ -369,7 +364,7 @@
 				(= seconds 10)
 			)
 			(12
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(curRoom drawPic: 205)
 				((View new:)
 					view: 762
@@ -398,20 +393,12 @@
 					cycleSpeed: 2
 					setPri: 15
 				)
-				(= sparkle
-					((Actor new:)
-						view: 762
-						loop: 4
-						cel: 0
-						ignoreHorizon:
-						posn: 142 18
-						setPri: 1
+				(sparkle
 						init:
-						yourself:
-					)
+						yourself: 
 				)
 				(sparkle setScript: doSparkle)
-				(= introDialog
+				(= printObj
 					(Print 221 10
 						#title {Genesta}
 						#at 1 135
@@ -422,8 +409,8 @@
 				(= seconds 9)
 			)
 			(13
-				(if modelessDialog (modelessDialog dispose:))
-				(= introDialog
+				(cls)
+				(= printObj
 					(Print 221 11
 						#title {Genesta}
 						#at 1 135
@@ -434,7 +421,7 @@
 				(= seconds 8)
 			)
 			(14
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(sparkle setScript: 0 dispose:)
 				(curRoom drawPic: 207)
 				((View new:)
@@ -473,20 +460,11 @@
 					cycleSpeed: 3
 					setPri: 15
 				)
-				(= shimmer
-					((Actor new:)
-						view: 766
-						loop: 4
-						cel: 0
-						posn: 230 106
-						setCycle: Forward
-						cycleSpeed: 3
-						setPri: 15
-						init:
-						yourself:
-					)
+				(shimmer
+					setCycle: Forward
+					init:
 				)
-				(= introDialog
+				(= printObj
 					(Print
 						221 12
 						#title {Rosella}
@@ -498,9 +476,9 @@
 				(= seconds 10)
 			)
 			(15
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(rosellaFace view: 766 loop: 3 cel: 0 posn: 230 71 setPri: 2)
-				(= introDialog
+				(= printObj
 					(Print 221 13
 						#title {Genesta}
 						#at 100 151
@@ -511,7 +489,7 @@
 				(= seconds 8)
 			)
 			(16
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(rosellaFace dispose:)
 				(shimmer dispose:)
 				(curRoom drawPic: 201)
@@ -547,7 +525,7 @@
 						loop: 0
 						posn: 172 94
 						cycleSpeed: 4
-						stopUpd:
+						;stopUpd:
 						init:
 						yourself:
 					)
@@ -555,7 +533,7 @@
 				(= seconds 3)
 			)
 			(17
-				(= introDialog
+				(= printObj
 					(Print 221 14
 						#title {Genesta}
 						#at -1 130
@@ -566,15 +544,19 @@
 				(= seconds 9)
 			)
 			(18
-				(if modelessDialog (modelessDialog dispose:))
+				(cls)
 				(mirror
 					setLoop: 2
 					setCel: 255
 					cycleSpeed: 2
 					setCycle: EndLoop stopMirror
 				)
-				(= introDialog
-					(Print 221 15 #title {Rosella} #at 215 40 #dispose)
+				(= printObj
+					(Print 221 15
+						#title {Rosella}
+						#at 215 40
+						#dispose
+					)
 				)
 				(= seconds 3)
 			)
@@ -592,19 +574,11 @@
 				)
 			)
 			(20
-				(if modelessDialog (modelessDialog dispose:))
-				(= poof
-					((Actor new:)
-						view: 770
-						loop: 0
-						posn: (rosella x?) (rosella y?)
-						setPri: 15
-						ignoreActors:
-						cycleSpeed: 2
-						setCycle: EndLoop self
-						init:
-						yourself:
-					)
+				(cls)
+				(poof
+					posn: (rosella x?) (rosella y?)
+					setCycle: EndLoop self
+					init:
 				)
 			)
 			(21
@@ -636,33 +610,13 @@
 	)
 )
 
-;;;(instance stopRosella of Script
-;;;	(properties)
-;;;	
-;;;	(method (cue)
-;;;		(rosella stopUpd:)
-;;;	)
-;;;)
-;;;
-;;;(instance hideRosella of Script
-;;;	(properties)
-;;;	
-;;;	(method (cue)
-;;;		(rosella hide:)
-;;;	)
-;;;)
-;;;
 (instance stopMirror of Script
-	(properties)
-	
 	(method (cue)
-		(mirror stopUpd:)
+		;(mirror stopUpd:)
 	)
 )
 
 (instance doSparkle of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
@@ -672,7 +626,44 @@
 			(1
 				(sparkle cel: 255 setCycle: EndLoop self show:)
 			)
-			(2 (self changeState: 0))
+			(2
+				(self changeState: 0)
+			)
 		)
+	)
+)
+
+(instance poof of Actor
+	(properties
+		view 770
+		loop 0
+		priority 15
+		signal (| ignrAct fixPriOn)
+		cycleSpeed 2		
+	)
+)
+
+(instance sparkle of Actor
+	(properties
+		view 762
+		loop 4
+		cel 0
+		signal (| ignrHrz fixPriOn)
+		x 142
+		y 18
+		priority 1
+	)
+)
+
+(instance shimmer of Actor
+	(properties
+		view 766
+		loop 4
+		cel 0
+		x 230
+		y 106
+		cycleSpeed 3
+		priority 15
+		signal fixPriOn
 	)
 )
