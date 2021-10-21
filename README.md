@@ -1,9 +1,9 @@
 # KQIV:TBoR
 King’s Quest IV: The Breasts of Rosella
 
-## warning v0.9.8 breaks all previous version save games
+## warning expect save games to break with updates until upcomming v1.0 release
 
-BETA release version 0.9.8.2 - moved overlays into resource.004, this is a new file that needs to be copied for the mod to work.
+BETA release version 0.9.8.2
 Content rating: Mature, 18+ for violence and strong sexual themes.
 
 Developed using <a href="http://scicompanion.com/">SCI Companion</a>
