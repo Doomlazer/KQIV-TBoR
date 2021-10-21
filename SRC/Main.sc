@@ -533,12 +533,12 @@
 				Condom
 		)
 
-		(ego get: iTooth)
-		(ego get: iBone)
-		(ego get: iSkull)
-		(ego get: iVirginity)
+		;(ego get: iTooth)
+		;(ego get: iBone)
+		;(ego get: iSkull)
+		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
-		(ego get: iCupidBow)
+		;(ego get: iCupidBow)
 		
 		(= condomRotation (Random 1 3))
 		
