@@ -409,7 +409,7 @@
 			)
 			(1
 				(ego setCycle: BegLoop self)
-				(Print 48 29 #title {Rosella})
+				(Print 48 29 #icon 1 0 1)
 				((Inventory at: iCondom) moveTo: ego)
 				(= gotItem 1)
 				(theGame changeScore: 500)

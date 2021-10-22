@@ -345,7 +345,7 @@
 				
 				(ego get: iDecoderRing)
 				(decoder dispose:)
-				(Print 19 10)
+				(Print 19 10 #icon 573 0 0)
 				(ego loop: 2 cel: 255 setCycle: EndLoop self)
 				(theGame changeScore: -666)
 			)

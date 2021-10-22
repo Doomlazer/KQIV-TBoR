@@ -178,11 +178,11 @@
 								(if (ego inRect: 60 115 85 135)
 									(ego get: iTooth)
 									(if (not scoredTooth)
-										(theGame changeScore: 665)
+										(theGame changeScore: 256)
 										(= gotItem 1)
 										(= scoredTooth 1)
 									)
-									(Print 83 36)
+									(Print 83 36 #icon 1 2 0)
 									(if (not toofmsg) (Print 83 46)(= toofmsg 1)) ;try to make tooth function more obvious
 								else 
 									(Print {Fuck you, get closer first.})

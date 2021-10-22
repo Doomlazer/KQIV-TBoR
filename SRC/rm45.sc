@@ -519,7 +519,7 @@
 					loop: 5
 					setCycle: EndLoop self
 				) ;this is wrong, should do crab dance or something
-				(Print {You've taken Larry's virginity.})	
+				(Print {You've taken Larry's virginity.} #icon 571 0 0)	
 			)
 			(30
 				(larry

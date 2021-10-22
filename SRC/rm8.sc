@@ -171,7 +171,7 @@
 						)
 						((Said '/skull')(if wifeGraveDugUp
 									(if ((Inventory at: iSkull) ownedBy: 8)
-									(Print 8 9)
+									(Print 8 9 #icon 575 0 0)
 									else
 									(Print 8 10)
 									)
