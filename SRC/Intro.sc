@@ -454,7 +454,7 @@
 					setPri: 8
 				)
 				(= introDialog (Print 120 7 #at -1 134 #dispose))
-				(Timer setReal: self 7)
+				(Timer setReal: self 8)
 			)
 			(20
 				(cls)
@@ -501,7 +501,7 @@
 					setMotion: MoveTo 340 176
 				)
 				(= introDialog (Print 120 8 #at -1 10 #width 300 #dispose))
-				(Timer setReal: self 4)
+				(Timer setReal: self 5)
 			)
 			(21
 				(= inCutscene TRUE)

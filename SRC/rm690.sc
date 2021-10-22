@@ -28,13 +28,9 @@
 	wave3
 	wave4
 )
-(instance wave1 of Prop
-	(properties)
-)
+(instance wave1 of Prop)
 
-(instance wave2 of Prop
-	(properties)
-)
+(instance wave2 of Prop)
 
 (instance fairyCage of Cage
 	(properties
@@ -139,18 +135,24 @@
 )
 
 (instance egoActions of Script
-	(properties)
-	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
 				(User canControl: FALSE canInput: FALSE)
 				(ego setCycle: EndLoop self)
 				(cond 
-					((and (ego has: iMagicFruit) (ego has: iMagicHen)) ((ScriptID END 1) number: 201 play:))
-					((ego has: iMagicFruit) ((ScriptID END 1) number: 200 play:))
-					((ego has: iMagicHen) ((ScriptID END 1) number: 203 play:))
-					(else ((ScriptID END 1) number: 202 play:))
+					((and (ego has: iMagicFruit) (ego has: iMagicHen))
+						((ScriptID END 1) number: 201 play:)
+					)
+					((ego has: iMagicFruit)
+						((ScriptID END 1) number: 200 play:)
+					)
+					((ego has: iMagicHen)
+						((ScriptID END 1) number: 203 play:)
+					)
+					(else
+						((ScriptID END 1) number: 202 play:)
+					)
 				)
 			)
 			(1
@@ -185,12 +187,19 @@
 			)
 			(10
 				(= timedMessage
-					(Print 690 1 #at -1 10 #title {Genesta} #draw #dispose)
+					(Print 690 1
+						#at -1 10
+						#title {Genesta}
+						#draw
+						#dispose
+					)
 				)
 				(= seconds 6)
 			)
 			(11
-				(if modelessDialog (modelessDialog dispose:))
+				(if modelessDialog
+					(modelessDialog dispose:)
+				)
 				(ego
 					view: 106
 					setLoop: 1
@@ -208,17 +217,21 @@
 			(13
 				(genesta loop: 2 cycleSpeed: 1 setCycle: Forward)
 				(= timedMessage (Print 690 2 #at -1 0 #dispose))
-				(= seconds 8)
+				(= seconds 6)
 			)
 			(14
-				(if modelessDialog (modelessDialog dispose:))
+				(if modelessDialog
+					(modelessDialog dispose:)
+				)
 				(= timedMessage
 					(Print 690 3 #at -1 10 #title {Genesta} #dispose)
 				)
 				(= seconds 6)
 			)
 			(15
-				(if modelessDialog (modelessDialog dispose:))
+				(if modelessDialog
+					(modelessDialog dispose:)
+				)
 				(genesta setLoop: 3 cel: 0 setCycle: CycleTo 3 1 self)
 			)
 			(16
@@ -249,16 +262,18 @@
 				(= seconds 15)
 			)
 			(21
-				(if modelessDialog (modelessDialog dispose:))
+				(if modelessDialog
+					(modelessDialog dispose:)
+				)
 				(= timedMessage (Print 690 5 #at -1 0 #dispose))
-				(= seconds 6)
+				(= seconds 8)
 			)
 			(22
 				(if modelessDialog (modelessDialog dispose:))
 				(= timedMessage
 					(Print 690 6 #at -1 10 #title {Genesta} #dispose)
 				)
-				(= seconds 10)
+				(= seconds 8)
 			)
 			(23
 				(if modelessDialog (modelessDialog dispose:))
@@ -310,7 +325,7 @@
 				(= timedMessage
 					(Print 690 8 #at -1 10 #title {Genesta} #dispose)
 				)
-				(= seconds 8)
+				(= seconds 10)
 				(genesta loop: 3 setCycle: Forward)
 			)
 			(31
@@ -321,7 +336,9 @@
 				(edgar loop: 2 cel: 0 setCycle: EndLoop self)
 				(genesta setLoop: -1 loop: 3 setCycle: Forward)
 			)
-			(33 (= seconds 4))
+			(33
+				(= seconds 4)
+			)
 			(34
 				(edgar
 					view: 108
@@ -378,7 +395,7 @@
 					init:
 				)
 				(= timedMessage (Print 690 9 #at -1 0 #dispose))
-				(= seconds 6)
+				(= seconds 9)
 			)
 			(36
 				(if modelessDialog (modelessDialog dispose:))
@@ -397,18 +414,18 @@
 			)
 			(37
 				(if modelessDialog (modelessDialog dispose:))
-				(= timedMessage (Print 690 11 #at -1 0 #dispose))
-				(= seconds 5)
+				(= timedMessage (Print 690 11 #title {Rosella} #at -1 10 #dispose))
+				(= seconds 6)
 			)
 			(38
 				(if modelessDialog (modelessDialog dispose:))
-				(= timedMessage (Print 690 12 #at -1 0 #dispose))
-				(= seconds 5)
+				(= timedMessage (Print 690 12 #title {Rosella} #at -1 10 #dispose))
+				(= seconds 8)
 			)
 			(39
 				(if modelessDialog (modelessDialog dispose:))
-				(= timedMessage (Print 690 13 #at -1 0 #dispose))
-				(= seconds 3)
+				(= timedMessage (Print 690 13 #title {Rosella} #at -1 10 #dispose))
+				(= seconds 7)
 			)
 			(40
 				(if modelessDialog (modelessDialog dispose:))
@@ -423,7 +440,7 @@
 					setPri: 14
 				)
 				(edgarHands dispose:)
-				(= seconds 7)
+				(= seconds 8)
 			)
 			(41
 				(if modelessDialog (modelessDialog dispose:))
@@ -432,12 +449,12 @@
 				(= timedMessage
 					(Print 690 15 #at -1 10 #title {Rosella} #dispose)
 				)
-				(= seconds 4)
+				(= seconds 8)
 			)
 			(42
 				(if modelessDialog (modelessDialog dispose:))
-				(wave1 dispose:)
-				(wave2 dispose:)
+				(wave3 dispose:)
+				(wave4 dispose:)
 				(Timer setCycle: self 2)
 			)
 			(43
@@ -486,7 +503,9 @@
 				(ego hide:)
 				(poof setCycle: EndLoop self)
 			)
-			(48 (curRoom newRoom: 693))
+			(48
+				(curRoom newRoom: 693)
+			)
 			(100
 				(genesta view: 755 setLoop: 3 cel: 8)
 				(= timedMessage

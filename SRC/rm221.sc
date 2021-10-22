@@ -112,7 +112,7 @@
 						#draw
 					)
 				)
-				(= seconds 7)
+				(= seconds 12)
 			)
 			(2
 				(cls)

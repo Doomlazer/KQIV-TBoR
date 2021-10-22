@@ -200,7 +200,7 @@
 				(= timedMessage
 					(Print 694 2 #at -1 35 #width 240 #dispose)
 				)
-				(= seconds 8)
+				(= seconds 10)
 			)
 			(102
 				(cls)
@@ -384,14 +384,23 @@
 			(107
 				(cls)
 				(= timedMessage
-					(Print 694 5
-						#at -1 20
-						#width 240
-						#title {Rosella}
-						#dispose
+					(if rodeDolphin
+						(Print 694 5
+							#at -1 20
+							#width 240
+							#title {Rosella}
+							#dispose
+						)
+					else
+						(Print 694 8 ;differnt line for sequnce breakers
+							#at 10 140
+							#width 240
+							#title {Valanice}
+							#dispose
+						)
 					)
 				)
-				(= seconds 8)
+				(= seconds 10)
 			)
 			(108
 				(cls)
@@ -564,7 +573,7 @@
 				)
 			)
 			(111
-				(Print 694 7 #at -1 85 #icon 100 0 0 #dispose)
+				(Print 694 7 #at -1 85 #icon 588 0 0 #dispose) ;#icon was 100 0 0
 				(= gameHours 0)
 				(= seconds 10)
 			)
