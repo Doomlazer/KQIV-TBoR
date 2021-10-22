@@ -321,7 +321,7 @@
 										((not (ego inRect: 120 120 215 135)) (Print 82 24 #time 3))
 										(lolotteAlive (curRoom setScript: egoZapped))
 										(else
-											(Print 82 25 #time 2)
+											(Print 82 25 #time 2 #icon 411 0 0)
 											(ego get: iTalisman)
 											(talisman dispose:)
 											(= gotItem TRUE)

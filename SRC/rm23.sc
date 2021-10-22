@@ -482,6 +482,11 @@
 				(worm dispose:)
 				(= worm 0)
 				(ego setCycle: BegLoop self)
+				(if isNightTime
+					(Print {You pick up the night worm.} #icon 433 0 0)
+				else
+					(Print {Good thing you're not squeamish.} #icon 433 0 0)
+				)
 				(ego get: iWorm)
 				(= gotItem TRUE)
 				(theGame changeScore: 2)

@@ -504,6 +504,7 @@
 									)
 									(= gotItem TRUE)
 									(ego get: iMagicHen)
+									(Print {It's true what they say, "You can't make an omlet with golden eggs!"} #icon 431 0 0)
 									(theGame changeScore: 4)
 									(hen dispose:)
 								)

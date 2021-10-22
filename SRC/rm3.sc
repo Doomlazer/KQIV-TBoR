@@ -206,6 +206,7 @@
 								)
 								(if (< (ego distanceTo: cupidBow) 10)
 									((Inventory at: iCupidBow) moveTo: ego)
+									(Print {Some fat cat left their bow here. Now it's yours!} #icon 415 0 0)
 									(theGame changeScore: 2)
 									(egoActions changeState: 1)
 								else

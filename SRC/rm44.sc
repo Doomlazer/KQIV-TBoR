@@ -132,7 +132,7 @@
 						(cond 
 							(((Inventory at: iGlassBottle) ownedBy: 44)
 								(if (< (ego distanceTo: bottle) 15)
-									(Print 44 6)
+									(Print 44 6 #icon 434 0 1)
 									(bottle dispose:)
 									(= gotItem TRUE)
 									(ego get: 31)

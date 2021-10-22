@@ -208,6 +208,7 @@
 						(if (== ((inventory at: iAxe) owner?) 48)
 							(if (< (ego distanceTo: axe) 20)
 								(ego get: iAxe)
+								(Print {Time to fuck those trees up!} #icon 418 0 0)
 								(= gotItem TRUE)
 								(theGame changeScore: 2)
 								(axe dispose:)

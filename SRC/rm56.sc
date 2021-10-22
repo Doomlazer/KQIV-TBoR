@@ -472,6 +472,7 @@
 					(dwarf4 setPri: (- (ego priority?) 1))
 				)
 				(ego get: iLantern)
+				(Print {A non-magical lamp. Wow, thanks.} #icon 428 0 0)
 				(theGame changeScore: 3)
 			)
 			(3

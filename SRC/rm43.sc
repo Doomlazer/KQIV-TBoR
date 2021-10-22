@@ -329,6 +329,7 @@
 								(if (< (ego distanceTo: whistle) 15)
 									(bridleActions changeState: 10)
 									(theGame changeScore: 2)
+									(Print {Fucking pelican was trying to eat this thing?} #icon 427 0 0)
 									(ego get: iSilverWhistle)
 								else
 									(Print 800 1)
@@ -495,7 +496,7 @@
 				(ego setCycle: BegLoop self)
 			)
 			(3
-				(Print 43 49 #at -1 10)
+				(Print 43 49 #at -1 10 #icon 426 0 0)
 				(ego viewer: gEgoViewer view: 2 setCycle: Walk)
 				(HandsOn)
 			)

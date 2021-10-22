@@ -452,7 +452,7 @@
 						(cond 
 							((ego has: iSmallCrown) (Print 800 0))
 							((== frogPrinceState frogHeldByEgo)
-								(Print 15 46)
+								(Print 15 46 #icon 402 0 0)
 								((Inventory at: iSmallCrown) moveTo: ego)
 								(= gotItem TRUE)
 								(ego
@@ -587,8 +587,6 @@
 			)
 			(11
 				(frog dispose:)
-				;((Inventory at: iGoldBall) moveTo: ego)
-				;(ball hide:)
 				(ego view: 27 ignoreActors: 0 setCycle: EndLoop self)
 			)
 			(12
@@ -601,7 +599,7 @@
 			(13
 				(ego view: 30 loop: 0 cycleSpeed: 1 setCycle: Forward)
 				(AnimateCast)
-				(Print 15 48)
+				(Print 15 48 #icon 432 0 0)
 				(= frogPrinceState frogHeldByEgo)
 				(HandsOn)
 			)
@@ -652,7 +650,7 @@
 				(Print 15 49 #at -1 10)
 				(Print 15 50 #at -1 10)
 				(frog cycleSpeed: 1 setAvoider: (Avoider new:))
-				(Print 15 51)
+				(Print 15 51 #icon 402 0 0)
 				((Inventory at: iSmallCrown) moveTo: ego)
 				(= gotItem TRUE)
 				(theGame changeScore: 2)
@@ -761,9 +759,9 @@
 			)
 			(668
 				(if (ego has: iTooth)
-					(Print 15 55)
+					(Print 15 55 #icon 402 0 0)
 				else
-					(Print 15 56)
+					(Print 15 56 #icon 402 0 0)
 				)
 				((Inventory at: iSmallCrown) moveTo: ego)
 				(= gotItem TRUE)

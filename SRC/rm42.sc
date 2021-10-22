@@ -492,9 +492,9 @@
 												(== fishermanState fisherAtHome)
 											)
 											(if (< (ego distanceTo: wife) 25)
-												(Print 42 44)
+												(Print 42 44 #icon 421 0 0)
 											else
-												(Print 42 45)
+												(Print 42 45 #icon 421 0 0)
 											)
 											(ego put: iDiamondPouch 42)
 											(wife setScript: givePole)
@@ -619,7 +619,7 @@
 			)
 			(2
 				(FaceObject ego wife)
-				(Print 42 74)
+				(Print 42 74 #icon 421 0 0)
 				(fishingPole dispose:)
 				(wife
 					view: 243
@@ -711,8 +711,7 @@
 					setCycle: Forward
 					setScript: doBread
 				)
-			)
-					
+			)			
 		)
 	)
 )

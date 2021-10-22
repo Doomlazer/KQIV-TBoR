@@ -40,7 +40,6 @@
 	)
 	
 	(method (init)
-		;(if (< gamePhase getPandoraBox)(= gamePhase getPandoraBox) (ego get: iPandorasBox)) ;skip to end
 		
 		(if (<= gamePhase getPandoraBox)
 			(Load VIEW 82)

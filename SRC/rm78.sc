@@ -234,7 +234,7 @@
 							)
 							((and (== snakeState 2) (ego inRect: 171 157 195 167))
 								(if ((Inventory at: iMagicFruit) ownedBy: 78)
-									(Print 78 5)
+									(Print 78 5 #icon 412 0 0)
 									(gotFruit number: 50 play:)
 									(fruit dispose:)
 									((Inventory at: iMagicFruit) moveTo: ego)

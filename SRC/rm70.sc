@@ -357,6 +357,7 @@
 				(= gotItem TRUE)
 				(board dispose:)
 				(ego get: iBoard)
+				(Print {Watch out for splinters!} #icon 430 0 0)
 				(ego setCycle: BegLoop self)
 			)
 			(3

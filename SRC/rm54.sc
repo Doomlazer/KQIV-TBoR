@@ -424,6 +424,7 @@
 								(if (ego inRect: 200 140 276 164)
 									(ego get: iDiamondPouch)
 									(= gotItem TRUE)
+									(Print {Reminds you of the time Daddy gave you diamonds for your birthday, but all you really wanted was his love and attention.} #icon 401 0 0)
 									(theGame changeScore: 2)
 									(diamondPouch dispose:)
 								else

@@ -355,7 +355,7 @@
 								)
 								((Said 'get,untie,detach/key')
 									(if (and (ego has: iRose) (not (ego has: iGoldKey)))
-										(Print 81 29)
+										(Print 81 29 #icon 410 0 0)
 										(= gotItem TRUE)
 										(ego get: iGoldKey)
 										(theGame changeScore: 2)
