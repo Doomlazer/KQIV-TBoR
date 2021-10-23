@@ -47,6 +47,7 @@
 		(Load VIEW 518)
 		(Load VIEW 18)
 		(self setRegions: DWARF_MINE)
+		(if isNightTime (= picture 155))
 		(super init:)
 		(= local0 0)
 		(= isIndoors TRUE)

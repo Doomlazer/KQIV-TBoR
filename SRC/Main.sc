@@ -540,7 +540,8 @@
 		;(ego get: iSmallCrown)
 		;(ego get: iCupidBow)
 		;(ego get: iMagicFruit)
-		;(ego get: iMagicHen)
+		;(ego get: iDiamondPouch)
+		
 		
 		(= condomRotation (Random 1 3))
 		

@@ -472,10 +472,10 @@
 					(dwarf4 setPri: (- (ego priority?) 1))
 				)
 				(ego get: iLantern)
-				(Print {A non-magical lamp. Wow, thanks.} #icon 428 0 0)
 				(theGame changeScore: 3)
 			)
 			(3
+				(Print {A non-magical lamp.\nWow, thanks.} #icon 428 0 0)
 				(if detailLevel
 					((= dwarf1 (Actor new:))
 						view: 287
