@@ -33,6 +33,7 @@
 	caughtAFish
 	fishingLuck
 	fPrize
+	nagCounter
 )
 (instance fisherTheme of Sound
 	(properties
@@ -727,11 +728,27 @@
 				 		((< fishingLuck 20)
 							(self changeState: 50)
 						)
-				 		((and (< fishingLuck 60)(>= fishingLuck 20))
+						((and (< fishingLuck 60)(>= fishingLuck 20))
+							(= fPrize 2)
+							(self changeState: 67)
+						)
+						((and (< fishingLuck 80)(>= fishingLuck 60))
+							(= fPrize 3)
+							(self changeState: 67)
+						)
+						((and (< fishingLuck 90)(>= fishingLuck 80))
+							(= fPrize 4)
+							(self changeState: 67)
+						)
+						((and (< fishingLuck 99)(>= fishingLuck 90))
+							(= fPrize 5)
+							(self changeState: 67)
+						)
+				 		((== fishingLuck 100)
 							(= fPrize 1)
 							(self changeState: 67)
 						)
-						(else
+						(else ;justin case
 							(= fPrize 2)
 							(self changeState: 67)
 						)
@@ -751,15 +768,27 @@
 			(68
 
 				(if (== fPrize 1)
-					(Print {Wow, a rare Golden fish! That's worth 200 points!} #at -1 15)
-					(theGame changeScore: 200)
+					(Print {Wow, a rare Golden fish! That's worth 1,000 points!\n\nCongratulations!} #at -1 15)
+					(theGame changeScore: 1000)
 					(= gotItem 1)
 				)
 				(if (== fPrize 2)
-					(Print {You reel in a Red Snapper worth 5 points. You toss the fish you maimed back into the water.} #at -1 15)
+					(Print {You reel in a Red Snapper worth 5 points. You toss the fish back into the water.} #at -1 15)
 					(theGame changeScore: 5)
 				)
-				(if (not caughtAFish) (Print {You should bait your hook if you want to keep a fish.}))
+				(if (== fPrize 3)
+					(Print {You reel in a slightly different color Red Snapper. 10 Points. You toss the fish back into the water.} #at -1 15)
+					(theGame changeScore: 10)
+				)
+				(if (== fPrize 4)
+					(Print {You reel in an Orange Snapper. 69 Points. You toss the fish back into the water.} #at -1 15)
+					(theGame changeScore: 69)
+				)
+				(if (== fPrize 5)
+					(Print {You reel in a Rainbow Fish. 239 Points! You toss the fish back into the water.} #at -1 15)
+					(theGame changeScore: 239)
+				)
+				(if (and (not caughtAFish) (< nagCounter 2)) (Print {You should bait your hook if you want to catch a fish to carry around.}) (++ nagCounter))
 				(ego
 					view: 2
 					setLoop: -1
