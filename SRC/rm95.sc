@@ -31,6 +31,8 @@
 	ripple3
 	local11
 	caughtAFish
+	fishingLuck
+	fPrize
 )
 (instance fisherTheme of Sound
 	(properties
@@ -218,7 +220,7 @@
 					((Said 'deliver>')
 						(cond 
 							((Said '/*/gull') (Print 95 0))
-							((Said '/*[/seagull,man,man,man,man]>')
+							((Said '/*[/fisherman,man,man,man,man]>')
 								(if (= inventorySaidMe (inventory saidMe:))
 									(if (ego has: (inventory indexOf: inventorySaidMe))
 										(Print 95 1)
@@ -332,7 +334,7 @@
 							((Said 'capture,get') (Print 95 32))
 						)
 					)
-					((Said '[/seagull,man,man,man,man]>')
+					((Said '[/fisherman,man,man,man,man]>')
 						(cond 
 							((Said 'get/*')
 								(if (== fishermanState fisherGoneFishing)
@@ -640,8 +642,12 @@
 					(ego loop: 1)
 					(self changeState: 24)
 				else
-					(Print 95 43 #at -1 15)
-					(self changeState: 30)
+					(if (ego has: iTooth) ;fishing minigame
+						(self changeState: 66)
+					else
+						(Print 95 43 #at -1 15)
+						(self changeState: 30)
+					)
 				)
 			)
 			(24
@@ -706,6 +712,57 @@
 				(Print 95 45 #at -1 15)
 				(ego
 					view: 2
+					loop: 1
+					cycleSpeed: 0
+					setCycle: Walk
+					baseSetter: 0
+				)
+				(= currentStatus egoNormal)
+				(HandsOn)
+				(curRoom setScript: 0)
+			)
+			(66
+				 (= fishingLuck (Random 1 100)) ;; fishing minigame start
+				 	(cond
+				 		((< fishingLuck 20)
+							(self changeState: 50)
+						)
+				 		((and (< fishingLuck 60)(>= fishingLuck 20))
+							(= fPrize 1)
+							(self changeState: 67)
+						)
+						(else
+							(= fPrize 2)
+							(self changeState: 67)
+						)
+					)
+			)
+			(67
+				(ego
+					view: 589
+					loop: fPrize
+					cel: 255
+					cycleSpeed: 1
+					setCycle: EndLoop
+				)
+
+				(= seconds 4)
+			)
+			(68
+
+				(if (== fPrize 1)
+					(Print {Wow, a rare Golden fish! That's worth 200 points!} #at -1 15)
+					(theGame changeScore: 200)
+					(= gotItem 1)
+				)
+				(if (== fPrize 2)
+					(Print {You reel in a Red Snapper worth 5 points. You toss the fish you maimed back into the water.} #at -1 15)
+					(theGame changeScore: 5)
+				)
+				(if (not caughtAFish) (Print {You should bait your hook if you want to keep a fish.}))
+				(ego
+					view: 2
+					setLoop: -1
 					loop: 1
 					cycleSpeed: 0
 					setCycle: Walk
