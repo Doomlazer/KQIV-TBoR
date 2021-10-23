@@ -598,7 +598,6 @@
 				(Print 42 71)
 				(Print 42 72)
 				(Print 42 73)
-				(= wifeDead 1) ;wife kills herself
 				(self cue:)
 			)
 			(1
@@ -610,8 +609,8 @@
 				(wife
 					view: 242
 					loop: 0
-					cel: 0
-					setPri: 8
+				;	cel: 0
+				;	setPri: 8
 					setAvoider: (Avoider new:)
 					setCycle: Walk
 					setMotion: MoveTo 223 118 self
@@ -619,29 +618,34 @@
 			)
 			(2
 				(FaceObject ego wife)
-				(Print 42 74 #icon 421 0 0)
+				(Print 42 74)
 				(fishingPole dispose:)
 				(wife
 					view: 243
 					setLoop: -1
-					cel: 0
+					;cel: 0
 					setCycle: Walk
 					setMotion: Chase ego 20 self
 				)
 			)
 			(3
+				(Print {The Fisherman's pole. Very phallic.} #icon 421 0 0)
+				(= cycles 1)
+			)
+			(4
 				(ego get: 17)
 				(theGame changeScore: 3)
 				(= gotItem 1)
 				(wife
 					view: 242
 					loop: 0
-					cel: 0
+				;	cel: 0
 					setCycle: Walk
 					setMotion: MoveTo 200 118 self
 				)
 			)
-			(4
+			(5
+				(= wifeDead 1) ;wife kills herself
 				(HandsOn)
 				(wife
 					view: 241
@@ -650,8 +654,7 @@
 					setCycle: Forward
 					setScript: doBread
 				)
-			)
-					
+			)			
 		)
 	)
 )

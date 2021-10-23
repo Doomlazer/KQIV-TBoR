@@ -223,7 +223,7 @@
 				(= seconds 4)
 			)
 			(11
-				(Print 516 18 #icon 416 0 0)
+				(Print 516 18 #icon 414 0 0)
 				(= gotItem TRUE)
 				((Inventory at: iShakespeareBook) moveTo: 203)
 				((Inventory at: iLute) moveTo: ego)
@@ -270,7 +270,7 @@
 				(= seconds 4)
 			)
 			(21
-				(Print 516 20 #icon 416 0 0)
+				(Print 516 20 #icon 414 0 0)
 				(= gotItem TRUE)
 
 				((Inventory at: iLute) moveTo: ego)
