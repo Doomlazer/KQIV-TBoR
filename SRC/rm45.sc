@@ -48,6 +48,7 @@
 		(Load VIEW 101)
 		(Load VIEW 112)
 		(Load VIEW 115)
+		(if isNightTime (= picture 145))
 		(super init:)
 		(HandsOn)
 		(= inCutscene FALSE)

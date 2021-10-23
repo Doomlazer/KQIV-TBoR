@@ -35,6 +35,7 @@
 	(method (init)
 		(Load VIEW 110)
 		(Load VIEW 114)
+		(if isNightTime (= picture 146))
 		(super init:)
 		(= currentStatus egoNormal)
 		(if (or (== prevRoomNum 47) (== prevRoomNum 0))
