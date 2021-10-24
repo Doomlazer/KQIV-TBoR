@@ -34,6 +34,7 @@
 	fishingLuck
 	fPrize
 	nagCounter
+	prizeScript
 )
 (instance fisherTheme of Sound
 	(properties
@@ -723,35 +724,19 @@
 				(curRoom setScript: 0)
 			)
 			(66
-				 (= fishingLuck (Random 1 100)) ;; fishing minigame start
+				 (= fishingLuck (Random 1 100))
 				 	(cond
-				 		((< fishingLuck 20)
-							(self changeState: 50)
-						)
-						((and (< fishingLuck 60)(>= fishingLuck 20))
-							(= fPrize 2)
-							(self changeState: 67)
-						)
-						((and (< fishingLuck 80)(>= fishingLuck 60))
-							(= fPrize 3)
-							(self changeState: 67)
-						)
-						((and (< fishingLuck 90)(>= fishingLuck 80))
-							(= fPrize 4)
-							(self changeState: 67)
-						)
-						((and (< fishingLuck 98)(>= fishingLuck 90))
-							(= fPrize 5)
-							(self changeState: 67)
-						)
-				 		((>= fishingLuck 98)
-							(= fPrize 1)
-							(self changeState: 67)
-						)
-						(else ;justin case
-							(= fPrize 2)
-							(self changeState: 67)
-						)
+						((and (< fishingLuck 50)(>= fishingLuck 10))(= fPrize 2))
+						((and (< fishingLuck 70)(>= fishingLuck 50))(= fPrize 3))
+						((and (< fishingLuck 80)(>= fishingLuck 70))(= fPrize 4))
+						((and (< fishingLuck 90)(>= fishingLuck 80))(= fPrize 5))
+				 		((and (< fishingLuck 96)(>= fishingLuck 90))(= fPrize 1))
+						((>= fishingLuck 96)(= fPrize 6))	
+					)
+					(if	(< fishingLuck 10)
+						(self changeState: 50)
+					else
+						(self changeState: 67)
 					)
 			)
 			(67
@@ -768,27 +753,92 @@
 			(68
 
 				(if (== fPrize 1)
-					(Print {Wow, a rare Golden fish! That's worth 1,000 points!\n\nCongratulations!} #at -1 15)
+					(Print 95 46 #at -1 15)
 					(theGame changeScore: 1000)
 					(= gotItem 1)
 				)
 				(if (== fPrize 2)
-					(Print {You reel in a Red Snapper worth 5 points. You toss the fish back into the water.} #at -1 15)
+					(Print 95 47 #at -1 15)
 					(theGame changeScore: 5)
 				)
 				(if (== fPrize 3)
-					(Print {You reel in a slightly different color Red Snapper. 10 Points. You toss the fish back into the water.} #at -1 15)
+					(Print 95 48 #at -1 15)
 					(theGame changeScore: 10)
 				)
 				(if (== fPrize 4)
-					(Print {You reel in an Orange Snapper. 69 Points. You toss the fish back into the water.} #at -1 15)
+					(Print 95 49 #at -1 15)
 					(theGame changeScore: 69)
 				)
 				(if (== fPrize 5)
-					(Print {You reel in a Rainbow Fish. 239 Points! You toss the fish back into the water.} #at -1 15)
+					(Print 95 50 #at -1 15)
 					(theGame changeScore: 239)
 				)
-				(if (and (not caughtAFish) (< nagCounter 2)) (Print {You should bait your hook if you want to catch a fish to carry around.}) (++ nagCounter))
+				(if (== fPrize 6)
+					(Print 95 51 #at -1 15)
+				
+						(switch (Random 1 7)
+							(1
+								(if (not (ego has: iSmallCrown))
+									((Inventory at: iSmallCrown) moveTo: ego) ;avoid potential dead end.
+								)
+								((Inventory at: iFrog) moveTo: ego)
+								(Print {a little Frog friend.} #icon 432 0 0)
+								(= gotItem 1)
+							)
+							(2
+								(if (ego has: iToyHorse)
+									(self changeState: 99)
+								else
+									((Inventory at: iToyHorse) moveTo: ego)
+									(Print {a toy horse.} #icon 408 0 0)
+									(= gotItem 1)
+								)
+							)
+							(3
+								(if (ego has: iMedal)
+									(self changeState: 99)	
+								else
+									((Inventory at: iMedal) moveTo: ego)
+									(Print {a war medal.} #icon 407 0 0)
+									(= gotItem 1)
+								)
+							)
+							(4
+								(if (ego has: iLocket)
+									(self changeState: 99)	
+								else
+									((Inventory at: iLocket) moveTo: ego)
+									(Print {a small locket.} #icon 404 0 0)
+									(= gotItem 1)
+								)
+							)
+							(5
+								(if (ego has: iGoldCoins)
+									(self changeState: 99)	
+								else
+									((Inventory at: iGoldCoins) moveTo: ego)
+									(Print {some gold coins.} #icon 406 0 0)
+									(= gotItem 1)
+								)
+							)
+							(6
+								(if (ego has: iSilverBabyRattle)
+									(self changeState: 99)	
+								else
+									((Inventory at: iSilverBabyRattle) moveTo: ego)
+									(Print {a baby rattle.} #icon 405 0 0)
+									(= gotItem 1)
+								)
+							)
+							(7
+								(Print {a random number of points!})
+								(theGame changeScore: (Random 200 2000))
+								(= gotItem 1)
+							)
+							
+						)
+				)
+				(if (and (== caughtAFish 0) (< nagCounter 2)) (Print {You should bait your hook if you want to catch a fish to carry around.}) (++ nagCounter))
 				(ego
 					view: 2
 					setLoop: -1
