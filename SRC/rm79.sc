@@ -477,11 +477,8 @@
 						)
 						(2
 							(Print {"Avada Kedavra!"} #title {Rosella})
-							(HandsOn)
 							(henchTheme stop:)
-							(h1 dispose:)
-							(h2 dispose:)
-							(self dispose:)
+							(self changeState: 66)
 						)
 					)
 				)
@@ -566,9 +563,31 @@
 				(HandsOn)
 				(curRoom newRoom: 30)
 			)
+			(66
+				(HandsOn)
+				(ego setScript: killScript)
+				(h1 dispose:)
+				(h2 dispose:)
+			)
 		)
 	)
 )
+
+(instance killScript of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(= cycles 3)
+			)
+			(
+				(ShakeScreen 3 3)
+			)
+		)
+	)
+)
+
 
 (instance egoDead of Script
 	(properties)

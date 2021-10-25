@@ -26,8 +26,8 @@
 	lsBottom
 	lsLeft
 	saveWindow
-	spaceObjLoop
 	spaceObjY
+	spaceObjLoop
 )
 (instance Room704 of Room
 	(properties
@@ -318,24 +318,24 @@
 			)
 			(1
 				
-				(= spaceObjY (Random 85 100))
+				(= spaceObjY (Random 80 100))
 				(= spaceObjLoop (Random 2 7))
-				;(Print (Format @str {spaceObjY__%d)} spaceObjY))
+	
 				(if (== 0 (mod spaceObjLoop 2))
 					(spaceObj
 						setLoop: spaceObjLoop
 						posn: 40 spaceObjY
 						setPri: 3
 						setCycle: Forward
-						setMotion: MoveTo 280 spaceObjY self
+						setMotion: MoveTo 300 spaceObjY self
 					)
 				else
 					(spaceObj
-						loop: spaceObjLoop
+						setLoop: spaceObjLoop
 						posn: 280 spaceObjY
 						setPri: 3
 						setCycle: Forward
-						setMotion: MoveTo 40 spaceObjY self
+						setMotion: MoveTo 20 spaceObjY self
 					)
 				)
 			)	
@@ -344,6 +344,5 @@
 				(= cycles 1)
 			)
 		)
-	)
-	
+	)	
 )

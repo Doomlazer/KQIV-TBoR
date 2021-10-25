@@ -47,7 +47,7 @@
 			stopUpd:
 		)
 		(if (or (== prevRoomNum 79) (== prevRoomNum 0))
-			(ego posn: 279 166 view: 2 xStep: 3 yStep: 2 init:)
+			(ego posn: 230 166 view: 2 xStep: 3 yStep: 2 init:) ;x was 279
 		)
 		(if (== prevRoomNum 92)
 			(ego view: 2 posn: 266 122 xStep: 3 yStep: 2 init:)

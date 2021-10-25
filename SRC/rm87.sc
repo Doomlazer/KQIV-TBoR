@@ -10,6 +10,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room87 0
@@ -24,6 +25,8 @@
 	door4
 	door1
 	local7
+	heart
+	goonDead
 )
 (instance theMusic of Sound
 	(properties)
@@ -79,18 +82,15 @@
 			init:
 			setCycle: Forward
 		)
-		(if lolotteAlive
-			(if (ego has: iTooth) 
-				;allow sequence breaks
-			else	
-				((= h1 (Actor new:))
-					view: 145
-					loop: 4
-					posn: 200 122
-					init:
-					setScript: henchChase
-				)
+		(if lolotteAlive	
+			((= h1 (Actor new:))
+				view: 145
+				loop: 4
+				posn: 200 122
+				init:
+				setScript: henchChase
 			)
+
 		else
 			((= h1 (Actor new:))
 				view: 147
@@ -163,7 +163,7 @@
 								(else (event claimed: FALSE))
 							)
 						)
-						((Said '/man,goon') (if lolotteAlive (Print 87 7) else (Print 87 8)))
+						;((Said '/man,goon') (if lolotteAlive (Print 87 7) else (Print 87 8)))
 						((Said 'get/candelabra,candle') (Print 87 9 #at -1 10))
 						((Said 'bang/door')
 							(if (ego inRect: 111 118 140 123)
@@ -187,12 +187,43 @@
 								(Print 800 1)
 							)
 						)
+						((Said 'shoot/bow')
+							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+								(= goonDead 1)
+								(theMusic stop:)
+								(ego setScript: goonBowScript)
+								(goonBowScript changeState: 20)
+							else
+								(if (ego has: iCupidBow) 
+									(Print {You're out of arrows.})
+								else
+									(Print {Maybe try bring the bow next time?})
+								)
+							) 
+						)
 						((Said '/goon,man>')
 							(cond 
 								((Said 'converse') (Print 87 14 #at -1 10))
 								((Said 'get,capture') (Print 87 15 #at -1 10))
 								((Said 'kiss') (Print 87 16 #at -1 10))
 								((Said 'deliver') (Print 87 17 #at -1 10))
+								((Said 'kill,shoot') 	
+									(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+										((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+										(= goonDead 1)
+										(theMusic stop:)
+										(h1 setScript: 0)
+										(ego setScript: goonBowScript)
+										(goonBowScript changeState: 20)
+									else
+										(if (ego has: iCupidBow) 
+											(Print {You're out of arrows.})
+										else
+											(Print {Maybe try bring the bow next time?})
+										)
+									)	
+								)
 							)
 						)
 					)
@@ -227,13 +258,15 @@
 				(h1 loop: 0 setCycle: EndLoop self)
 			)
 			(2
-				(= henchChasingEgo TRUE)
-				(theMusic number: 41 loop: 10 play:)
-				(h1
-					view: 141
-					setAvoider: Avoider
-					setCycle: Walk
-					setMotion: Chase ego 15 self
+				(if (not goonDead)
+					(= henchChasingEgo TRUE)
+					(theMusic number: 41 loop: 10 play:)
+					(h1
+						view: 141
+						setAvoider: Avoider
+						setCycle: Walk
+						setMotion: Chase ego 15 self
+					)
 				)
 			)
 			(3
@@ -270,6 +303,50 @@
 				(h3 setCycle: BegLoop self)
 			)
 			(3 (client setScript: 0))
+		)
+	)
+)
+
+(instance goonBowScript of Script 
+(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)	
+			(20
+				(= seconds 0)
+				(FaceObject ego h1)
+				(cls)
+				;(Print 50 22)
+				(ego
+					view: 68
+					setCycle: EndLoop self
+				)	
+			)
+			(21
+				(ShakeScreen 1 3)
+				(h1 dispose:)
+				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= gotItem 1)
+				(theGame changeScore: 10)
+				(= heart (Prop new:))
+				(heart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 15
+					posn: (h1 x?) (- (h1 y?) 22)
+					setCycle: EndLoop self
+					init:
+				)
+			)
+			(22
+				(heart dispose:)
+				(= seconds 2)
+			)
+			(23
+				(Print {BOOM! Headshot!})
+				(= henchChasingEgo 0)
+			)
 		)
 	)
 )

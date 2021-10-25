@@ -129,7 +129,7 @@
 				view: 1
 				loop: 1
 				cel: 0
-				posn: 210 136
+				posn: 212 141
 				init:
 				;setPri: 15
 			;	setCycle: Forward
@@ -580,6 +580,8 @@
 				(if isNightTime
 					(nightWindow1 cycleSpeed: 7 cel: 255 setCycle: EndLoop self)
 					(nightWindow2 cycleSpeed: 7 cel: 255 setCycle: EndLoop)
+				else
+					(self cue:)
 				)
 			)
 			(7
