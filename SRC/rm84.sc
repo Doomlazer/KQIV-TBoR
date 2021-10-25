@@ -213,8 +213,7 @@
 							)
 						)
 						((Said 'get>')
-							(cond 
-								((if (ego has: iTooth) (Said 'in/anyword') {The time machine is a sight gag. It's non-functional.}))
+							(cond
 								((Said '/box<pandora')
 									(cond 
 										((ego has: iPandorasBox)
