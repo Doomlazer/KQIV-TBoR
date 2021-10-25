@@ -601,7 +601,7 @@
 				(repeat
 					(switch
 						(Print 0 2
-							#icon 100 0 0
+							#icon 588 0 0 ;#icon 100 0 0
 							#mode teJustCenter
 							#title {Roberta says:}
 							#button {__Restore__} 1

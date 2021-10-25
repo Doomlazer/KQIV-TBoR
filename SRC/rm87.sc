@@ -80,12 +80,16 @@
 			setCycle: Forward
 		)
 		(if lolotteAlive
-			((= h1 (Actor new:))
-				view: 145
-				loop: 4
-				posn: 200 122
-				init:
-				setScript: henchChase
+			(if (ego has: iTooth) 
+				;allow sequence breaks
+			else	
+				((= h1 (Actor new:))
+					view: 145
+					loop: 4
+					posn: 200 122
+					init:
+					setScript: henchChase
+				)
 			)
 		else
 			((= h1 (Actor new:))

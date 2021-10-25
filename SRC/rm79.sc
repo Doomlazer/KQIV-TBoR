@@ -470,6 +470,21 @@
 				(h2 view: 140)
 				(FaceObject h2 ego)
 				((ScriptID 0 4) setReal: self 2)
+				(if (ego has: iTooth)
+					(switch (Print {You want to go with these guys?} #time 10 #button {Surrender} 1 #button {Kill Goons} 2)
+						(1
+							;(Print {ok.})
+						)
+						(2
+							(Print {"Avada Kedavra!"} #title {Rosella})
+							(HandsOn)
+							(henchTheme stop:)
+							(h1 dispose:)
+							(h2 dispose:)
+							(self dispose:)
+						)
+					)
+				)
 			)
 			(5
 				(= currentStatus 1)

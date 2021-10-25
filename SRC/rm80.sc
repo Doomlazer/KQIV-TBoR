@@ -37,6 +37,7 @@
 	(method (init)
 		(Load VIEW 603)
 		(Load SOUND 52)
+		(if isNightTime	(= picture 180))
 		(super init:)
 		(= isIndoors FALSE)
 		((= doors (Prop new:))

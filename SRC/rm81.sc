@@ -131,7 +131,7 @@
 				cel: 0
 				posn: 210 136
 				init:
-				setPri: 15
+				;setPri: 15
 			;	setCycle: Forward
 			)	
 		)
@@ -262,7 +262,7 @@
 												(Print 81 7)
 											else
 												(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
-													(Print {You notice a purple condom on the rug. Gross. This is most likely Edgar's bedroom unless he's sleeping in a barn stall.})
+													(Print 81 40)
 												else
 													(Print 81 8)
 												)
@@ -275,7 +275,14 @@
 												(Print 800 1)
 											)
 										)
-										((Said '/carpet') (Print 81 10))
+										((Said '/carpet') 
+											(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+												(Print 81 10)
+												(Print 81 40)
+											else
+												(Print 81 10)
+											)
+										)
 										((Said '/stair') (Print 81 11))
 										((Said '/door') (Print 81 12))
 										((Said '/key')
