@@ -533,17 +533,17 @@
 				Condom
 		)
 
-		(ego get: iTooth)
+		;(ego get: iTooth)
 		;(ego get: iBone)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
-		(ego get: iCupidBow)
+		;(ego get: iCupidBow)
 		;(ego get: iAxe)
-		(ego get: iPandorasBox)
-		(= isNightTime 1)
+		;(ego get: iPandorasBox)
+		;(= isNightTime 1)
 		;(= gamePhase getTheUnicorn)
-		(= gamePhase getPandoraBox)
+		;(= gamePhase getPandoraBox)
 		
 		
 		(= condomRotation (Random 1 3))
