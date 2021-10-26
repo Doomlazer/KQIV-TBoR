@@ -1,5 +1,4 @@
-# KQIV:TBoR
-King’s Quest IV: The Breasts of Rosella
+# King’s Quest IV: The Breasts of Rosella
 
 Still in BETA 
 
