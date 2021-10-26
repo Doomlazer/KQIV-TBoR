@@ -9,6 +9,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Invent)
 
 (public
 	Room92 0
@@ -56,7 +57,7 @@
 		(super init:)
 		(NotifyScript LOLOTTE 0)
 		(= local8 0)
-	(if (<= gamePhase getPandoraBox)
+;	(if (<= gamePhase getPandoraBox)
 		((View new:)
 			view: 634
 			loop: 1
@@ -91,7 +92,7 @@
 			init:
 			setCycle: Forward
 		)
-	) ;reduce mem usasge in endgame throneroom to compinsate for custom inv items
+;	) ;reduce mem usasge in endgame throneroom to compinsate for custom inv items
 		(= isIndoors TRUE)
 		(if (== prevRoomNum 80)
 			(ego posn: 153 156 view: 4 xStep: 4 yStep: 2 init:)
@@ -164,17 +165,18 @@
 				init:
 				stopUpd:
 			)
-			(if (>= gamePhase getPandoraBox)
-			((= henchman (Actor new:))
-				view: 141
-				setStep: 4 2
-				illegalBits: 0
-				ignoreActors: 1
-				posn:350 129 ;was 350 129
-				setCycle: Walk
-				init:
-				stopUpd:
-			))
+			(if 0 ;(>= gamePhase getPandoraBox) fucking henchman is null when shoot bow is called. makes no sense. just remove hench for now.
+				((= henchman (Actor new:))
+					view: 141
+					setStep: 4 2
+					illegalBits: 0
+					ignoreActors: 1
+					posn:350 129 ;was 350 129
+					setCycle: Walk
+					init:
+					;stopUpd:
+				)
+			)
 			(User canControl: FALSE canInput: FALSE)
 			(= inCutscene TRUE)
 			(curRoom setScript: walkIn)
@@ -239,7 +241,21 @@
 								)
 							)
 						)
-					
+						;mabye down the road
+;;;						((or (Said 'shoot/bow') (Said 'shoot,kill/goon[<bow]'))
+;;;							(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+;;;								((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+;;;								(= goonDead 1)
+;;;								(ego setScript: goonBowScript)
+;;;								(goonBowScript changeState: 20)
+;;;							else
+;;;								(if (ego has: iCupidBow) 
+;;;									(Print {You're out of arrows.})
+;;;								else
+;;;									(Print {Maybe try bring the bow next time?})
+;;;								)
+;;;							) 
+;;;						)
 						((Said 'sit/throne') (Print 92 10))
 						((Said 'open/door')
 							(if (and (== gamePhase endGame) (== lolotteAlive FALSE))
@@ -857,6 +873,49 @@
 				(henchman setMotion: MoveTo 320 130 self)
 			)
 			(2 (henchman dispose:))
+		)
+	)
+)
+(instance goonBowScript of Script 
+(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)	
+			(20
+				(= seconds 0)
+				(FaceObject ego henchman)
+				(cls)
+				;(Print 50 22)
+				(ego
+					view: 68
+					setCycle: EndLoop self
+				)	
+			)
+			(21
+				(ShakeScreen 1 3)
+				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= gotItem 1)
+				(theGame changeScore: 10)
+				(= bowHeart (Prop new:))
+				(bowHeart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 15
+					posn: (henchman x?) (- (henchman y?) 22)
+					setCycle: EndLoop self
+					init:
+				)
+				(henchman dispose:)
+			)
+			(22
+				(bowHeart dispose:)
+				(= seconds 2)
+			)
+			(23
+				(Print {BOOM! Headshot!})
+				(= henchChasingEgo 0)
+			)
 		)
 	)
 )

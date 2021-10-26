@@ -132,7 +132,7 @@
 				posn: 212 141
 				init:
 				;setPri: 15
-			;	setCycle: Forward
+				;setCycle: Forward
 			)	
 		)
 		
