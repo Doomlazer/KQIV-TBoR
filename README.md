@@ -3,7 +3,10 @@ King’s Quest IV: The Breasts of Rosella
 
 ## warning expect save games to break with updates until upcomming v1.0 release
 
-BETA release version 0.9.8.2
+Still in BETA 
+
+### Trailer: https://www.youtube.com/watch?v=HL-hyjQ1PR8
+
 Content rating: Mature, 18+ for violence and strong sexual themes.
 
 Developed using <a href="http://scicompanion.com/">SCI Companion</a>
