@@ -531,6 +531,7 @@
 				Briefcase
 				Skull
 				Condom
+				Hairpin
 		)
 
 		;(ego get: iTooth)
@@ -1976,6 +1977,15 @@
 		owner 8
 		view 575
 		name "Wife's Skull"
+	)
+)
+
+(instance Hairpin of newInvItem
+	(properties
+		said '/hairpin'
+		owner 97
+		view 575
+		name "Hairpin"
 	)
 )
 

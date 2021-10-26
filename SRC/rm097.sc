@@ -185,10 +185,7 @@
 	
 	(method (doit)
 		(super doit:)
-		; code executed each game cycle
-	
 		(if waiting (if (not sdead)  (FaceObject sonny ego) ) )
-		
 		(if (& (ego onControl:) ctlNAVY)
         (curRoom newRoom: 579) ;was 100 fucked up pic street
 		)
@@ -236,8 +233,19 @@
 							)
 						)	
 					)
+					((Said 'look/kitchen') 
+						(if  (ego inRect: 110 90 170 115)
+							(if ((Inventory at: iHairpin) ownedBy: 97) 
+								(Print 97 55)
+								(Print 97 56)
+							else
+								(Print 97 58)
+							)	
+						else
+							(Print 97 59)
+						)	
+					)
 					((Said 'converse/alien') (Print 97 42))
-					
 					((Said 'look/alien') (Print 97 22))
 					((Said 'look/couch') (Print 97 21))
 					((Said 'look/tv') (Print 97 23))
@@ -290,6 +298,20 @@
 						else
 							(Print 97 54)
 						)
+					)
+					((Said 'get/hairpin')
+						(if ((Inventory at: iHairpin) ownedBy: 97)
+							(if (ego inRect: 110 90 170 115)
+								(Print 97 57 #icon 590 0 0)
+								((Inventory at: iHairpin) moveTo: ego)
+								(theGame changeScore: 10)
+								(= gotItem 1)
+							else
+								(Print 97 59)
+							)
+						else
+							(Print 97 58)
+						)	
 					)
 					((Said 'get/briefcase') 
 							(if ((Inventory at: iBriefcase) ownedBy: 97)

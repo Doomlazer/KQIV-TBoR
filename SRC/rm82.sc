@@ -397,6 +397,18 @@
 								(else (Print 82 47))
 							)
 						)
+						((or (Said '[use]/hairpin') (Said '/hairpin'))
+							(cond 
+								((not (ego has: iHairpin)) (Print 82 45))
+								((not (ego inRect: 233 155 251 162)) (event claimed: TRUE) (PrintNotCloseEnough))
+								(unlockedLolotteDoor (Print 82 46))
+								((ego has: iHairpin) 
+									(Print 82 61) 
+									(= unlockedLolotteDoor TRUE)
+								)
+								(else (Print 82 47))
+							)
+						)
 						(
 						(or (Said '[use]/key<skeleton') (Said '/skeleton'))
 							(if (and (ego has: iSkeletonKey) askedWhichKey (not unlockedLolotteDoor))
