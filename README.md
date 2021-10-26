@@ -10,3 +10,4 @@ Copy resouce.001, resource.004 and resource.map to the KQ4 game folder and run i
 
 https://github.com/Doomlazer/KQIV-TBoR/wiki
 
+<img src="TitleCard.png"  width="500">
