@@ -1,32 +1,12 @@
-# KQIV:TBoR
-King’s Quest IV: The Breasts of Rosella
+# King’s Quest IV: The Breasts of Rosella
 
-## warning expect save games to break with updates until upcomming v1.0 release
+Still in BETA 
 
-BETA release version 0.9.8.2
-Content rating: Mature, 18+ for violence and strong sexual themes.
+## INSTALLATION
 
-Developed using <a href="http://scicompanion.com/">SCI Companion</a>
+Copy resouce.001, resource.004 and resource.map to the KQ4 game folder and run in SCUMMVM or DOSBox.
 
-This mod requires a full version of the DOS SCI game KQIV to work.
+### Walkthrough
 
-INSTALLATION
+https://github.com/Doomlazer/KQIV-TBoR/wiki
 
-Easy method: Copy all the files into your KQIV game folder and run the game in DosBox or SCUMMVM. At minimum, replace resouce.001, resource.004 and resource.map for the mod to work.
-
-
-FEATURES
-
-Breasts - Two of them in fact!
-
-Secret puzzles/ending - A brand new hidden side quest and ending.
-
-Cameos - Characters, items, music and locations from other SCI0 games.
-
-Multiple solutions and hidden skips - Complete original KQ4 puzzles exactly as intended, albeit with dialog changes, or explore all new playthrough options and dimension-bending content. Nearly all the additions are optional.
-
-<a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">Wiki (walkthrough)</a>
-
-## Progress
-
-nearing completion
