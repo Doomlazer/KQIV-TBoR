@@ -324,7 +324,6 @@
 			)
 			(21
 				(ShakeScreen 1 3)
-				(h1 dispose:)
 				(ego view: 4 setMotion: 0 setCycle: Walk)
 				(= gotItem 1)
 				(theGame changeScore: 10)
@@ -338,6 +337,7 @@
 					setCycle: EndLoop self
 					init:
 				)
+				(h1 dispose:)
 			)
 			(22
 				(heart dispose:)
