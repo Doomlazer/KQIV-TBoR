@@ -284,6 +284,7 @@
 		rodeDolphin
 		ogressShot
 		condomRotation
+		rm705DoorUnlocked
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))
@@ -535,7 +536,7 @@
 		)
 
 		;(ego get: iTooth)
-		;(ego get: iBone)
+		(ego get: iHairpin)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
@@ -1984,7 +1985,7 @@
 	(properties
 		said '/hairpin'
 		owner 97
-		view 575
+		view 590
 		name "Hairpin"
 	)
 )

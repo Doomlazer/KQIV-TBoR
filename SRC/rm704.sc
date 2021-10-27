@@ -144,11 +144,7 @@
 				((event claimed?) (return TRUE))
 				((== (event type?) saidEvent)
 					(cond 
-						(
-							(or
-								(Said 'look[<around][/noword]')
-								(Said 'look/room')
-							)
+						((or (Said 'look[<around][/noword]') (Said 'look/room'))
 							(Print 704 0 #font 605 #at 10 5 #width 280)
 							(Print 704 1 #font 605 #at 10 5 #width 280)
 							(Print 704 2 #font 605 #at 10 5 #width 280)

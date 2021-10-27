@@ -43,6 +43,10 @@
 		(if (or (== prevRoomNum 37) (== prevRoomNum 0))
 			(ego posn: 156 176 view: 4 xStep: 4 yStep: 2 init:)
 		)
+		(if (== prevRoomNum 705)
+			(ego posn: 150 135 view: 4 xStep: 4 yStep: 2 init:)
+		)
+		
 		(if (== prevRoomNum 46)
 			(ego
 				posn: 72 141
@@ -149,29 +153,47 @@
 						)
 					)
 					((Said 'open/door')
-						(if
-							(or
-								(ego inRect: 146 127 176 131)
-								(ego inRect: 238 141 260 153)
+						(cond 
+							((ego inRect: 238 141 260 153)
+								(Print 47 6)
 							)
-							(Print 47 6)
-						else
-							(Print 800 1)
+							((ego inRect: 142 127 176 134) ; rm705 door
+								(if rm705DoorUnlocked
+									;NEEDS DOOR OPEN ANIMATION						
+									(curRoom newRoom: 705)
+								else
+									(Print 47 6)
+								)
+							)
+							(else
+									(Print 800 1)
+							)
 						)
 					)
-					((Said 'unlatch/door')
-						(if
-							(or
-								(ego inRect: 146 127 176 131)
-								(ego inRect: 238 141 260 153)
+					((or (Said 'unlatch/door') (Said 'use/hairpin[/anyword]'))
+						(cond 
+							((ego inRect: 238 141 260 153)
+								(if (or (ego has: iGoldKey) (ego has: iSkeletonKey))
+									(Print 47 7)
+								else
+									(Print 47 8)
+								)
 							)
-							(if (or (ego has: iGoldKey) (ego has: iSkeletonKey))
-								(Print 47 7)
-							else
-								(Print 47 8)
+							((ego inRect: 142 127 176 134) ; rm705 door
+								(if (ego has: iHairpin)
+									(if rm705DoorUnlocked
+										(Print {You already unlocked it, weirdo.})
+									else
+										(Print {With the help of the hairpin you manage to unlock the door. Rosella is truly the master of unlocking!})
+										(= rm705DoorUnlocked 1)
+									)
+								else
+									(Print {You don't have a way to unlock this door.})
+								)	
 							)
-						else
-							(Print 800 1)
+							(else
+								(Print 800 1)
+							)
 						)
 					)
 					((Said 'bang/door')

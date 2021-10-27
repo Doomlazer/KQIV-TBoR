@@ -1,6 +1,7 @@
 ;;; Sierra Script 1.0 - (do not remove this comment)
 (script# 702)
-(include game.sh) (include menu.sh)
+(include game.sh) 
+(include menu.sh)
 (use Intrface)
 (use Sound)
 (use Save)
