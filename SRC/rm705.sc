@@ -28,7 +28,7 @@
 		(self setScript: RoomScript)
 		(switch prevRoomNum
 			(706
-				(ego posn:230 153 loop: 0)
+				(ego posn:220 153 loop: 0 ignoreControl: 0)
 			)
 			(else 
 				(ego posn: 88 170 loop: 1)
