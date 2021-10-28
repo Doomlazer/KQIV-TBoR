@@ -1,6 +1,8 @@
 # King’s Quest IV: The Breasts of Rosella
 
-Still in BETA 
+Still in BETA
+
+This mod is a learning project that grew out of the dumbest idea I could think of, a KQIV Nude Patch. In hindsight, I probably should have started with a better premise.
 
 ## INSTALLATION
 
