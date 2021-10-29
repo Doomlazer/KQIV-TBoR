@@ -536,7 +536,7 @@
 		)
 
 		;(ego get: iTooth)
-		(ego get: iHairpin)
+		;(ego get: iHairpin)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)
