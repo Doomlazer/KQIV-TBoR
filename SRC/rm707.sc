@@ -32,7 +32,7 @@
 		(= isIndoors FALSE)
 		(super init:)
 
-		(ego view: 2 init:)
+		(ego view: 592 init:)
 		(musicSound play:)
 		(ego setScript: rosellaScript)
 		
@@ -157,7 +157,7 @@
 					setCycle: Forward
 				)
 
-				(ego view: 2 setCycle: Walk)
+				(ego view: 59 setCycle: Walk)
 
 			)
 		)
