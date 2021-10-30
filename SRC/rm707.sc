@@ -15,7 +15,11 @@
 )
 
 (local
-	
+
+)
+
+(instance shaw of View
+	(properties)
 )
 
 (instance Room707 of Room
@@ -31,7 +35,16 @@
 		(= horizon 68)
 		(= isIndoors FALSE)
 		(super init:)
-
+		(if (ego has: iTooth)
+			(shaw 
+				view: 593
+				loop: 3 
+				cel: 0 
+				posn: 83 150 
+				init: 
+				addToPic:
+			)
+		)
 		(ego view: 592 init:)
 		(musicSound play:)
 		(ego setScript: rosellaScript)
@@ -103,16 +116,17 @@
 									(Print {What skull, Nostradamus?}))
 						)
 						((Said '/cottage') (Print 8 4))
-						((Said '[<around][/room]') (if wifeDead
-									(Print 8 7)
-									(if wifeGraveDugUp
-										(if ((Inventory at: iSkull) ownedBy: 8)
+						((Said '[<around][/room]')
+							(if wifeDead
+								(Print 8 7)
+								(if wifeGraveDugUp
+									(if ((Inventory at: iSkull) ownedBy: 8)
 										(Print {your digging has unearthed the Fisherman's wife's skull.})
-										)
 									)
-								else
-									(Print 8 5)
 								)
+							else
+								(Print 8 5)
+							)
 						)
 					)
 				)
@@ -141,7 +155,7 @@
 		(switch (= state newState)
 			(0
 				;(ego setMotion: MoveTo 29 142 self)
-				(Print {this print work s})
+				;(Print {this print work s})
 				(= seconds 5)
 				
 			)
@@ -150,14 +164,8 @@
 				(= seconds 1)
 			)
 			(1
-				(curRoom drawPic: 708)
-				(ego
-					view: 47
-					loop: 0
-					setCycle: Forward
-				)
-
-				(ego view: 59 setCycle: Walk)
+				(curRoom drawPic: 708 DISSOLVE)
+				(ego view: 592 setCycle: Walk)
 
 			)
 		)
