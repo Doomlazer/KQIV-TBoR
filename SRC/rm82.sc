@@ -305,7 +305,7 @@
 								)
 								((Said 'get/condom')
 									(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 3))
-										(if	(< (ego distanceTo: condom) 8)							
+										(if	(< (ego distanceTo: condom) 10)							
 											(getCondom changeState: 0)
 										else
 											(Print {Not close enough.})
@@ -509,7 +509,7 @@
 				(Print 82 55 #at -1 10 #font smallFont #width 250)
 				(theGame changeScore: 8)
 				(lolotte stopUpd:)
-				(= lolotteAlive FALSE) ;ding-dong, the witch is dead!
+				(= lolotteAlive FALSE)
 				(if (< gameHours 30)
 					(= gameHours 30)
 					(= gameMinutes 0)
@@ -517,10 +517,14 @@
 				(= seconds 3)
 			)
 			(5
-				(Print 82 56 #at -1 10 #font smallFont)
-				(window1 setCycle: EndLoop self)
-				(window2 setCycle: EndLoop)
-				(= isNightTime 0)
+				(if isNightTime
+					(Print 82 56 #at -1 10 #font smallFont)
+					(window1 setCycle: EndLoop self)
+					(window2 setCycle: EndLoop)
+					(= isNightTime 0)
+				else
+					(= cycles 5)
+				)
 			)
 			(6
 				(User canControl: TRUE canInput: TRUE)

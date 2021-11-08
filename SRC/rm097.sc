@@ -724,7 +724,7 @@
 						(self changeState: 4)
 					)
 				else
-					(= choice (Print 97 24 #time 20 #button { {Distract} 1 #button {Honest} 2))
+					(= choice (Print 97 24 #time 20 #button {Distract} 1 #button {Honest} 2))
 					(if (== choice 1)
 						(self changeState: 3)
 					)

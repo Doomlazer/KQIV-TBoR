@@ -399,7 +399,7 @@
 											(= local148 1)
 											(self changeState: 1)
 										)
-										((and (not (StrCmp @str {SURVALIANCE})) (== local145 3)) ;miami
+										((and (not (StrCmp @str {SURVEILLANCE})) (== local145 3)) ;miami
 											(= local144 7)
 											(= local146 0)
 											(= local148 1)
@@ -625,7 +625,7 @@
 													(LocPrint 706 99)
 													(LocPrint 706 100)
 												)
-												(5
+												(5 ;roger wilco
 													(LocPrint 706 101)
 													(LocPrint 706 102)
 												)
@@ -660,6 +660,9 @@
 												(14
 													(LocPrint 706 117)
 													(LocPrint 706 118)
+													(Print {Hmm, I guess Sonny is the one bad apple.})
+													(theGame changeScore: 50)
+													(= gotItem 1)
 												)
 												(15
 													(LocPrint 706 119)

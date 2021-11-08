@@ -93,7 +93,16 @@
 					(cond 
 						((Said 'look>')
 							(cond 
-								((Said '<under/bed') (Print 62 0))
+								((Said '<under/bed')
+									(if ((Inventory at: iHairpin) ownedBy: 97) 
+										(ego get: iHairpin)
+										(Print {looking under the bed you find a hairpin.} #icon 590 0 0)
+										(theGame changeScore: 20) 
+										(= gotItem 1)
+									else
+										(Print 62 0)
+									)
+								)
 								((Said '/bed') (Print 62 1))
 								((Said '/window') (Print 62 2))
 								((Said '<in/chest,dresser,drawer') (Print 62 3))

@@ -187,7 +187,11 @@
 	(method (doit)
 		(if (& (ego onControl: 0) $0040)
 			(cond 
-				((!= gamePhase trappedInCastle)
+				(
+					(or
+						(!= gamePhase trappedInCastle)
+						(not lolotteAlive)
+					)
 					(curRoom newRoom: 80)
 				)
 				((not triedToEscape)
@@ -263,7 +267,11 @@
 ;;;						)
 						((Said 'sit/throne') (Print 92 10))
 						((Said 'open/door')
-							(if (!= gamePhase trappedInCastle)
+							(if 
+								(or
+									(!= gamePhase trappedInCastle)
+									(not lolotteAlive)
+								)
 								(Print 92 11)
 							else
 								(Print 92 12)
@@ -271,14 +279,22 @@
 							)
 						)
 						((Said 'unlatch/door')
-							(if (!= gamePhase trappedInCastle)
+							(if 
+								(or
+									(!= gamePhase trappedInCastle)
+									(not lolotteAlive)
+								)
 								(Print 92 14)
 							else
 								(Print 92 15)
 							)
 						)
 						((Said 'pick/door')
-							(if (!= gamePhase trappedInCastle)
+							(if 
+								(or
+									(!= gamePhase trappedInCastle)
+									(not lolotteAlive)
+								)
 								(Print 92 59)
 							else
 								(Print 92 60)
