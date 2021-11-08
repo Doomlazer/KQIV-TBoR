@@ -51,7 +51,10 @@
 		(super init:)
 		(= isIndoors TRUE)
 		(if (ego has: iDiamondPouch) (= wifeAtCounter TRUE))
-		(if wifeDead (= deadswitch 1))
+		(if wifeDead
+			(= deadswitch 1)
+			(= shouldknowwifedead 1)
+		)
 		(ego
 			view: 4
 			loop: 0
@@ -473,7 +476,9 @@
 					((Said 'deliver>')
 						(if
 							(or
-								(if (cast contains: wife)(< (ego distanceTo: wife) 20))
+								(if (cast contains: wife)
+									(< (ego distanceTo: wife) 20)
+								)
 								(and
 									(cast contains: fisherman)
 									(< (ego distanceTo: fishermanSitting) 30)
@@ -486,24 +491,32 @@
 								)
 								(cond 
 									(
+										(and
+											(cast contains: wife)
+											(== (inventory indexOf: inventorySaidMe) 1)
+											(== fishermanState fisherAtHome)
+										)
+								
+										(if (< (ego distanceTo: wife) 25)
+											(Print 42 44 #icon 421 0 0)
+										else
+											(Print 42 45 #icon 421 0 0)
+										)
+								
+										(ego put: iDiamondPouch 42)
+										(wife setScript: givePole)
+						
+									)
+									((== fishermanState fisherAtHome)
 										(if (cast contains: wife)
-											(and
-												(== (inventory indexOf: inventorySaidMe) 1)
-												(== fishermanState fisherAtHome)
-											)
-											(if (< (ego distanceTo: wife) 25)
-												(Print 42 44 #icon 421 0 0)
-											else
-												(Print 42 45 #icon 421 0 0)
-											)
-											(ego put: iDiamondPouch 42)
-											(wife setScript: givePole)
+											(Print 42 46)
 										else
 											(Print {"...she's dead because of you. Please leave."})
 										)
 									)
-									((== fishermanState fisherAtHome) (Print 42 46))
-									(else (Print 42 47))
+									(else
+										(Print 42 47)
+									)
 								)
 							else
 								(if inventorySaidMe (Print 800 2) else (Print 42 48))
@@ -610,10 +623,17 @@
 					view: 242
 					loop: 0
 				;	cel: 0
-				;	setPri: 8
+					setPri: 8
 					setAvoider: (Avoider new:)
 					setCycle: Walk
 					setMotion: MoveTo 223 118 self
+				)
+				((View new:)
+					view: 513
+					loop: 3
+					cel: 0
+					posn: 82 154
+					addToPic:
 				)
 			)
 			(2
@@ -630,7 +650,7 @@
 			)
 			(3
 				(Print {The Fisherman's pole. Very phallic.} #icon 421 0 0)
-				(= cycles 1)
+				(= cycles 5)
 			)
 			(4
 				(ego get: 17)
@@ -651,6 +671,7 @@
 					view: 241
 					setAvoider: 0
 					loop: 0
+					ignoreActors: 0
 					setCycle: Forward
 					setScript: doBread
 				)
@@ -840,11 +861,27 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0 
-				(if wifeDead (Print 42 75) else (Print 42 66))
+				(if wifeDead
+					(if shouldknowwifedead
+						(Print 42 75)
+					else
+						(Print 42 80)
+					)
+				else
+					(Print 42 66)
+				)
 			)
 			(1 
 				(= state 0) 
-				(if wifeDead (Print 42 75) else (Print 42 67))
+				(if wifeDead
+					(if shouldknowwifedead
+						(Print 42 75)
+					else
+						(Print 42 80)
+					)
+				else
+					(Print 42 67)
+				)
 			)
 		)
 	)
@@ -856,14 +893,38 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0 
-				(if wifeDead (Print 42 75) else (Print 42 68))
+				(if wifeDead
+					(if shouldknowwifedead
+						(Print 42 75)
+					else
+						(Print 42 80)
+					)
+				else
+					(Print 42 68)
+				)
 			)
 			(1 
-				(if wifeDead (Print 42 75) else (Print 42 69))
+				(if wifeDead
+					(if shouldknowwifedead
+						(Print 42 75)
+					else
+						(Print 42 80)
+					)
+					
+					else (Print 42 69)
+				)
 			)
 			(2 
 				(= state 1) 
-				(if wifeDead (Print 42 75) else (Print 42 70))
+				(if wifeDead
+					(if shouldknowwifedead
+						(Print 42 75)
+					else
+						(Print 42 80)
+					)
+				else
+					(Print 42 70)
+				)
 			)
 		)
 	)
@@ -891,7 +952,7 @@
 		(switch (= state newState)
 			(0
 				(HandsOff)
-				(ego view: 21)
+				(ego view: 40)
 				(FaceObject ego condom)
 				(ego setCycle: EndLoop self)
 			)
@@ -904,7 +965,7 @@
 				(condom dispose:)
 			)
 			(2
-				(ego view: 2 setScript: 0 setCycle: Walk)
+				(ego view: 4 setScript: 0 setCycle: Walk)
 				(HandsOn)
 			)
 		)

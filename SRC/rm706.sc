@@ -43,7 +43,7 @@
 	(newEvent dispose:)
 )
 
-(procedure (localproc_0031 param1) ;letter to uppercase
+(procedure (LetterToUppercase param1) ;letter to uppercase
 	(return
 		(if (and (<= 97 param1) (<= param1 122))
 			(return (- param1 32))
@@ -53,7 +53,7 @@
 	)
 )
 
-(procedure (localproc_01c0) ;display record
+(procedure (LocPrint) ;display record
 	(Print &rest #font 7 #width 168 #at 70 10)
 )
 
@@ -338,7 +338,7 @@
 								(< (event message?) 127) ;127
 								(< local154 13)
 							)
-							(StrAt @str local154 (localproc_0031 (event message?)))
+							(StrAt @str local154 (LetterToUppercase (event message?)))
 							(++ local154)
 							(StrAt @str local154 0)
 							(Display (Format @temp0 {%c} eventMessage)
@@ -466,27 +466,27 @@
 								)
 								(local149
 									(switch local152
-										(1 (localproc_01c0 706 17))
-										(2 (localproc_01c0 706 18))
-										(3 (localproc_01c0 706 19))
-										(4 (localproc_01c0 706 20))
+										(1 (LocPrint 706 17))
+										(2 (LocPrint 706 18))
+										(3 (LocPrint 706 19))
+										(4 (LocPrint 706 20))
 										(5
-											(localproc_01c0 706 21)
-											(localproc_01c0 706 22)
+											(LocPrint 706 21)
+											(LocPrint 706 22)
 										)
-										(6 (localproc_01c0 706 23))
+										(6 (LocPrint 706 23))
 										(7
-											(localproc_01c0 706 24)
-											(localproc_01c0 706 25)
+											(LocPrint 706 24)
+											(LocPrint 706 25)
 										)
-										(8 (localproc_01c0 706 26))
-										(9 (localproc_01c0 706 27))
-										(10 (localproc_01c0 706 28))
-										(11 (localproc_01c0 706 29))
-										(12 (localproc_01c0 706 30))
-										(13 (localproc_01c0 706 31))
-										(14 (localproc_01c0 706 32))
-										(15 (localproc_01c0 706 33))
+										(8 (LocPrint 706 26))
+										(9 (LocPrint 706 27))
+										(10 (LocPrint 706 28))
+										(11 (LocPrint 706 29))
+										(12 (LocPrint 706 30))
+										(13 (LocPrint 706 31))
+										(14 (LocPrint 706 32))
+										(15 (LocPrint 706 33))
 									)
 								)
 								(local147
@@ -494,180 +494,180 @@
 										(4
 											(switch local152
 												(1
-													(localproc_01c0 706 34)
-													(localproc_01c0 706 35)
+													(LocPrint 706 34)
+													(LocPrint 706 35)
 												)
-												(2 (localproc_01c0 706 36))
+												(2 (LocPrint 706 36))
 												(3
-													(localproc_01c0 706 37)
-													(localproc_01c0 706 38)
+													(LocPrint 706 37)
+													(LocPrint 706 38)
 												)
-												(4 (localproc_01c0 706 39))
-												(5 (localproc_01c0 706 40))
+												(4 (LocPrint 706 39))
+												(5 (LocPrint 706 40))
 												(6
-													(localproc_01c0 706 41)
-													(localproc_01c0 706 42)
+													(LocPrint 706 41)
+													(LocPrint 706 42)
 												)
-												(7 (localproc_01c0 706 43))
+												(7 (LocPrint 706 43))
 												(11
-													(localproc_01c0 706 44)
-													(localproc_01c0 706 45)
+													(LocPrint 706 44)
+													(LocPrint 706 45)
 												)
 												(12
-													(localproc_01c0 706 46)
-													(localproc_01c0 706 47)
+													(LocPrint 706 46)
+													(LocPrint 706 47)
 												)
-												(13 (localproc_01c0 706 48))
-												(14 (localproc_01c0 706 49))
-												(15 (localproc_01c0 706 50))
-												(16 (localproc_01c0 706 51))
+												(13 (LocPrint 706 48))
+												(14 (LocPrint 706 49))
+												(15 (LocPrint 706 50))
+												(16 (LocPrint 706 51))
 											)
 										)
 										(2
 											(switch local152
 												(1
-													(localproc_01c0 706 52) ;Fisherman
-													(localproc_01c0 706 53)
+													(LocPrint 706 52) ;Fisherman
+													(LocPrint 706 53)
 												)
 												(2
-													(localproc_01c0 706 54)
-													(localproc_01c0 706 55)
-													(localproc_01c0 706 56)
+													(LocPrint 706 54)
+													(LocPrint 706 55)
+													(LocPrint 706 56)
 												)
 												(3
-													(localproc_01c0 706 57)
-													(localproc_01c0 706 58)
-													(localproc_01c0 706 59)
+													(LocPrint 706 57)
+													(LocPrint 706 58)
+													(LocPrint 706 59)
 												)
 												(4
-													;(localproc_01c0 706 60) ;blair witchhazel
-													(localproc_01c0 706 61)
-													(localproc_01c0 706 62)
+													;(LocPrint 706 60) ;blair witchhazel
+													(LocPrint 706 61)
+													(LocPrint 706 62)
 												)
 												(5
-													(localproc_01c0 706 63) ;cave troll
-													(localproc_01c0 706 64)
+													(LocPrint 706 63) ;cave troll
+													(LocPrint 706 64)
 												)
 												(6
-													(localproc_01c0 706 65) ;lolotte bookeeping
-													(localproc_01c0 706 66)
+													(LocPrint 706 65) ;lolotte bookeeping
+													(LocPrint 706 66)
 													(theGame changeScore: 20)
 													(= gotItem 1)
 													(Print 706 191)
 													(localproc_000c) ;probably wont work
 												)
 ;;;												(7
-;;;													(localproc_01c0 706 67)
-;;;													(localproc_01c0 706 68)
+;;;													(LocPrint 706 67)
+;;;													(LocPrint 706 68)
 ;;;												)
 ;;;												(8
-;;;													(localproc_01c0 706 69)
-;;;													(localproc_01c0 706 70)
-;;;													(localproc_01c0 706 71)
+;;;													(LocPrint 706 69)
+;;;													(LocPrint 706 70)
+;;;													(LocPrint 706 71)
 ;;;												)
 ;;;												(9
-;;;													(localproc_01c0 706 72)
-;;;													(localproc_01c0 706 73)
+;;;													(LocPrint 706 72)
+;;;													(LocPrint 706 73)
 ;;;												)
 ;;;												(10
-;;;													(localproc_01c0 706 74)
-;;;													(localproc_01c0 706 75)
-;;;													(localproc_01c0 706 76)
+;;;													(LocPrint 706 74)
+;;;													(LocPrint 706 75)
+;;;													(LocPrint 706 76)
 ;;;													;(Bset 56) ;read Pratt record
 ;;;												)
 ;;;												(11
-;;;													(localproc_01c0 706 77)
-;;;													(localproc_01c0 706 78)
+;;;													(LocPrint 706 77)
+;;;													(LocPrint 706 78)
 ;;;												)
 ;;;												(12
-;;;													(localproc_01c0 706 79)
-;;;													(localproc_01c0 706 80)
-;;;													(localproc_01c0 706 81)
+;;;													(LocPrint 706 79)
+;;;													(LocPrint 706 80)
+;;;													(LocPrint 706 81)
 ;;;												)
 ;;;												(13
-;;;													(localproc_01c0 706 82)
-;;;													(localproc_01c0 706 83)
-;;;													(localproc_01c0 706 84)
-;;;													(localproc_01c0 706 85)
+;;;													(LocPrint 706 82)
+;;;													(LocPrint 706 83)
+;;;													(LocPrint 706 84)
+;;;													(LocPrint 706 85)
 ;;;												)
 ;;;												(14
-;;;													(localproc_01c0 706 86)
-;;;													(localproc_01c0 706 87)
+;;;													(LocPrint 706 86)
+;;;													(LocPrint 706 87)
 ;;;												)
 ;;;												(15
-;;;													(localproc_01c0 706 88)
-;;;													(localproc_01c0 706 89)
+;;;													(LocPrint 706 88)
+;;;													(LocPrint 706 89)
 ;;;												)
 ;;;												(16
-;;;													(localproc_01c0 706 90)
-;;;													(localproc_01c0 706 91)
+;;;													(LocPrint 706 90)
+;;;													(LocPrint 706 91)
 ;;;												)
 ;;;												(17 
-;;;													(localproc_01c0 706 92)
+;;;													(LocPrint 706 92)
 ;;;												)
 											)
 										)
 										(7
 											(switch local152
 												(1
-													(localproc_01c0 706 93)
-													(localproc_01c0 706 94)
+													(LocPrint 706 93)
+													(LocPrint 706 94)
 												)
 												(2
-													(localproc_01c0 706 95)
-													(localproc_01c0 706 96)
+													(LocPrint 706 95)
+													(LocPrint 706 96)
 												)
 												(3
-													(localproc_01c0 706 97)
-													(localproc_01c0 706 98)
+													(LocPrint 706 97)
+													(LocPrint 706 98)
 												)
 												(4
-													(localproc_01c0 706 99)
-													(localproc_01c0 706 100)
+													(LocPrint 706 99)
+													(LocPrint 706 100)
 												)
 												(5
-													(localproc_01c0 706 101)
-													(localproc_01c0 706 102)
+													(LocPrint 706 101)
+													(LocPrint 706 102)
 												)
 												(6
-													(localproc_01c0 706 103)
-													(localproc_01c0 706 104)
+													(LocPrint 706 103)
+													(LocPrint 706 104)
 												)
 												(7
-													(localproc_01c0 706 105)
-													(localproc_01c0 706 106)
+													(LocPrint 706 105)
+													(LocPrint 706 106)
 												)
 												(8
-													(localproc_01c0 706 107)
-													(localproc_01c0 706 108)
+													(LocPrint 706 107)
+													(LocPrint 706 108)
 												)
 												(9
-													(localproc_01c0 706 109)
-													(localproc_01c0 706 110)
+													(LocPrint 706 109)
+													(LocPrint 706 110)
 												)
 												(11
-													(localproc_01c0 706 111)
-													(localproc_01c0 706 112)
+													(LocPrint 706 111)
+													(LocPrint 706 112)
 												)
 												(12
-													(localproc_01c0 706 113)
-													(localproc_01c0 706 114)
+													(LocPrint 706 113)
+													(LocPrint 706 114)
 												)
 												(13
-													(localproc_01c0 706 115)
-													(localproc_01c0 706 116)
+													(LocPrint 706 115)
+													(LocPrint 706 116)
 												)
 												(14
-													(localproc_01c0 706 117)
-													(localproc_01c0 706 118)
+													(LocPrint 706 117)
+													(LocPrint 706 118)
 												)
 												(15
-													(localproc_01c0 706 119)
-													(localproc_01c0 706 120)
+													(LocPrint 706 119)
+													(LocPrint 706 120)
 												)
 												(16
-													(localproc_01c0 706 121)
-													(localproc_01c0 706 122)
+													(LocPrint 706 121)
+													(LocPrint 706 122)
 												)
 											)
 										)

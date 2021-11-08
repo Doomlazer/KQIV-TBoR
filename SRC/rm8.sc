@@ -88,11 +88,12 @@
 						)
 					)
 				)
-				(musicSound play:)
+				(if (not (cast contains: pan))
+					(musicSound play:)
+				)
 			)
 		)
 		(if wifeDead (= shouldknowwifedead 1))
-		
 	)
 	
 	(method (handleEvent event)
@@ -204,6 +205,7 @@
 			(= hourLastMetPan gameHours)
 			(= minutesLastMetPan gameMinutes)
 		)
+		(sounds eachElementDo: #dispose)
 		(super newRoom: newRoomNumber)
 	)
 )

@@ -670,7 +670,7 @@
 		(switch (= state newState)
 			(0
 				(HandsOff)
-				(ego view: 21)
+				(ego view: 40)
 				(FaceObject ego condom)
 				(ego setCycle: EndLoop self)
 			)
@@ -683,7 +683,7 @@
 				(condom dispose:)
 			)
 			(2
-				(ego view: 2 setScript: 0 setCycle: Walk)
+				(ego view: 4 setScript: 0 setCycle: Walk)
 				(HandsOn)
 			)
 		)

@@ -258,7 +258,11 @@
 ;;;						)
 						((Said 'sit/throne') (Print 92 10))
 						((Said 'open/door')
-							(if (and (== gamePhase endGame) (== lolotteAlive FALSE))
+							(if (and
+									;(== gamePhase endGame)
+									(!= gamePhase trappedInCastle)
+									(== lolotteAlive FALSE)
+								)
 								(Print 92 11)
 							else
 								(Print 92 12)

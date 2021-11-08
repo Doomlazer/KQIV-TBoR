@@ -285,6 +285,7 @@
 		ogressShot
 		condomRotation
 		rm705DoorUnlocked
+		rm87GoonKilled
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))

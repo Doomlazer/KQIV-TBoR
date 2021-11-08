@@ -82,7 +82,10 @@
 			init:
 			setCycle: Forward
 		)
-		(if lolotteAlive	
+		(if (and
+				lolotteAlive
+				(not rm87GoonKilled)
+			)	
 			((= h1 (Actor new:))
 				view: 145
 				loop: 4
@@ -99,12 +102,14 @@
 				posn: 272 153
 				init:
 			)
-			((= h2 (Actor new:))
-				view: 147
-				loop: 2
-				cel: 0
-				posn: 250 157
-				init:
+			(if (not rm87GoonKilled)
+				((= h2 (Actor new:))
+					view: 147
+					loop: 2
+					cel: 0
+					posn: 250 157
+					init:
+				)
 			)
 			((= h3 (Actor new:))
 				view: 147
@@ -113,7 +118,7 @@
 				posn: 212 158
 				init:
 			)
-			(ego observeControl: 1024)
+			(ego observeControl: 1024) ;ctlGREEN
 			(h1 setScript: circleJerk)
 		)
 		(if (or (== prevRoomNum 88) (== prevRoomNum 0))
@@ -194,6 +199,7 @@
 								(theMusic stop:)
 								(ego setScript: goonBowScript)
 								(goonBowScript changeState: 20)
+								(= rm87GoonKilled 1)
 							else
 								(if (ego has: iCupidBow) 
 									(Print {You're out of arrows.})
@@ -289,17 +295,21 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				((ScriptID 0 4) setReal: self 2)
+				((ScriptID 0 4) setReal: self 2) ;notify script 'timer 1'
 			)
 			(1
 				(h1 setCycle: EndLoop)
-				(h2 setCycle: EndLoop)
+				(if (not rm87GoonKilled)
+					(h2 setCycle: EndLoop)
+				)
 				(h3 setCycle: EndLoop)
 				((ScriptID 0 4) setReal: self 5)
 			)
 			(2
-				(h2 setCycle: BegLoop)
 				(h1 setCycle: BegLoop)
+				(if (not rm87GoonKilled)
+					(h2 setCycle: BegLoop)
+				)
 				(h3 setCycle: BegLoop self)
 			)
 			(3 (client setScript: 0))
