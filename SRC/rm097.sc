@@ -712,6 +712,7 @@
 					
 			)
 			(1
+				(if readSonnysFile
 					(= choice (Print 97 24 #time 20 #button {Decieve} 1 #button {Distract} 2 #button {Honest} 3))
 					(if (== choice 1)
 						(self changeState: 2)
@@ -722,9 +723,15 @@
 					(if (== choice 3)
 						(self changeState: 4)
 					)
-					
-							
-								
+				else
+					(= choice (Print 97 24 #time 20 #button { {Distract} 1 #button {Honest} 2))
+					(if (== choice 1)
+						(self changeState: 3)
+					)
+					(if (== choice 2)
+						(self changeState: 4)
+					)
+				)				
 			)
 			(2
 				(Print 97 25 #title {Rosella})

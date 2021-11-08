@@ -58,41 +58,41 @@
 		(NotifyScript LOLOTTE 0)
 		(= local8 0)
 ;	(if (<= gamePhase getPandoraBox)
-		((View new:)
-			view: 634
-			loop: 1
-			cel: 0
-			posn: 32 79
-			setPri: 10
-			init:
-			startUpd:
-		)
-		((View new:)
-			view: 634
-			loop: 1
-			cel: 1
-			posn: 289 80
-			setPri: 10
-			init:
-			addToPic:
-		)
-		((Prop new:)
-			view: 512
-			loop: 0
-			posn: 289 68
-			setPri: 10
-			init:
-			setCycle: Forward
-		)
-		((= candle (Prop new:))
-			view: 512
-			loop: 0
-			posn: 34 67
-			setPri: 10
-			init:
-			setCycle: Forward
-		)
-;	) ;reduce mem usasge in endgame throneroom to compinsate for custom inv items
+;;;		((View new:)
+;;;			view: 634
+;;;			loop: 1
+;;;			cel: 0
+;;;			posn: 32 79
+;;;			setPri: 10
+;;;			init:
+;;;			startUpd:
+;;;		)
+;;;		((View new:)
+;;;			view: 634
+;;;			loop: 1
+;;;			cel: 1
+;;;			posn: 289 80
+;;;			setPri: 10
+;;;			init:
+;;;			addToPic:
+;;;		)
+;;;		((Prop new:)
+;;;			view: 512
+;;;			loop: 0
+;;;			posn: 289 68
+;;;			setPri: 10
+;;;			init:
+;;;			setCycle: Forward
+;;;		)
+;;;		((= candle (Prop new:))
+;;;			view: 512
+;;;			loop: 0
+;;;			posn: 34 67
+;;;			setPri: 10
+;;;			init:
+;;;			setCycle: Forward
+;;;		)
+;	) ;reduce mem usasge and re-enable
 		(= isIndoors TRUE)
 		(if (== prevRoomNum 80)
 			(ego posn: 153 156 view: 4 xStep: 4 yStep: 2 init:)
@@ -187,8 +187,13 @@
 	(method (doit)
 		(if (& (ego onControl: 0) $0040)
 			(cond 
-				((and (== gamePhase endGame) (== lolotteAlive FALSE)) (curRoom newRoom: 80))
-				((not triedToEscape) (Print 92 0) (= triedToEscape TRUE))
+				((!= gamePhase trappedInCastle)
+					(curRoom newRoom: 80)
+				)
+				((not triedToEscape)
+					(Print 92 0)
+					(= triedToEscape TRUE)
+				)
 			)
 		else
 			(= triedToEscape FALSE)
@@ -258,11 +263,7 @@
 ;;;						)
 						((Said 'sit/throne') (Print 92 10))
 						((Said 'open/door')
-							(if (and
-									;(== gamePhase endGame)
-									(!= gamePhase trappedInCastle)
-									(== lolotteAlive FALSE)
-								)
+							(if (!= gamePhase trappedInCastle)
 								(Print 92 11)
 							else
 								(Print 92 12)
@@ -270,10 +271,17 @@
 							)
 						)
 						((Said 'unlatch/door')
-							(if (and (== gamePhase endGame) (== lolotteAlive FALSE))
+							(if (!= gamePhase trappedInCastle)
 								(Print 92 14)
 							else
 								(Print 92 15)
+							)
+						)
+						((Said 'pick/door')
+							(if (!= gamePhase trappedInCastle)
+								(Print 92 59)
+							else
+								(Print 92 60)
 							)
 						)
 					)

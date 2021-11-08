@@ -93,8 +93,8 @@
 				init:
 				setScript: henchChase
 			)
-
-		else
+		)
+		(if (not lolotteAlive)
 			((= h1 (Actor new:))
 				view: 147
 				loop: 1

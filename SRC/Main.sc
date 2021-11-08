@@ -286,6 +286,7 @@
 		condomRotation
 		rm705DoorUnlocked
 		rm87GoonKilled
+		readSonnysFile
 )
 (procedure (IsObjectOnControl param1 param2)
 	(if (< argc 2) (= param2 5))
@@ -1984,7 +1985,7 @@
 
 (instance Hairpin of newInvItem
 	(properties
-		said '/hairpin'
+		said '/hairpin,pin[<bobby]'
 		owner 97
 		view 590
 		name "Hairpin"
