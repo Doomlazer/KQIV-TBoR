@@ -311,7 +311,8 @@
 					init:
 					hide:
 				)
-				(if (!= debugOn FALSE) (= seconds 10) else (= seconds 60))
+				;(if (!= debugOn FALSE) (= seconds 10) else (= seconds 60))
+				(= seconds 60)
 			)
 			(1
 				(= local5 10)

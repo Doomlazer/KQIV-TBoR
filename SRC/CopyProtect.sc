@@ -520,12 +520,12 @@
 			#edit @userInput 30
 		)
 
-		(if (and debugging (= i (ReadNumber @userInput)))
-			(TheMenuBar draw:)
-			(StatusLine enable:)
-			(self newRoom: i)
-			(return)
-		)	
+;;;		(if (and debugging (= i (ReadNumber @userInput)))
+;;;			(TheMenuBar draw:)
+;;;			(StatusLine enable:)
+;;;			(self newRoom: i)
+;;;			(return)
+;;;		)	
 
 		(= userFont smallFont)
 		(for ((= i 0)) (< i (StrLen @userInput)) ((++ i))

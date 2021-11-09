@@ -181,7 +181,7 @@
 				(DoSound SoundOn (not i))
 			)
 			(else 
-				(if global202 (global202 doit: temp0))
+				;(if global202 (global202 doit: temp0))
 			)
 		)
 	)

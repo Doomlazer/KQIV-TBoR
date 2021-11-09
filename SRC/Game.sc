@@ -220,7 +220,7 @@
 	)
 	
 	(method (startRoom param1)
-		(if debugOn (SetDebug))
+		;(if debugOn (SetDebug))
 		(regions
 			addToFront: ((= curRoom (ScriptID param1)) init: yourself:)
 		)

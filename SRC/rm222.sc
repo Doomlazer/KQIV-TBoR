@@ -112,17 +112,17 @@
 	(method (doit &tmp [openMusicStr 40])
 		(super doit:)
 		
-		(if debugging
-			(Display
-				(Format @openMusicStr 222 0
-					state
-					(openMusic prevSignal?)
-					openMusicSignal
-				)
-				p_at 0 0
-				p_back vWHITE
-			)
-		)
+;;;		(if debugging
+;;;			(Display
+;;;				(Format @openMusicStr 222 0
+;;;					state
+;;;					(openMusic prevSignal?)
+;;;					openMusicSignal
+;;;				)
+;;;				p_at 0 0
+;;;				p_back vWHITE
+;;;			)
+;;;		)
 	)
 	
 	(method (changeState newState &tmp [temp0 20])

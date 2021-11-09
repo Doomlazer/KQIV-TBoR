@@ -52,7 +52,7 @@
 	curRoomNum
 	prevRoomNum
 	newRoomNum
-	debugOn
+	;debugOn
 	score
 	possibleScore
 	showStyle =  IRISOUT
@@ -241,7 +241,7 @@
 	hourMetFisherman
 	woreFrogCrown
 	putBoardOverSwamp
-	global202
+	;global202
 	crow
 	isHandsOff
 	inCutscene
@@ -254,8 +254,8 @@
 	minutesLastMetPan
 	hourLastMetMinstrel
 	minutesLastMetMinstrel
-	debugging
-	global216
+	;debugging
+	;global216
 	blewWhistle
 	gotPandorasBox
 	global219
@@ -708,12 +708,13 @@
 	)
 	
 	(method (startRoom roomNum &tmp region)
-		(if (and global216 (IsHeapFree 1200))
-			(= global216 0)
-			((= global202 (ScriptID 801)) init:)
-		)
+;		FUCK DEBUGGING
+;;;		(if (and global216 (IsHeapFree 1200))
+;;;			(= global216 0)
+;;;			((= global202 (ScriptID 801)) init:)
+;;;		)
 		(DisposeScript AVOIDER)
-		(if debugOn (= debugOn FALSE) (SetDebug))
+;		(if debugOn (= debugOn FALSE) (SetDebug))
 		(if
 			(= region
 				(switch roomNum
@@ -734,91 +735,91 @@
 	)
 	
 		(method (handleEvent event &tmp temp0 index obj evt [str 50] [buf 50])
-		;EO: This method has been successfully decompiled!
-		(if
-			(and
-				debugging
-				(not (event claimed?))
-				(== (event type?) mouseDown)
-			)
-			(cond 
-				((& (event modifiers?) shiftDown)
-					(event claimed: TRUE)
-					(= obj
-						(Print
-							(Format @buf 0 10 (event x?) (event y?))
-							#at 150 100
-							#font 999
-							#dispose
-						)
-					)
-					(while (!= mouseUp ((= evt (Event new:)) type?))
-						(evt dispose:)
-					)
-					(obj dispose:)
-					(evt dispose:)
-				)
-				((& (event modifiers?) ctrlDown)
-					(event claimed: TRUE)
-					(while (!= mouseUp ((= evt (Event new:)) type?))
-						((User alterEgo?)
-							posn: (evt x?) (- (evt y?) 10)
-							setMotion: 0
-						)
-						(Animate (cast elements?) FALSE)
-						(evt dispose:)
-					)
-					(evt dispose:)
-				)
-				((& (event modifiers?) altDown)
-					(event claimed: TRUE)
-					((User alterEgo?) showSelf:)
-				)
-			)
-			(if (event claimed?)
-				(return TRUE)
-			)
-		)
+		;REMOVING DEBUG TO FREE MEMORY
+;;;		(if
+;;;			(and
+;;;				debugging
+;;;				(not (event claimed?))
+;;;				(== (event type?) mouseDown)
+;;;			)
+;;;			(cond 
+;;;				((& (event modifiers?) shiftDown)
+;;;					(event claimed: TRUE)
+;;;					(= obj
+;;;						(Print
+;;;							(Format @buf 0 10 (event x?) (event y?))
+;;;							#at 150 100
+;;;							#font 999
+;;;							#dispose
+;;;						)
+;;;					)
+;;;					(while (!= mouseUp ((= evt (Event new:)) type?))
+;;;						(evt dispose:)
+;;;					)
+;;;					(obj dispose:)
+;;;					(evt dispose:)
+;;;				)
+;;;				((& (event modifiers?) ctrlDown)
+;;;					(event claimed: TRUE)
+;;;					(while (!= mouseUp ((= evt (Event new:)) type?))
+;;;						((User alterEgo?)
+;;;							posn: (evt x?) (- (evt y?) 10)
+;;;							setMotion: 0
+;;;						)
+;;;						(Animate (cast elements?) FALSE)
+;;;						(evt dispose:)
+;;;					)
+;;;					(evt dispose:)
+;;;				)
+;;;				((& (event modifiers?) altDown)
+;;;					(event claimed: TRUE)
+;;;					((User alterEgo?) showSelf:)
+;;;				)
+;;;			)
+;;;			(if (event claimed?)
+;;;				(return TRUE)
+;;;			)
+;;;		)
 		(if (== curRoomNum newRoomNum)
 			(super handleEvent: event)
 		)
 		(return
 			(if (== (event type?) saidEvent)
-				(if (Said 'get/mem')
-					(theGame showMem:)
-				)
-				(if debugging
-					(cond 
-						((Said 'enter/night')
-							(= ogressIsHome TRUE)
-							(= gamePhase getPandoraBox)
-							(= mansionSecretDoorOpen TRUE)
-							(ego get: iLantern)
-							(ego get: iAxe)
-							(ego get: iShovel)
-							(ego get: iMagicFruit)
-							(ego get: iCupidBow)
-							(= isNightTime TRUE)
-							((Inventory at: iCupidBow) loop: 1 cel: 0)
-							(= lolotteAlive TRUE)
-							(= gameHours 21)
-							(= gameMinutes 1)
-							(= frogPrinceState 5)
-							(= whereIsMinstrel -1)
-							(= unicornState uniCAPTURED)
-							(= unicornRoom 99)
-							(Print 0 11)
-						)
-						((Said 'tp')
-							(= str 0)
-							(Print {TP to:}
-								#at -1 20
-								#edit @str 6
-							)
-							(= newRoomNum (ReadNumber @str))
-						)
-					)
-				)
+;;;				(if (Said 'get/mem')
+;;;					(theGame showMem:)
+;;;				)
+;;;				(if debugging
+;;;					(cond 
+;;;						((Said 'enter/night')
+;;;							(= ogressIsHome TRUE)
+;;;							(= gamePhase getPandoraBox)
+;;;							(= mansionSecretDoorOpen TRUE)
+;;;							(ego get: iLantern)
+;;;							(ego get: iAxe)
+;;;							(ego get: iShovel)
+;;;							(ego get: iMagicFruit)
+;;;							(ego get: iCupidBow)
+;;;							(= isNightTime TRUE)
+;;;							((Inventory at: iCupidBow) loop: 1 cel: 0)
+;;;							(= lolotteAlive TRUE)
+;;;							(= gameHours 21)
+;;;							(= gameMinutes 1)
+;;;							(= frogPrinceState 5)
+;;;							(= whereIsMinstrel -1)
+;;;							(= unicornState uniCAPTURED)
+;;;							(= unicornRoom 99)
+;;;							(Print 0 11)
+;;;						)
+;;;						((Said 'tp')
+;;;							(= str 0)
+;;;							(Print {TP to:}
+;;;								#at -1 20
+;;;								#edit @str 6
+;;;							)
+;;;							(= newRoomNum (ReadNumber @str))
+;;;						)
+;;;					)
+;;;				)
 				;start saidEvents
 				(cond 
 					((or (Said 'ass') (Said '/ass') (Said '//ass'))
@@ -1571,11 +1572,11 @@
 														(PrintDontHaveIt)
 													)
 												)
-												((Said 'overtime/nosleep')
-													(= debugging TRUE)
-													(= global216 1)
-													(PrintNothingSpecial)
-												)
+;;;												((Said 'overtime/nosleep')
+;;;													(= debugging TRUE)
+;;;													(= global216 1)
+;;;													(PrintNothingSpecial)
+;;;												)
 												((= index (inventory saidMe:))
 													(if (not (ego has: (inventory indexOf: index)))
 														(PrintDontHaveIt)

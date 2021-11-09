@@ -66,7 +66,7 @@ $600 debugM
 			;	(= debugOn TRUE)
 			)
 			(clicksI
-				(if (= debugging (^ debugging $0001)) (Print 801 2))
+			;	(if (= debugging (^ debugging $0001)) (Print 801 2))
 			)
 			(getInvI
 				(= str 0)
