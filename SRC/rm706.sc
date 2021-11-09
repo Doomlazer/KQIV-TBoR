@@ -35,6 +35,7 @@
 	local152 ;selectedRecordNum
 	;local153 unused?
 	local154 ;inputCursorX
+	fontNum
 )
 (procedure (localproc_000c &tmp newEvent) ;clean up DIR CD listing?
 	(while ((= newEvent (Event new:)) type?)
@@ -53,8 +54,15 @@
 	)
 )
 
-(procedure (LocPrint) ;display record
-	(Print &rest #font 7 #width 168 #at 70 10)
+(procedure (LocPrint x y) ;display record
+	;(Print &rest #font fontNum #width 168 #at 70 10) ;font was 7
+	(Display x y 
+		dsFONT fontNum
+		dsCOORD 70 10 
+		dsWIDTH 168 
+		dsBACKGROUND 0 
+		dsCOLOR 3
+	)
 )
 
 (instance compCursor of Prop
@@ -85,6 +93,7 @@
 	
 	(method (init)
 		(super init:)
+		(= fontNum 7)
 		(if (ego has: iTooth)
 			(= cursorView 593)
 			(= textCol 10) ;green
@@ -215,7 +224,7 @@
 				(while (<= local143 114)
 					(Display 706 6
 						p_at 73 local143
-						p_font 7
+						p_font fontNum
 						p_color 0
 						p_back 0
 					)
@@ -232,12 +241,12 @@
 				(= local150 1)
 				(Display 706 7 
 					p_at 73 14 
-					p_font 7 
+					p_font fontNum 
 					p_color 0
 				)
 				(Display 706 8
 					p_at 73 14
-					p_font 7
+					p_font fontNum
 					p_color textCol
 					p_back 0
 				)
@@ -245,19 +254,19 @@
 			(3
 				(Display 706 9
 					p_at 73 14
-					p_font 7
+					p_font fontNum
 					p_color 0
 					p_back 0
 				)
 				(Display 706 9
 					p_at 73 15
-					p_font 7
+					p_font fontNum
 					p_color 0
 					p_back 0
 				)
 				(Display 706 10 ;session complete
 					p_at 73 14
-					p_font 7
+					p_font fontNum
 					p_color 14
 					p_back 0
 				)
@@ -343,7 +352,7 @@
 							(StrAt @str local154 0)
 							(Display (Format @temp0 {%c} eventMessage)
 								p_at (compCursor x?) (- (compCursor y?) 8)
-								p_font 7
+								p_font fontNum
 								p_color textCol
 								p_back 0
 							)
@@ -355,7 +364,7 @@
 							(compCursor x: (- (compCursor x?) 6))
 							(Display 706 12
 								p_at (compCursor x?) (- (compCursor y?) 8)
-								p_font 7
+								p_font fontNum
 								p_color 0
 								p_back 0
 							)
@@ -364,13 +373,13 @@
 							(Display 706 13
 								p_at 123 14
 								p_color 0
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(Display 706 13
 								p_at 123 15
 								p_color 0
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(= local154 0)
@@ -426,13 +435,13 @@
 										(Display 706 14
 											p_at 73 14
 											p_color 0
-											p_font 7
+											p_font fontNum
 											p_back 0
 										)
 										(Display 706 15
 											p_at 73 14
 											p_color textCol
-											p_font 7
+											p_font fontNum
 											p_back 0
 										)
 									)
@@ -691,13 +700,13 @@
 							(Display 706 13
 								p_at 123 14
 								p_color 0
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(Display 706 13
 								p_at 123 15
 								p_color 0
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(compCursor x: 123)
@@ -706,19 +715,19 @@
 									(Display 706 123
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 124
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 125
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 								)
@@ -726,97 +735,97 @@
 									(Display 706 126
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 127
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 128
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 129
 										p_at 73 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 130
 										p_at 73 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 131
 										p_at 73 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 132
 										p_at 73 84
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 133
 										p_at 73 94
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 134
 										p_at 73 104
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 135)
 									(Display 706 135
 										p_at 73 114
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 136)
 									(Display 706 136
 										p_at 160 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 137)
 									(Display 706 137
 										p_at 160 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 138)
 									(Display 706 138
 										p_at 160 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 139)
 									(Display 706 139
 										p_at 160 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									;(Display (Format @local0 8 140)
 									(Display 706 140
 										p_at 160 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(= local149 1)
@@ -827,87 +836,87 @@
 									(Display 706 141 ;fisherman
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 									(Display 706 142
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 									(Display 706 143
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 									(Display 706 144
 										p_at 73 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 									(Display 706 145 ;cave troll
 										p_at 73 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 									(Display 706 146 ;lolotte
 										p_at 73 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 									)
 ;;;									(Display 706 147
 ;;;										p_at 73 84
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 148
 ;;;										p_at 73 94
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 149
 ;;;										p_at 73 104
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 150
 ;;;										p_at 73 114
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 151
 ;;;										p_at 155 24
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 152
 ;;;										p_at 155 34
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 153
 ;;;										p_at 155 44
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 154
 ;;;										p_at 155 54
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 155
 ;;;										p_at 155 64
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 156
 ;;;										p_at 155 74
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 ;;;									(Display 706 157
 ;;;										p_at 155 84
 ;;;										p_color textCol
-;;;										p_font 7
+;;;										p_font fontNum
 ;;;									)
 									(= local147 1)
 									(= local152 1)
@@ -917,25 +926,25 @@
 									(Display 706 158
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 159
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 160
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 161
 										p_at 73 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 								)
@@ -943,79 +952,79 @@
 									(Display 706 162
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 163
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 164
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 165
 										p_at 73 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 166
 										p_at 73 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 167
 										p_at 73 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 168
 										p_at 73 84
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 169
 										p_at 158 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 170
 										p_at 158 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 171
 										p_at 158 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 172
 										p_at 158 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 173
 										p_at 158 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 174
 										p_at 158 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(= local147 1)
@@ -1026,91 +1035,91 @@
 									(Display 706 175
 										p_at 73 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 176
 										p_at 73 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 177
 										p_at 73 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 178
 										p_at 73 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 179
 										p_at 73 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 180
 										p_at 73 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 181
 										p_at 73 84
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 182
 										p_at 73 94
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 183
 										p_at 73 104
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 184
 										p_at 154 24
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 185
 										p_at 154 34
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 186
 										p_at 154 44
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 187
 										p_at 154 54
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 188
 										p_at 154 64
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(Display 706 189
 										p_at 154 74
 										p_color textCol
-										p_font 7
+										p_font fontNum
 										p_back 0
 									)
 									(= local147 1)
@@ -1134,13 +1143,13 @@
 							(Display 706 14
 								p_at 73 14
 								p_color 0
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(Display 706 190
 								p_at 73 14
 								p_color textCol
-								p_font 7
+								p_font fontNum
 								p_back 0
 							)
 							(= local149 0)
@@ -1154,3 +1163,4 @@
 		)
 	)
 )
+
