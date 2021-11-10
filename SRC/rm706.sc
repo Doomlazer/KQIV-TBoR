@@ -36,6 +36,7 @@
 	;local153 unused?
 	local154 ;inputCursorX
 	fontNum
+	gotBookkeepingPoints
 )
 (procedure (localproc_000c &tmp newEvent) ;clean up DIR CD listing?
 	(while ((= newEvent (Event new:)) type?)
@@ -54,15 +55,8 @@
 	)
 )
 
-(procedure (LocPrint x y) ;display record
-	;(Print &rest #font fontNum #width 168 #at 70 10) ;font was 7
-	(Display x y 
-		dsFONT fontNum
-		dsCOORD 70 10 
-		dsWIDTH 168 
-		dsBACKGROUND 0 
-		dsCOLOR 3
-	)
+(procedure (LocPrint) ;display record
+	(Print &rest #font fontNum #width 168 #at 70 10) ;font was 7
 )
 
 (instance compCursor of Prop
@@ -270,6 +264,7 @@
 					p_color 14
 					p_back 0
 				)
+				(HandsOn)
 				(= newRoomNum prevRoomNum)
 			)
 		)
@@ -402,7 +397,7 @@
 											(= local148 1)
 											(self changeState: 1)
 										)
-										((and (not (StrCmp @str {DIARY})) (== local145 3))
+										((and (not (StrCmp @str {SUPPLIES})) (== local145 3))
 											(= local144 4)
 											(= local146 0)
 											(= local148 1)
@@ -450,9 +445,9 @@
 									(= local148 0)
 									(cond 
 										(
-										(and (not (StrCmp @str {SEX})) (== local144 4)) ;diary pw
-											(= local145 local144))
-										(
+;;;										(and (not (StrCmp @str {SEX})) (== local144 4)) ;supplies pw. No content here for now
+;;;											(= local145 local144))
+;;;										(
 										(and (not (StrCmp @str {MONEY})) (== local144 2)) ;bookkeeping
 											(= local145 local144)
 											;(SolvePuzzle 2 120)
@@ -461,7 +456,7 @@
 											(= local145 local144)
 											;(SolvePuzzle 2 121)
 										)
-										((and (not (StrCmp @str {GOD})) (== local144 6)) ;Genesta
+										((and (not (StrCmp @str {JOSHUA})) (== local144 6)) ;Genesta Quest
 											;(= local145 local144)
 											;(SolvePuzzle 2 121)
 											(HandsOn)
@@ -560,10 +555,13 @@
 												(6
 													(LocPrint 706 65) ;lolotte bookeeping
 													(LocPrint 706 66)
+													(if (not gotBookkeepingPoints)
 													(theGame changeScore: 20)
 													(= gotItem 1)
+													(= gotBookkeepingPoints 1)
+													)
 													(Print 706 191)
-													(localproc_000c) ;probably wont work
+													;(localproc_000c) ;probably wont work
 												)
 ;;;												(7
 ;;;													(LocPrint 706 67)
@@ -618,17 +616,17 @@
 										)
 										(7
 											(switch local152
-												(1
+												(1 ;cassima
 													(LocPrint 706 93)
-													(LocPrint 706 94)
+												;	(LocPrint 706 94)
 												)
-												(2
+												(2 ;kate
 													(LocPrint 706 95)
-													(LocPrint 706 96)
+													;(LocPrint 706 96)
 												)
-												(3
+												(3 ;cherubs
 													(LocPrint 706 97)
-													(LocPrint 706 98)
+													;(LocPrint 706 98)
 												)
 												(4
 													(LocPrint 706 99)
@@ -638,48 +636,51 @@
 													(LocPrint 706 101)
 													(LocPrint 706 102)
 												)
-												(6
+												(6 ;Fenrus
 													(LocPrint 706 103)
-													(LocPrint 706 104)
+													;(LocPrint 706 104)
 												)
-												(7
+												(7 ;Cetus
 													(LocPrint 706 105)
-													(LocPrint 706 106)
+													;(LocPrint 706 106)
 												)
-												(8
+												(8 ;larry laffer
 													(LocPrint 706 107)
-													(LocPrint 706 108)
+													;(LocPrint 706 108)
 												)
-												(9
+												(9 ;geoff
 													(LocPrint 706 109)
 													(LocPrint 706 110)
 												)
-												(11
+												(11 ;gabriel knight
 													(LocPrint 706 111)
-													(LocPrint 706 112)
+													;(LocPrint 706 112)
 												)
-												(12
+												(12 ;Rosella
 													(LocPrint 706 113)
-													(LocPrint 706 114)
+													;(LocPrint 706 114)
 												)
 												(13
 													(LocPrint 706 115)
 													(LocPrint 706 116)
 												)
-												(14
+												(14 ;Sonny Bonds
 													(LocPrint 706 117)
 													(LocPrint 706 118)
 													(Print {Hmm, I guess Sonny is the one bad apple.})
-													(theGame changeScore: 50)
-													(= gotItem 1)
+													(if (not readSonnysFile)
+														(theGame changeScore: 50)
+														(= readSonnysFile 1)
+														(= gotItem 1)
+													)
 												)
 												(15
 													(LocPrint 706 119)
 													(LocPrint 706 120)
 												)
-												(16
+												(16 ;sludge vohaul
 													(LocPrint 706 121)
-													(LocPrint 706 122)
+													;(LocPrint 706 122)
 												)
 											)
 										)
