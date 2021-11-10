@@ -628,9 +628,9 @@
 													(LocPrint 706 97)
 													;(LocPrint 706 98)
 												)
-												(4
+												(4 ;grace nakimura
 													(LocPrint 706 99)
-													(LocPrint 706 100)
+													;(LocPrint 706 100)
 												)
 												(5 ;roger wilco
 													(LocPrint 706 101)
@@ -660,9 +660,9 @@
 													(LocPrint 706 113)
 													;(LocPrint 706 114)
 												)
-												(13
+												(13 ;devon
 													(LocPrint 706 115)
-													(LocPrint 706 116)
+													;(LocPrint 706 116)
 												)
 												(14 ;Sonny Bonds
 													(LocPrint 706 117)
