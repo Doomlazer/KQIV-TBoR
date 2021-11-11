@@ -60,6 +60,9 @@
 	)
 	
 	(method (init)
+		(if isNightTime 
+			(= picture 711)	
+		)
 		(super init:)
 		(self setScript: RoomScript)
 		((View new:) ;robert
@@ -105,6 +108,9 @@
 						((Said 'look/goon,henchman')
 							(Print {The goon stares blankly into space. Paper work must have fried his brain.})
 						)
+						((Said 'look/poster')
+							(Print {It says Malibu. I think that was the name of the indigenous people of Tamir before Genesta introduced all the fairy plagues to the continent.})
+						)
 						((Said 'converse/goon,henchman')
 							(Print {Completely unresponsive. Another casulaty of the workplace I guess.})
 						)
@@ -121,6 +127,13 @@
 							else
 								(PrintNotCloseEnough)
 							)
+						)
+						(
+							(or 
+								(Said 'turn[<on]/computer')
+								(Said 'turn/computer[<on]')
+							)
+							(Print {This isn't a Leisure Suit Larry game, Rosella.})	
 						)
 						(else 
 							(Print 704 22) ;#font 605 )

@@ -11,6 +11,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room706 0
@@ -556,12 +557,11 @@
 													(LocPrint 706 65) ;lolotte bookeeping
 													(LocPrint 706 66)
 													(if (not gotBookkeepingPoints)
-													(theGame changeScore: 20)
-													(= gotItem 1)
-													(= gotBookkeepingPoints 1)
+														(theGame changeScore: 20)
+														((Sound new:) number: 690 play:)
+														(= gotBookkeepingPoints 1)
+														(Print 706 191)
 													)
-													(Print 706 191)
-													;(localproc_000c) ;probably wont work
 												)
 ;;;												(7
 ;;;													(LocPrint 706 67)
@@ -667,11 +667,11 @@
 												(14 ;Sonny Bonds
 													(LocPrint 706 117)
 													(LocPrint 706 118)
-													(Print {Hmm, I guess Sonny is the one bad apple.})
 													(if (not readSonnysFile)
 														(theGame changeScore: 50)
 														(= readSonnysFile 1)
-														(= gotItem 1)
+														((Sound new:) number: 690 play:)
+														(Print {Hmm, I guess Sonny is the one bad apple.})
 													)
 												)
 												(15

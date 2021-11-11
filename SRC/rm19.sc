@@ -293,19 +293,15 @@
 							;;(iDecoderRing show:)
 						)
 					)
-					
 					((Said 'get/decoder') 
 							(if ((Inventory at: iDecoderRing) ownedBy: 19)
-									
-									(if (ego inRect: 210 155 245 265)
-									
+								(if (ego inRect: 210 155 245 265)	
 									(ego setScript: pickUpScript)
-									
-									else 
-									
-										(Print {Fuck you, get closer first.})
-									)						
-									else (Print "Are you high or something, Rosella?")
+								else
+									(Print {Fuck you, get closer first.})
+								)						
+							else
+								(Print "Are you high or something, Rosella?")
 							)
 						)
 					
@@ -347,7 +343,8 @@
 				(decoder dispose:)
 				(Print 19 10 #icon 573 0 0)
 				(ego loop: 2 cel: 255 setCycle: EndLoop self)
-				(theGame changeScore: -666)
+				(theGame changeScore: -69)
+				(= gotItem 1)
 			)
 			(2
 				(ego view: 2 setCycle: Walk)

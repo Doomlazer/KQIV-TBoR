@@ -334,6 +334,7 @@
 								)
 								(else
 									(Print {That's not an item you can thow into the void.})
+									(event claimed: 1)
 								)
 							)
 						)
