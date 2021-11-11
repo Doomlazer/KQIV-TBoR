@@ -457,7 +457,7 @@
 											(= local145 local144)
 											;(SolvePuzzle 2 121)
 										)
-										((and (not (StrCmp @str {JOSHUA})) (== local144 6)) ;Genesta Quest
+										((and (not (StrCmp @str {GEOFF})) (== local144 6)) ;Genesta Quest
 											;(= local145 local144)
 											;(SolvePuzzle 2 121)
 											(HandsOn)
