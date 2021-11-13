@@ -68,7 +68,7 @@
 					)
 					((Said 'exit,quit,close')
 						(event claimed: 1)
-						(Print {Yeah, This game sucks.} #at -1 50)
+						(Print {Hopefully Genesta can find time to finish that someday.} #at -1 50)
 						(HandsOn)
 						(curRoom newRoom: 705)
 					)
