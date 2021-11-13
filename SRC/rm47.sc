@@ -155,7 +155,7 @@
 					((Said 'open/door')
 						(cond 
 							((ego inRect: 238 141 260 153)
-								(Print 47 6)
+								(Print {WTH?! This 'door' just painted on the wall!})
 							)
 							((ego inRect: 142 127 176 134) ; rm705 door
 								(if rm705DoorUnlocked
@@ -173,11 +173,12 @@
 					((or (Said 'unlatch/door') (Said 'use/hairpin[/anyword]'))
 						(cond 
 							((ego inRect: 238 141 260 153)
-								(if (or (ego has: iGoldKey) (ego has: iSkeletonKey))
-									(Print 47 7)
-								else
-									(Print 47 8)
-								)
+;;;								(if (or (ego has: iGoldKey) (ego has: iSkeletonKey))
+;;;									(Print 47 7)
+;;;								else
+;;;									(Print 47 8)
+;;;								)
+								(Print {This door is fake. You might have more luck with the other one.})
 							)
 							((ego inRect: 142 127 176 134) ; rm705 door
 								(if (ego has: iHairpin)
@@ -219,18 +220,20 @@
 						)
 					)
 					((Said 'use/key')
-						(if
-							(or
-								(ego inRect: 146 127 176 131)
-								(ego inRect: 238 141 260 153)
+						(cond
+							((ego inRect: 146 127 176 131)
+								(if (or (ego has: iSkeletonKey) (ego has: iGoldKey))
+									(Print 47 11)
+								else
+									(Print 47 12)
+								)
 							)
-							(if (or (ego has: iSkeletonKey) (ego has: iGoldKey))
-								(Print 47 11)
-							else
-								(Print 47 12)
+							((ego inRect: 238 141 260 153)
+								(Print {It's a fucking fake door, leave it alone.})
 							)
-						else
-							(Print 47 13)
+							(else
+								(Print 47 13)
+							)
 						)
 					)
 					(
@@ -244,7 +247,11 @@
 					((Said 'get/fairies[<little]') (Print 47 16))
 					((Said 'capture/fairies[<little]') (Print 47 16))
 					(
-					(or (Said 'kiss/fairies[<little]') (Said 'kiss[/!*]')) (Print 47 17))
+						(or
+							(Said 'kiss/fairies[<little]')
+							(Said 'kiss[/!*]')
+						)
+						(Print 47 17))
 					((Said 'help/fairies[<little]') (Print 47 18))
 					((Said 'deliver/*/fairies') (Print 47 19))
 				)

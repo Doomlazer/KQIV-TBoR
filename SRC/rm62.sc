@@ -95,10 +95,11 @@
 							(cond 
 								((Said '<under/bed')
 									(if ((Inventory at: iHairpin) ownedBy: 97) 
-										(ego get: iHairpin)
-										(Print {looking under the bed you find a hairpin.} #icon 590 0 0)
-										(theGame changeScore: 20) 
-										(= gotItem 1)
+										(if (ego inRect:100 105 222 145)
+											(getHairpin changeState: 0)
+										else
+											(Print {Fuck, get closer to the bed first.})
+										)
 									else
 										(Print 62 0)
 									)
@@ -182,6 +183,55 @@
 			)
 			(2
 				(ego view: 4 setScript: 0 setCycle: Walk)
+				(HandsOn)
+			)
+		)
+	)
+)
+
+(instance getHairpin of Script
+	(properties)
+	
+	(method (changeState newState)
+		(switch (= state newState)
+			(0
+				(HandsOff)
+				(ego
+					view: 40
+					loop: (if (> (ego x?) 160) 1 else 0)
+					setCycle: EndLoop self
+				)
+			)
+			(1
+				(ego 
+					view: 49
+					loop: (if (> (ego x?) 160) 1 else 0)
+					setCycle: EndLoop self
+				)
+			)
+			(2
+				(Print {looking under the bed you find a hairpin.} #icon 590 0 0)
+				(ego get: iHairpin)
+				(theGame changeScore: 20) 
+				(= gotItem 1)
+				(self cue:)	
+			)
+			(3
+				(ego setCycle: BegLoop self)
+
+			)
+			(4
+				(ego
+					view: 41
+					loop: (if (> (ego x?) 160) 1 else 0)
+					setCycle: EndLoop self
+				)	
+			)
+			(5
+				(ego view: 4
+					setScript: 0
+					setCycle: Walk
+				)
 				(HandsOn)
 			)
 		)
