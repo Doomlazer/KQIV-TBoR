@@ -10,7 +10,7 @@ Copy resouce.001, resource.004 and resource.map to the KQ4 game folder and run i
 
 https://github.com/Doomlazer/KQIV-TBoR/wiki
 
-Play in browser (warning: saves dissapear on browser reload)
+Play BETA version in browser (warning: saves dissapear on browser reload)
 
 https://www.thespr3.com/about/BreastsOfRosella/game.html
 
