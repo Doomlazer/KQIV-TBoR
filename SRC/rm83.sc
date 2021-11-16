@@ -291,13 +291,10 @@
 							
 								;accept or decline the bridle
 								
-								(if
-									(==
-										(Print 83 43 #time 10 #button {Yes} 1 #button {No} 2)
-										1
-									)
+								(if (== (Print 83 43 #button {Yes} 1 #button {No} 2) 1 )
 									(ego get: iGoldenBridle)
 									(theGame changeScore: 3)
+									(= gotItem 1)
 									(Print 83 24 #icon 426 0 0)
 									(Print 83 27)
 								else

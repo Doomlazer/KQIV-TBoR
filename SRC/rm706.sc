@@ -660,7 +660,7 @@
 													(LocPrint 706 113)
 													;(LocPrint 706 114)
 												)
-												(13 ;devon
+												(13 ;marie 
 													(LocPrint 706 115)
 													;(LocPrint 706 116)
 												)
@@ -674,9 +674,9 @@
 														(Print {Hmm, I guess Sonny is the one bad apple.})
 													)
 												)
-												(15
+												(15 ;heros quest guy
 													(LocPrint 706 119)
-													(LocPrint 706 120)
+													;(LocPrint 706 120)
 												)
 												(16 ;sludge vohaul
 													(LocPrint 706 121)
