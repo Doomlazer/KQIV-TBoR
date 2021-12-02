@@ -31,7 +31,6 @@
 	ripple2
 	ripple3
 	ripple4
-	[str 200]
 )
 (instance frogTheme of Sound
 	(properties
@@ -264,14 +263,10 @@
 						(cond 
 							((Said '<under,in/water') (Print 15 7))
 							((Said '/lake,water')
-								(Print
-									(Format @str 15 11
-										(if (== frogPrinceState frogInit)
-											{You spy a large frog sitting on top of a big lily pad, and YES!...it's wearing a little gold crown!}
-										else
-											{_}
-										)
-									)
+								(if (== frogPrinceState frogInit)
+									(Print 15 58)
+								else
+									(Print 15 11)
 								)
 							)
 							((or (Said '<down[/dirt]') (Said '/dirt'))
@@ -284,14 +279,10 @@
 								)
 							)
 							((Said '/lilies,pad')
-								(Print
-									(Format @str 15 16
-										(if (== frogPrinceState frogInit)
-											{Atop one large lily pad, sits a big frog.}
-										else
-											{}
-										)
-									)
+								(if (== frogPrinceState frogInit)
+									(Print 15 16)
+								else
+									(Print 15 57)
 								)
 							)
 							((Said '/crown')
@@ -303,14 +294,10 @@
 							)
 							((Said '/blossom') (Print 15 18))
 							((Said '[<around][/room]')
-								(Print
-									(Format @str 15 19
-										(if (== frogPrinceState frogInit)
-											{Atop one of the bigger lily pads, you notice a rather large frog...wearing a little gold crown!}
-										else
-											{}
-										)
-									)
+								(if (== frogPrinceState frogInit)
+									(Print 15 59)
+								else
+									(Print 15 19)
 								)
 							)
 						)

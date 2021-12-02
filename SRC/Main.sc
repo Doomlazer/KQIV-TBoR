@@ -66,28 +66,29 @@
 	modelessDialog
 	bigFont =  USERFONT
 	volume =  12
-	version =  {newInvItem}
+	version =  {x.yyy.zzz}
 	locales
-	curSaveDir
-		global31
-		global32
-		global33
-		global34
-		global35
-		global36
-		global37
-		global38
-		global39
-		global40
-		global41
-		global42
-		global43
-		global44
-		global45
-		global46
-		global47
-		global48
-		global49
+	[curSaveDir 20]						;address of current save drive/directory string
+;;;	curSaveDir
+;;;		global31
+;;;		global32
+;;;		global33
+;;;		global34
+;;;		global35
+;;;		global36
+;;;		global37
+;;;		global38
+;;;		global39
+;;;		global40
+;;;		global41
+;;;		global42
+;;;		global43
+;;;		global44
+;;;		global45
+;;;		global46
+;;;		global47
+;;;		global48
+;;;		global49
 	aniThreshold =  10
 	perspective
 	features
@@ -267,9 +268,9 @@
 	ghostHaunts
 	introScript
 	lolotteDoorOpen
-	scoredTooth
 	
 		;;TBoR mod globals
+		scoredTooth
 		wifeGraveDugUp
 		rogerDead 
 		bondsEntered
