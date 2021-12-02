@@ -30,14 +30,14 @@
 	fishermanSitting
 	newProp
 	wifeAtCounter
-	[str 200]
+	;[str 200]
 	deadswitch
 	condom
 )
 (instance Room42 of Room
 	(properties
 		picture 42
-		style (| BLACKOUT IRISOUT) ;$0010
+		style (| BLACKOUT IRISOUT)
 	)
 	
 	(method (init)
