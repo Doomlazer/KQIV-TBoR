@@ -30,7 +30,7 @@
 	fishermanSitting
 	newProp
 	wifeAtCounter
-	;[str 200]
+	[str 200]
 	deadswitch
 	condom
 )
