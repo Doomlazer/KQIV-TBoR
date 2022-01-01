@@ -40,6 +40,7 @@
 		(Load VIEW 649)
 		(Load VIEW 634)
 		(Load VIEW 512)
+		(Load VIEW 595)
 		(Load VIEW 40)
 		(Load SOUND 79)
 		(super init:)
@@ -109,6 +110,17 @@
 				setPri: 3
 				init:
 				setCycle: Forward
+			)
+		)
+		(if (ego has: iTooth)
+			((View new:)
+				view: 595
+				loop: 0
+				cel: 1
+				posn: 76 156
+				;setPri: 4
+				init:
+				addToPic:
 			)
 		)
 		(if (== ((inventory at: iPandorasBox) owner?) 84)
