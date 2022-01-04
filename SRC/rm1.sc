@@ -40,7 +40,7 @@
 	)
 	
 	(method (init)
-		(= north 25) ;25
+		(= north 25)
 		(= south 7)
 		(= west 31)
 		(= east 2)
@@ -225,7 +225,7 @@
 					setCycle: Forward
 					init:
 				)
-				(= seconds 4)
+				(= seconds 2)
 			)
 			(3
 				(dolphin

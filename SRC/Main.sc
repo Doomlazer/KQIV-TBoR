@@ -578,7 +578,7 @@
 			(= userFont bigFont)
 		else
 		(self newRoom: 701) ;Set to 700 to skip the CP -- Kawa
-		;(self newRoom: 700)
+
 		)
 	)
 	

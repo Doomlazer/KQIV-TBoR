@@ -22,6 +22,7 @@
 	larry
 	file
 	frog
+	heart
 )
 
 (instance Room500 of Room
@@ -105,7 +106,24 @@
 			(if (== (event type?) saidEvent)
 				(cond 
 					((Said 'look') (Print 500 1))
-					((Said 'kill/edgar') (Print {That's not implemented yet. This will be a 'bad' ending in the final release.})) ;(rosellaActions changeState: 555))
+					
+					(
+						(or
+							(Said 'shoot,kill/giantess[/bow]')
+							(Said 'shoot/bow[/giantess]')
+						)
+						(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+							((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+							(ego setScript: rosellaActions)
+							(rosellaActions changeState: 555)
+						else				
+							(if (ego has: iCupidBow) 
+								(Print {You're out of arrows.})
+							else
+								(Print {Maybe try bring the bow next time?})
+							)
+						)	
+					)
 					((Said 'kill/self') (rosellaActions changeState: 666))
 					((Said 'show/breasts') (Print 500 18))
 	
@@ -274,7 +292,39 @@
 				(HandsOn)
 			)
 			(555
-				;kill edgar stuff 
+				(= seconds 0)
+				(FaceObject ego edgar)
+				(cls)
+				(Print 500 28)
+				(ego
+					view: 68
+					setCycle: EndLoop self
+				)	
+			)
+			(556
+				(ego view: 4 setMotion: 0 setCycle: Walk)
+				(= heart (Prop new:))
+				(heart
+					view: 681
+					cel: 0
+					loop: 0
+					setPri: 15
+					posn: (- (edgar x?) 5) (- (edgar y?) 25)
+					setCycle: EndLoop self
+					init:
+				)
+			)
+			(557
+				(heart dispose:)
+				(= seconds 1)
+			)
+			(558
+				(edgar dispose:)
+				(Print 500 29)
+				(= seconds 2)
+			)
+			(559
+				(= dead 1)
 			)
 			(666
 				(HandsOff)

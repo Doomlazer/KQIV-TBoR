@@ -294,7 +294,7 @@
 							((Said 'kiss/fairies') (Print 45 27))
 							((or (Said 'deliver/condom') (Said 'deliver/condom/larry,man')(Said 'deliver/larry,man/condom')) 
 								(if (ego has: iCondom)
-									(if (ego inRect: 163 153 200 163)
+									(if (ego inRect: 153 153 210 163)
 										((Inventory at: iCondom) moveTo: 45)
 										(Print {"Well... it looks a little small. I'm not sure it will fit me."} #title {Larry})
 										(= gotItem 1)
@@ -309,8 +309,12 @@
 							((Said 'fuck,kiss/larry') 
 								(if larry 
 									(if ((Inventory at: iCondom) ownedBy: 45)
-										(Print 45 53 #title {Rosella})
-										(larryScript changeState: 20)
+										(if (ego has: iVirginity)
+											(Print {No. Once was pleanty.})
+										else
+											(Print 45 53 #title {Rosella})
+											(larryScript changeState: 20)
+										)
 									else
 										(Print 45 51 #title {Rosella})
 										(Print 45 48 #title {Larry})
@@ -453,7 +457,7 @@
 			(20
 				(HandsOff)
 				(Print 45 44)
-				(self cue:)
+				(= cycles 1)
 			)
 			(21
 				(larry
@@ -463,7 +467,7 @@
 			)
 			(22
 				(Print 45 45)
-				(self cue:)	
+				(= cycles 1)
 			)
 			(23
 					(ego hide:)
@@ -485,7 +489,7 @@
 			)
 			(25
 				(if ((Inventory at: iHairpin) ownedBy: 97)
-					(Print {From this vantage point you notice something small has fallen under Genesta's bed.})
+					(Print 45 54)
 				)
 				((= genestaCloseup2 (Prop new:))
 					view: 103
@@ -550,7 +554,20 @@
 			)
 			(32
 				(HandsOn)
-				(Print {"Well that was disgusting."} #title {Genesta})	
+				(Print {"Well that was disgusting."} #title {Genesta})
+				(= cycles 1)
+			)
+			(33
+				(larry
+					loop: 8
+					setCycle: EndLoop self
+				)
+			)
+			(34
+				(larry
+					loop: 9
+					setCycle: EndLoop self
+				)
 			)
 		)
 	)

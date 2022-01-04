@@ -61,7 +61,7 @@
 	)
 	
 	(method (init)
-		(Load VIEW 523)
+		;(Load VIEW 523)
 		(Load VIEW 757)
 		(Load VIEW 755)
 		(Load VIEW 771)
