@@ -48,7 +48,7 @@
 (instance barkSound of Sound	;Amiga sound
 	(properties
 		number 604
-		priority 15
+		priority 1
 	)
 )
 
@@ -873,16 +873,17 @@
 )
 
 (instance chaseEgo of Script
-	(method (doit)
-		(switch (Random 1 60)
-			(1 (barkSound play:))
-		)
-		(super doit:)
-	)
-	
+;;;	(method (doit)
+;;;		(switch (Random 1 60)
+;;;			(1 (barkSound play:))
+;;;		)
+;;;		(super doit:)
+;;;	)
+;;;	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
+				(barkSound play:)
 				(Print 49 54 #at -1 10 #draw)
 				(dog
 					setAvoider: (Avoider new:)
