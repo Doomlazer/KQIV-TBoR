@@ -57,8 +57,8 @@
 					else
 						((= grave (Prop new:))
 							view: 562
-							loop: 1
-							cel: 0
+							loop: 0
+							cel: 1
 							posn: 35 150
 							setPri: 9
 							ignoreActors: TRUE
@@ -69,8 +69,8 @@
 					(if isNightTime	
 						((= grave (Prop new:))
 							view: 562
-							loop: 0
-							cel: 1
+							loop: 1
+							cel: 0
 							posn: 35 150
 							setPri: 9
 							ignoreActors: TRUE

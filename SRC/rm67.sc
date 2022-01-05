@@ -210,16 +210,20 @@
 						((Said 'open/cabinet,cabinet') (Print 67 21))
 						((Said 'close/door') (if mansionSecretDoorOpen (Print 67 31) else (Print 67 32)))
 						((Said 'open/sesame') ;Magic just for fun
-							(if mansionSecretDoorOpen
-								(Print {It's already open, dipshit.})
+							(if (ego has: iTooth)
+								(if mansionSecretDoorOpen
+									(Print {It's already open, dipshit.})
+								else
+											(Print {"OPEN SESAME."} #title {Rosella} )
+											(ego setMotion: 0)
+											(doorSound play:)
+											(secretDoor setCycle: EndLoop)
+											(= mansionSecretDoorOpen TRUE)
+											(theGame changeScore: 4)
+											(ego illegalBits: cWHITE)	
+								)
 							else
-										(Print {"OPEN SESAME."} #title {Rosella} )
-										(ego setMotion: 0)
-										(doorSound play:)
-										(secretDoor setCycle: EndLoop)
-										(= mansionSecretDoorOpen TRUE)
-										(theGame changeScore: 4)
-										(ego illegalBits: cWHITE)	
+								(Print {Nothing happens.})
 							)	
 						)
 						((Said 'flip,move,lift/latch')
