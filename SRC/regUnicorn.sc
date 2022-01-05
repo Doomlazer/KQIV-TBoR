@@ -26,6 +26,7 @@
 (instance uniTheme of Sound
 	(properties
 		number 32
+		priority 5
 	)
 )
 
