@@ -122,7 +122,7 @@
 						)
 						((Said 'open/chest,dresser,drawer') (Print 59 1))
 						((Said 'sit') (Print 59 13))
-						((Said 'boulder[/cradle]')
+						((Said 'rock[/cradle]')
 							(cond 
 								((== mansionPhase mansionBABY) (Print 59 14))
 								((< (ego distanceTo: crib) 10) (rockAgain changeState: 0) (event claimed: TRUE))
