@@ -11,6 +11,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room49 0
@@ -31,11 +32,24 @@
 	wokeUpOgre
 )
 (instance theMusic of Sound
-	(properties)
+	(properties
+		number 5
+		priority 15
+	)
 )
 
 (instance throwSound of Sound
-	(properties)
+	(properties
+		number 63
+		priority 15
+	)
+)
+
+(instance barkSound of Sound	;Amiga sound
+	(properties
+		number 604
+		priority 15
+	)
 )
 
 (instance Room49 of Room
@@ -45,6 +59,9 @@
 	)
 	
 	(method (init)
+		(barkSound init:)
+		(throwSound init:)
+		(theMusic init:)
 		(Load VIEW 541)
 		(= currentStatus egoNormal)
 		(if (not ((Inventory at: iBone) ownedBy: 49))
@@ -856,7 +873,12 @@
 )
 
 (instance chaseEgo of Script
-	(properties)
+	(method (doit)
+		(switch (Random 1 60)
+			(1 (barkSound play:))
+		)
+		(super doit:)
+	)
 	
 	(method (changeState newState)
 		(switch (= state newState)
@@ -946,7 +968,7 @@
 		(switch (= state newState)
 			(0
 				(FaceObject ego dog)
-				(throwSound number: 63 play:)
+				(throwSound play:)
 				(ego
 					view: 15
 					cycleSpeed: 1

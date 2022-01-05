@@ -51,6 +51,7 @@
 		(= east 70)
 		(= horizon 85)
 		(= isIndoors FALSE)
+		(birbSound init: play:)
 		(ego edgeHit: 0)
 		(= inCutscene FALSE)
 		(if isNightTime (= picture 124))
@@ -426,5 +427,12 @@
 				(HandsOn)
 			)
 		)
+	)
+)
+
+(instance birbSound of Sound
+	(properties
+		number 609
+		priority 1
 	)
 )

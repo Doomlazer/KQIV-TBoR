@@ -51,6 +51,7 @@
 		(= west 21)
 		(= horizon 75)
 		(= isIndoors FALSE)
+		(birbSound init: play:)
 		(ego edgeHit: 0)
 		(if isNightTime (= picture 122))
 		(if (ego has: iTooth) (= picture 322))
@@ -253,5 +254,12 @@
 			)
 			(1 (Print 22 17))
 		)
+	)
+)
+
+(instance birbSound of Sound
+	(properties
+		number 609
+		priority 1
 	)
 )

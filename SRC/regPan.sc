@@ -32,12 +32,15 @@
 )
 
 (instance panTheme of Sound
-	(properties)
+	(properties
+		priority 2	
+	)
 )
 
 (instance luteMusic of Sound
 	(properties
 		number 54
+		priority 3
 	)
 )
 

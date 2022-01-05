@@ -8,6 +8,7 @@
 (use Invent)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room13 0
@@ -57,6 +58,7 @@
 		(= horizon 80)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(gullSound init: play:)
 		(if isNightTime (= picture 113))
 		(if (ego has: iTooth) (= picture 313))
 		(super init:)
@@ -299,5 +301,12 @@
 				(waveActions changeState: 1)
 			)
 		)
+	)
+)
+
+(instance gullSound of Sound
+	(properties
+		number 606
+		priority 1
 	)
 )

@@ -6,6 +6,7 @@
 (use Motion)
 (use Game)
 (use Actor)
+(use Sound)
 
 (public
 	Room26 0
@@ -33,6 +34,7 @@
 		(= west 25)
 		(= horizon 75)
 		(= isIndoors FALSE)
+		(birbSound init: play:)
 		(ego edgeHit: 0)
 		(if isNightTime (= picture 126))
 		(if (ego has: iTooth) (= picture 326))
@@ -174,5 +176,12 @@
 		else
 			(super newRoom: newRoomNumber)
 		)
+	)
+)
+
+(instance birbSound of Sound
+	(properties
+		number 609
+		priority 1
 	)
 )

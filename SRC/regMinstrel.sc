@@ -25,7 +25,9 @@
 	minstrelResponse
 )
 (instance thisSong of Sound
-	(properties)
+	(properties
+		priority 3	
+	)
 )
 
 (instance notes of Prop

@@ -42,6 +42,11 @@
 		(= west 28)
 		(= horizon 100)
 		(= isIndoors FALSE)
+		(if isNightTime
+			(nightSound init: play:)
+		else
+			(daySound init: play:)
+		)
 		(ego edgeHit: 0)
 		(if isNightTime (= picture 129))
 		(if (ego has: iTooth) (= picture 329))
@@ -359,5 +364,19 @@
 				(HandsOn)
 			)
 		)
+	)
+)
+
+(instance daySound of Sound
+	(properties
+		number 607
+		priority 1
+	)
+)
+
+(instance nightSound of Sound
+	(properties
+		number 608
+		priority 1
 	)
 )

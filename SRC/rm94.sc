@@ -8,6 +8,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room94 0
@@ -46,6 +47,8 @@
 		(Load VIEW 380)
 		(Load VIEW 386)
 		(Load VIEW 609)
+		(horseSound init:)
+		(gateSound init:)
 		(super init:)
 		(= isIndoors TRUE)
 		(ego
@@ -104,6 +107,7 @@
 						((not (ego inRect: 150 144 163 158)) (Print 800 1))
 						(else
 							(ego ignoreControl: 16)
+							(gateSound play:)
 							(openedGate ignoreActors: TRUE setCycle: EndLoop gateScript)
 							(if (== unicornState uniCAPTURED)
 								(uniStuff changeState: 4)
@@ -119,6 +123,7 @@
 						((not (ego inRect: 232 149 248 158)) (Print 800 1))
 						(else
 							(ego observeControl: 16)
+							(gateSound play:)
 							(openedGate ignoreActors: 0 setCycle: BegLoop gateScript)
 						)
 					)
@@ -188,6 +193,13 @@
 		(super init: param1)
 	)
 	
+	(method (doit)
+		(switch (Random 1 100)
+			(1 (horseSound play:))
+		)
+		(super doit:)
+	)
+	
 	(method (changeState newState)
 		(switch (= state newState)
 			(0 (theUnicorn setCycle: EndLoop self))
@@ -226,5 +238,20 @@
 				(= unicornRoom 27)
 			)
 		)
+	)
+)
+
+;Amiga sounds
+(instance gateSound of Sound
+	(properties
+		number 601
+		priority 15
+	)
+)
+
+(instance horseSound of Sound
+	(properties
+		number 603
+		priority 15
 	)
 )

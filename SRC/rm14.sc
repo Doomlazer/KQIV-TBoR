@@ -6,6 +6,7 @@
 (use Game)
 (use Invent)
 (use Actor)
+(use Sound)
 
 (public
 	Room14 0
@@ -26,6 +27,11 @@
 		(= west 13)
 		(= horizon 68)
 		(= isIndoors FALSE)
+		(if isNightTime
+			(nightSound init: play:)
+		else
+			(daySound init: play:)
+		)
 		(if (<= (ego y?) horizon)
 			(ego posn: (ego x?) (- horizon 2))
 		)
@@ -94,5 +100,19 @@
 			(= minutesLastMetMinstrel gameMinutes)
 		)
 		(super newRoom: newRoomNumber)
+	)
+)
+
+(instance daySound of Sound
+	(properties
+		number 607
+		priority 1
+	)
+)
+
+(instance nightSound of Sound
+	(properties
+		number 608
+		priority 1
 	)
 )

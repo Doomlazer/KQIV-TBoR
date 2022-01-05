@@ -45,6 +45,7 @@
 		(= horizon 104)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
+		(gullSound init: play:)
 		(if isNightTime (= picture 119))
 		(if (ego has: iTooth) (= picture 319))
 		(super init:)
@@ -655,5 +656,12 @@
 		(if (cast contains: minstrel)
 			(minstrel setCycle: 0)
 		)
+	)
+)
+
+(instance gullSound of Sound
+	(properties
+		number 606
+		priority 1
 	)
 )

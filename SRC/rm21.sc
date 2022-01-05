@@ -9,6 +9,7 @@
 (use Invent)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room21 0
@@ -33,6 +34,7 @@
 		(= west 20)
 		(= horizon 68)
 		(= isIndoors FALSE)
+		(birbSound init: play:)
 		(ego edgeHit: 0)
 		(if isNightTime (= picture 121))
 		(if (ego has: iTooth) (= picture 321))
@@ -287,5 +289,12 @@
 				(HandsOn)
 			)
 		)
+	)
+)
+
+(instance birbSound of Sound
+	(properties
+		number 609
+		priority 1
 	)
 )

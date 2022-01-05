@@ -8,6 +8,7 @@
 (use Invent)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	gfReg 0
@@ -29,6 +30,7 @@
 	)
 	
 	(method (init)
+		(peacockNoise init:)
 		(super init:)
 		(switch curRoomNum
 			(33
@@ -251,7 +253,13 @@
 )
 
 (instance peacockActions of Script
-	(properties)
+	
+	(method (doit)
+		(switch (Random 1 100)
+			(1 (peacockNoise play:))
+		)
+		(super doit:)
+	)
 	
 	(method (changeState newState)
 		(switch (= state newState)
@@ -281,5 +289,12 @@
 				(self changeState: 0)
 			)
 		)
+	)
+)
+
+(instance peacockNoise of Sound
+	(properties
+		number 602
+		priority 15
 	)
 )

@@ -4,6 +4,7 @@
 (use Main)
 (use Intrface)
 (use Game)
+(use Sound)
 
 (public
 	Room27 0
@@ -26,6 +27,11 @@
 		(= west 26)
 		(= horizon 75)
 		(= isIndoors FALSE)
+		(if isNightTime
+			(nightSound init: play:)
+		else
+			(daySound init: play:)
+		)
 		(if isNightTime (= picture 127))
 		(if (ego has: iTooth) (= picture 327))
 		(super init:)
@@ -65,5 +71,19 @@
 	
 	(method (newRoom newRoomNumber)
 		(super newRoom: newRoomNumber)
+	)
+)
+
+(instance daySound of Sound
+	(properties
+		number 607
+		priority 1
+	)
+)
+
+(instance nightSound of Sound
+	(properties
+		number 608
+		priority 1
 	)
 )

@@ -7,6 +7,7 @@
 (use Game)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room9 0
@@ -31,6 +32,11 @@
 		(= west 8)
 		(= horizon 75)
 		(= isIndoors FALSE)
+		(if isNightTime
+			(nightSound init: play:)
+		else
+			(daySound init: play:)
+		)
 		(if (<= (ego y?) (+ horizon 1))
 			(ego y: (+ horizon 2))
 		)
@@ -134,5 +140,19 @@
 			)
 			(2 (self changeState: 0))
 		)
+	)
+)
+
+(instance daySound of Sound
+	(properties
+		number 607
+		priority 1
+	)
+)
+
+(instance nightSound of Sound
+	(properties
+		number 608
+		priority 1
 	)
 )

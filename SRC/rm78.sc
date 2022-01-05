@@ -11,6 +11,7 @@
 (use User)
 (use Actor)
 (use System)
+(use Sound)
 
 (public
 	Room78 0
@@ -59,6 +60,7 @@
 		(= horizon 40)
 		(= isIndoors FALSE)
 		(if isNightTime (= picture 178))
+		(jumpSound init:)
 		(super init:)
 		(self setRegions: SWAMP)
 		(Load VIEW 330)
@@ -444,6 +446,7 @@
 				)
 			)
 			(5
+				(jumpSound play:)
 				(if (== (ego loop?) 4)
 					(ego view: 2 loop: 0 cel: 0 xStep: 3 yStep: 2)
 				else
@@ -618,5 +621,12 @@
 				(self changeState: 0)
 			)
 		)
+	)
+)
+
+(instance jumpSound of Sound
+	(properties
+		number 600
+		priority 15
 	)
 )
