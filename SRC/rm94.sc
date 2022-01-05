@@ -245,13 +245,13 @@
 (instance gateSound of Sound
 	(properties
 		number 601
-		priority 15
+		priority 1
 	)
 )
 
 (instance horseSound of Sound
 	(properties
 		number 603
-		priority 15
+		priority 1
 	)
 )
