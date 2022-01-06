@@ -4,6 +4,8 @@ This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I
 
 Features: See <a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions.
 
+Content advisory: Adult Content, Violence and Nudity.
+
 ## INSTALLATION
 
 Copy resouce.001, resource.004 and resource.map to your KQ4 game folder and run in SCUMMVM or DOSBox. Requires the retail version of KQ4 (Steam or GOG).
