@@ -2,7 +2,7 @@
 
 This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I learned what was possilbe through <a href="http://scicompanion.com">SCI Companion</a>. I realize that a KQ nude patch is a stupid idea, but hopefully there are some redeeming features below the surface. This mod is not intended to degrade women in any way and makes an effort to avoid misogyny. 
 
-Features: See the wiki for all changes/additions. https://github.com/Doomlazer/KQIV-TBoR/wiki
+Features: See <a href="ttps://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions.
 
 ## INSTALLATION
 
