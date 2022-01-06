@@ -1,6 +1,6 @@
 # King’s Quest IV: The Breasts of Rosella
 
-This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I learned what was possilbe through <a href="http://scicompanion.com">SCI Companion</a>. I realize that a KQ nude patch is a stupid idea, but I painted myself into a corner due to lack of forethought. Hopefully there are some redeeming features below the surface. This mod is not intended to degrade women in any way and makes an effort to avoid misogyny. 
+This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I learned what was possilbe with <a href="http://scicompanion.com">SCI Companion</a>. I realize that a KQ nude patch is a stupid idea, but I painted myself into a corner and I'm stuck with it now. Hopefully there are some redeeming features below the surface. This mod is not intended to degrade women in any way and makes an effort to avoid misogyny. 
 
 Features: See <a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions.
 
