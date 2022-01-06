@@ -4,7 +4,7 @@ This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I
 
 Features: stuff
 
-See the wiki for more info: https://github.com/Doomlazer/KQIV-TBoR/wiki
+See the wiki for all changes/additions: https://github.com/Doomlazer/KQIV-TBoR/wiki
 
 ## INSTALLATION
 
