@@ -47,7 +47,7 @@
 
 (instance barkSound of Sound	;Amiga sound
 	(properties
-		number 604
+		number 607 ;604
 		priority 1
 	)
 )

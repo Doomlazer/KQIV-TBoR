@@ -30,7 +30,7 @@
 	)
 	
 	(method (init)
-		(peacockNoise init:)
+		;(peacockNoise init:)
 		(super init:)
 		(switch curRoomNum
 			(33
@@ -254,12 +254,12 @@
 
 (instance peacockActions of Script
 	
-	(method (doit)
-		(switch (Random 1 100)
-			(1 (peacockNoise play:))
-		)
-		(super doit:)
-	)
+;;;	(method (doit)
+;;;		(switch (Random 1 100)
+;;;			(1 (peacockNoise play:))
+;;;		)
+;;;		(super doit:)
+;;;	)
 	
 	(method (changeState newState)
 		(switch (= state newState)
@@ -292,9 +292,10 @@
 	)
 )
 
-(instance peacockNoise of Sound
-	(properties
-		number 602
-		priority 15
-	)
-)
+;fuck amiga sounds
+;;;(instance peacockNoise of Sound
+;;;	(properties
+;;;		number 602 ;602
+;;;		priority 15
+;;;	)
+;;;)

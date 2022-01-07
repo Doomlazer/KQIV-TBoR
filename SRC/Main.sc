@@ -538,8 +538,8 @@
 				Hairpin
 		)
 		
-		;(ego get: iHairpin)
-		;(ego get: iGlassBottle)
+		;(ego get: iSmallCrown)
+		;(ego get: iLantern)
 		;(ego get: iSilverWhistle)
 		;(ego get: iSilverFlute)
 		;(ego get: iTooth)

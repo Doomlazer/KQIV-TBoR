@@ -84,14 +84,10 @@
 				(not (LanternIsOn))
 				(not (& (ego onControl: 0) $0002))
 			)
-;;;			(ego dispose:)
-;;;			(AnimateCast)
-;;;			(Print 605 1)
-;;;			(self setScript: gotchaScript)
-		
-			(trollScript start: 0) ;so you skip the lantern using the bow
-			(self setScript: trollScript)
-		
+			(ego dispose:)
+			(AnimateCast)
+			(Print 605 1)
+			(self setScript: gotchaScript)
 			(return)
 		)
 		(if
@@ -131,28 +127,28 @@
 							((Said 'light,ignite,(turn<on)') (self notify: TRUE))
 						)
 					)
-					((or (Said 'shoot,kill/troll[/bow]')(Said 'shoot/bow[/troll]'))
-						(if (cast contains: troll)
-							(if trollDead
-								(Print {Take a chill pill, you already murdered the poor thing.})
-							else
-								(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
-									((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
-									(trollScript changeState: 333)
-									(self setScript: trollBowScript)
-									(trollBowScript changeState: 20)
-								else
-									(if (ego has: iCupidBow) 
-										(Print {You're out of arrows.})
-									else
-										(Print {Maybe try bring the bow next time?})
-									)
-								)	
-							)
-						else
-							(Print {You don't see anything to murder right now, Rosella.})
-						)
-					)
+;;;					((or (Said 'shoot,kill/troll[/bow]')(Said 'shoot/bow[/troll]'))
+;;;						(if (cast contains: troll)
+;;;							(if trollDead
+;;;								(Print {Take a chill pill, you already murdered the poor thing.})
+;;;							else
+;;;								(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
+;;;									((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
+;;;									(trollScript changeState: 333)
+;;;									(self setScript: trollBowScript)
+;;;									(trollBowScript changeState: 20)
+;;;								else
+;;;									(if (ego has: iCupidBow) 
+;;;										(Print {You're out of arrows.})
+;;;									else
+;;;										(Print {Maybe try bring the bow next time?})
+;;;									)
+;;;								)	
+;;;							)
+;;;						else
+;;;							(Print {You don't see anything to murder right now, Rosella.})
+;;;						)
+;;;					)
 					((Said 'look>')
 						(cond 
 							((Said '<out[/cave]') (Print 605 2))
@@ -467,54 +463,54 @@
 
 
 
-(instance trollBowScript of Script 
-(properties)
-	
-	(method (changeState newState)
-		(switch (= state newState)	
-			(20
-				(FaceObject ego troll)
-				(cls)
-				(Print {Fearing for her life, Rosella hopes Tamir's stand-your-ground laws are as racially biased as Daventry's.})
-				(ego
-					view: 68
-					setCycle: EndLoop self
-				)	
-			)
-			(21
-				(ego view: 4 setMotion: 0 setCycle: Walk)
-				(= gotItem 1)
-				(= heart (Prop new:))
-				(heart
-					view: 681
-					cel: 0
-					loop: 0
-					setPri: 15
-					posn: (troll x?) (- (troll y?) 15)
-					setCycle: EndLoop
-					init:
-				)
-				(= seconds 3)
-			)
-			(22
-				(Print 605 20)
-				(troll
-					loop: 4
-					cel:0
-					setCycle: EndLoop self
-				)
-				(heart dispose:)
-			
-			)
-			(23
-				(Print 605 19)
-				(theGame changeScore: -100) 
-				(= trollDead 1)
-				(= seconds 2)	
-			)
-			(24
-				(Print 605 18)
-			)
-		)
-	)
-)
+;;;(instance trollBowScript of Script 
+;;;(properties)
+;;;	
+;;;	(method (changeState newState)
+;;;		(switch (= state newState)	
+;;;			(20
+;;;				(FaceObject ego troll)
+;;;				(cls)
+;;;				(Print {Fearing for her life, Rosella hopes Tamir's stand-your-ground laws are as racially biased as Daventry's.})
+;;;				(ego
+;;;					view: 68
+;;;					setCycle: EndLoop self
+;;;				)	
+;;;			)
+;;;			(21
+;;;				(ego view: 4 setMotion: 0 setCycle: Walk)
+;;;				(= gotItem 1)
+;;;				(= heart (Prop new:))
+;;;				(heart
+;;;					view: 681
+;;;					cel: 0
+;;;					loop: 0
+;;;					setPri: 15
+;;;					posn: (troll x?) (- (troll y?) 15)
+;;;					setCycle: EndLoop
+;;;					init:
+;;;				)
+;;;				(= seconds 3)
+;;;			)
+;;;			(22
+;;;				(Print 605 20)
+;;;				(troll
+;;;					loop: 4
+;;;					cel:0
+;;;					setCycle: EndLoop self
+;;;				)
+;;;				(heart dispose:)
+;;;			
+;;;			)
+;;;			(23
+;;;				(Print 605 19)
+;;;				(theGame changeScore: -100) 
+;;;				(= trollDead 1)
+;;;				(= seconds 2)	
+;;;			)
+;;;			(24
+;;;				(Print 605 18)
+;;;			)
+;;;		)
+;;;	)
+;;;)
