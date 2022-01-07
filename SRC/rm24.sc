@@ -51,7 +51,7 @@
 		(= east 70)
 		(= horizon 85)
 		(= isIndoors FALSE)
-		(birbSound init: play:)
+		;(birbSound init: play:)
 		(ego edgeHit: 0)
 		(= inCutscene FALSE)
 		(if isNightTime (= picture 124))
@@ -430,9 +430,9 @@
 	)
 )
 
-(instance birbSound of Sound
-	(properties
-		number 609
-		priority 1
-	)
-)
+;;;(instance birbSound of Sound
+;;;	(properties
+;;;		number 609
+;;;		priority 1
+;;;	)
+;;;)

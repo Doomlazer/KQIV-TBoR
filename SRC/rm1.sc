@@ -48,7 +48,7 @@
 		(= horizon 100)
 		(= isIndoors FALSE)
 		(ego edgeHit: 0)
-		(gullSound init: play:)
+		;(gullSound init: play:)
 		(if isNightTime (= picture 101))
 		(if (ego has: iTooth) (= picture 301))
 		(super init:)
@@ -291,9 +291,9 @@
 	)
 )
 
-(instance gullSound of Sound
-	(properties
-		number 606
-		priority 1
-	)
-)
+;;;(instance gullSound of Sound
+;;;	(properties
+;;;		number 606
+;;;		priority 1
+;;;	)
+;;;)
