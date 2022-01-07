@@ -50,7 +50,7 @@
 		(ego edgeHit: 0)
 		(self setRegions: SCARY_FOREST)
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 405)
 		)
 		(= local9 1)

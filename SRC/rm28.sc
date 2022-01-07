@@ -47,7 +47,7 @@
 		(if (ego has: iTooth) (= picture 328))
 		(ego edgeHit: 0 illegalBits: ctlWHITE)
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 428)
 		)
 		(self setRegions: FOREST)

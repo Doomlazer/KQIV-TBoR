@@ -78,7 +78,7 @@
 		(if isNightTime (= picture 118))
 		(if (ego has: iTooth) (= picture 318))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 418)
 		)
 		(self setRegions: CEMETERY MOUNTAIN)

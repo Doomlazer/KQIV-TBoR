@@ -49,7 +49,7 @@
 		(if isNightTime (= picture 119))
 		(if (ego has: iTooth) (= picture 319))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 419)
 		)
 		(= meetTime

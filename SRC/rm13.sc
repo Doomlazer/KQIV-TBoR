@@ -62,7 +62,7 @@
 		(if isNightTime (= picture 113))
 		(if (ego has: iTooth) (= picture 313))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 413)
 		)
 		(if wifeDead (= shouldknowwifedead 1))

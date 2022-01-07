@@ -53,7 +53,7 @@
 		(if isNightTime (= picture 112))
 		(if (ego has: iTooth) (= picture 312))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 412)
 		)
 		(= treeEye1 (Prop new:))

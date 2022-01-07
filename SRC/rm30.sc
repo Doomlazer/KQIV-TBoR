@@ -24,18 +24,21 @@
 (instance hTheme of Sound
 	(properties
 		number 29
+		priority 15
 	)
 )
 
 (instance fallSound of Sound
 	(properties
 		number 51
+		priority 15
 	)
 )
 
 (instance cuckooSound of Sound
 	(properties
 		number 80
+		priority 15
 	)
 )
 
@@ -50,16 +53,16 @@
 		(= west 29)		
 		(= horizon 85)
 		(= isIndoors FALSE)
-		(if isNightTime
-			(nightSound init: play:)
-		else
-			(daySound init: play:)
-		)
+;;;		(if isNightTime
+;;;			(nightSound init: play:)
+;;;		else
+;;;			(daySound init: play:)
+;;;		)
 		(ego edgeHit: 0)
 		(if isNightTime (= picture 130))
 		(if (ego has: iTooth) (= picture 330))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 430)
 		)
 		(self setRegions: FOREST MOUNTAIN)
@@ -382,16 +385,16 @@
 	)
 )
 
-(instance daySound of Sound
-	(properties
-		number 607
-		priority 1
-	)
-)
-
-(instance nightSound of Sound
-	(properties
-		number 608
-		priority 1
-	)
-)
+;;;(instance daySound of Sound
+;;;	(properties
+;;;		number 607
+;;;		priority 1
+;;;	)
+;;;)
+;;;
+;;;(instance nightSound of Sound
+;;;	(properties
+;;;		number 608
+;;;		priority 1
+;;;	)
+;;;)

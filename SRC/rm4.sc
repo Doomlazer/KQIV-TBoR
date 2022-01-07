@@ -76,7 +76,7 @@
 		(if isNightTime (= picture 104))
 		(if (ego has: iTooth) (= picture 304))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 404)
 		)
 		(self setRegions: FOREST OGRE)
@@ -331,7 +331,7 @@
 									;	else
 									;		(Print 4 18)
 									;	)	
-									)
+								)
 								(else
 									(ego loop: 3)
 									(HandsOff)

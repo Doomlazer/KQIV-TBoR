@@ -61,7 +61,7 @@
 		(if isNightTime (= picture 123))
 		(if (ego has: iTooth) (= picture 323))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 423)
 		)
 		(self setRegions: FOREST WATER RIVER)

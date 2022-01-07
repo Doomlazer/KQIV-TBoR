@@ -72,19 +72,22 @@
 		)
 		(self setRegions: OGRE_HOUSE)
 		(super init:)
-		(Game showMem:)
-		(if
-		(and (> ogreState 0) (!= ogreState 5) (not enteredOgreKitchen))
+		(if 
+			(and
+				(> ogreState 0)
+				(!= ogreState 5) 
+				(not enteredOgreKitchen)
+			)
 			(= local1 1)
 		)
 		(= isIndoors TRUE)
-		(= noWearCrown 1)
+		(= noWearCrown TRUE)
 		(if isNightTime
 			((View new:)
 				view: 616
 				loop: 1
 				posn: 50 128
-				ignoreActors: 1
+				ignoreActors: TRUE
 				addToPic:
 				stopUpd:
 			)

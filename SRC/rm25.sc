@@ -54,7 +54,7 @@
 		(if isNightTime (= picture 125))
 		(if (ego has: iTooth) (= picture 325))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 425)
 		)
 		(self setRegions: GULL WATER BEACH MEADOW)

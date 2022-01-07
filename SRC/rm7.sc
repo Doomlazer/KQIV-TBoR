@@ -102,7 +102,7 @@
 		(if isNightTime (= picture 107))
 		(if (ego has: iTooth) (= picture 307))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 407)
 		)
 		(self setRegions: BEACH GULL)

@@ -32,11 +32,11 @@
 		(= west 8)
 		(= horizon 75)
 		(= isIndoors FALSE)
-		(if isNightTime
-			(nightSound init: play:)
-		else
-			(daySound init: play:)
-		)
+;;;		(if isNightTime
+;;;			(nightSound init: play:)
+;;;		else
+;;;			(daySound init: play:)
+;;;		)
 		(if (<= (ego y?) (+ horizon 1))
 			(ego y: (+ horizon 2))
 		)
@@ -44,7 +44,7 @@
 		(if isNightTime (= picture 109))
 		(if (ego has: iTooth) (= picture 309))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 409)
 		)
 		(ego view: 2 init:)
@@ -143,16 +143,16 @@
 	)
 )
 
-(instance daySound of Sound
-	(properties
-		number 607
-		priority 1
-	)
-)
-
-(instance nightSound of Sound
-	(properties
-		number 608
-		priority 1
-	)
-)
+;;;(instance daySound of Sound
+;;;	(properties
+;;;		number 607
+;;;		priority 1
+;;;	)
+;;;)
+;;;
+;;;(instance nightSound of Sound
+;;;	(properties
+;;;		number 608
+;;;		priority 1
+;;;	)
+;;;)

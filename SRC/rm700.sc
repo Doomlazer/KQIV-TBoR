@@ -33,7 +33,7 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(Display 700 1 p_at 90 135 p_color vGREY p_back vLGREY)
+				(Display 700 1 p_at 98 135 p_color vGREY p_back vLGREY)
 				(Display 700 0 p_at 70 170 p_color vBLACK p_back vLGREY)
 				(= seconds 3)
 			)

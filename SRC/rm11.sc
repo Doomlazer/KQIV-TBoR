@@ -53,7 +53,7 @@
 		(if (ego has: iTooth) (= picture 311))
 		(ego edgeHit: 0)
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 411)
 		)
 		(self setRegions: SCARY_FOREST)

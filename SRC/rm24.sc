@@ -57,7 +57,7 @@
 		(if isNightTime (= picture 124))
 		(if (ego has: iTooth) (= picture 324))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 424)
 		)
 		(self setRegions: WATER RIVER MOUNTAIN FOREST) ;remove forest to save mem it mostly crow.

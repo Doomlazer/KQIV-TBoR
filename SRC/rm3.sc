@@ -67,7 +67,7 @@
 		(if isNightTime (= picture 103))
 		(if (ego has: iTooth) (= picture 303))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 403)
 		)
 		(ego view: 2 init:)

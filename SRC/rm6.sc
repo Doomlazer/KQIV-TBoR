@@ -29,7 +29,7 @@
 		(if isNightTime (= picture 106))
 		(if (ego has: iTooth) (= picture 306))
 		(super init:)
-		(if (& (ego has: iTooth) isNightTime)
+		(if (and (ego has: iTooth) isNightTime)
 			(curRoom overlay: 406)
 		)
 		(self setRegions: FOREST MOUNTAIN)
