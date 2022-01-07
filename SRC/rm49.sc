@@ -72,6 +72,7 @@
 		)
 		(self setRegions: OGRE_HOUSE)
 		(super init:)
+		(Game showMem:)
 		(if
 		(and (> ogreState 0) (!= ogreState 5) (not enteredOgreKitchen))
 			(= local1 1)

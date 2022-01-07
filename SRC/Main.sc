@@ -790,9 +790,9 @@
 		)
 		(return
 			(if (== (event type?) saidEvent)
-;;;				(if (Said 'get/mem')
-;;;					(theGame showMem:)
-;;;				)
+				(if (Said 'get/mem')
+					(theGame showMem:)
+				)
 ;;;				(if debugging
 ;;;					(cond 
 ;;;						((Said 'enter/night')
