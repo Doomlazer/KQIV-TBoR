@@ -202,7 +202,7 @@
 										(Print {"...but you don't have enough score to buy arrows."} #title {Bartender})
 									)
 								else
-									(Print {"...but You already have two arrows. That's the legal limit. I've got to cut you off."} #title {Bartender})
+									(Print {"...but you already have two arrows. That's the legal limit. I've got to cut you off."} #title {Bartender})
 								)
 						else
 							(Print {"...but you don't even have a cherub's bow. Come back when you get one."} #title {Bartender})
@@ -299,7 +299,7 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(= seconds 4)
+				(= seconds 3)
 			)
 			(1
 				(pan

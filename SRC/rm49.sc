@@ -59,9 +59,9 @@
 	)
 	
 	(method (init)
+		(theMusic init:)
 		(barkSound init:)
 		(throwSound init:)
-		(theMusic init:)
 		(Load VIEW 541)
 		(= currentStatus egoNormal)
 		(if (not ((Inventory at: iBone) ownedBy: 49))
@@ -873,13 +873,7 @@
 )
 
 (instance chaseEgo of Script
-;;;	(method (doit)
-;;;		(switch (Random 1 60)
-;;;			(1 (barkSound play:))
-;;;		)
-;;;		(super doit:)
-;;;	)
-;;;	
+
 	(method (changeState newState)
 		(switch (= state newState)
 			(0

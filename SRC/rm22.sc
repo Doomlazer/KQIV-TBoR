@@ -22,8 +22,19 @@
 	ripple5
 	ripple1
 )
+
+(instance birbSound of Sound
+	(properties
+		number 609
+		priority 1
+	)
+)
+
 (instance doorSound of Sound
-	(properties)
+	(properties
+		number 300
+		priority 15	
+	)
 )
 
 (instance door of Prop
@@ -197,10 +208,10 @@
 						(if (ego inRect: 170 112 202 120)
 							(cond 
 								((== kickedOut 1) (Print 22 8))
-								( (or (not isNightTime) (ego has: iTooth))
+								((or (not isNightTime) (ego has: iTooth))
 									(HandsOff)
 									(ego loop: 3)
-									(doorSound number: 300 play: door)
+									(doorSound init: play: door)
 									(door setCycle: EndLoop)
 								)
 								(else (Print 22 9))
@@ -254,12 +265,5 @@
 			)
 			(1 (Print 22 17))
 		)
-	)
-)
-
-(instance birbSound of Sound
-	(properties
-		number 609
-		priority 1
 	)
 )

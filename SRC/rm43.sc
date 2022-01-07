@@ -35,7 +35,7 @@
 	local12
 	local13
 	[local14 2]
-	[str 200]
+	;[str 200]
 	cloud
 )
 (instance whistleSound of Sound
@@ -281,15 +281,9 @@
 							((Said '/forest,flora,palm') (Print 43 19))
 							((Said '/coconut') (Print 43 20))
 							((Said '/boat,shipwreck')
-								(Print
-									(Format @str 43 21
-										(if ((Inventory at: iGoldenBridle) ownedBy: 43)
-											;okay, there's some hint there...
-											{You see a glint coming from one of the wrecked boats on the beach.}
-										else
-											{_}
-										)
-									)
+								(Print 43 21)
+								(if ((Inventory at: iGoldenBridle) ownedBy: 43)
+									(Print {You see a glint coming from one of the wrecked boats on the beach.})		
 								)
 							)
 							((Said '/pelican,bird') (if (!= pelicanState 4) (Print 43 22) else (Print 43 23)))

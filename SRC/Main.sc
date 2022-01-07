@@ -537,9 +537,13 @@
 				Condom
 				Hairpin
 		)
-
+		
+		;(ego get: iHairpin)
+		;(ego get: iGlassBottle)
+		;(ego get: iSilverWhistle)
+		;(ego get: iSilverFlute)
 		;(ego get: iTooth)
-		;(ego get: iCondom)
+		;(ego get: iDeadFish)
 		;(ego get: iSkull)
 		;(ego get: iVirginity)
 		;(ego get: iSmallCrown)

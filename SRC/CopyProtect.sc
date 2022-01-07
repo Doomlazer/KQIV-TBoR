@@ -533,7 +533,7 @@
 			(+= inputSum ch)
 		)
 		(cond
-			
+			((== inputSum 0) (curRoom newRoom: 700)) 
 			((== inputSum 750) (curRoom newRoom: 700)) ;wave anchor		
 			((== inputSum 437) (curRoom newRoom: 700)) ;bobalu
 			((== inputSum 435) (curRoom newRoom: 700)) ;marble

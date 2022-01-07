@@ -671,7 +671,7 @@
 														(theGame changeScore: 50)
 														(= readSonnysFile 1)
 														((Sound new:) number: 690 play:)
-														(Print {Hmm, I guess Sonny is the one bad apple.})
+														(Print {Hmm, I guess Sonny is a bad apple!})
 													)
 												)
 												(15 ;heros quest guy
