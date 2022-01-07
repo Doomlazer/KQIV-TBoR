@@ -165,7 +165,7 @@
 				init:
 				stopUpd:
 			)
-			(if 0 ;(>= gamePhase getPandoraBox) fucking henchman is null when shoot bow is called. makes no sense. just remove hench for now.
+			(if (>= gamePhase getPandoraBox) ;fucking henchman is null when shoot bow is called. makes no sense. just remove hench for now.
 				((= henchman (Actor new:))
 					view: 141
 					setStep: 4 2
