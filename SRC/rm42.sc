@@ -498,9 +498,9 @@
 										)
 								
 										(if (< (ego distanceTo: wife) 25)
-											(Print 42 44 #icon 421 0 0)
+											(Print 42 44 #icon 421 0 0 #draw)
 										else
-											(Print 42 45 #icon 421 0 0)
+											(Print 42 45 #icon 421 0 0 #draw)
 										)
 								
 										(ego put: iDiamondPouch 42)
@@ -649,7 +649,7 @@
 				)
 			)
 			(3
-				(Print {The Fisherman's pole. Very phallic.} #icon 421 0 0)
+				(Print 42 81 #icon 421 0 0 #draw)
 				(= cycles 5)
 			)
 			(4
@@ -958,7 +958,7 @@
 			)
 			(1
 				(ego setCycle: BegLoop self)
-				(Print 42 79 #icon 1 0 1)
+				(Print 42 79 #icon 1 0 1 #draw)
 				((Inventory at: iCondom) moveTo: ego)
 				(= gotItem 1)
 				(theGame changeScore: 5)

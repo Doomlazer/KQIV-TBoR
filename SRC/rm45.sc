@@ -538,7 +538,7 @@
 					loop: 5
 					setCycle: EndLoop self
 				) ;this is wrong, should do crab dance or something
-				(Print {You've taken Larry's virginity.} #icon 571 0 0)	
+				(Print 45 55 #draw #icon 571 0 0)	
 			)
 			(30
 				(larry
@@ -554,7 +554,7 @@
 			)
 			(32
 				(HandsOn)
-				(Print {"Well that was disgusting."} #title {Genesta})
+				(Print 45 56 #title {Genesta})
 				(= cycles 1)
 			)
 			(33
@@ -751,7 +751,7 @@
 				)
 			)
 			(2
-				(Print {looking under the bed you find a hairpin.} #icon 590 0 0)
+				(Print 45 57 #draw #icon 590 0 0)
 				(ego get: iHairpin)
 				(theGame changeScore: 20) 
 				(= gotItem 1)

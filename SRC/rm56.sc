@@ -475,7 +475,7 @@
 				(theGame changeScore: 3)
 			)
 			(3
-				(Print {A non-magical lamp.\nWow, thanks.} #icon 428 0 0)
+				(Print {A non-magical lamp.\nWow, thanks.} #draw #icon 428 0 0)
 				(if detailLevel
 					((= dwarf1 (Actor new:))
 						view: 287

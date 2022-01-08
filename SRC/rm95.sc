@@ -782,7 +782,7 @@
 									((Inventory at: iSmallCrown) moveTo: ego) ;avoid potential dead end.
 								)
 								((Inventory at: iFrog) moveTo: ego)
-								(Print {a little Frog friend.} #icon 432 0 0)
+								(Print {a little Froggy friend.} #icon 432 0 0)
 								(= gotItem 1)
 							)
 							(2

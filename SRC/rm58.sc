@@ -218,7 +218,7 @@
 						((Said 'get/key')
 							(if drawerOpen
 								(if keyInDrawer
-									(Print 58 20 #icon 424 0 0)
+									(Print 58 20 #draw #icon 424 0 0)
 									(= keyInDrawer FALSE)
 									(= gotItem TRUE)
 									(ego get: iSkeletonKey)

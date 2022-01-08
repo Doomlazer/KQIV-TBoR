@@ -174,7 +174,7 @@
 							(if local2
 								(if (< (ego distanceTo: pan) 22)
 									((Inventory at: iLute) moveTo: 201)
-									(Print 514 8 #icon 413 0 0)
+									(Print 514 8 #icon 413 0 0 #dispose)
 									((Inventory at: iSilverFlute) moveTo: ego)
 									(theGame changeScore: 3)
 									(ego setMotion: 0)

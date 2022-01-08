@@ -144,7 +144,7 @@
 								(ego setScript: getDown)
 								(bone hide:)
 								(= gotItem TRUE)
-								(Print {The Tamirian equivalant of roadkill I guess.} #icon 419 0 0)
+								(Print {The Tamirian equivalant of roadkill I guess.} #icon 419 0 0 #draw)
 								(theGame changeScore: 2)
 							)
 							(else

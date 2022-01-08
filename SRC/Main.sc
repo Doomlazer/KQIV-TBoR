@@ -1194,6 +1194,7 @@
 												(Print 0 62
 													#title {Magic Hen}
 													#icon 431 0 0
+													#draw
 												)
 											else
 												(PrintDontHaveIt)

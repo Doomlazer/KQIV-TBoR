@@ -525,7 +525,7 @@
 									)
 									(= gotItem TRUE)
 									(ego get: iMagicHen)
-									(Print {It's true what they say, "You can't make an omlet with golden eggs!"} #icon 431 0 0)
+									(Print 49 59 #draw #icon 431 0 0)
 									(theGame changeScore: 4)
 									(hen dispose:)
 								)
@@ -794,7 +794,9 @@
 		(switch (= state newState)
 			(0
 				(= local9 1)
-				(Print {"Come back here you little, shit."} #title {Ogress} #at 125 20 #dispose #time 4)
+				(if (== prevRoomNum 50)
+					(Print 49 60 #title {Ogress} #at 125 20 #dispose #time 4)
+				)
 				(theMusic number: 10 loop: -1 play:)
 				(ogress
 					illegalBits: cWHITE

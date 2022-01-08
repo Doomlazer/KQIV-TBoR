@@ -758,7 +758,7 @@
 				(theGame changeScore: 69)
 				((Inventory at: iBriefcase) moveTo: ego)
 				(= gotItem 1)
-				(Print {You take the briefcase filled with Sonny's 'Civil Asset Forfitures'.} #icon 574 0 0)
+				(Print 97 60 #icon 574 0 0 #dispose)
 				(if marieUntied
 					(Print 97 52 #title {Marie})	
 				)

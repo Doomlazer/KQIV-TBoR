@@ -633,7 +633,7 @@
 			)
 			(1
 				(ego get: iPandorasBox)
-				(Print {Nobody going to believe you found this!} #icon 425 0 0)
+				(Print 69 37 #draw #icon 425 0 0)
 				(pandoraBox dispose:)
 				(if (not gotPandorasBox)
 					(= gotPandorasBox TRUE)
