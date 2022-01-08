@@ -4,7 +4,7 @@ This mod started life as an ironic 'nude patch' for KQ4 and grew from there as I
 
 Features: See <a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions.
 
-Content advisory: Adult situations, drug-use, violence/suicide and nudity.
+Content advisory: Adult situations, drug use, violence and nudity.
 
 
 ## INSTALLATION
