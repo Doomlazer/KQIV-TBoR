@@ -22,7 +22,13 @@
 		(if initialized (return))
 		(= keep TRUE)
 		(super init:)
-		(if (not ogreCameHome) (self setScript: ogreHere))
+		(if 
+			(and
+				(not ogreCameHome)
+				(== gamePhase getTheHen) ;see if this prevents the heap crash
+			)
+			(self setScript: ogreHere)
+		)
 		(= noWearCrown TRUE)
 	)
 	
