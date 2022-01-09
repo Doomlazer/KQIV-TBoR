@@ -45,12 +45,12 @@
 	)
 )
 
-(instance barkSound of Sound	;Amiga sound
-	(properties
-		number 604
-		priority 1
-	)
-)
+;;;(instance barkSound of Sound	;Amiga sound
+;;;	(properties
+;;;		number 604
+;;;		priority 1
+;;;	)
+;;;)
 
 (instance Room49 of Room
 	(properties
@@ -60,7 +60,7 @@
 	
 	(method (init)
 		(theMusic init:)
-		(barkSound init:)
+		;(barkSound init:)
 		(throwSound init:)
 		(Load VIEW 541)
 		(= currentStatus egoNormal)
@@ -883,7 +883,7 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(barkSound play:)
+				;(barkSound play:)
 				(Print 49 54 #at -1 10)
 				(dog
 					setAvoider: (Avoider new:)

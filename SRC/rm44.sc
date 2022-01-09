@@ -26,12 +26,12 @@
 	)
 )
 
-(instance sneezeSound of Sound
-	(properties
-		number 605
-		priority 15
-	)
-)
+;;;(instance sneezeSound of Sound
+;;;	(properties
+;;;		number 605
+;;;		priority 15
+;;;	)
+;;;)
 
 (instance fallSound of Sound
 	(properties
@@ -67,7 +67,7 @@
 		(Load VIEW 21)
 		(Load VIEW 73)
 		(Load SOUND 51)
-		(sneezeSound init:)
+		;(sneezeSound init:)
 		(if (ego has: iPeacockFeather) (Load SOUND 60) (Load VIEW 51))
 		(= noWearCrown 1)
 		(ego view: 8 posn: 39 160 viewer: inWhale init:)
@@ -343,7 +343,7 @@
 				(ego view: 51 loop: (& (ego loop?) $0001) setCycle: Forward)
 			)
 			(2
-				(sneezeSound play:)
+				;(sneezeSound play:)
 				(Print 44 30)
 				(ego setLoop: -1 setCel: -1)
 				(HandsOn)

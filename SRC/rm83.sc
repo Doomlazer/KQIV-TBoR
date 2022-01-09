@@ -20,14 +20,14 @@
 
 (local
 	hench
-	window
+	;window
 	roomDialog
 	rogerego
 	kissed
 	tooth
-	randomPick
+	;randomPick
 	toofmsg
-	choice
+	;choice
 	heart
 )
 (instance Room83 of Room
@@ -37,10 +37,10 @@
 	)
 	
 	(method (init)
-		(Load VIEW 649)
-		(Load VIEW 634)
-		(Load VIEW 512)
-		(Load VIEW 137)
+;;;		(Load VIEW 649)
+;;;		(Load VIEW 634)
+;;;		(Load VIEW 512)
+;;;		(Load VIEW 137)
 		(self setRegions: LOLOTTE)
 		(super init:)
 		
@@ -92,16 +92,16 @@
 			)
 		)
 		(= isIndoors TRUE)
-		(if isNightTime
-			((= window (View new:))
-				view: 649
-				loop: 0
-				cel: 0
-				posn: 162 64
-				init:
-				stopUpd:
-			)
-		)
+;;;		(if isNightTime
+;;;			((= window (View new:))
+;;;				view: 649
+;;;				loop: 0
+;;;				cel: 0
+;;;				posn: 162 64
+;;;				init:
+;;;				stopUpd:
+;;;			)
+;;;		)
 		(if (or (== prevRoomNum 86) (== prevRoomNum 0))
 			(ego
 				posn: 156 159
@@ -170,7 +170,7 @@
 						)
 						(
 						(or (Said 'use,(turn<on)/machine') (Said 'turn/wheel')) (Print 83 8))
-						((Said 'get/roger') (Print {Nobody truly 'gets' Roger Wilco. He's is own person, dig?}))
+						((Said 'get/roger') (Print 83 53))
 						((Said 'get/whip') (Print 83 9))
 						((Said 'get/chain') (Print 83 4))
 						((Said 'get/tooth,toof') 
@@ -185,10 +185,10 @@
 									(Print 83 36 #icon 1 2 0)
 									(if (not toofmsg) (Print 83 46)(= toofmsg 1)) ;try to make tooth function more obvious
 								else 
-									(Print {Fuck you, get closer first.})
+									(Print 83 54)
 								)	
 							else 
-								(Print "The tooth is not yours to take.")
+								(Print 83 56)
 							)
 						)
 						((Said 'open/window') (Print 83 10))
@@ -233,52 +233,53 @@
 						)
 						
 						((Said 'talk/roger,man')  
-						(if (and (ego has: iTooth)(ego has: iDecoderRing) (ego has: iPeacockFeather)) 
+						(if 0 ;(and (ego has: iTooth)(ego has: iDecoderRing) (ego has: iPeacockFeather)) 
 							;sloppy logic tree
-							(= choice 0)
-							(switch (= randomPick (Random 1 3))	
-									(1
-										(= choice (Print 83 45 #time 10 #button {Lantern} 1 #button {Pandora's Box} 2))
-										(if (== choice 1)
-											(ego get: iLantern)
-											(Print 83 51 #icon 428 0 0)
-										)
-										(if (== choice 2)
-											(ego get: iPandorasBox)
-											(Print {"Good choice! Fuck those ghosts, right?"} #icon 425 0 0)
-										else
-											(Print {"Neither than, I guess?"})
-										)
-									)
-									(2									
-										(= choice (Print 83 45 #button {Pan's Flute} 1 #button {Axe} 2))
-										(if (== choice 1)
-											(ego get: iSilverFlute)
-											(Print {"I had to kill a Pan to get this. Those hooves can be dangerous!"} #icon 413 0 0)
-										)
-										(if (== choice 2)
-											(ego get: iAxe)
-											(Print {"This axe inspired the chainsaw in Silent Hill, at least in my dimension; not sure if that's true here."} #icon 418 0 0)
-										else
-											(Print {"Neither than, I guess?"})
-										)
-									)
-									(3											
-										(= choice (Print 83 45  #button {Magic Fruit} 1 #button {Magic Hen} 2))
-										(if (== choice 1)
-											(ego get: iMagicFruit)
-											(Print {"hop hop hop hop hop hop hop hop hop hop hop"} #icon 412 0 0)
-										)
-										(if (== choice 2)
-											(ego get: iMagicHen)
-											(Print {"Legally I'm not allowed within 1,000 feet of this thing, so you can have it."} #icon 431 0 0)
-										else
-											(Print {"Neither than, I guess?"})
-										)
-									)
-								
-							)
-				
+;;;							(= choice 0)
+;;;							;old ====== =======(switch (= randomPick (Random 1 3))
+;;;							(switch (Random 1 3)	
+;;;									(1
+;;;										(= choice (Print 83 45 #time 10 #button {Lantern} 1 #button {Pandora's Box} 2))
+;;;										(if (== choice 1)
+;;;											(ego get: iLantern)
+;;;											(Print 83 51 #icon 428 0 0)
+;;;										)
+;;;										(if (== choice 2)
+;;;											(ego get: iPandorasBox)
+;;;											(Print 83 57 #icon 425 0 0)
+;;;										else
+;;;											(Print 83 55)
+;;;										)
+;;;									)
+;;;									(2									
+;;;										(= choice (Print 83 45 #button {Pan's Flute} 1 #button {Axe} 2))
+;;;										(if (== choice 1)
+;;;											(ego get: iSilverFlute)
+;;;											(Print 83 58 #icon 413 0 0)
+;;;										)
+;;;										(if (== choice 2)
+;;;											(ego get: iAxe)
+;;;											(Print 83 59 #icon 418 0 0)
+;;;										else
+;;;											(Print 83 55)
+;;;										)
+;;;									)
+;;;									(3											
+;;;										(= choice (Print 83 45  #button {Magic Fruit} 1 #button {Magic Hen} 2))
+;;;										(if (== choice 1)
+;;;											(ego get: iMagicFruit)
+;;;											(Print 83 60 #icon 412 0 0)
+;;;										)
+;;;										(if (== choice 2)
+;;;											(ego get: iMagicHen)
+;;;											(Print 83 61 #icon 431 0 0)
+;;;										else
+;;;											(Print 83 55)
+;;;										)
+;;;									)
+;;;								
+;;;							)
+;;;				
 						else
 							(if (ego has: iGoldenBridle)
 								(Print 83 25)

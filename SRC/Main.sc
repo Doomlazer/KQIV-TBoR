@@ -102,43 +102,43 @@
 	demoDialogTime
 	currentPalette
 	;62-99 are unused
-		global62
-		global63
-		global64
-		global65
-		global66
-		global67
-		global68
-		global69
-		global70
-		global71
-		global72
-		global73
-		global74
-		global75
-		global76
-		global77
-		global78
-		global79
-		global80
-		global81
-		global82
-		global83
-		global84
-		global85
-		global86
-		global87
-		global88
-		global89
-		global90
-		global91
-		global92
-		global93
-		global94
-		global95
-		global96
-		global97
-		global98
+;;;		global62
+;;;		global63
+;;;		global64
+;;;		global65
+;;;		global66
+;;;		global67
+;;;		global68
+;;;		global69
+;;;		global70
+;;;		global71
+;;;		global72
+;;;		global73
+;;;		global74
+;;;		global75
+;;;		global76
+;;;		global77
+;;;		global78
+;;;		global79
+;;;		global80
+;;;		global81
+;;;		global82
+;;;		global83
+;;;		global84
+;;;		global85
+;;;		global86
+;;;		global87
+;;;		global88
+;;;		global89
+;;;		global90
+;;;		global91
+;;;		global92
+;;;		global93
+;;;		global94
+;;;		global95
+;;;		global96
+;;;		global97
+;;;		global98
 	lastSysGlobal
 	isNightTime
 	isIndoors
@@ -179,21 +179,21 @@
 	global136
 	global137
 	gNewPropX
-	global139
-	global140
-	global141
-	global142
-	global143
-	global144
-	global145
-	global146
-	global147
-	global148
-	global149
-	global150
-	global151
-	global152
-	global153
+	;global139
+	;global140
+	;global141
+;;;	global142
+;;;	global143
+;;;	global144
+;;;	global145
+;;;	global146
+;;;	global147
+;;;	global148
+;;;	global149
+;;;	global150
+;;;	global151
+;;;	global152
+;;;	global153
 	global154
 	global155
 	global156
@@ -201,8 +201,8 @@
 	gameSeconds
 	gameMinutes
 	gameHours
-	global161
-	global162
+	;global161
+	;global162
 	ogressIsHome
 	oldEgoScript
 	ogreState
@@ -211,14 +211,14 @@
 	global168
 	lolotteAlive
 	ropeLadderLowered
-	global171
+;	global171
 	pan
 	ogreY
 	cryptDoorState
 	henchChasingEgo
 	ateSoup
 	dwarfTableClean
-	global178
+;	global178
 	global179
 	gNewProp
 	oldEgoView
@@ -230,11 +230,11 @@
 	global187
 	nightRoom
 	noWearCrown
-	global190
+;	global190
 	shotUnicorn
 	global192
 	playedOrgan
-	global194
+;	global194
 	logEntries
 	writingLog
 	minuteMetFisherman
@@ -259,7 +259,7 @@
 	global216
 	blewWhistle
 	gotPandorasBox
-	global219
+;	global219
 	unlockedLolotteDoor
 	global221
 	howFast

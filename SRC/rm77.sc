@@ -38,7 +38,7 @@
 		(Load VIEW 69)
 		(Load VIEW 49)
 		(Load SCRIPT JUMP)
-		(jumpSound init:)
+		;(jumpSound init:)
 		(if isNightTime (= picture 177))
 		(super init:)
 		(self setRegions: SWAMP)
@@ -339,7 +339,7 @@
 				)
 			)
 			(5
-				(jumpSound play:)
+				;(jumpSound play:)
 				(if (== (ego loop?) 4)
 					(ego view: 2 loop: 0 cel: 0 xStep: 3 yStep: 2)
 				else
@@ -354,9 +354,9 @@
 	)
 )
 
-(instance jumpSound of Sound	;Amiga sound
-	(properties
-		number 600
-		priority 15
-	)
-)
+;;;(instance jumpSound of Sound	;Amiga sound
+;;;	(properties
+;;;		number 600
+;;;		priority 15
+;;;	)
+;;;)

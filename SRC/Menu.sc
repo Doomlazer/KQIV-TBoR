@@ -49,6 +49,14 @@
 					#at 20 10
 					#width 260
 				)
+				(Print
+					(Format @str2 MENU 10 version)
+					#title {A Ken Williams Production}
+					#font smallFont
+					#mode teJustCenter
+					#at 20 10
+					#width 260
+				)
 				(Sound pause: oldPause)
 			)
 			(helpI

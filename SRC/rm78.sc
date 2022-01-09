@@ -60,7 +60,7 @@
 		(= horizon 40)
 		(= isIndoors FALSE)
 		(if isNightTime (= picture 178))
-		(jumpSound init:)
+		;(jumpSound init:)
 		(super init:)
 		(self setRegions: SWAMP)
 		(Load VIEW 330)
@@ -446,7 +446,7 @@
 				)
 			)
 			(5
-				(jumpSound play:)
+				;(jumpSound play:)
 				(if (== (ego loop?) 4)
 					(ego view: 2 loop: 0 cel: 0 xStep: 3 yStep: 2)
 				else
@@ -624,9 +624,9 @@
 	)
 )
 
-(instance jumpSound of Sound
-	(properties
-		number 600
-		priority 15
-	)
-)
+;;;(instance jumpSound of Sound
+;;;	(properties
+;;;		number 600
+;;;		priority 15
+;;;	)
+;;;)
