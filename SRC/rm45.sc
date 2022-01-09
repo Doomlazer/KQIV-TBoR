@@ -538,7 +538,7 @@
 					loop: 5
 					setCycle: EndLoop self
 				) ;this is wrong, should do crab dance or something
-				(Print 45 55 #draw #icon 571 0 0)	
+				(Print 45 55 #icon 571 0 0)	
 			)
 			(30
 				(larry
@@ -751,7 +751,7 @@
 				)
 			)
 			(2
-				(Print 45 57 #draw #icon 590 0 0)
+				(Print 45 57 #icon 590 0 0)
 				(ego get: iHairpin)
 				(theGame changeScore: 20) 
 				(= gotItem 1)

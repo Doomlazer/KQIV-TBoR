@@ -394,7 +394,7 @@
 					setPri: 13
 					init:
 				)
-				(Print 79 13 #draw #at -1 10 #dispose)
+				(Print 79 13 #at -1 10 #dispose)
 			)
 			(1
 				(h1 xStep: 4 yStep: 3 setMotion: MoveTo -10 50 self)

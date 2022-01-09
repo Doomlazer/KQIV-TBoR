@@ -15,10 +15,9 @@
 ;;;;		File
 
 
-(script# FILE)
+(script#	FILE)
 (include game.sh)
 (use System)
-
 
 (class File of Object
 
@@ -55,14 +54,11 @@
 					(FOpen name mode)
 				)
 				(else
-					0
+					-1
 				)
 			)
 		)
-		(if (== handle -1)
-			(= handle 0)
-		)
-		(return (if handle self else NULL))
+		(return (if (== handle -1) NULL else self))
 	)
 
 
@@ -76,10 +72,8 @@
 		)
 
 		;Multiple writes accepted.
-		(if handle
-			(for ((= i 0)) (< i argc) ((++ i))
-				(FPuts handle [str i])
-			)
+		(for ((= i 0)) (< i argc) ((++ i))
+			(FPuts handle [str i])
 		)
 	)
 
@@ -96,7 +90,7 @@
 			(self open:fRead)
 		)
 
-		(return (if handle (FGets str len handle) else 0))
+		(return (FGets str len handle))
 	)
 
 

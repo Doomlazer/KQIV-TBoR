@@ -356,7 +356,7 @@
 							#font smallFont
 							#at 7 5
 							#width 290
-							#draw
+							;#draw
 							#dispose
 						)
 					)

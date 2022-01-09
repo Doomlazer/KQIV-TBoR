@@ -447,7 +447,7 @@
 				(HandsOff)
 				(ego dispose:)
 				(ogress view: 57 setCycle: Forward)
-				(Print 4 27 #at -1 10 #draw)
+				(Print 4 27 #at -1 10)
 			)
 			(13 (= seconds 2))
 			(14 (= dead TRUE))
@@ -505,7 +505,7 @@
 				(ogreTheme client: 0 stop:)
 				(ogreTheme number: 6 loop: 1 play:)
 				(ogre setAvoider: 0 view: 79 setCycle: Walk self)
-				(Print 4 28 #at -1 10 #draw)
+				(Print 4 28 #at -1 10)
 				(cond 
 					((ogre inRect: -50 70 350 93) (ogre setMotion: MoveTo 37 87 self))
 					(

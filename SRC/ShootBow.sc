@@ -12,11 +12,9 @@
 )
 
 (local
-	oldEgoViewer
+	saveViewer
 )
 (instance shootBow of Script
-	(properties)
-	
 	(method (init)
 		(= isHandsOff TRUE)
 		(Load VIEW 31)
@@ -30,7 +28,7 @@
 				(HandsOff)
 				(= oldEgoView (ego view?))
 				(= oldEgoBaseSetter (ego baseSetter?))
-				(= oldEgoViewer (ego viewer?))
+				(= saveViewer (ego viewer?))
 				(ego
 					viewer: 0
 					baseSetter: (ScriptID 0 1)
@@ -42,7 +40,7 @@
 			)
 			(1
 				(ego view: oldEgoView setCycle: Walk)
-				(= isHandsOff 0)
+				(= isHandsOff FALSE)
 				((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
 				(= timedMessage (Print 305 0 #at -1 10 #dispose))
 				(Timer setReal: self 4)
@@ -51,7 +49,7 @@
 				(cls)
 				(Print 305 1)
 				(ego
-					viewer: oldEgoViewer
+					viewer: saveViewer
 					baseSetter: oldEgoBaseSetter
 					script: oldEgoScript
 				)

@@ -452,7 +452,7 @@
 				)
 				(ego loop: 0)
 				(dwarf5 view: 288 loop: 0 setCycle: EndLoop)
-				(Print 56 12 #at -1 15 #width 290 #font smallFont #draw)
+				(Print 56 12 #at -1 15 #width 290 #font smallFont)
 				(self cue:)
 			)
 			(1
@@ -475,7 +475,7 @@
 				(theGame changeScore: 3)
 			)
 			(3
-				(Print {A non-magical lamp.\nWow, thanks.} #draw #icon 428 0 0)
+				(Print 56 13 #icon 428 0 0)
 				(if detailLevel
 					((= dwarf1 (Actor new:))
 						view: 287
@@ -515,7 +515,7 @@
 					ignoreActors: 0
 					init:
 				)
-				(= seconds 3)
+				(= seconds 1) ;was 3
 			)
 			(4
 				(HandsOn)
@@ -531,7 +531,7 @@
 				)
 				(ego loop: 0)
 				(dwarf5 view: 288 loop: 0 setCycle: EndLoop)
-				(Print 56 15 #at -1 15 #width 290 #font smallFont #draw)
+				(Print 56 15 #at -1 15 #width 290 #font smallFont)
 				(= state 0)
 				(= cycles 1)
 			)

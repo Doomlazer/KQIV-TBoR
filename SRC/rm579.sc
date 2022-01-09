@@ -186,7 +186,7 @@
 			)
 			(6
 				(poof dispose:)
-				(Print 70 21 #draw)
+				(Print 70 21)
 				(ego setScript: 0)
 				(HandsOn)
 			)

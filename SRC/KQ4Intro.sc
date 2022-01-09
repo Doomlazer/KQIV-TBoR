@@ -22,6 +22,6 @@
 		(if initialized (return))
 		(= keep 1)
 		(super init:)
-		((ScriptID 520 1) owner: kq4Intro init:)
+		((ScriptID INTRO 1) owner: kq4Intro init:)
 	)
 )

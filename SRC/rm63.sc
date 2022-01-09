@@ -140,7 +140,7 @@
 												)
 											)
 											((== ((inventory at: iSheetMusic) owner?) 63)
-												(Print 63 6 #icon 417 0 0 #dispose)
+												(Print 63 6 #icon 417 0 0)
 												(ego get: iSheetMusic)
 												(= gotItem TRUE)
 												(theGame changeScore: 2)

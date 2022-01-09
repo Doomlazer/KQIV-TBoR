@@ -1191,11 +1191,7 @@
 										)
 										((Said 'converse/chicken')
 											(if (ego has: iMagicHen)
-												(Print 0 62
-													#title {Magic Hen}
-													#icon 431 0 0
-													#draw
-												)
+												(Print 0 62 #title {Magic Hen} #icon 431 0 0)
 											else
 												(PrintDontHaveIt)
 											)
@@ -1306,9 +1302,7 @@
 														(else
 															(switch (inventory indexOf: index)
 																(iDiamondPouch
-																	(Print 0 84
-																		#icon 401 0 0
-																	)
+																	(Print 0 84 #icon 401 0 0)
 																)
 																(iLantern
 																	(Print 0 85)
@@ -1359,9 +1353,7 @@
 														((Said '/letter')
 															(cond 
 																((ego has: iNote)
-																	(Print 0 94
-																		#icon 435 0 0
-																	)
+																	(Print 0 94 #icon 435 0 0)
 																)
 																((ego has: iGlassBottle)
 																	(Print 0 95)

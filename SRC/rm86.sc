@@ -20,7 +20,7 @@
 	candle1
 	candle2
 	candle3
-	[str 200]
+	;[str 200]
 	door
 )
 (instance theMusic of Sound)
@@ -158,10 +158,10 @@
 								(Said 'look[<around][/noword]')
 								(Said 'look/room,castle,hall')
 							)
-							(Print
-								(Format @str 86 0
-									(if (== (door cel?) 0) {a closed} else {an open})
-								)
+							(if (== (door cel?) 0) 
+								(Print 86 0) ;{a closed} 
+							else
+								(Print 86 12) ;{an open}
 							)
 						)
 						((Said 'look>')

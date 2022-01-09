@@ -424,7 +424,7 @@
 								(if (ego inRect: 200 140 276 164)
 									(ego get: iDiamondPouch)
 									(= gotItem TRUE)
-									(Print 54 59 #draw #icon 401 0 0)
+									(Print 54 59 #icon 401 0 0)
 									(theGame changeScore: 2)
 									(diamondPouch dispose:)
 								else
@@ -570,7 +570,7 @@
 	)	
 	
 	(method (newRoom newRoomNumber)
-		(if (== newRoomNumber 22) ((ScriptID 601) keep: 0))
+		(if (== newRoomNumber 22) ((ScriptID DWARF_HOUSE) keep: 0))
 		(= noWearCrown 0)
 		(super newRoom: newRoomNumber)
 	)
@@ -850,7 +850,7 @@
 					init:
 				)
 				(ego
-					setAvoider: 0
+					;setAvoider: 0
 					setCycle: Walk
 					setMotion: MoveTo 123 134 self
 				)

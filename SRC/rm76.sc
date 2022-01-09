@@ -113,12 +113,12 @@
 			(1 (fallSound play: self))
 			(2
 				((inventory at: 3) loop: 0)
-				(Print 76 6 #draw #mode teJustCenter #dispose)
+				(Print 76 6 #mode teJustCenter #dispose)
 				(= seconds 3)
 			)
 			(3
 				(cls)
-				(Print 76 7 #draw #mode teJustCenter #dispose)
+				(Print 76 7 #mode teJustCenter #dispose)
 			)
 			(4
 				(cls)
@@ -183,7 +183,7 @@
 			)
 			(1
 				(curRoom setScript: 0)
-				(Print 76 9 #draw)
+				(Print 76 9)
 				(ego get: iBoard)
 			)
 		)

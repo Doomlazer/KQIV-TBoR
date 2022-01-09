@@ -758,7 +758,7 @@
 				(theGame changeScore: 69)
 				((Inventory at: iBriefcase) moveTo: ego)
 				(= gotItem 1)
-				(Print 97 60 #icon 574 0 0 #dispose)
+				(Print 97 60 #icon 574 0 0)
 				(if marieUntied
 					(Print 97 52 #title {Marie})	
 				)

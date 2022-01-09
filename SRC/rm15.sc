@@ -376,7 +376,7 @@
 											)
 											(HandsOff)
 											(FaceObject ego frog)
-											(Print 15 35 #draw)
+											(Print 15 35)
 											(= frogPrinceState 2)
 											(frogActions changeState: 3)
 										else
@@ -439,7 +439,7 @@
 						(cond 
 							((ego has: iSmallCrown) (Print 800 0))
 							((== frogPrinceState frogHeldByEgo)
-								(Print 15 46 #icon 402 0 0 #dispose)
+								(Print 15 46 #icon 402 0 0)
 								((Inventory at: iSmallCrown) moveTo: ego)
 								(= gotItem TRUE)
 								(ego
@@ -586,7 +586,7 @@
 			(13
 				(ego view: 30 loop: 0 cycleSpeed: 1 setCycle: Forward)
 				(AnimateCast)
-				(Print 15 48 #icon 432 0 0 #dispose)
+				(Print 15 48 #icon 432 0 0)
 				(= frogPrinceState frogHeldByEgo)
 				(HandsOn)
 			)
@@ -637,7 +637,7 @@
 				(Print 15 49 #at -1 10)
 				(Print 15 50 #at -1 10)
 				(frog cycleSpeed: 1 setAvoider: (Avoider new:))
-				(Print 15 51 #icon 402 0 0 #draw)
+				(Print 15 51 #icon 402 0 0)
 				((Inventory at: iSmallCrown) moveTo: ego)
 				(= gotItem TRUE)
 				(theGame changeScore: 2)
@@ -746,9 +746,9 @@
 			)
 			(668
 				(if (ego has: iTooth)
-					(Print 15 55 #icon 402 0 0 #draw)
+					(Print 15 55 #icon 402 0 0)
 				else
-					(Print 15 56  #draw #icon 402 0 0)
+					(Print 15 56 #icon 402 0 0)
 				)
 				((Inventory at: iSmallCrown) moveTo: ego)
 				(= gotItem TRUE)

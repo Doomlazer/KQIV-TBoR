@@ -335,7 +335,7 @@
 			)
 			(6
 				(poof dispose:)
-				(Print 70 21 #draw)
+				(Print 70 21)
 				(ego setScript: 0)
 				(HandsOn)
 			)
@@ -357,7 +357,7 @@
 				(= gotItem TRUE)
 				(board dispose:)
 				(ego get: iBoard)
-				(Print {Watch out for splinters!} #icon 430 0 0 #draw)
+				(Print 70 23 #icon 430 0 0)
 				(ego setCycle: BegLoop self)
 			)
 			(3

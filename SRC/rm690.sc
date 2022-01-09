@@ -190,7 +190,7 @@
 					(Print 690 1
 						#at -1 10
 						#title {Genesta}
-						#draw
+						;#draw
 						#dispose
 					)
 				)

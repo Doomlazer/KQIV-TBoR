@@ -359,7 +359,7 @@
 						#at 5 15
 						#font smallFont
 						#width 125
-						#draw
+						;#draw
 						#dispose
 					)
 				)
@@ -904,46 +904,3 @@
 		)
 	)
 )
-;;;(instance goonBowScript of Script 
-;;;(properties)
-;;;	
-;;;	(method (changeState newState)
-;;;		(switch (= state newState)	
-;;;			(20
-;;;				(= seconds 0)
-;;;				(FaceObject ego henchman)
-;;;				(cls)
-;;;				;(Print 50 22)
-;;;				(ego
-;;;					view: 68
-;;;					setCycle: EndLoop self
-;;;				)	
-;;;			)
-;;;			(21
-;;;				(ShakeScreen 1 3)
-;;;				(ego view: 4 setMotion: 0 setCycle: Walk)
-;;;				(= gotItem 1)
-;;;				(theGame changeScore: 10)
-;;;				(= bowHeart (Prop new:))
-;;;				(bowHeart
-;;;					view: 681
-;;;					cel: 0
-;;;					loop: 0
-;;;					setPri: 15
-;;;					posn: (henchman x?) (- (henchman y?) 22)
-;;;					setCycle: EndLoop self
-;;;					init:
-;;;				)
-;;;				(henchman dispose:)
-;;;			)
-;;;			(22
-;;;				(bowHeart dispose:)
-;;;				(= seconds 2)
-;;;			)
-;;;			(23
-;;;				(Print {BOOM! Headshot!})
-;;;				(= henchChasingEgo 0)
-;;;			)
-;;;		)
-;;;	)
-;;;)

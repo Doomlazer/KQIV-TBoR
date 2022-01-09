@@ -10,19 +10,22 @@
 
 
 (class TheMenuBar of MenuBar
-	
 	(method (init)
-		(AddMenu { \01_} {About KQ4`^a:Help`#1})
-		(AddMenu
-			{ File_}
+		(AddMenu { \01_}
+			{About KQ4`^a:Help`#1}
+		)
+		(AddMenu { File_}
 			{Save`#5:Restore`#7:-!:Restart`#9:Quit`^q}
 		)
-		(AddMenu { Action_} {Pause`^p:Inventory`^i:Retype`#3})
-		(AddMenu
-			{ Speed_}
+		(AddMenu { Action_}
+			{Pause`^p:Inventory`^i:Retype`#3}
+		)
+		(AddMenu { Speed_}
 			{Speed`^s:-!:Faster`+:Normal`=:Slower`-}
 		)
-		(AddMenu { Sound_} {Volume`^v:-!:Turn Off=1`#2})
+		(AddMenu { Sound_}
+			{Volume`^v:-!:Turn Off=1`#2}
+		)
 		(SetMenu soundI
 			p_text (if (DoSound SoundOn) {Turn Off} else {Turn On})
 		)
@@ -34,21 +37,13 @@
 		(SetMenu invI p_said 'inventory')
 	)
 	
-	(method (handleEvent event &tmp temp0 i [temp2 4] oldPause [menuBuf 288])
-		(switch (= temp0 (super handleEvent: event))
+	(method (handleEvent event &tmp evt i [temp2 4] oldPause [str2 288])
+		(switch (= evt (super handleEvent: event))
 			(aboutI
 				(= oldPause (Sound pause: TRUE))
 				(Print
-					(Format @menuBuf MENU 0 version)
+					(Format @str2 MENU 0 version)
 					#title {A Ken Williams Production}
-					#font smallFont
-					#mode teJustCenter
-					#at 20 10
-					#width 260
-				)
-				(Print
-					(Format @menuBuf MENU 10 version) ;text.997
-					#title {An SPR3 Production} ;yes, 'an' 
 					#font smallFont
 					#mode teJustCenter
 					#at 20 10
@@ -62,14 +57,14 @@
 				(Sound pause: oldPause)
 			)
 			(saveI
-				(if (not (IsHeapFree 1028))
+				(if (not (IsHeapFree SaveSize))
 					(Print MENU 2)
 				else
 					(theGame save:)
 				)
 			)
 			(restoreI
-				(if (not (IsHeapFree 1028))
+				(if (not (IsHeapFree SaveSize))
 					(Print MENU 3)
 				else
 					(theGame restore:)
@@ -95,7 +90,7 @@
 						#icon 100 0 0
 						#font SYSFONT
 						#button {____Quit____} TRUE
-						#button { Continue_} 0
+						#button { Continue_} FALSE
 					)
 				)
 				(Sound pause: oldPause)
@@ -110,7 +105,7 @@
 				(Sound pause: oldPause)
 			)
 			(invI
-				(if (not (IsHeapFree 2348))
+				(if (not (IsHeapFree InvSize))
 					(Print MENU 7)
 				else
 					(= oldPause (Sound pause: TRUE))
@@ -122,7 +117,7 @@
 				(event claimed: FALSE type: keyDown message: (User echo?))
 			)
 			(speedI
-				(if (not (IsHeapFree 1850))
+				(if (not (IsHeapFree GaugeSize))
 					(Print MENU 8)
 				else
 					(= i
@@ -143,14 +138,18 @@
 				)
 			)
 			(fasterI
-				(if (> speed 1) (theGame setSpeed: (-- speed)))
+				(if (> speed 1)
+					(theGame setSpeed: (-- speed))
+				)
 			)
-			(normalI (theGame setSpeed: 6))
+			(normalI
+				(theGame setSpeed: 6)
+			)
 			(slowerI
 				(theGame setSpeed: (++ speed))
 			)
 			(volumeI
-				(if (not (IsHeapFree 1850))
+				(if (not (IsHeapFree GaugeSize))
 					(Print MENU 9)
 				else
 					(= oldPause (DoSound PauseSound 1))
@@ -181,7 +180,9 @@
 				(DoSound SoundOn (not i))
 			)
 			(else 
-				;(if global202 (global202 doit: temp0))
+				(if global202
+					(global202 doit: evt)
+				)
 			)
 		)
 	)

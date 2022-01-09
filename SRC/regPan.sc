@@ -174,7 +174,7 @@
 							(if local2
 								(if (< (ego distanceTo: pan) 22)
 									((Inventory at: iLute) moveTo: 201)
-									(Print 514 8 #icon 413 0 0 #dispose)
+									(Print 514 8 #icon 413 0 0)
 									((Inventory at: iSilverFlute) moveTo: ego)
 									(theGame changeScore: 3)
 									(ego setMotion: 0)
@@ -263,7 +263,7 @@
 				(musicNotes hide:)
 			)
 			(2
-				(Print 514 21 #at -1 10 #draw)
+				(Print 514 21 #at -1 10)
 				(ego view: 2 setLoop: -1 setCycle: Walk)
 				(if (IsObject playLuteNotes) (playLuteNotes dispose:))
 				(FaceObject ego pan)

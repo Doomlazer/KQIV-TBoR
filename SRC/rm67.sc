@@ -187,14 +187,14 @@
 									(cond 
 										((!= ((inventory at: iShakespeareBook) owner?) 67) (Print 67 26))
 										(shakespeareBookKnown
-											(Print 67 27 #draw #icon 416 0 0)
+											(Print 67 27 #icon 416 0 0)
 											(ego get: iShakespeareBook)
 											(theGame changeScore: 2)
 											(shakespeareBook dispose:)
 											(= gotItem TRUE)
 										)
 										(else
-											(Print 67 28 #draw #icon 416 0 0)
+											(Print 67 28 #icon 416 0 0)
 											(ego get: iShakespeareBook)
 											(= gotItem TRUE)
 											(theGame changeScore: 2)

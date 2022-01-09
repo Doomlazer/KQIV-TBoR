@@ -214,7 +214,7 @@
 								)
 								(if (< (ego distanceTo: shovel) 15)
 									(ego get: iShovel)
-									(Print {Perfect for desecrating graves!} #draw #icon 420 0 0)
+									(Print 66 12 #icon 420 0 0)
 									(= gotItem TRUE)
 									(theGame changeScore: 2)
 									(shovel dispose:)

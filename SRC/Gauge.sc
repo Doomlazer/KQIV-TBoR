@@ -12,7 +12,7 @@
 ;;;;		Gauge
 
 
-(script#	GAUGE)
+(script# GAUGE)
 (include game.sh)
 (use Main)
 (use Intrface)

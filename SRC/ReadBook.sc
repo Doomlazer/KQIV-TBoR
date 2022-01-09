@@ -7,8 +7,6 @@
 
 (public
 	readBook 0
-	;readBook 1
-	;readNote 2
 	readNote 1
 )
 

@@ -484,9 +484,9 @@
 				(= worm 0)
 				(ego setCycle: BegLoop self)
 				(if isNightTime
-					(Print {You pick up the night worm.}  #draw #icon 433 0 0)
+					(Print 23 15 #icon 433 0 0)
 				else
-					(Print {Good thing you're not squeamish.}  #draw #icon 433 0 0)
+					(Print 23 16 #icon 433 0 0)
 				)
 				(ego get: iWorm)
 				(= gotItem TRUE)

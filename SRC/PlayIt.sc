@@ -13,17 +13,15 @@
 
 (local
 	musicNotes
-	gEgoViewer
+	saveViewer
 )
 (instance musicLute of Sound
 	(properties
-		;number 54
+		number 54
 	)
 )
 
 (instance playIt of Script
-	(properties)
-	
 	(method (init)
 		(Load VIEW 54)
 		(= isHandsOff TRUE)
@@ -63,8 +61,8 @@
 					)
 				)
 				(sounds eachElementDo: #stop 0)
-				(musicLute number: 54 play: self)
-				(= gEgoViewer (ego viewer?))
+				(musicLute play: self)
+				(= saveViewer (ego viewer?))
 				(ego
 					viewer: 0
 					view: 54
@@ -76,12 +74,12 @@
 			)
 			(1
 				(ego
-					viewer: gEgoViewer
+					viewer: saveViewer
 					view: (if (== (ego loop?) 0) 2 else 4)
 				)
 				(musicNotes dispose:)
 				(ego
-					viewer: gEgoViewer
+					viewer: saveViewer
 					script: oldEgoScript
 					cycleSpeed: 0
 					loop: 2

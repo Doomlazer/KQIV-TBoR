@@ -272,11 +272,11 @@
 				(if ((Inventory at: iGoldBall) ownedBy: 21)
 					(aBall dispose:)
 					(theGame changeScore: 2)
-					(Print 21 3 #icon 400 0 0 #draw)
+					(Print 21 3 #icon 400 0 0)
 					(= gotItem TRUE)
 					((Inventory at: iGoldBall) moveTo: ego)
 				else
-					(Print 21 4 #draw)
+					(Print 21 4)
 				)
 				(ego loop: 2 cel: 255 setCycle: EndLoop self)
 			)

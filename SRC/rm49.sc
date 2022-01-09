@@ -47,7 +47,7 @@
 
 (instance barkSound of Sound	;Amiga sound
 	(properties
-		number 607 ;604
+		number 604
 		priority 1
 	)
 )
@@ -525,7 +525,7 @@
 									)
 									(= gotItem TRUE)
 									(ego get: iMagicHen)
-									(Print 49 59 #draw #icon 431 0 0)
+									(Print 49 59 #icon 431 0 0)
 									(theGame changeScore: 4)
 									(hen dispose:)
 								)
@@ -666,7 +666,7 @@
 				(User canControl: FALSE canInput: FALSE)
 				(ego dispose:)
 				(theOgre view: 78 setCycle: EndLoop self)
-				(Print 49 46 #at -1 20 #draw)
+				(Print 49 46 #at -1 20)
 				(theMusic number: 6 loop: 1 play:)
 				(Print 49 47 #at -1 10)
 			)
@@ -763,9 +763,9 @@
 			(5
 				(User canControl: FALSE canInput: FALSE)
 				(if (ego has: iMagicHen)
-					(Print 49 52 #draw)
+					(Print 49 52)
 				else
-					(Print 49 47 #draw)
+					(Print 49 47)
 				)
 				(theMusic number: 6 loop: 1 play:)
 				(ego dispose:)
@@ -818,7 +818,7 @@
 				)
 			)
 			(2
-				(Print 49 53 #at -1 10 #draw)
+				(Print 49 53 #at -1 10)
 				(= seconds 4)
 			)
 			(3 (= dead TRUE))
@@ -884,7 +884,7 @@
 		(switch (= state newState)
 			(0
 				(barkSound play:)
-				(Print 49 54 #at -1 10 #draw)
+				(Print 49 54 #at -1 10)
 				(dog
 					setAvoider: (Avoider new:)
 					setCycle: Forward
@@ -922,7 +922,7 @@
 			)
 			(5
 				(burp dispose:)
-				(Print 49 55 #draw #at -1 10)
+				(Print 49 55 #at -1 10)
 				(= dead TRUE)
 			)
 		)
