@@ -892,12 +892,6 @@
 	)
 )
 
-(instance gritherTheme of Sound
-	(properties
-		number 689 ;81
-		;loop -1
-	)
-)
 
 (instance doorGrither of Script
 	(properties)
@@ -905,7 +899,6 @@
 	(method (changeState newState)
 		(switch (= state newState)
 			(0
-				(gritherTheme play:)
 				(HandsOff)
 				(Load VIEW 580)
 				(Print 54 57)
@@ -917,7 +910,6 @@
 			)
 			(2
 				(ego ignoreControl: cGREEN)
-				;(= grither (Prop new:))
 				(grither
 					view: 580
 					loop: 1
@@ -926,7 +918,6 @@
 					setPri: 13
 					ignoreActors: 
 					setCycle: EndLoop self
-					init:
 				)
 			)
 			(3
