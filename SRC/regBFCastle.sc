@@ -21,6 +21,7 @@
 	henchman
 	ravenRoom
 )
+
 (instance henchCatchMusic of Sound
 	(properties
 		number 42
@@ -37,7 +38,7 @@
 	(properties)
 	
 	(method (init)
-		(= keep TRUE)
+		;(= keep TRUE) test for dosbox crash
 		(Load VIEW 355)
 		(Load VIEW 356)
 		(Load VIEW 358)
@@ -73,10 +74,9 @@
 	(method (dispose)
 		(if (cast contains: henchman)
 			(henchman setMotion: 0 setCycle: 0)
-			;(henchman dispose:)
 		)
 		(if (== keep FALSE) (= noWearCrown FALSE) (super dispose:))
-		
+
 	)
 	
 	(method (handleEvent event &tmp temp0)
@@ -146,7 +146,7 @@
 	)
 	
 	(method (newRoom newRoomNumber)
-		(henchChaseReg seconds: 0)
+		(henchChaseReg seconds: 0) 
 		(super newRoom: newRoomNumber)
 	)
 	

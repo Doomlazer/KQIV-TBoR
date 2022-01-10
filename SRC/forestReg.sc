@@ -37,7 +37,8 @@
 			(= birdSwitch 356) ;crow
 		)	
 		(if (== (Random 1 5) 4)
-			(= crow (Actor new:))
+			(= crow aRaven)
+			;(= crow (Actor new:))
 			(crow
 				view: birdSwitch
 				illegalBits: 0
@@ -159,6 +160,19 @@
 		)
 	)
 )
+
+(instance aRaven of Actor
+	(properties
+		view 356
+		xStep 5
+		yStep 4
+		illegalBits 0
+		priority 14
+		signal (| ignrAct ignrHrz fixPriOn)
+	)
+)
+
+
 
 (instance ravenActions of Script
 	(properties)
