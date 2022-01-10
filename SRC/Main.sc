@@ -253,7 +253,25 @@
 	ghostHaunts
 	introScript
 	lolotteDoorOpen
-	[str 50]
+			;;TBoR mod globals
+		scoredTooth
+		wifeGraveDugUp
+		rogerDead 
+		bondsEntered
+		wifeDead
+		shouldknowwifedead
+		sdead
+		arrowed
+		marieUntied
+		sequenceBreakNight
+		fairyFlip
+		trollDead
+		rodeDolphin
+		ogressShot
+		condomRotation
+		rm705DoorUnlocked
+		rm87GoonKilled
+		readSonnysFile
 ;;;	str				;all subsequent globals are part of this array
 ;;;		global229
 ;;;		global230
@@ -429,25 +447,6 @@
 ;;;		global400
 		
 			
-		;;TBoR mod globals
-		scoredTooth
-		wifeGraveDugUp
-		rogerDead 
-		bondsEntered
-		wifeDead
-		shouldknowwifedead
-		sdead
-		arrowed
-		marieUntied
-		sequenceBreakNight
-		fairyFlip
-		trollDead
-		rodeDolphin
-		ogressShot
-		condomRotation
-		rm705DoorUnlocked
-		rm87GoonKilled
-		readSonnysFile
 )
 (procedure (IsObjectOnControl obj ctrl)
 	(if (< argc 2)
@@ -903,7 +902,7 @@
 		(super startRoom: roomNum)
 	)
 
-	(method (handleEvent event &tmp temp0 index obj evt [buf 50])
+	(method (handleEvent event &tmp temp0 index obj evt [str 50] [buf 50])
 		;EO: This method has been successfully decompiled!
 		(if
 			(and
@@ -4572,7 +4571,8 @@
 ;;;	)
 	
 	(method (wordFail word)
-		(Print (Format @str 0 5 word))
+		;(Print (Format @str 0 5 word))
+		(Printf 0 5 word)
 	)
 	
 	(method (syntaxFail)
