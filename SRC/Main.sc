@@ -844,12 +844,13 @@
 			(return)
 		)
 		;is it time to turn to night?
-		(if (and (== isNightTime FALSE) (== isIndoors FALSE))
+		(if (and (== isNightTime FALSE) (== isIndoors FALSE) lolotteAlive)
 			(if
 				(and
 					(not (if (< 30 n) (< n 77)))
 					(< n 300)
 					(or
+						sequenceBreakNight
 						(and (< 20 gameHours) (< gameHours 30))
 						(and
 							;if we've got everything ready for night,
