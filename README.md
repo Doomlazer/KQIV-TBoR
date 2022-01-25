@@ -11,7 +11,7 @@ Content advisory: Adult situations, drug use, suicide and nudity.
 
 Copy resouce.001, resource.004 and resource.map to your KQ4 game folder and run in DOSBox or ScummVM. Requires the retail version of KQ4 (Steam or GOG).
 
-###DOSBox warning
+### DOSBox warning
 
 DOSBox is getting lots of random heap crashes all the sudden, which makes the game unplayable. ScummVM seems to work fine with no heap crashes.
 
