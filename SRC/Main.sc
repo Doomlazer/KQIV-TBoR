@@ -617,7 +617,7 @@
 (instance statusCode of Code
 	(method (doit strg)
 		(Format strg 0 1 score possibleScore
-			{ KQ\n__The Perils of Rosella}
+			{ KQ\n__The Breasts of Rosella}
 		)
 	)
 )
@@ -721,7 +721,7 @@
 		(= showStyle HSHUTTER)
 		(= userFont (= bigFont USERFONT))
 		(= lolotteAlive TRUE)
-		(= version {1.006.004})
+		(= version {1.006.005})
 		(liteState init: Lantern__unlit_)
 		(TheMenuBar init:)
 		(getItemMusic init:)
@@ -742,8 +742,8 @@
 			(self newRoom: 99)
 			(= userFont bigFont)
 		else
-			(self newRoom: 700) ;Set to 700 to skip the CP -- Kawa
-		;(self newRoom: 701)
+			;(self newRoom: 700) ;Set to 700 to skip the CP -- Kawa
+			(self newRoom: 701)
 		)
 	)
 	

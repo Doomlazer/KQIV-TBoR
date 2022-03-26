@@ -911,13 +911,14 @@
 			(2
 				(ego ignoreControl: cGREEN)
 				(grither
-					view: 580
-					loop: 1
+					;view: 580
+					;loop: 1
 					cel: 0
 					posn: 95 125
 					setPri: 13
 					ignoreActors: 
 					setCycle: EndLoop self
+					init:
 				)
 			)
 			(3
@@ -994,7 +995,6 @@
 		view 580
 		loop 1	
 	)
-	
 )
 
 (instance bounceBitchScript of Script
