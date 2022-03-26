@@ -9,11 +9,10 @@ Content advisory: Adult situations, drug use, suicide and nudity.
 
 ## INSTALLATION
 
-Copy resouce.001, resource.004 and resource.map to your KQ4 game folder and run in DOSBox or ScummVM. Requires the retail version of KQ4 (Steam or GOG).
+Copy the PATCHES folder into your KQ4 game folder and start through ScummVM.
 
-### DOSBox warning
+This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game! I know, I prefer DOSBox too, but just use ScummVM.
 
-DOSBox is getting lots of random heap crashes all the sudden, which makes the game unplayable. ScummVM seems to work fine with no heap crashes.
 
 
 <img src="TitleCard.png" alt="The Breasts of Rosella intro screen" width="400">
