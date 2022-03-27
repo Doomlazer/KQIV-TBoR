@@ -11,7 +11,7 @@ Content advisory: Adult situations, drug use, suicide and nudity.
 
 Copy the PATCHES folder into your KQ4 game folder and start through ScummVM.
 
-This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game! I know, I prefer DOSBox too, but just use ScummVM.
+This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game! Only use ScummVM.
 
 
 
