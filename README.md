@@ -9,7 +9,9 @@ Content advisory: Adult situations, drug use, suicide and nudity.
 
 ## INSTALLATION
 
-Copy the PATCHES folder into your KQ4 game folder and start through ScummVM.
+Download the patch <a href="https://github.com/Doomlazer/KQIV-TBoR/releases/download/v0.999/KQ4-TBoRv0.9999.zip">here</a>.
+
+Copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
 
 This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game! Only use ScummVM.
 
