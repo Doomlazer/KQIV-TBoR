@@ -15,9 +15,7 @@ Easy way (PC only):
 
 Manual way:
 
-Download the patch <a href="https://github.com/Doomlazer/KQIV-TBoR/releases/download/v0.999/KQIV-TBoRv0.99999.zip">here</a>.
-
-Copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
+Download the patch <a href="https://github.com/Doomlazer/KQIV-TBoR/releases/download/v0.999/KQIV-TBoRv0.99999.zip">here</a>. Copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
 
 This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game! Only use ScummVM.
 
