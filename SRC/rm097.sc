@@ -270,7 +270,11 @@
 					((Said 'show/breasts/marie') (Print 97 9))
 					((Said 'shoot,kill/marie[/bow]') (Print 97 48))
 					((Said 'shoot,kill/alien[/bow]') (Print 97 49))
-					((Said 'shoot,kill/sonny[/bow]')
+					(
+						(or
+							(Said 'shoot,kill/sonny[/bow]')
+							(Said 'shoot,kill/*[/bow]')
+						)
 						(if sdead
 							(Print 97 50)
 						else
