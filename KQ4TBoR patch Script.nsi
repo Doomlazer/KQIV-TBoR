@@ -16,7 +16,7 @@ Name "KQ4:TBoR"
 
 BrandingText "King's Quest IV: The Breasts of Rosella"
 !define MUI_WELCOMEPAGE_TITLE "KQIV: The Breasts of Rosella"
-!define MUI_WELCOMEPAGE_TEXT "CONTENT WARNING: This mod contains adult situations, female nudity, graphic violece, suicide, drug references and more. It is intended as parody. Players should expect the raunch level to be not much worse than an Al Lowe game (though, the writing certainly will be). It does not attempt to deliberately offend, but may do so reguardless.${U+000A}${U+000A}This mod preserves the original KQ4 game solutions, but adds many new ones. Much of the content is initially hidden, so explore and try things differently than you normally would in KQIV."
+!define MUI_WELCOMEPAGE_TEXT "CONTENT WARNING: This mod contains adult situations, nudity, graphic violence, suicide, drug references and more. It is intended as parody. Players should expect the raunch level to be not much worse than an Al Lowe game (though, the writing certainly will be). It does not attempt to deliberately offend, but may do so reguardless.${U+000A}${U+000A}This mod preserves the original KQ4 game solutions, but adds many new ones. Much of the content is initially hidden, so explore and try things differently than you normally would in KQIV."
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "welcome.bmp"
 
