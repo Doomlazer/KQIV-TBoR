@@ -57,40 +57,40 @@
 		(ego view: 4 init:)
 		
 		;chair
-;;;		((Prop new:)
-;;;				view: 558
-;;;				loop: 3
-;;;				posn: 210 111
-;;;				setPri: 7
-;;;				init:
-;;;			)
-;;;		(if marieUntied
-;;;			((= marie (Actor new:))
-;;;				;setScript: SonnyScript
-;;;				;setScript: 0
-;;;				view: 558
-;;;				loop: 1
-;;;				cel: 5
-;;;				posn: 210 111
-;;;				setPri: 7
-;;;				init:
-;;;				;setCycle: Forward
-;;;				;cycleSpeed: 5
-;;;			)
-;;;		else
-;;;			((= marie (Actor new:))
-;;;				;setScript: SonnyScript
-;;;				;setScript: 0
-;;;				view: 558
-;;;				loop: 2
-;;;				cel: 0
-;;;				posn: 210 111
-;;;				setPri: 7
-;;;				init:
-;;;				setCycle: Forward
-;;;				cycleSpeed: 5
-;;;			)
-;;;		)
+		((Prop new:)
+				view: 558
+				loop: 3
+				posn: 210 111
+				setPri: 7
+				init:
+			)
+		(if marieUntied
+			((= marie (Actor new:))
+				;setScript: SonnyScript
+				;setScript: 0
+				view: 558
+				loop: 1
+				cel: 5
+				posn: 210 111
+				setPri: 7
+				init:
+				;setCycle: Forward
+				;cycleSpeed: 5
+			)
+		else
+			((= marie (Actor new:))
+				;setScript: SonnyScript
+				;setScript: 0
+				view: 558
+				loop: 2
+				cel: 0
+				posn: 210 111
+				setPri: 7
+				init:
+				setCycle: Forward
+				cycleSpeed: 5
+			)
+		)
 		;is sonny still on a rampage?
 		(if sdead
 			(if arrowed
@@ -131,11 +131,11 @@
 		else
 			((= sonny (Actor new:))
 				setScript: SonnyScript
-				view: (if bondsEntered 560 else 811) ;560=gun,811=walk 
-				loop: (if bondsEntered 0 else 3)
+				view: 560
+				loop: 0
 				cel: 0
-				posn: (if bondsEntered 185 else 135) 111
-				;setPri: 7
+				posn: 185 111
+				setPri: 7
 				init:
 				;setCycle: EndLoop
 				cycleSpeed: 2
@@ -154,15 +154,17 @@
 				cycleSpeed: 1
 		)
 		(if (== ((inventory at: iBriefcase) owner?) 97)
-			((= briefcase (Actor new:))
-					view: 574
-					loop: 1
-					posn: 125 132
-					;setPri: 10
-					init:
-			)
+		((= briefcase (Actor new:))
+				view: 574
+				loop: 1
+				posn: 125 132
+				;setPri: 10
+				init:
 		)
+		)
+		
 	)
+	
 )
 
 
@@ -242,7 +244,7 @@
 					((Said 'look/alien') (Print 97 22))
 					((Said 'look/couch') (Print 97 21))
 					((Said 'look/tv') (Print 97 23))
-					((Said 'look/marie') (Print 97 62)) ;(Print 97 2))
+					((Said 'look/marie') (Print 97 2))
 					((Said 'look/briefcase') (Print 97 18))
 					((Said 'look/sonny') 
 						(if sdead
@@ -256,7 +258,7 @@
 						)
 					)
 					
-					;((Said 'kiss/marie') (if sdead (Print 97 16) else (Print 97 3)))
+					((Said 'kiss/marie') (if sdead (Print 97 16) else (Print 97 3)))
 					((Said 'kiss/sonny') (if sdead (Print 97 6) else (Print 97 7)))
 					((Said 'show/breasts[/sonny]') 
 						(if sdead
@@ -265,8 +267,8 @@
 							(Print 97 8)
 						)
 					)
-					;((Said 'show/breasts/marie') (Print 97 9))
-					;((Said 'shoot,kill/marie[/bow]') (Print 97 48))
+					((Said 'show/breasts/marie') (Print 97 9))
+					((Said 'shoot,kill/marie[/bow]') (Print 97 48))
 					((Said 'shoot,kill/alien[/bow]') (Print 97 49))
 					(
 						(or
@@ -285,33 +287,37 @@
 							)	
 						)
 					)
-;;;					((Said 'untie,release/marie')
-;;;						(if sdead
-;;;							(if (< (ego distanceTo: marie) 10) 
-;;;								(MarieScript changeState: 20)
-;;;							else
-;;;								(Print 97 53)
-;;;							)
-;;;						else
-;;;							(Print 97 54)
-;;;						)
-;;;					)
-					((Said 'get/briefcase') 
-						(if ((Inventory at: iBriefcase) ownedBy: 97)
-							(if (ego inRect: 90 125 160 166)
-							;; sonny and marie need to react to this if they are still alive
-								(if sdead
-									(ego setScript: getCase)
-								else
-									(Print {"You just signed your death warrant. Hasta la vista, little lady."})
-									(SonnyScript changeState: 777)
-								)
+					((Said 'untie,release/marie')
+						(if sdead
+							(if (< (ego distanceTo: marie) 10) 
+								(MarieScript changeState: 20)
 							else
-								(Print {Fuck you, get closer first.})
+								(Print 97 53)
 							)
 						else
-							(Print {Are you high?"})
+							(Print 97 54)
 						)
+					)
+					((Said 'get/briefcase') 
+							(if ((Inventory at: iBriefcase) ownedBy: 97)
+								
+								(if (ego inRect: 90 125 160 166)
+								;; sonny and marie need to react to this if they are still alive
+									(if sdead
+										(ego setScript: getCase)
+									else
+										(Print {"You just signed your death warrant. Hasta la vista, little lady."})
+										(SonnyScript changeState: 777)
+									)	
+									
+								
+								else
+									(Print {Fuck you, get closer first.})
+								)
+								
+							else
+								(Print {Are you high?"})
+							)
 					)
 				)
 			else
@@ -340,21 +346,13 @@
 				(= seconds 2)	
 			)
 			(1
-				;
-				(if bondsEntered else (Print 97 61))
-				(sonny
-					setCycle: Walk
-					setStep: 1 1
-					setMotion: MoveTo 185 111 self
-				)			
+				;(FaceObject sonny ego)
+				(if bondsEntered else (Print 97 11))
+				(= seconds 2)
+				
 			)
 			(2
-				(FaceObject sonny ego)
-				(sonny
-					view: 560
-					loop: 2
-					setCycle: EndLoop
-				)
+				(sonny loop: 2 setCycle: EndLoop)
 				(= seconds 2)
 			)
 			(3
@@ -384,79 +382,94 @@
 				cycleSpeed: 1
 				)
 				(= sdead 1)
+				
+
+				
 				(sonny
 					view: 559
 					setCycle: EndLoop self
+						
 				)
+				
+	
 			)
 			(7
 				(ego view: 42 loop: 1)
 				(sonny 
 					view: 560
 					loop: 0
-					cel: 6
-				)
-				;(FaceObject sonny marie)
-				(= state 9) ;skip marie murder
+					cel: 6)
+					(FaceObject sonny marie)
 				(= seconds 3)	
 			)
-;;;			(8
-;;;			
-;;;				;(FaceObject sonny ego)
-;;;				(gunSound stop:)
-;;;				(gunSound play:)
-;;;				(sonny
-;;;					view: 559
-;;;					;loop: 4
-;;;					setCycle: EndLoop self
-;;;				)
-;;;				(blob
-;;;				view: 563
-;;;				loop: 2
-;;;				setCycle: EndLoop
-;;;				cycleSpeed: 1
-;;;				)
-;;;				;blood splatter
-;;;				((= blood (Prop new:))
-;;;				view: 558
-;;;				loop: 6
-;;;				cel: 0
-;;;				posn: 225 94
-;;;				setPri: 14
-;;;				init:
-;;;				setCycle: EndLoop
-;;;				cycleSpeed: 1
-;;;				)
-;;;			)
-;;;			(9
-;;;				(marie loop: 5 setCycle: EndLoop)
-;;;				(= seconds 2)	
-;;;			)
-			(10
-;;;				(gunSound stop:)
-;;;				(gunSound play:)
-;;;				(sonny 
-;;;					view: 559
-;;;					loop: 4
-;;;					setCycle: EndLoop
-;;;					cycleSpeed: 1
-;;;				)
+			(8
+			
+				;(FaceObject sonny ego)
+				(gunSound stop:)
+				
+				(gunSound play:)
+				(sonny
+					view: 559
+					;loop: 4
+					setCycle: EndLoop self
+						
+				)
 				(blob
 				view: 563
 				loop: 2
 				setCycle: EndLoop
 				cycleSpeed: 1
 				)
-;;;				((= blood (Prop new:))
-;;;				view: 558
-;;;				loop: 6
-;;;				cel: 0
-;;;				posn: 165 80
-;;;				setPri: 6
-;;;				init:
-;;;				setCycle: EndLoop
-;;;				cycleSpeed: 1
-;;;				)	
+					;blood splatter
+		
+				((= blood (Prop new:))
+				view: 558
+				loop: 6
+				cel: 0
+				posn: 225 94
+				setPri: 14
+				init:
+				setCycle: EndLoop
+				cycleSpeed: 1
+				)
+			
+									
+				
+				
+	
+			)
+			(9
+				(marie loop: 5 setCycle: EndLoop)
+				(= seconds 2)
+				
+			)
+		
+			(10
+				(gunSound stop:)
+				
+				(gunSound play:)
+				(sonny 
+					view: 559
+					loop: 4
+					setCycle: EndLoop
+					cycleSpeed: 1
+				)
+				(blob
+				view: 563
+				loop: 2
+				setCycle: EndLoop
+				cycleSpeed: 1
+				)
+				((= blood (Prop new:))
+				view: 558
+				loop: 6
+				cel: 0
+				posn: 165 80
+				setPri: 6
+				init:
+				setCycle: EndLoop
+				cycleSpeed: 1
+				)	
 				(= seconds 3)
 				
 			)	
@@ -468,7 +481,7 @@
 				setCycle: EndLoop
 				cycleSpeed: 1
 				)
-				(= seconds 1)
+				(= seconds 5)
 			)
 			(12	
 				(= dead 1)
@@ -482,6 +495,8 @@
 					setCycle: EndLoop self
 				)
 				(= sdead 1)
+				
+				
 			)
 			(21
 				(ego view: 4 setMotion: 0 setCycle: Walk)
@@ -495,7 +510,7 @@
 					setCycle: EndLoop self
 					init:
 				)
-				;(marie setCycle: EndLoop)
+				(marie setCycle: EndLoop)
 					
 			)
 			(22
@@ -542,7 +557,7 @@
 					cel: 6
 					setCycle: BegLoop self
 				)
-				(Print 97 32 #title {Sonny})
+					(Print 97 32 #title {Sonny})
 					
 			)
 			(665
@@ -565,11 +580,14 @@
 				(sonny 
 					view: 559
 					loop: 4
-					cel: 2
-				)	
+					cel: 2)
+					
 				(= seconds 1)	
 			)
-			(669	
+			
+			(669
+				
+				
 				(gunSound play:)
 				(sonny 
 					view: 559
@@ -605,10 +623,10 @@
 				(musicSound stop:)
 				(gunSound play:)
 				(blob
-					view: 563
-					loop: 2
-					setCycle: EndLoop
-					cycleSpeed: 1
+				view: 563
+				loop: 2
+				setCycle: EndLoop
+				cycleSpeed: 1
 				)
 				;(= sdead 1)		
 				(sonny
@@ -622,28 +640,17 @@
 				(ego view: 42 loop: 1)
 				(sonny 
 					view: 560
-					loop: 2
-					setCycle: BegLoop
-				)
-				;(FaceObject sonny marie)
-				(= seconds 3)
-				(FaceObject sonny blob)	
+					loop: 2 setCycle: BegLoop)
+					(FaceObject sonny marie)
+				(= seconds 3)	
 			)
 			(779
-				;(Print {How was that one-liner, Marie? Was that a good one?} #title {Sonny})
-				(sonny loop: 1)
-				(Print {"Well, thank god Lytton is in a stand-your-ground state. Right, Blobby?"} #title {Sonny})
+				(Print {How was that one-liner, Marie? Was that a good one?} #title {Sonny})
 				(= seconds 3)
 			)
 			(780
-				(Print {SHH... RUDE JUDE IS ON} #title {Blobby} #at 25 130 #font 603)
+				(Print {"hmmhmh... mmhhhmm} #title {Marie})
 				(= seconds 3)
-				(blob
-					view: 563
-					loop: 3
-					setCycle: EndLoop
-					cycleSpeed: 1
-				)
 			)
 			(781	
 				(= dead 1)
@@ -690,7 +697,6 @@
 					
 			)
 			(1
-				(= readSonnysFile 1)
 				(if readSonnysFile
 					(= choice (Print 97 24 #time 20 #button {Decieve} 1 #button {Distract} 2 #button {Honest} 3))
 					(if (== choice 1)
@@ -723,7 +729,7 @@
 				(SonnyScript changeState: 663)
 			)
 			(3
-				(Print {"Avon calling!"} #title {Rosella})
+				(Print {Avon calling!} #title {Rosella})
 				(Print 97 40 #title {Sonny})
 				(SonnyScript changeState: 777)	
 			)
@@ -757,9 +763,9 @@
 				((Inventory at: iBriefcase) moveTo: ego)
 				(= gotItem 1)
 				(Print 97 60 #icon 574 0 0)
-;;;				(if marieUntied
-;;;					(Print 97 52 #title {Marie})	
-;;;				)
+				(if marieUntied
+					(Print 97 52 #title {Marie})	
+				)
 			)
 			(2
 				(ego view: 4 setScript: 0 setCycle: Walk)
