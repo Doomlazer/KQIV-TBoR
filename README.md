@@ -6,7 +6,7 @@ This project started life as an ironic 'nude patch' for KQ4 and grew from there 
 
 Keep in mind this is a parody. There is nothing titillating about EGA nudity. The mod is intended to be viewed as if it was developed by a horny 13 year old boy that had the tools to mod SCI games back in the 80s. It's intentionally crude, often poorly executed and sometimes offensive - that is the asthetic. The game does not reflect my personal additudes or modern sensibilities. 
 
-Features: See <a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions.
+Features: See <a href="https://github.com/Doomlazer/KQIV-TBoR/wiki">the wiki</a> for all changes/additions and walkthrough.
 
 Content advisory: Adult situations, drug references, suicide and nudity.
 
@@ -22,7 +22,7 @@ Note: the installer is missing several bug fixes. Downloading and manually copyi
 
 Manual way:
 
-Download the patch files <a href="https://github.com/Doomlazer/KQIV-TBoR/releases/download/v0.999/KQIV-TBoRv0.99999.zip">here</a>. Copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
+Clone or download the repo. copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
 
 This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game!
 
