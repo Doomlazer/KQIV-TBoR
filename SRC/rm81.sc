@@ -226,7 +226,18 @@
 				((== (event type?) saidEvent)
 					(cond 
 						((not (& (ego onControl: 0) $0800))
-							(cond 
+							(cond
+								((Said 'get/condom')
+									(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
+										(if	(< (ego distanceTo: condom) 6)							
+											(getCondom changeState: 0)
+										else
+											(Print {Not close enough.})
+										)
+									else
+										(Print {Aren't you a bit young to have dementia, Rosella?})		
+									)				
+								) 
 								(
 									(or
 										(Said 'look[<around][/!*]')
@@ -382,20 +393,7 @@
 						((Said 'look/stair') (Print 81 31))
 						((Said 'look/door') (Print 81 12))
 						((Said 'look/wall') (Print 81 32))
-						((Said 'close/door') (Print 81 28))
-						
-						((Said 'get/condom')
-							(if (and ((Inventory at: iCondom) ownedBy: 62) (== condomRotation 2))
-								(if	(< (ego distanceTo: condom) 6)							
-									(getCondom changeState: 0)
-								else
-									(Print {Not close enough.})
-								)
-							else
-								(Print {Aren't you a bit young to have dementia, Rosella?})		
-							)				
-						)	
-						
+						((Said 'close/door') (Print 81 28))	
 						((Said 'open/door')
 							(cond 
 								((not (ego inRect: 57 155 84 165)) (Print 800 1))
