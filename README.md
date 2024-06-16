@@ -22,7 +22,7 @@ Note: the installer is missing several bug fixes. Downloading and manually copyi
 
 Manual way:
 
-Clone or download the repo. copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
+Clone or download the repo, copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. Remove the PATCHES folder to uninstall.
 
 This mod should only be used with ScummVM - It has heap crashes in DOSbox and you will get stuck halfway through the game!
 
