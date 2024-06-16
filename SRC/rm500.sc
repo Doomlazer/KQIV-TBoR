@@ -365,8 +365,8 @@
 			)
 			(669
 					(Print {Thanks for playing, I guess!})
-					(Print 500 26)
-					(Print 500 27)
+					;(Print 500 26)
+					;(Print 500 27)
 					(Print {The End})
 					(= dead 1)
 			)

@@ -85,7 +85,14 @@
 			(Load VIEW 246)
 			(Load VIEW 57)
 		)
-		(if (or (and (== prevRoomNum 49) (ego has: iMagicHen)) enteredOgreKitchen)
+		(if
+			(or
+				(and
+					(== prevRoomNum 49)
+					(ego has: iMagicHen)
+				)
+				enteredOgreKitchen
+			)
 			(door
 				view: 602
 				loop: 0
@@ -96,6 +103,8 @@
 				init:
 				stopUpd:
 			)
+			(door ignoreActors: 0 setCycle: BegLoop)
+			(doorSound number: 300 play:)
 			(if enteredOgreKitchen
 				(= enteredOgreKitchen 0)
 				;these fuck up the house priority around the door?!?!? investigate later
@@ -193,9 +202,13 @@
 	(method (doit)
 		(super doit:)
 		(if
-		(and (& (ego onControl: 0) $4000) (!= (door cel?) 0))
+			(and
+				(& (ego onControl: 0) $4000)
+				(!= (door cel?) 0)
+			)
 			(curRoom newRoom: 49)
 		)
+		(if (== (door cel?) 0) (ego observeControl: 16384))
 		(if (cast contains: ego)
 			(if (ego inRect: 143 0 369 136)
 				(ego setPri: 1)
@@ -321,7 +334,7 @@
 								(or (cast contains: ogress) (cast contains: ogre)) (Print 4 17))
 								((!= gamePhase 2) 
 									;	(if (ego has: iTooth)
-											(Print {If you want to go in there I don't give a fuck. Gook luck.})
+											;(Print {If you want to go in there I don't give a fuck. Good luck.})
 											;((Inventory at: iBone) moveTo: ego) testing only
 											(ego loop: 3)
 											(HandsOff)
