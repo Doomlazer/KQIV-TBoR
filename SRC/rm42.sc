@@ -234,7 +234,15 @@
 							((Said '/breasts[<fisherman]') 
 								(if (cast contains: fisherman)	
 									(if wifeDead 
-										(if deadswitch (Print 42 75) else (Print 42 78)) 
+										;(if deadswitch (Print 42 75) else (Print 42 78))
+										(if deadswitch
+											(Print 42 82)
+											(Print 42 83)
+											(Print 42 84)
+											(Print 42 85)
+										else
+											(Print 42 85)
+										)
 									else
 										;;don't give the pole if it's not in the room
 										(if ((inventory at: iFishingPole) ownedBy: 204)
@@ -863,7 +871,16 @@
 			(0 
 				(if wifeDead
 					(if shouldknowwifedead
-						(Print 42 75)
+						;(Print 42 75)
+						(if deadswitch
+							(Print 42 82)
+							(Print 42 83)
+							(Print 42 84)
+							(Print 42 85)
+							(-- deadswitch)
+						else
+							(Print 42 85)
+						)
 					else
 						(Print 42 80)
 					)
@@ -875,7 +892,16 @@
 				(= state 0) 
 				(if wifeDead
 					(if shouldknowwifedead
-						(Print 42 75)
+						;(Print 42 75)
+						(if deadswitch
+							(Print 42 82)
+							(Print 42 83)
+							(Print 42 84)
+							(Print 42 85)
+							(-- deadswitch)
+						else
+							(Print 42 85)
+						)
 					else
 						(Print 42 80)
 					)
@@ -895,7 +921,16 @@
 			(0 
 				(if wifeDead
 					(if shouldknowwifedead
-						(Print 42 75)
+						;(Print 42 75)
+						(if deadswitch
+							(Print 42 82)
+							(Print 42 83)
+							(Print 42 84)
+							(Print 42 85)
+							(-- deadswitch)
+						else
+							(Print 42 85)
+						)
 					else
 						(Print 42 80)
 					)
@@ -906,7 +941,16 @@
 			(1 
 				(if wifeDead
 					(if shouldknowwifedead
-						(Print 42 75)
+						;(Print 42 75)
+						(if deadswitch
+							(Print 42 82)
+							(Print 42 83)
+							(Print 42 84)
+							(Print 42 85)
+							(-- deadswitch)
+						else
+							(Print 42 85)
+						)
 					else
 						(Print 42 80)
 					)
@@ -918,7 +962,16 @@
 				(= state 1) 
 				(if wifeDead
 					(if shouldknowwifedead
-						(Print 42 75)
+						;(Print 42 75)
+						(if deadswitch
+							(Print 42 82)
+							(Print 42 83)
+							(Print 42 84)
+							(Print 42 85)
+							(-- deadswitch)
+						else
+							(Print 42 85)
+						)
 					else
 						(Print 42 80)
 					)
