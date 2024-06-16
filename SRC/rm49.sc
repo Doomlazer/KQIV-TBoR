@@ -147,17 +147,18 @@
 				illegalBits: -32768
 				init:
 			)
-			(if (or (> gamePhase getTheHen) (ego has: iMagicHen))
-				(Load VIEW 245)
-				(Load VIEW 48)
-				((= ogress (Actor new:))
-					view: 245
-					posn: 65 131
-					setStep: 4 2
-					init:
-					setScript: ogressChase
-				)
-			)
+			; always allow entry to ogre house
+;;;			(if (or (> gamePhase getTheHen) (ego has: iMagicHen))
+;;;				(Load VIEW 245)
+;;;				(Load VIEW 48)
+;;;				((= ogress (Actor new:))
+;;;					view: 245
+;;;					posn: 65 131
+;;;					setStep: 4 2
+;;;					init:
+;;;					setScript: ogressChase
+;;;				)
+;;;			)
 		)
 		(if (== prevRoomNum 48)
 			(ego
