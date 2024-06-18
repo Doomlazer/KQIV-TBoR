@@ -105,12 +105,11 @@
 		(return
 			(if (== (event type?) saidEvent)
 				(cond 
-					((Said 'look') (Print 500 1))
-					
+					((Said 'look') (Print 500 33))
 					(
 						(or
-							(Said 'shoot,kill/giantess[/bow]')
-							(Said 'shoot/bow[/giantess]')
+							(Said 'shoot,kill/edgar[/bow]')
+							(Said 'shoot/bow[/edgar]')
 						)
 						(if (and (ego has: iCupidBow) (< ((Inventory at: iCupidBow) loop?) 2))
 							((Inventory at: iCupidBow) loop: (+ ((Inventory at: iCupidBow) loop?) 1))
@@ -124,7 +123,18 @@
 							)
 						)	
 					)
-					((Said 'kill/self') (rosellaActions changeState: 666))
+					;((Said 'kill/self') (rosellaActions changeState: 666))
+					(
+						(or
+							(Said 'use/amulet')
+							(Said 'press/button/amulet[<on]')
+						)
+						(if (ego has: iTalisman)
+							(rosellaActions changeState: 666)
+						else
+							(Print 500 30) ;should have brought it
+						)
+					)
 					((Said 'show/breasts') (Print 500 18))
 	
 				)
@@ -331,15 +341,19 @@
 				(Print {"You know what?," says Rosella after a brief moment of thought.})
 				(Print {"You're a real piece of shit, Edgar."})
 				(Print 500 19)
-				(Print 500 20)
-				(Print 500 21)
+				;(Print 500 20)
+				(if learnedTalimansPower
+					(Print 500 31)
+				else
+					(Print 500 32)
+				)
+
 				(Print 500 22)
 				(Print 500 23)
 				(= cycles 1)
 			)
 			(667	
 				(musicSound stop:)
-				(gunSound play:)
 				(ego 
 					view: 572
 					loop: 0
@@ -374,11 +388,11 @@
 	)
 )
 
-(instance gunSound of Sound
-	(properties
-		number 590
-	)
-)
+;;;(instance gunSound of Sound
+;;;	(properties
+;;;		number 590
+;;;	)
+;;;)
 
 
 (instance windowLeft of Prop

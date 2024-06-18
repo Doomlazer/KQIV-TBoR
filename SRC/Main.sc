@@ -272,6 +272,7 @@
 		rm705DoorUnlocked
 		rm87GoonKilled
 		readSonnysFile
+		learnedTalimansPower
 ;;;	str				;all subsequent globals are part of this array
 ;;;		global229
 ;;;		global230
@@ -1205,9 +1206,21 @@
 							((and (ego has: iMedal) (Said 'wear,(put<on)/badge'))
 								(Print 0 45)
 							)
+							(
+								(or
+									(Said 'use/amulet')
+									(Said 'press/button/amulet[<on]')
+								)
+								(if (ego has: iTalisman)
+									(Print 0 136)
+								else
+									(PrintDontHaveIt)
+								)
+							)
 							((Said 'wear,(put<on)/amulet')
 								(if (ego has: iTalisman)
-									(Print 0 46)
+									;(Print 0 46)
+									(Print 0 137)
 								else
 									(PrintDontHaveIt)
 								)

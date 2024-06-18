@@ -682,6 +682,10 @@
 													(LocPrint 706 121)
 													;(LocPrint 706 122)
 												)
+												(17 ;talisman
+													(LocPrint 706 122)
+													(LocPrint 706 120)
+												)
 											)
 										)
 									)
@@ -1119,6 +1123,12 @@
 									)
 									(Display 706 189
 										p_at 154 74
+										p_color textCol
+										p_font fontNum
+										p_back 0
+									)
+									(Display 706 192
+										p_at 154 84
 										p_color textCol
 										p_font fontNum
 										p_back 0
