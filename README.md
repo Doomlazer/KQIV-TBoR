@@ -8,7 +8,7 @@ Content advisory: Adult situations, drug references, suicide and nudity.
 
 ## INSTALLATION
 
-Note: This mod requires that you own the most recent release of KQIV, 1.006.004. This is the most common version available through GOG or Steam, but there are many other incompatible versions out in the wild - including an AGI release. You can check which version you own from the Help Menu in-game. Using this game with versions besides 1.006.004 is not supported.
+Note: This mod requires that you own the most recent release of KQIV, 1.006.004. This is the most common version available through GOG or Steam, but there are many other incompatible versions out in the wild - including an AGI release. You can check which version you own from the Help Menu in-game. Using this mod with versions besides 1.006.004 is not supported.
 
 Clone the repo or download <a href="https://github.com/Doomlazer/KQIV-TBoR/releases/download/v1.1/KQIV-TBoR_v1.1.zip">the most recent release</a>. Then copy the PATCHES folder into your KQ4 game folder and start normally through ScummVM. 
 
